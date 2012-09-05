@@ -1,0 +1,32 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+syndaemon -t -i 2 -d &
+compton -fb &
+~/Dropbox/bin/bg_random_set_hp.sh &
+docky &
+xfce4-panel &
+urxvt -e ~/Dropbox/bin/tmux.sh &
+parcellite &
+xfce4-power-manager &
+xfce4-volumed &
+redshift -l 53.36:58.99 -m vidmode -t 5500:4000 &
+(sleep 3 && /usr/bin/nm-applet --sm-disable) &
+#/opt/dropbox/dropboxd &
+opera &
