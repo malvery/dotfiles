@@ -13,5 +13,5 @@
 #done
 cd sync
 git add .
-git commit "`date`" 
+git commit -m "`date`" 
 git push
