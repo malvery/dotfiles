@@ -190,8 +190,11 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "Left",		function() awful.client.focus.bydirection("left")  end ),
+    awful.key({ modkey,           }, "Right",	function() awful.client.focus.bydirection("right") end ),
+    awful.key({ modkey,           }, "Up",		function() awful.client.focus.bydirection("up")		end ),
+    awful.key({ modkey,           }, "Down",		function() awful.client.focus.bydirection("down")  end ),
+
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -391,4 +394,20 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+function run_once(prg)
+    if not prg then
+        return
+    end
+    awful.util.spawn_with_shell("x=" .. prg .. "; pgrep -u $USERNAME -x " .. prg .. " || (" .. prg .. ")")
+end
+
+run_once("deluge-gtk")
+run_once("chromium")
+run_once("xfce4-power-manager")
+run_once("nm-applet")
+run_once("alsa-tray")
+run_once("parcellite")
+run_once("sleep 5 && sbxkb")
+
 -- }}}

@@ -59,7 +59,8 @@ theme.bg_normal = "#1c1d1c"
 --theme.bg_normal = "#1c1d1caa"
 --theme.bg_normal = "#acadfcaa"
 theme.bg_focus  = "#0c0d0c"
-theme.bg_urgent = "#343534"
+--theme.bg_urgent = "#343534"
+theme.bg_urgent = "#4e4e4e"
 -- }}}
 
 -- {{{ Borders

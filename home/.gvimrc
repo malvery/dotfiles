@@ -17,7 +17,7 @@
 
 set guioptions-=T
 
-set guifont=Monaco\ 11
+set guifont=Monaco\ 10
 set linespace=1
 
 set wildmenu

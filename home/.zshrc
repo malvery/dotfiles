@@ -38,7 +38,8 @@ p_rc="%(?..[%?%1v] )"
 
 if [ "`tput colors`" = "256" ]; then
 	c0=$'%{\e[00m%}' #%{\e[01m%}'
-	c1=$'%{\e[38;5;075m%}'
+	#c1=$'%{\e[38;5;075m%}'
+	c1=$'%{\e[38;5;060m%}'
 	c2=$'%{\e[38;5;112m%}'
 	c3=$'%{\e[38;5;172m%}'
 else
@@ -48,7 +49,8 @@ else
 	c3=$'%{\e[1;35m%}%{\e[01m%}'
 fi
 
-export PROMPT="$c0$c1%'[%n] $c2%1~ $c3%# $c0"
+#export PROMPT="$c0$c1%'[%n] $c2%1~ $c3%# $c0"
+export PROMPT="$c3%# $c1%1~: $c0"
 export PROMPT2="$c0$c3> $c0"
 export RPROMPT="$c0$c3$p_rc$c0$c2 %1(j.[%j].)$c0"
 

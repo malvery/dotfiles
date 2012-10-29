@@ -5,8 +5,9 @@
 set nocompatible 
 filetype off
 
-call vundle#rc()
 set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
 filetype plugin indent on
 
 Bundle 'xoria256.vim'
@@ -169,6 +170,10 @@ imap <C-F> <C-X><C-O>
 " Other hotkeys
 "===========================================================================
 
+nmap <C-o> <esc>:sh<cr>
+vmap <C-o> <esc>:sh<cr>
+imap <C-o> <esc>:sh<cr>
+
 nmap <Space> <PageDown>
 
 nmap <F1> <esc>:BufExplorer<cr>
@@ -183,12 +188,12 @@ nmap <F4> :bn<cr>
 vmap <F4> <esc>:bn<cr>i
 imap <F4> <esc>:bn<cr>i
 
-nmap <F8> :bd<cr>
-vmap <F8> <esc>:bd<cr>
-imap <F8> <esc>:bd<cr>
+"nmap <F8> :bd<cr>
+"vmap <F8> <esc>:bd<cr>
+"imap <F8> <esc>:bd<cr>
 
-noremap <F5> :! ./% 
+noremap <F9> :! ./% 
 
-nmap <F2>  <esc>:NERDTreeToggle<CR>
-vmap <F2>  <esc>:NERDTreeToggle<CR>
-imap <F2>  <esc>:NERDTreeToggle<CR>
+nmap <F12>  <esc>:NERDTreeToggle<CR>
+vmap <F12>  <esc>:NERDTreeToggle<CR>
+imap <F12>  <esc>:NERDTreeToggle<CR>
