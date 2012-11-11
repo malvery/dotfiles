@@ -1,6 +1,7 @@
 ##################################################################
 
 autoload -Uz compinit && compinit
+autoload -U colors && colors
 
 setopt autocd
 setopt globdots
@@ -42,17 +43,31 @@ if [ "`tput colors`" = "256" ]; then
 	c1=$'%{\e[38;5;060m%}'
 	c2=$'%{\e[38;5;112m%}'
 	c3=$'%{\e[38;5;172m%}'
+
+	#export PROMPT="$c0$c1%'[%n] $c2%1~ $c3%# $c0"
+	export PROMPT="$c3%# $c1%1~: $c0"
+	export PROMPT2="$c0$c3> $c0"
+	export RPROMPT="$c0$c3$p_rc$c0$c2 %1(j.[%j].)$c0"
+
 else
-	c0=$'%{\e[00m%}'
-	c1=$'%{\e[1;32m%}'
-	c2=$'%{\e[1;36m%}%{\e[01m%}'
-	c3=$'%{\e[1;35m%}%{\e[01m%}'
+	c0=$'%{$reset_color%}'
+	c1=$'%{$fg[magenta]%}'
+	c2=$'%{$fg[red]%}'
+	c3=$'%{$fg[green]%}'
+
+	export PROMPT="$c2%1~ %# $c0"
+	export PROMPT2="0$c3> $c0"
+	export RPROMPT="$c0$c2$p_rc$c0$c3 %1(j.[%j].)$c0"
+
+	alias mc='mc --skin dark'
+	
+	if [ "$TERM" = "linux" ]; then
+		setfont UniCyr_8x16
+		[ -n "$TMUX" ] && export TERM=linux
+	fi
 fi
 
-#export PROMPT="$c0$c1%'[%n] $c2%1~ $c3%# $c0"
-export PROMPT="$c3%# $c1%1~: $c0"
-export PROMPT2="$c0$c3> $c0"
-export RPROMPT="$c0$c3$p_rc$c0$c2 %1(j.[%j].)$c0"
+
 
 ##################################################################
 
@@ -135,12 +150,10 @@ alias smount='sudo mount'
 alias sumount='sudo umount'
 
 alias pm-suspend='sudo pm-suspend'
-alias hibernate='sudo hibernate'
+alias pm-hibernate='sudo pm-hibernate'
 
-alias halt='dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" \
-	/org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop' 
-alias reboot=' dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" \
-	/org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart'
+alias halt='systemctl poweroff' 
+alias reboot='systemctl reboot'
 
 alias tcpdump='sudo tcpdump'
 alias ngrep='sudo ngrep'
@@ -184,18 +197,18 @@ fi
 
 ###################################################################
 
-export LANG=ru_RU.UTF-8
-export LC_CTYPE="ru_RU.UTF-8"
-export LC_NUMERIC="ru_RU.UTF-8"
-export LC_TIME="ru_RU.UTF-8"
-export LC_COLLATE="ru_RU.UTF-8"
-export LC_MONETARY="ru_RU.UTF-8"
-export LC_MESSAGES="ru_RU.UTF-8"
-export LC_PAPER="ru_RU.UTF-8"
-export LC_NAME="ru_RU.UTF-8"
-export LC_ADDRESS="ru_RU.UTF-8"
-export LC_TELEPHONE="ru_RU.UTF-8"
-export LC_MEASUREMENT="ru_RU.UTF-8"
-export LC_IDENTIFICATION="ru_RU.UTF-8"
+#export LANG=ru_RU.UTF-8
+#export LC_CTYPE="ru_RU.UTF-8"
+#export LC_NUMERIC="ru_RU.UTF-8"
+#export LC_TIME="ru_RU.UTF-8"
+#export LC_COLLATE="ru_RU.UTF-8"
+#export LC_MONETARY="ru_RU.UTF-8"
+#export LC_MESSAGES="ru_RU.UTF-8"
+#export LC_PAPER="ru_RU.UTF-8"
+#export LC_NAME="ru_RU.UTF-8"
+#export LC_ADDRESS="ru_RU.UTF-8"
+#export LC_TELEPHONE="ru_RU.UTF-8"
+#export LC_MEASUREMENT="ru_RU.UTF-8"
+#export LC_IDENTIFICATION="ru_RU.UTF-8"
 
 ###################################################################
