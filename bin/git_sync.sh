@@ -11,7 +11,7 @@
 #		cp -R $args $SYNC_DIR/test/etc/
 #	fi
 #done
-cd sync
+cd ~/sync
 git add .
 git commit -m "`date`" 
 git push

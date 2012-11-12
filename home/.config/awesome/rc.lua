@@ -34,7 +34,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/snow/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -247,12 +247,13 @@ globalkeys = awful.util.table.join(
 	 awful.key({ }, "XF86AudioPlay",				function () awful.util.spawn("cmus-remote -u") end),
 	 awful.key({ }, "XF86AudioPrev",				function () awful.util.spawn("cmus-remote -p") end),
 
-	 awful.key({ modkey,           }, "e",		function () awful.util.spawn("thunar") end),
+	 awful.key({ modkey,           }, "e",		function () awful.util.spawn("pcmanfm") end),
 	 awful.key({ modkey,           }, "r",		function () awful.util.spawn("gmrun") end),
+	 awful.key({ modkey, "Shift"   }, "l",		function () awful.util.spawn("slock") end),
 
 	 awful.key({ modkey,           }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
-	 awful.key({ modkey,           }, "Delete",		function () awful.util.spawn("oblogout") end),
+	 awful.key({ modkey, "Shift"   }, "Delete",		function () awful.util.spawn("oblogout") end),
 
     -- Prompt
     --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -359,10 +360,20 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][2] } },
+    { rule = { class = "Thunderbird" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Skype" },
+      properties = { tag = tags[1][8] }, mysystray = nill  },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
 }
+-- }}}
+
+-- {{{ Tags propertys
+--awful.tag.setnmaster (1, tags[1][8])
+--awful.tag.setproperty(tags[1][1], "mwfact", 0.70)
+awful.tag.setproperty(tags[1][8], "mwfact", 0.80)
 -- }}}
 
 -- {{{ Signals
@@ -402,12 +413,6 @@ function run_once(prg)
     awful.util.spawn_with_shell("x=" .. prg .. "; pgrep -u $USERNAME -x " .. prg .. " || (" .. prg .. ")")
 end
 
-run_once("deluge-gtk")
-run_once("chromium")
-run_once("xfce4-power-manager")
-run_once("nm-applet")
-run_once("alsa-tray")
-run_once("parcellite")
 run_once("sleep 5 && sbxkb")
 
 -- }}}
