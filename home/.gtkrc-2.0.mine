@@ -1,0 +1,24 @@
+# GTK theme preferences
+style"gtk-theme-config-panel"{
+bg[NORMAL]="#2e3436"
+bg[PRELIGHT]=shade(1.1,"#2e3436")
+bg[ACTIVE]=shade(0.9,"#2e3436")
+bg[SELECTED]=shade(0.97,"#2e3436")
+fg[NORMAL]="#babdb6"
+fg[PRELIGHT]="#babdb6"
+fg[SELECTED]="#babdb6"
+fg[ACTIVE]="#babdb6"
+}
+class"PanelApp*"style"gtk-theme-config-panel"
+class"PanelToplevel*"style"gtk-theme-config-panel"
+widget"*PanelWidget*"style"gtk-theme-config-panel"
+widget"*PanelApplet*"style"gtk-theme-config-panel"
+widget"*fast-user-switch*"style"gtk-theme-config-panel"
+widget"*CPUFreq*Applet*"style"gtk-theme-config-panel"
+widget_class"*PanelToplevel*"style"gtk-theme-config-panel"
+widget_class"*notif*"style"gtk-theme-config-panel"
+widget_class"*Notif*"style"gtk-theme-config-panel"
+widget_class"*Tray*"style"gtk-theme-config-panel"
+widget_class"*tray*"style"gtk-theme-config-panel"
+widget"*Xfce*Panel*"style"gtk-theme-config-panel"
+class"*Xfce*Panel*"style"gtk-theme-config-panel"
