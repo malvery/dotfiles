@@ -201,7 +201,6 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-
     <keybind key="W-S-1">
       <action name="SendToDesktop">
         <to>1</to>
@@ -221,8 +220,8 @@
       <action name="SendToDesktop">
         <to>4</to>
       </action>
-	 </keybind>   
-	 <keybind key="W-S-5">
+    </keybind>
+    <keybind key="W-S-5">
       <action name="SendToDesktop">
         <to>5</to>
       </action>
@@ -231,8 +230,8 @@
       <action name="SendToDesktop">
         <to>6</to>
       </action>
-	 </keybind>   
-	 <keybind key="W-S-7">
+    </keybind>
+    <keybind key="W-S-7">
       <action name="SendToDesktop">
         <to>7</to>
       </action>
@@ -247,7 +246,6 @@
         <to>9</to>
       </action>
     </keybind>
-
     <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -293,52 +291,42 @@
         <to>9</to>
       </action>
     </keybind>
-
-	 <keybind key="W-S-Insert">
-		 <action name="AddDesktop"/>
-	 </keybind>
-
-	 <keybind key="W-S-Delete">
-		 <action name="RemoveDesktop"/>
-	 </keybind>
-
+    <keybind key="W-S-Insert">
+      <action name="AddDesktop"/>
+    </keybind>
+    <keybind key="W-S-Delete">
+      <action name="RemoveDesktop"/>
+    </keybind>
     <keybind key="W-Escape">
       <action name="GoToDesktop">
         <to>last</to>
-		  <wrap>yes</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
-
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
-	 
     <keybind key="W-f">
       <action name="ToggleFullscreen"/>
     </keybind>
-
-	 <keybind key="W-m">
-		 <action name="ToggleMaximize"/>
-		 <action name="ToggleDecorations"/>
+    <keybind key="W-m">
+      <action name="ToggleMaximize"/>
+      <action name="ToggleDecorations"/>
     </keybind>
-
     <!-- Keybindings for windows -->
     <keybind key="W-S-c">
       <action name="Close"/>
     </keybind>
-
     <keybind key="A-Escape">
       <action name="Lower"/>
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-
     <keybind key="A-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
     </keybind>
-
     <!-- Keybindings for window switching -->
     <keybind key="W-Tab">
       <action name="NextWindow">
@@ -349,7 +337,6 @@
         </finalactions>
       </action>
     </keybind>
-
     <keybind key="W-S-Tab">
       <action name="PreviousWindow">
         <finalactions>
@@ -359,7 +346,6 @@
         </finalactions>
       </action>
     </keybind>
-
     <!-- Keybindings for window switching with the arrow keys -->
     <keybind key="W-S-Right">
       <action name="DirectionalCycleWindows">
@@ -381,21 +367,18 @@
         <direction>down</direction>
       </action>
     </keybind>
-
     <!-- Keybindings for running applications -->
-	 <keybind key="W-r">
-		<action name="Execute">
-			<command>gmrun</command>
-		</action>
-	 </keybind>
-	 <keybind key="W-S-Return">
-		<action name="Execute">
-			<command>urxvt</command>
-		</action>
-	 </keybind>
-
+    <keybind key="W-r">
+      <action name="Execute">
+        <command>gmrun</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Return">
+      <action name="Execute">
+        <command>urxvt</command>
+      </action>
+    </keybind>
   </keyboard>
-
   <mouse>
     <dragThreshold>1</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
@@ -417,8 +400,8 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="W-Left" action="Drag">
-		  <action name="Unmaximize"/>
-		  <action name="Decorate"/>
+        <action name="Unmaximize"/>
+        <action name="Decorate"/>
         <action name="Move"/>
       </mousebind>
       <mousebind button="W-Right" action="Press">
@@ -427,7 +410,7 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="W-Right" action="Drag">
-		  <action name="Decorate"/>
+        <action name="Decorate"/>
         <action name="Resize"/>
       </mousebind>
       <mousebind button="W-Middle" action="Press">
@@ -472,7 +455,7 @@
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
         <action name="ToggleMaximize"/>
-		  <action name="ToggleDecorations"/>
+        <action name="ToggleDecorations"/>
       </mousebind>
       <mousebind button="Up" action="Click">
         <action name="if">
@@ -636,7 +619,7 @@
       </mousebind>
       <mousebind button="Left" action="Click">
         <action name="ToggleMaximize"/>
-		  <action name="ToggleDecorations"/>
+        <action name="ToggleDecorations"/>
       </mousebind>
       <mousebind button="Middle" action="Click">
         <action name="ToggleMaximize">
@@ -831,26 +814,24 @@
 
   # end of the example
 -->
-    <application name="chromium">
+    <application class="Chromium">
       <desktop>2</desktop>
-      <decor>no</decor>
-      <maximized>true</maximized>
     </application>
-
     <application class="Okular">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-
     <application title="tmux.sh">
       <desktop>1</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-
+    <application class="Smplayer">
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
     <application class="ioquake3.i386">
       <decor>no</decor>
     </application>
-
   </applications>
 </openbox_config>
