@@ -7,6 +7,11 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- Load Debian menu entries
+--require("debian.menu")
+
+require("eminent")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -34,7 +39,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config") .. "/themes/snow/theme.lua")
+--beautiful.init(awful.util.getdir("config") .. "/themes/zenburn/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -51,14 +57,18 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
+    --awful.layout.suit.floating,
     awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.top,
+    --awful.layout.suit.fair,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.floating
-
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -80,9 +90,13 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal },
-												{ "next bg", "awsetbg -r /home/malvery/wallpapers " }
+mymainmenu = awful.menu({ items = { { "WM", myawesomemenu, beautiful.awesome_icon },
+                                    --{ "Debian", debian.menu.Debian_menu.Debian },
+                                    --{ "Browser", "chromium" },
+                                    --{ "Terminal", terminal },
+                                    { ""},
+                                    { "Lock", "i3lock -c 000000 -d" },
+                                    { "Exit", "xfce4-session-logout" }
                                   }
                         })
 
@@ -158,7 +172,7 @@ for s = 1, screen.count() do
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
+                                              return awful.widget.tasklist.label.alltags(c, s)
                                           end, mytasklist.buttons)
 
     -- Create the wibox
@@ -190,11 +204,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",		function() awful.client.focus.bydirection("left")  end ),
-    awful.key({ modkey,           }, "Right",	function() awful.client.focus.bydirection("right") end ),
-    awful.key({ modkey,           }, "Up",		function() awful.client.focus.bydirection("up")		end ),
-    awful.key({ modkey,           }, "Down",		function() awful.client.focus.bydirection("down")  end ),
-
+    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -237,23 +248,17 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+    --awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-	 awful.key({ }, "XF86AudioMute",          function () awful.util.spawn("alsa-tray mute") end), 
-	 awful.key({ }, "XF86AudioRaiseVolume",   function () awful.util.spawn("alsa-tray +5") end),
-	 awful.key({ }, "XF86AudioLowerVolume",   function () awful.util.spawn("alsa-tray -5") end),
-	 awful.key({ }, "XF86AudioNext",          function () awful.util.spawn("cmus-remote -n") end), 
-	 awful.key({ }, "XF86AudioStop",				function () awful.util.spawn("cmus-remote -s") end),
-	 awful.key({ }, "XF86AudioPlay",				function () awful.util.spawn("cmus-remote -u") end),
-	 awful.key({ }, "XF86AudioPrev",				function () awful.util.spawn("cmus-remote -p") end),
+	 -- Tags
+	 awful.key({ modkey, "Shift"   }, "[",      function(c) awful.client.movetoscreen(c,2) end ),
+	 awful.key({ modkey, "Shift"   }, "]",      function(c) awful.client.movetoscreen(c,1) end ),
 
-	 awful.key({ modkey,           }, "e",		function () awful.util.spawn("pcmanfm") end),
-	 awful.key({ modkey,           }, "r",		function () awful.util.spawn("gmrun") end),
-	 awful.key({ modkey, "Shift"   }, "l",		function () awful.util.spawn("slock") end),
+	 awful.key({ modkey,           }, "[",      function(c) awful.screen.focus(2) end ),
+	 awful.key({ modkey,           }, "]",      function(c) awful.screen.focus(1) end ),
 
-	 awful.key({ modkey,           }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
-
-	 awful.key({ modkey, "Shift"   }, "Delete",		function () awful.util.spawn("oblogout") end),
+	 -- Hotkeys
+	 awful.key({ modkey          }, "r",      function () awful.util.spawn("gmrun") end),
 
     -- Prompt
     --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -271,16 +276,16 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
-    awful.key({ modkey,           }, "Return", function (c) c:swap(awful.client.getmaster()) end),
+    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
+    --awful.key({ modkey,           }, "n",
+    --    function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
+    --        c.minimized = true
+    --    end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
@@ -343,37 +348,27 @@ awful.rules.rules = {
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = true,
-							size_hints_honor = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+	 { rule = { instance = "plugin-container" },
+	   properties = { floating = true } }, 
+	 { rule = { instance = "exe" },
+	   properties = { floating = true } },
     { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "Alsa-tray" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    { rule = { class = "Oblogout" },
-      properties = { floating = true } },
-    { rule = { class = "Exe" },
       properties = { floating = true } },
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Thunderbird" },
-      properties = { tag = tags[1][9] } },
+    { rule = { class = "Icedove" },
+      properties = { tag = tags[1][4], floating = false } },
     { rule = { class = "Skype" },
-      properties = { tag = tags[1][8] }, mysystray = nill  },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][4] } },
+    { rule = { class = "Xfdesktop" },
+      properties = { sticky = true } },
+    { rule = { class = "Gmrun" },
+      properties = { sticky = true } },
+    { rule = { class = "Thunar" },
+      properties = { floating = false } },
 }
--- }}}
-
--- {{{ Tags propertys
---awful.tag.setnmaster (1, tags[1][8])
---awful.tag.setproperty(tags[1][1], "mwfact", 0.70)
-awful.tag.setproperty(tags[1][8], "mwfact", 0.80)
 -- }}}
 
 -- {{{ Signals
@@ -405,14 +400,4 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-
-function run_once(prg)
-    if not prg then
-        return
-    end
-    awful.util.spawn_with_shell("x=" .. prg .. "; pgrep -u $USERNAME -x " .. prg .. " || (" .. prg .. ")")
-end
-
-run_once("sleep 5 && sbxkb")
-
 -- }}}

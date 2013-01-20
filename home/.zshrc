@@ -62,7 +62,7 @@ else
 	alias mc='mc --skin dark'
 	
 	if [ "$TERM" = "linux" ]; then
-		setfont UniCyr_8x16
+		#setfont UniCyr_8x16
 		[ -n "$TMUX" ] && export TERM=linux
 	fi
 fi
