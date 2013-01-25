@@ -350,24 +350,57 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-	 { rule = { instance = "plugin-container" },
-	   properties = { floating = true } }, 
-	 { rule = { instance = "exe" },
-	   properties = { floating = true } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
+
+	 -- Tag
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Icedove" },
-      properties = { tag = tags[1][4], floating = false } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][4] } },
+
+    { rule = { name = "tmux-main" },
+      properties = { tag = tags[1][1] } },
+    { rule = { name = "tmux-second" },
+      properties = { tag = tags[1][1] } },
+
+	 -- Sticky
     { rule = { class = "Xfdesktop" },
       properties = { sticky = true } },
     { rule = { class = "Gmrun" },
       properties = { sticky = true } },
-    { rule = { class = "Thunar" },
+
+ 	 -- Tiling
+    { rule = { role = "browser" },
       properties = { floating = false } },
+    { rule = { role = "3pane" },
+      properties = { floating = false } },
+
+    { rule = { name = ".*LibreOffice.*" },
+      properties = { floating = false } },
+    { rule = { name = ".*win7.*" },
+      properties = { floating = false } },
+
+	 -- Floating
+	 { rule = { instance = "plugin-container" },
+	   properties = { floating = true } }, 
+	 { rule = { instance = "exe" },
+	   properties = { floating = true } },
+
+    { rule = { role = "Msgcompose" },
+      properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { role = "addressbook" },
+      properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { role = "Preferences" },
+      properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { role = "Manager" },
+      properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { role = "page-info" },
+      properties = { floating = true }, callback = awful.placement.centered },
+
+    { rule = { class = "MPlayer" },
+      properties = { floating = true } },
+    { rule = { class = "Shutter" },
+      properties = { floating = true } },
+
 }
 -- }}}
 
