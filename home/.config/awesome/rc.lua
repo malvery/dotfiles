@@ -156,6 +156,22 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+--- {{{ keyboard indicator
+mykeyindicator = widget({ type = "textbox", name = "mykeyindicator" })
+ 
+function mykey_update()
+    local fd = io.popen("~/bin/skb a")
+    local key_layout = fd:read()
+    fd:close()
+	 mykeyindicator.text = key_layout .. " "
+    return
+end
+ 
+dbus.add_match("session", "member='layoutNameChanged'")
+dbus.add_signal("ru.gentoo.kbdd", mykey_update)
+--- keyboard indicator }}}
+
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -188,6 +204,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+		  mykeyindicator,
         --mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
