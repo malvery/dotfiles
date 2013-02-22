@@ -14,7 +14,6 @@ Bundle 'xoria256.vim'
 Bundle 'colorer-color-scheme'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
-Bundle 'SuperTab'
 Bundle 'ruby.vim'
 Bundle 'The-NERD-Commenter'
 Bundle 'xml.vim'
@@ -38,9 +37,9 @@ syntax on
 
 set autoindent
 set smartindent
-set shiftwidth=3
-set softtabstop=3
-set tabstop=3
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 set autoread
 set autochdir
@@ -64,6 +63,31 @@ highlight PMenu ctermbg=238 gui=bold
 highlight PMenuSel ctermbg=248 ctermfg=238 gui=bold
 
 "===========================================================================
+" Functions
+"===========================================================================
+
+function! TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+
+"===========================================================================
 " Completion
 "===========================================================================
 
@@ -80,6 +104,8 @@ highlight PMenuSel ctermbg=248 ctermfg=238 gui=bold
 "===========================================================================
 " Hotkeys
 "===========================================================================
+
+inoremap <tab> <c-r>=TabComplete()<CR>
 
 nmap <C-o> <esc>:sh<cr>
 vmap <C-o> <esc>:sh<cr>
