@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-keyboard-shortcuts" version="1.0">
+  <property name="commands" type="empty">
+    <property name="default" type="empty">
+      <property name="&lt;Alt&gt;F1" type="empty"/>
+      <property name="&lt;Alt&gt;F2" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
+      <property name="&lt;Alt&gt;F3" type="empty">
+        <property name="startup-notify" type="empty"/>
+      </property>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="string" value="slimlock"/>
+      <property name="XF86Display" type="empty"/>
+      <property name="&lt;Super&gt;p" type="empty"/>
+      <property name="&lt;Control&gt;Escape" type="empty"/>
+      <property name="XF86WWW" type="empty"/>
+      <property name="XF86Mail" type="empty"/>
+    </property>
+    <property name="custom" type="empty">
+      <property name="&lt;Alt&gt;F2" type="string" value="xfce4-appfinder --collapsed"/>
+      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Delete" type="string" value="slimlock"/>
+      <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
+      <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
+      <property name="override" type="bool" value="true"/>
+      <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-applicationsmenu"/>
+    </property>
+  </property>
+  </property>
+  <property name="providers" type="array">
+    <value type="string" value="commands"/>
+  </property>
+</channel>

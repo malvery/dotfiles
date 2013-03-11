@@ -77,8 +77,10 @@ export LS_COLORS
 export EDITOR="vim"
 export BROWSER="chromium"
 export XTERM="urxvt"
-#export PATH="${PATH}:/storage/bin"
+#export PATH="$HOME/.rbenv/bin:${PATH}"
 #export CDPATH=".:~:/storage"
+
+#eval "$(rbenv init -)"
 
 ##################################################################
 
@@ -148,12 +150,14 @@ alias scat='sudo cat'
 alias svim='sudo vim'
 alias smount='sudo mount'
 alias sumount='sudo umount'
+alias netcfg='sudo netcfg'
+alias netcfg-menu='sudo netcfg-menu'
 
 alias pm-suspend='sudo pm-suspend'
 alias pm-hibernate='sudo pm-hibernate'
 
-#alias halt='systemctl poweroff' 
-#alias reboot='systemctl reboot'
+alias halt='systemctl poweroff' 
+alias reboot='systemctl reboot'
 
 alias tcpdump='sudo tcpdump'
 alias ngrep='sudo ngrep'
@@ -212,3 +216,6 @@ fi
 #export LC_IDENTIFICATION="ru_RU.UTF-8"
 
 ###################################################################
+
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#source $HOME/.rvm/scripts/rvm

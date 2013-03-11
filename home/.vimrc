@@ -17,6 +17,8 @@ Bundle 'The-NERD-tree'
 Bundle 'ruby.vim'
 Bundle 'The-NERD-Commenter'
 Bundle 'xml.vim'
+Bundle 'snipMate'
+Bundle 'AutoComplPop'
 
 "===========================================================================
 " theme
@@ -79,18 +81,17 @@ function! TabComplete()
   let has_period = match(substr, '\.') != -1      " position of period, if any
   let has_slash = match(substr, '\/') != -1       " position of slash, if any
   if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                         " existing text matching
+		return "\<C-X>\<C-O>"                         " plugin matching
   elseif ( has_slash )
     return "\<C-X>\<C-F>"                         " file matching
   else
-    return "\<C-X>\<C-O>"                         " plugin matching
+   	return "\<C-X>\<C-P>"                         " existing text matching
   endif
 endfunction
 
 "===========================================================================
 " Completion
 "===========================================================================
-
 
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -105,7 +106,7 @@ endfunction
 " Hotkeys
 "===========================================================================
 
-inoremap <tab> <c-r>=TabComplete()<CR>
+inoremap <C-f> <c-r>=TabComplete()<CR>
 
 nmap <C-o> <esc>:sh<cr>
 vmap <C-o> <esc>:sh<cr>

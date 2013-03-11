@@ -1,6 +1,6 @@
 + f *.mp3 | f *.ogg | f *.flac 
 e Edit Tag's with kid3
-  kid3-qt %d &
+  exfalso %d &
 
 + f *.ape | f *.wv | f *.flac 
 L Split lossless IMG
