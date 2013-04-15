@@ -20,6 +20,7 @@
       <property name="Client1_PerScreen" type="bool" value="false"/>
       <property name="Client2_Command" type="array">
         <value type="string" value="xfce4-panel"/>
+        <value type="string" value="--disable-wm-check"/>
       </property>
       <property name="Client2_PerScreen" type="bool" value="false"/>
       <property name="Client3_Command" type="array">

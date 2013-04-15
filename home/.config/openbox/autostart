@@ -4,29 +4,17 @@
 # to run user-specific things.
 #
 
-# If you want to use GNOME config tools...
-#
-#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
-#  /usr/lib/openbox/gnome-settings-daemon &
-#elif which gnome-settings-daemon >/dev/null 2>&1; then
-#  gnome-settings-daemon &
-#fi
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+syndaemon -t -i 1 -d &
+nitrogen --restore &
+#start-pulseaudio-x11 &
+xfce4-volumed-pulse &
 
-# If you want to use XFCE config tools...
-#
-#xfce-mcs-manager &
-
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-syndaemon -t -i 2 -d &
-compton -fb &
-~/Dropbox/bin/bg_random_set_hp.sh &
-docky &
-xfce4-panel &
-urxvt -e ~/Dropbox/bin/tmux.sh &
-parcellite &
-xfce4-power-manager &
-xfce4-volumed &
+urxvt -name tmux-main -e ~/bin/tmux.sh &
 redshift -l 53.36:58.99 -m vidmode -t 5500:4000 &
-(sleep 3 && /usr/bin/nm-applet --sm-disable) &
-#/opt/dropbox/dropboxd &
-opera &
+kbdd &
+clipit -n &
+compton -i 0.9 -e 0.9 -m 0.95 -b &
+trayer --transparent true --widthtype request --align right --alpha 250 --SetDockType false &
+conky &
+#(sleep 3 && /usr/bin/nm-applet --sm-disable) &

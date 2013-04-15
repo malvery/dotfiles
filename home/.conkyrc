@@ -1,0 +1,49 @@
+#avoid flicker
+double_buffer yes
+
+#own window to run simultanious 2 or more conkys
+own_window  yes
+own_window_transparent no
+own_window_type desktop
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager 
+
+#borders
+draw_borders no
+border_inner_margin 3
+
+#shades
+draw_shades no
+
+#position
+gap_x 0
+gap_y 4
+alignment top_middle
+
+#behaviour
+update_interval 1
+
+#colour
+default_color  606060
+#default_shade_color 000000
+own_window_colour 333333
+color1 1994d1
+
+
+#font
+use_xft yes
+xftfont sans:size=8
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+#to prevent window from moving
+use_spacer none
+minimum_size 0 0
+maximum_width 1366
+
+#mpd
+#mpd_host localhost
+#mpd_port 6600
+
+TEXT
+${alignc}Date: ${color1}${time %d/%m/%y}${color}  Time: ${color1}${time %H:%M}${color}  |  Cpu1: ${color1}${cpu cpu1}%${color}  Cpu2: ${color1}${cpu cpu2}%${color}  Ram: ${color1}${memperc}%${color}  Swap: ${color1}${swapperc}%${color}  |  Root: ${color1}${fs_used_perc /}%${color}  Home: ${color1}${fs_used_perc /home}%${color}  |  Temp: ${color1}${execi 300 sensors | grep temp1 | cut -c15-19 ;}°C${color} Battery ${color1}${battery_percent BAT0}%${color}  |  ${if_existing /proc/net/route wlo1}Up: ${color1}${upspeedf wlo1} kb/s${color}  Down: ${color1}${downspeedf wlo1} kb/s${color}  |  ESSID: ${color1}${wireless_essid wlo1}${color} Signal: ${color1}${wireless_link_qual wlo1}%${color}${else}${if_existing /proc/net/route enp3s0}Up: ${color1}${upspeedf enp3s0} kb/s${color}  Down: ${color1}${downspeedf enp3s0} kb/s${color}${else}Network Unavailable${endif} 

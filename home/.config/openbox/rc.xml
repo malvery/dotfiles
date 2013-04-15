@@ -40,8 +40,8 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>1977-Grey</name>
-    <titleLayout>NLIMC</titleLayout>
+    <name>Inspiration</name>
+    <titleLayout>LIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -55,8 +55,8 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Sans</name>
-      <size>8</size>
+      <name>Ubuntu</name>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -64,48 +64,48 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>sans</name>
-      <size>8</size>
+      <name>Ubuntu</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>sans</name>
-      <size>9</size>
+      <name>Monaco</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>sans</name>
-      <size>9</size>
+      <name>Monaco</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>normal</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
+      <name>Monaco</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
+      <name>Monaco</name>
+      <size>10</size>
       <!-- font size in points -->
-      <weight>bold</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
+      <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
   </theme>
@@ -118,7 +118,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
@@ -310,8 +310,22 @@
       <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="W-m">
-      <action name="ToggleMaximize"/>
-      <action name="ToggleDecorations"/>
+      <action name="If">
+        <maximized>yes</maximized>
+        <then>
+          <action name="Unmaximize"/>
+          <action name="Decorate"/>
+        </then>
+        <else>
+          <action name="Maximize"/>
+          <action name="Undecorate"/>
+        </else>
+      </action>
+    </keybind>
+    <keybind key="W-w">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
     </keybind>
     <!-- Keybindings for windows -->
     <keybind key="W-S-c">
@@ -322,7 +336,7 @@
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="A-space">
+    <keybind key="W-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
@@ -371,6 +385,11 @@
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -454,8 +473,17 @@
         <action name="Move"/>
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
-        <action name="ToggleMaximize"/>
-        <action name="ToggleDecorations"/>
+        <action name="If">
+          <maximized>yes</maximized>
+          <then>
+            <action name="Unmaximize"/>
+            <action name="Decorate"/>
+          </then>
+          <else>
+            <action name="Maximize"/>
+            <action name="Undecorate"/>
+          </else>
+        </action>
       </mousebind>
       <mousebind button="Up" action="Click">
         <action name="if">
@@ -618,8 +646,17 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Click">
-        <action name="ToggleMaximize"/>
-        <action name="ToggleDecorations"/>
+        <action name="If">
+          <maximized>yes</maximized>
+          <then>
+            <action name="Unmaximize"/>
+            <action name="Decorate"/>
+          </then>
+          <else>
+            <action name="Maximize"/>
+            <action name="Undecorate"/>
+          </else>
+        </action>
       </mousebind>
       <mousebind button="Middle" action="Click">
         <action name="ToggleMaximize">
@@ -817,7 +854,7 @@
     <application class="Chromium">
       <desktop>2</desktop>
     </application>
-    <application class="Okular">
+    <application class="Evince">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
@@ -829,6 +866,14 @@
     <application class="Smplayer">
       <decor>no</decor>
       <maximized>true</maximized>
+    </application>
+    <application class="Rhythmbox">
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application type="dialog">
+      <decor>yes</decor>
+      <maximized>false</maximized>
     </application>
     <application class="ioquake3.i386">
       <decor>no</decor>

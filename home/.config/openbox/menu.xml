@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+	<menu execute="obm-xdg" id="xdg-menu" label="Applications"/>
+	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
+	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
+	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
+	<menu execute="obm-nav ~/music			thunar urxvt" id="nav-music"			label="Music"/>
+	<menu execute="obm-nav ~/pictures		thunar urxvt" id="nav-pictures"		label="Pictures"/>
+	<menu execute="obm-nav ~/tmp				thunar urxvt" id="nav-tmp"				label="Temp"/>
+
 	<menu id="system-menu" label="System">
 		<item label="Openbox Configuration Manager">
 			<action name="Execute">
 				<command>obconf</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Customize Look and Feel">
+			<action name="Execute">
+				<command>lxappearance</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
@@ -22,19 +39,28 @@
 		<item label="Reconfigure Openbox">
 			<action name="Reconfigure"/>
 		</item>
-		<item label="Restart Openbox">
-			<action name="Restart"/>
-		</item>
 	</menu>
-	<menu execute="openbox-menu lxde-applications.menu" id="desktop-app-menu" label="Apps"/>
+
 	<menu id="root-menu" label="Openbox 3">
-		<separator label="Openbox"/>
-		<menu id="desktop-app-menu"/>
+		<menu id="xdg-menu"/>
+
+		<separator/>
+		<menu id="nav-downloads"/>
+		<menu id="nav-doc"/>
+		<menu id="nav-video"/>
+		<menu id="nav-music"/>
+		<menu id="nav-pictures"/>
+		<menu id="nav-tmp"/>
+
+		<separator/>
 		<menu id="system-menu"/>
 		<separator/>
-		<item label="Exit">
+		<item label="Log Out">
 			<action name="Execute">
-				<execute>oblogout</execute>
+				<command>lxsession-logout</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
 			</action>
 		</item>
 	</menu>
