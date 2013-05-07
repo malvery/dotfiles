@@ -57,9 +57,9 @@
 		<separator/>
 		<item label="Log Out">
 			<action name="Execute">
-				<command>lxsession-logout</command>
+				<command>qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1</command>
 				<startupnotify>
-					<enabled>yes</enabled>
+					<enabled>no</enabled>
 				</startupnotify>
 			</action>
 		</item>

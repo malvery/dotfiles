@@ -1,12 +1,19 @@
 [Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
-Type=Application
-Name=compton
+Comment[en_US]=
 Comment=
-Exec=compton -f
-OnlyShowIn=XFCE;
-StartupNotify=false
+Exec=compton -i 0.9 -e 0.9 -m 0.95 -b
+GenericName[en_US]=
+GenericName=
+Icon=system-run
+MimeType=
+Name[en_US]=
+Name=
+Path=
+StartupNotify=true
 Terminal=false
-Hidden=false
-
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
