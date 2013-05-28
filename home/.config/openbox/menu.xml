@@ -9,6 +9,15 @@
 	<menu execute="obm-nav ~/pictures		thunar urxvt" id="nav-pictures"		label="Pictures"/>
 	<menu execute="obm-nav ~/tmp				thunar urxvt" id="nav-tmp"				label="Temp"/>
 
+	<menu id="places-menu" label="Places">
+		<menu id="nav-downloads"/>
+		<menu id="nav-doc"/>
+		<menu id="nav-video"/>
+		<menu id="nav-music"/>
+		<menu id="nav-pictures"/>
+		<menu id="nav-tmp"/>
+	</menu>
+
 	<menu id="system-menu" label="System">
 		<item label="Openbox Configuration Manager">
 			<action name="Execute">
@@ -43,21 +52,15 @@
 
 	<menu id="root-menu" label="Openbox 3">
 		<menu id="xdg-menu"/>
-
-		<separator/>
-		<menu id="nav-downloads"/>
-		<menu id="nav-doc"/>
-		<menu id="nav-video"/>
-		<menu id="nav-music"/>
-		<menu id="nav-pictures"/>
-		<menu id="nav-tmp"/>
+		<menu id="places-menu"/>
 
 		<separator/>
 		<menu id="system-menu"/>
 		<separator/>
+
 		<item label="Log Out">
 			<action name="Execute">
-				<command>qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1</command>
+				<command>lxsession-logout</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>

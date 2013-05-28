@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=compton -i 0.9 -e 0.9 -m 0.95 -b
+Exec=compton -e 0.9 -m 0.95 -C -c
 GenericName[en_US]=
 GenericName=
 Icon=system-run

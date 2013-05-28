@@ -1,1 +1,11 @@
-echo "test"
+@nitrogen --restore
+@lxpanel --profile LXDE
+@compton -e 0.9 -m 0.95 -C -c
+@redshift -l 53.36:58.99 -m vidmode -t 5500:4000
+@gnome-screensaver
+@xfce4-power-manager
+@~/bin/xfce4-volumed.sh
+
+@urxvt -name tmux-main -e /home/malvery/bin/tmux.sh
+@docky
+@chromium

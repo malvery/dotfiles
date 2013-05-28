@@ -40,8 +40,8 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>1977-Grey</name>
-    <titleLayout>LIMC</titleLayout>
+    <name>el-dark</name>
+    <titleLayout>CLM</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -121,10 +121,11 @@
     <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>desktop 1</name>
+      <name>desktop 2</name>
+      <name>desktop 3</name>
+      <name>desktop 4</name>
+      <name>desktop 5</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -389,7 +390,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>dolphin</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -853,12 +854,18 @@
 -->
     <application class="Chromium">
       <desktop>2</desktop>
+      <maximized>true</maximized>
+      <decor>no</decor>
     </application>
     <application class="Evince">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-    <application title="tmux.sh">
+    <application class="Quodlibet">
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application name="tmux-main">
       <desktop>1</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
