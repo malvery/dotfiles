@@ -1,0 +1,4 @@
+deb http://ppa.launchpad.net/richardgv/compton/ubuntu/ precise main 
+deb-src http://ppa.launchpad.net/richardgv/compton/ubuntu/ precise main 
+
+
