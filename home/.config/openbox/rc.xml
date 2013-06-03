@@ -852,7 +852,7 @@
 
   # end of the example
 -->
-    <application class="Chromium">
+    <application class="Chromium-browser">
       <desktop>2</desktop>
       <maximized>true</maximized>
       <decor>no</decor>
@@ -862,6 +862,10 @@
       <maximized>true</maximized>
     </application>
     <application class="Quodlibet">
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application class="Synaptic">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
