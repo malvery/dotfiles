@@ -1,3 +1,4 @@
+
 [Desktop Entry]
 Encoding=UTF-8
 Version=0.9.4
@@ -5,8 +6,7 @@ Type=Application
 Name=transmission
 Comment=
 Exec=transmission-gtk -m
-OnlyShowIn=XFCE;
+OnlyShowIn=XFCE;LXDE;
 StartupNotify=false
 Terminal=false
 Hidden=false
-
