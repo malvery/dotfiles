@@ -16,9 +16,9 @@ Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
 Bundle 'ruby.vim'
 Bundle 'The-NERD-Commenter'
-Bundle 'xml.vim'
+"Bundle 'xml.vim'
 Bundle 'snipMate'
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 
 "===========================================================================
 " theme
