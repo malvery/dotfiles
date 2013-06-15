@@ -150,8 +150,6 @@ alias scat='sudo cat'
 alias svim='sudo vim'
 alias smount='sudo mount'
 alias sumount='sudo umount'
-alias netcfg='sudo netcfg'
-alias netcfg-menu='sudo netcfg-menu'
 
 alias pm-suspend='sudo pm-suspend'
 alias pm-hibernate='sudo pm-hibernate'

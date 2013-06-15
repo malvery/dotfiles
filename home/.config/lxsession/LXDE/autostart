@@ -1,6 +1,8 @@
 @nitrogen --restore
-@xfce4-panel
 @compton -e 0.9 -m 0.95 -C -c
+@xfce4-panel --disable-wm-check
+@gnome-screensaver
 
 @clipit -n
 @thunar --daemon
+@gnome-screensaver-command -l

@@ -398,6 +398,11 @@
         <command>urxvt</command>
       </action>
     </keybind>
+    <keybind key="C-A-Delete">
+      <action name="Execute">
+        <command>gnome-screensaver-command -l</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -852,12 +857,12 @@
 
   # end of the example
 -->
-    <application class="Chromium-browser">
+    <application class="Chromium">
       <desktop>2</desktop>
       <maximized>true</maximized>
       <decor>no</decor>
     </application>
-    <application class="Evince">
+    <application class="Okular">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
@@ -865,7 +870,7 @@
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-    <application class="Synaptic">
+    <application class="Cantata">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
@@ -878,7 +883,7 @@
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-    <application class="Rhythmbox">
+    <application class="Gwenview">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>

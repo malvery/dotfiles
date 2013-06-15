@@ -1,5 +1,5 @@
 + f *.mp3 | f *.ogg | f *.flac 
-e Edit Tag's with kid3
+e Edit Tag's
   exfalso %d &
 
 + f *.ape | f *.wv | f *.flac 

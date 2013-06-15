@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-	<menu execute="obm-xdg" id="xdg-menu" label="Applications"/>
+	<menu execute="obm-xdg" id="xdg-menu" label="Apps"/>
 	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
 	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
 	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
@@ -58,7 +58,16 @@
 		<menu id="system-menu"/>
 		<separator/>
 
-		<item label="Log Out">
+		<item label="Lock">
+			<action name="Execute">
+				<command>gnome-screensaver-command -l</command>
+				<startupnotify>
+					<enabled>no</enabled>
+				</startupnotify>
+			</action>
+		</item>
+
+		<item label="Exit">
 			<action name="Execute">
 				<command>lxsession-logout</command>
 				<startupnotify>
