@@ -5,4 +5,3 @@
 
 @clipit -n
 @thunar --daemon
-@gnome-screensaver-command -l
