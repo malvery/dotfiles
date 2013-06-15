@@ -862,15 +862,11 @@
       <maximized>true</maximized>
       <decor>no</decor>
     </application>
-    <application class="Okular">
+    <application class="Evince">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application class="Quodlibet">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="Cantata">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
@@ -880,10 +876,6 @@
       <maximized>true</maximized>
     </application>
     <application class="Smplayer">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="Gwenview">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>

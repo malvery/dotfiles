@@ -5,3 +5,4 @@
 
 @clipit -n
 @thunar --daemon
+@~/bin/xfce4-volumed.sh
