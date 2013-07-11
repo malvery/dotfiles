@@ -382,6 +382,43 @@
         <direction>down</direction>
       </action>
     </keybind>
+    <!-- Keybindings for multimedia keys -->
+    <keybind key="XF86AudioPrev">
+      <action name="Execute">
+        <command>mpc prev</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute">
+        <command>mpc toggle</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute">
+        <command>mpc next</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioStop">
+      <action name="Execute">
+        <command>mpc stop</command>
+      </action>
+    </keybind>
+		<keybind key="XF86AudioRaiseVolume">
+			<action name="Execute">
+				<command>~/bin/volume.sh up</command>
+			</action>
+		</keybind>
+		<keybind key="XF86AudioLowerVolume">
+			<action name="Execute">
+				<command>~/bin/volume.sh down</command>
+			</action>
+		</keybind>
+		<keybind key="XF86AudioMute">
+			<action name="Execute">
+				<command>~/bin/volume.sh mute</command>
+			</action>
+		</keybind>
+
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
       <action name="Execute">
