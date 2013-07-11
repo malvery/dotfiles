@@ -7,9 +7,6 @@ set_icon ()
 	LEVEL=`echo $OUT | sed -n '$p' | awk '{print $5}' | grep -o '[0-9]\+'`
 	STATUS=`echo $OUT | sed -n '$p' | awk '{print $6}'`
 
-	echo $LEVEL
-	echo $STATUS
-
 	if [ $STATUS == "[on]" ]; then
 		case "$LEVEL" in
 			7[1-9]|[89][0-9]|100)
