@@ -1,0 +1,52 @@
+[1]
+Description=(Default) Disable focus stealing prevention for XV
+fsplevel=0
+fsplevelrule=2
+types=4294967295
+wmclass=^xv .*
+wmclasscomplete=true
+wmclassmatch=3
+
+[2]
+Description=Settings for tmux-main
+clientmachine=fideliora
+clientmachinematch=0
+closeable=false
+closeablerule=2
+desktop=1
+desktoprule=3
+maximizehoriz=true
+maximizehorizrule=3
+maximizevert=true
+maximizevertrule=3
+title=main:0.0 zsh
+titlematch=0
+types=4294967295
+wmclass=tmux-main
+wmclasscomplete=true
+wmclassmatch=2
+
+[3]
+Description=Settings for Chromium
+clientmachine=fideliora
+clientmachinematch=0
+desktop=2
+desktoprule=3
+maximizehoriz=true
+maximizehorizrule=3
+maximizevert=true
+maximizevertrule=3
+title=Chromium
+titlematch=0
+types=4294967295
+windowrole=browser
+windowrolematch=1
+wmclass=chromium
+wmclasscomplete=false
+wmclassmatch=1
+
+[Directories]
+dir_config[$d]
+
+[General]
+count=3
