@@ -1,0 +1,11 @@
+; generated_rule chromium
+( if 
+( begin 
+( is ( window_role ) "browser" )
+( is ( window_class ) "Chromium-browser" )
+) 
+( begin 
+( set_workspace 2 )
+( println "match" )
+)
+)

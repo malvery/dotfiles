@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Sonata
+Comment=An elegant GTK+ MPD client
+Exec=sonata
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/elFaenza/apps/96/guayadeque.png
+Categories=AudioVideo;GTK;Player
+StartupNotify=true
+
+Name[en_US]=Sonata
+Comment[en_US]=An elegant GTK+ MPD client

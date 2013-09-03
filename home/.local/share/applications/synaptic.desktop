@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Synaptic Package Manager
+GenericName=Package Manager
+Comment=Install, remove and upgrade software packages
+Exec=synaptic-pkexec
+Icon=/usr/share/icons/elFaenza/apps/96/synaptic.png
+Terminal=false
+Type=Application
+Categories=GTK;PackageManager;Settings;System
+NotShowIn=KDE;
+X-Ubuntu-Gettext-Domain=synaptic
+
+Name[en_US]=Synaptic Package Manager
+Comment[en_US]=Install, remove and upgrade software packages

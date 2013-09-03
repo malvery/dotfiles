@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=urxvt
+GenericName=urxvt
+Comment=Use the command line
+TryExec=urxvt
+Exec=urxvt
+Icon=utilities-terminal
+Type=Application
+Categories=GTK;Utility;TerminalEmulator;System;
+StartupNotify=true
+X-GNOME-Gettext-Domain=urxvt
+Keywords=command;prompt;cmd;commandline;run;
+
+X-Ayatana-Desktop-Shortcuts=NewWindow;NewTmuxWindow
+
+[NewWindow Shortcut Group]
+Name=New Window
+Exec=urxvt
+TargetEnvironment=Unity
+
+[NewTmuxWindow Shortcut Group]
+Name=New Tmux Window
+Exec=urxvt -e tmux
+TargetEnvironment=Unity
+
