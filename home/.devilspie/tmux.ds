@@ -1,0 +1,14 @@
+; generated_rule tmux
+( if 
+( begin 
+( is ( window_class ) "tmux-main" )
+( contains ( application_name ) "main" )
+) 
+( begin 
+( maximize )
+( set_workspace 1 )
+( maximize_vertically )
+( maximize_horizontally )
+( println "match" )
+)
+)

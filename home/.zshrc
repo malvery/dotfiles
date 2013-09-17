@@ -154,9 +154,6 @@ alias sumount='sudo umount'
 alias pm-suspend='sudo pm-suspend'
 alias pm-hibernate='sudo pm-hibernate'
 
-alias halt='systemctl poweroff' 
-alias reboot='systemctl reboot'
-
 alias tcpdump='sudo tcpdump'
 alias ngrep='sudo ngrep'
 
