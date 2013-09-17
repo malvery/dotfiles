@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=~/bin/bg_random_set.sh
+Hidden=false
+Terminal=False
+StartupNotify=False
+Version=0.9.4
+Encoding=UTF-8
+Name=bg-random-set

@@ -1,10 +1,11 @@
 #!/bin/sh
-#sleep 5
-DIR="/home/malvery/wallpapers/"
-#while true; do nitrogen --set-auto "$(find $DIR -name *.jpg | shuf -n 1)"; sleep 20m; done &
+DIR=~/pictures/wallpapers
+SLEEP=20m
 
 while true;
 do
-  awsetbg -r $DIR 
-  sleep 20m
+  #awsetbg -r $DIR 
+	#nitrogen --set-auto "$(find $DIR -type f | shuf -n1)"
+	pcmanfm -w "$(find $DIR -type f | shuf -n1)"
+  sleep $SLEEP
 done &

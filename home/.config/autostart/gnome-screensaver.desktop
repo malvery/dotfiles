@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=gnome-screensaver
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=gnome-screensaver
+Name=gnome-screensaver
+Comment[en_US]=
+Comment=
