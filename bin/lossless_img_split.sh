@@ -7,4 +7,4 @@ CUE=`ls *.cue`
 enconv -L russian -x UTF-8 "$CUE"
 
 cuebreakpoints "$CUE" | shnsplit -o flac	"$IMG" && rm "$IMG"
-cuetag "$CUE" split-track*.flac && rm "$CUE" 
+cuetag.sh "$CUE" split-track*.flac && rm "$CUE" 
