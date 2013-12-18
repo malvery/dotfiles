@@ -1,21 +1,28 @@
-URxvt.termName:					rxvt-unicode-256color
-URxvt.font:							xft:Monaco:size=10:regular:pixelsize=13
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba:	rgb
+Xft.antialias: true
+Xft.lcdfilter:	lcddefault
+Xft.dpi: 96
+Xcursor.theme: FlatbedCursors.Black.Small
 
-URxvt.fading:						10
-URxvt.depth:						32
+URxvt.termName:	rxvt-unicode-256color
+URxvt.font:			xft:Monaco:size=10:regular:pixelsize=13
 
-URxvt.background:				#191919
-URxvt.foreground:				#babdb6
+URxvt.fading:	10
+URxvt.depth:	32
 
-URxvt.underlineColor:		#656763
-URxvt.colorUL:					#729fcf
+URxvt.background:	#191919
+URxvt.foreground:	#babdb6
+
+URxvt.underlineColor:	#656763
+URxvt.colorUL:				#729fcf
 
 URxvt.perl-ext-common:	default,matcher
-URxvt.urlLauncher:      chromium-browser
+URxvt.urlLauncher:      chromium
 URxvt.matcher.button:   1 
 
-URxvt.scrollBar:				false
-URxvt.saveLines:				32767
+URxvt.scrollBar:	false
+URxvt.saveLines:	32767
 
-!URxvt.urgentOnBell:		True
-!Xcursor*theme: FlatbedCursors.Black.Small
+URxvt.urgentOnBell:	False
