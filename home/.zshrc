@@ -151,11 +151,9 @@ alias svim='sudo vim'
 alias smount='sudo mount'
 alias sumount='sudo umount'
 
-alias pm-suspend='sudo pm-suspend'
-alias pm-hibernate='sudo pm-hibernate'
-
 alias tcpdump='sudo tcpdump'
 alias ngrep='sudo ngrep'
+alias netctl='sudo netctl'
 
 alias -g ERR='2>>( sed -ue "s/.*/$fg_bold[red]&$reset_color/" 1>&2 )'
 alias -g L='|less' 

@@ -14,7 +14,7 @@ Bundle 'xoria256.vim'
 Bundle 'colorer-color-scheme'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
-Bundle 'ruby.vim'
+"Bundle 'ruby.vim'
 Bundle 'The-NERD-Commenter'
 "Bundle 'xml.vim'
 Bundle 'snipMate'
@@ -111,6 +111,10 @@ inoremap <C-f> <c-r>=TabComplete()<CR>
 nmap <C-o> <esc>:sh<cr>
 vmap <C-o> <esc>:sh<cr>
 imap <C-o> <esc>:sh<cr>
+
+nmap <C-p> <esc>:r! clipit -c<cr>
+vmap <C-p> <esc>:r! clipit -c<cr>
+imap <C-p> <esc>:r! clipit -c<cr>
 
 nmap <F1> <esc>:BufExplorer<cr>
 vmap <F1> <esc>:BufExplorer<cr>
