@@ -1,0 +1,36 @@
+[focused window]
+command=xprop -id $(xdotool getactivewindow) | grep 'WM_NAME(STRING)' | cut -d'"' -f2
+interval=3
+color=#A6D1FA
+
+[skb]
+command=echo -n 'LANG: '; ~/bin/skb 1
+interval=2
+color=#666666
+
+[volume]
+command=echo -n 'VOL: '; amixer get Master | grep -E -o '[0-9][0-9]?%'
+signal=10
+interval=5
+color=#666666
+
+[wireless]
+command=/usr/libexec/i3blocks/network wlp2s0 WLAN
+interval=10
+color=#666666
+
+[memory]
+command=/usr/libexec/i3blocks/memory
+separator_block_width=13
+interval=30
+color=#666666
+
+[cpu]
+command=echo -n 'CPU: '; /usr/libexec/i3blocks/cpu
+interval=5
+color=#666666
+
+[time]
+command=date '+%F %R'
+interval=5
+color=#A6D1FA

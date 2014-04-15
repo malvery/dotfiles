@@ -26,11 +26,19 @@ bindsym $mod+Shift+c kill
 # start program launcher
 bindsym $mod+r exec gmrun
 
+# start program logout
+bindsym $mod+Shift+Delete exec lxsession-logout
+bindsym Mod1+Ctrl+l exec gnome-screensaver-command -l
+
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+Shift+Tab	focus left
+bindsym $mod+Tab				focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -143,8 +151,8 @@ mode "resize" {
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
         bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
@@ -159,9 +167,28 @@ bindsym $mod+c mode "resize"
 # i3status bar  
 ####################
 
-#bar {
-        #status_command i3status
-#}
+bar {
+    output            HDMI3
+		status_command    i3blocks -c ~/.i3/i3blocks
+		#status_command    i3blocks
+    position          top
+    mode              dock
+    workspace_buttons yes
+    tray_output       none
+    
+    #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+		font pango:Ubuntu Bold 10
+
+    colors {
+        background #000000
+        statusline #ffffff
+
+        focused_workspace  #ffffff #285577
+        active_workspace   #ffffff #333333
+        inactive_workspace #888888 #222222
+        urgent_workspace   #ffffff #900000
+    }
+}
 
 
 ####################
@@ -188,7 +215,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 ####################
 
 assign [class="Chromium"] 2
-
+assign [class="Skype"] 9
 
 ####################
 # Borders  
@@ -205,7 +232,8 @@ for_window [class="Gmrun"]						floating enable
 for_window [class="Wrapper"]					floating enable
 for_window [class="Xfce4-notifyd"]		floating enable
 for_window [class="Exe"]							floating enable
+for_window [class="Qiv"]							floating enable
 for_window [class="Gpicview"]					floating enable
 for_window [class="Exfalso"]					floating enable
 for_window [class="Xfce4-appfinder"]	floating enable
-for_window [class="Wine"]							floating enable
+for_window [class="Skype"]						floating enable
