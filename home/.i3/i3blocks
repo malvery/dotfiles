@@ -1,6 +1,6 @@
 [focused window]
 command=xprop -id $(xdotool getactivewindow) | grep 'WM_NAME(STRING)' | cut -d'"' -f2
-interval=3
+interval=2
 color=#A6D1FA
 
 [skb]
@@ -14,8 +14,13 @@ signal=10
 interval=5
 color=#666666
 
-[wireless]
-command=/usr/libexec/i3blocks/network wlp2s0 WLAN
+#[wireless]
+#command=/usr/libexec/i3blocks/network wlp2s0 WLAN
+#interval=10
+#color=#666666
+
+[ethernet]
+command=/usr/libexec/i3blocks/network enp1s0f0 ETH
 interval=10
 color=#666666
 
