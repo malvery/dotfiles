@@ -7,7 +7,6 @@ set $mod Mod4
 # Fonts 
 ####################
 
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:Ubuntu Bold 10
 
 ####################
@@ -113,6 +112,8 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+less workspace IM
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -176,7 +177,6 @@ bar {
     workspace_buttons yes
     tray_output       none
     
-    #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 		font pango:Ubuntu Bold 10
 
     colors {
@@ -215,7 +215,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 ####################
 
 assign [class="Chromium"] 2
-assign [class="Skype"] 9
+assign [class="Skype"] IM
 
 ####################
 # Borders  
