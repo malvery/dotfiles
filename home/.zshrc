@@ -44,7 +44,6 @@ if [ "`tput colors`" = "256" ]; then
 	c2=$'%{\e[38;5;112m%}'
 	c3=$'%{\e[38;5;172m%}'
 
-	#export PROMPT="$c0$c1%'[%n] $c2%1~ $c3%# $c0"
 	export PROMPT="$c3%# $c1%1~: $c0"
 	export PROMPT2="$c0$c3> $c0"
 	export RPROMPT="$c0$c3$p_rc$c0$c2 %1(j.[%j].)$c0"
@@ -77,10 +76,6 @@ export LS_COLORS
 export EDITOR="vim"
 export BROWSER="chromium"
 export XTERM="urxvt"
-#export PATH="$HOME/.rbenv/bin:${PATH}"
-#export CDPATH=".:~:/storage"
-
-#eval "$(rbenv init -)"
 
 ##################################################################
 
@@ -89,6 +84,10 @@ zstyle ':completion:*' prompt 'correct %e errors'
 
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
 
 ##################################################################
 
@@ -144,6 +143,7 @@ alias q="exit"
 alias ..='cd ..'
 
 alias bc='bc -ql'
+alias mc='mc -d'
 alias mnt='cd /media'
 
 alias scat='sudo cat'
@@ -210,5 +210,7 @@ fi
 
 ###################################################################
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#source $HOME/.rvm/scripts/rvm
+PATH=$PATH:$HOME/.rvm/bin
+source $HOME/.rvm/scripts/rvm
+export rvm_ignore_gemrc_issues=1
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
