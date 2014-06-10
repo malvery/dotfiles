@@ -1,0 +1,7 @@
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.antialias: true
+Xft.lcdfilter:  lcddefault
+Xft.dpi: 96
+Xcursor.theme: FlatbedCursors.Black.Small

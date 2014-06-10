@@ -1,4 +1,0 @@
-[Command]
-FileManager=thunar %s
-Terminal=urxvt
-Logout=lxde-logout

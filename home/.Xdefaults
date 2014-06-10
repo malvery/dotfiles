@@ -1,11 +1,3 @@
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.rgba:	rgb
-Xft.antialias: true
-Xft.lcdfilter:	lcddefault
-Xft.dpi: 96
-Xcursor.theme: FlatbedCursors.Black.Small
-
 URxvt.termName:	rxvt-unicode-256color
 URxvt.font:			xft:Monaco:size=10:regular:pixelsize=13
 

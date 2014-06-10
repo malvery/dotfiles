@@ -383,7 +383,7 @@
       </action>
     </keybind>
     <!-- Keybindings for multimedia keys -->
-    <keybind key="XF86AudioPrev">
+    <!--<keybind key="XF86AudioPrev">
       <action name="Execute">
         <command>mpc prev</command>
       </action>
@@ -417,25 +417,24 @@
 			<action name="Execute">
 				<command>~/bin/volume.sh mute</command>
 			</action>
-		</keybind>
-
+		</keybind>-->
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
       </action>
     </keybind>
-    <keybind key="W-e">
+    <!--<keybind key="W-e">
       <action name="Execute">
         <command>thunar</command>
       </action>
-    </keybind>
+    </keybind>-->
     <keybind key="W-S-Return">
       <action name="Execute">
         <command>urxvt</command>
       </action>
     </keybind>
-    <keybind key="C-A-Delete">
+    <keybind key="W-S-l">
       <action name="Execute">
         <command>gnome-screensaver-command -l</command>
       </action>
@@ -899,11 +898,7 @@
       <maximized>true</maximized>
       <decor>no</decor>
     </application>
-    <application class="Evince">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="Quodlibet">
+    <application class="Okular">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
@@ -912,7 +907,7 @@
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-    <application class="Smplayer">
+    <application class="smplayer">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
