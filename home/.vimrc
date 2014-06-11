@@ -10,15 +10,13 @@ call vundle#rc()
 
 filetype plugin indent on
 
-Bundle 'xoria256.vim'
+"Bundle 'xoria256.vim'
+Bundle 'Solarized'
 Bundle 'colorer-color-scheme'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
-"Bundle 'ruby.vim'
 Bundle 'The-NERD-Commenter'
-"Bundle 'xml.vim'
 Bundle 'snipMate'
-"Bundle 'AutoComplPop'
 
 "===========================================================================
 " theme
@@ -26,7 +24,9 @@ Bundle 'snipMate'
 
 if &t_Co == 256 || has("gui_running")
 	set t_Co=256
-	colorscheme xoria256
+	set background=dark
+	colorscheme solarized
+	"colorscheme xoria256
 else
 	colorscheme colorer
 endif
@@ -35,7 +35,7 @@ endif
 " options
 "===========================================================================
 
-syntax on
+syntax enable
 
 set autoindent
 set smartindent
@@ -112,9 +112,9 @@ nmap <C-o> <esc>:sh<cr>
 vmap <C-o> <esc>:sh<cr>
 imap <C-o> <esc>:sh<cr>
 
-nmap <C-p> <esc>:r! clipit -c<cr>
-vmap <C-p> <esc>:r! clipit -c<cr>
-imap <C-p> <esc>:r! clipit -c<cr>
+"nmap <C-p> <esc>:r! clipit -c<cr>
+"vmap <C-p> <esc>:r! clipit -c<cr>
+"imap <C-p> <esc>:r! clipit -c<cr>
 
 nmap <F1> <esc>:BufExplorer<cr>
 vmap <F1> <esc>:BufExplorer<cr>
