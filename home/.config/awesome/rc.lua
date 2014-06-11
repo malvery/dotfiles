@@ -38,7 +38,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/246251-1920x1200.jpg" 
+theme.wallpaper = "/home/malvery/pictures/wallpapers/246251-1920x1200.jpg"
+--theme.wallpaper = "/usr/share/wallpapers/Elarun/contents/images/2560x1600.png"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -90,8 +91,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "URxvt", terminal },
-																		{ "Lock", "gnome-screensaver-command -l" },
-																		{ "Logout", "lxsession-logout" }
+																		{ "Logout", "/usr/lib/qt4/bin/qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1" }
                                   }
                         })
 
@@ -220,6 +220,8 @@ globalkeys = awful.util.table.join(
             end
         end),
 
+
+
     -- Standard program
     awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Shift"   }, "r", awesome.restart),
@@ -236,9 +238,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
-		awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		--awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
+		awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("xscreensaver-command --lock") end),
+		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -247,6 +249,7 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
 
 		awful.key({ modkey,           }, "s",	function () awful.tag.viewonly(awful.tag.gettags(2)[9])	end),
+		awful.key({ modkey,           }, "g",	function () awful.tag.viewonly(awful.tag.gettags(1)[9])	end),
 
 
 
@@ -257,13 +260,14 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey, "Shift"   }, "]",			function (c) awful.client.movetoscreen(c,  1) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
+    --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
+		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end)
 
 )
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ modkey, "Shift"   }, "c",      function (c) wrapped_kill(c)                  end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey,           }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
@@ -353,18 +357,43 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Tilda" },
       properties = { floating = true } },
+    { rule = { class = "Klipper" },
+      properties = { floating = true } },
+    { rule = { class = "Kmix" },
+      properties = { floating = true } },
 
 	  { rule = { name = "tmux-main" },
       properties = { tag = tags[1][1] } },
+		{ rule = { name = "tmux-remote" },
+      properties = { tag = tags[2][1] } },	
+
+		{
+			rule = { class = "Plasma-desktop" },
+			properties = { floating = true },
+			callback = function(c)
+        c:geometry( { width = 100 , height = 150 } )
+			end,
+		},
+    --[[{ rule = { class = "Plasma" },
+      properties = { floating = true, 
+				focus = false, 
+				type = "desktop", 
+				sticky = true, 
+				border_width = 0, 
+				maximized_horizontal = true, 
+				maximized_vertical = true 
+			} },]]
 		
-    { rule = { class = "Chromium" },
-      properties = { tag = tags[1][2] } },
+--[[    { rule = { class = "Chromium" },]]
+      --[[properties = { tag = tags[1][2] } },]]
     { rule = { class = "VirtualBox" },
       properties = { tag = tags[1][0] } },
     { rule = { class = "Shutter" },
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
+    { rule = { class = "Geary" },
+      properties = { tag = tags[1][9] } },
 }
 -- }}}
 
@@ -439,4 +468,26 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+--{{ Custom functions
+function wrapped_kill(client)
+	if client.class ~= 'Plasma' then
+		client:kill()
+	end
+end
+
+--[[client.connect_signal("focus", function (c)
+  if c.class == 'Plasma' then
+		--c:unmanage()
+		--c:lower()
+		--c.properties = { focus = false }
+		--client.focus:raise()
+		--awful.client.focus.cycle()
+		awful.util.spawn("xdotool getactivewindow mousemove --window %1 0 0 click --clearmodifiers 2")
+	end
+end)]]
+
+--}}
+
+
 -- }}}
