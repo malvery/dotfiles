@@ -5,17 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-
-c0=$'%{\e[00m%}'
-c1=$'%{\e[38;5;060m%}'
-c2=$'%{\e[38;5;112m%}'
-c3=$'%{\e[38;5;172m%}'
-
-export PROMPT="$c3%# $c1%1~: $c0"
-export PROMPT2="$c0$c3> $c0"
-export RPROMPT="$c0$c3$p_rc$c0$c2 %1(j.[%j].)$c0"
-
+ZSH_THEME="local"
 
 ##################################################################
 
