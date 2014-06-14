@@ -1,7 +1,6 @@
 @nitrogen --restore
 @compton -e 0.9 -m 0.95 -C -c -f
-/*@xfce4-panel --disable-wm-check*/
-@xrdb -merge ~/.Xdefaults
+@xfce4-panel --disable-wm-check
 @gnome-screensaver
 
 @clipit -n
