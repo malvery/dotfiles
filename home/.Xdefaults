@@ -1,5 +1,5 @@
 URxvt.termName:	rxvt-unicode-256color
-URxvt.font:			xft:Monaco:size=10:regular:pixelsize=13
+URxvt.font:			xft:Monaco for Powerline:size=10:regular:pixelsize=13
 
 URxvt.fading:	10
 URxvt.depth:	32
@@ -7,8 +7,8 @@ URxvt.depth:	32
 URxvt.background:	#191919
 URxvt.foreground:	#babdb6
 
-URxvt.underlineColor:	#656763
-URxvt.colorUL:				#729fcf
+!URxvt.underlineColor:	#656763
+!URxvt.colorUL:				#729fcf
 
 URxvt.perl-ext-common:	default,matcher
 URxvt.urlLauncher:      chromium
