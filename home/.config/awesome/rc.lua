@@ -91,7 +91,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "URxvt", terminal },
-																		{ "Logout", "/usr/lib/qt4/bin/qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1" }
+																		{ "Logout", "lxsession-logout" }
                                   }
                         })
 
@@ -238,9 +238,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		--awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
-		awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("xscreensaver-command --lock") end),
-		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
+		awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
+		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	

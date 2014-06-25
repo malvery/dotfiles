@@ -6,9 +6,13 @@
   </resistance>
   <focus>
     <focusNew>yes</focusNew>
-    <!-- always try to focus new windows when they appear. other rules do
+		
+		<monitorFollowMouse>yes</monitorFollowMouse>
+		<!--<inactiveOpacity>90</inactiveOpacity>-->
+		
+		<!-- always try to focus new windows when they appear. other rules do
        apply -->
-    <followMouse>no</followMouse>
+		<followMouse>no</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
     <focusLast>yes</focusLast>
     <!-- focus the last used window when changing desktops, instead of the one
@@ -40,7 +44,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>el-dark</name>
+    <name>Syscrash</name>
     <titleLayout>CLM</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -118,7 +122,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>5</number>
+    <number>7</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>desktop 1</name>
@@ -126,6 +130,8 @@
       <name>desktop 3</name>
       <name>desktop 4</name>
       <name>desktop 5</name>
+      <name>desktop 6</name>
+      <name>IM</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -177,6 +183,39 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+		<!--Keybindings for monitors actions -->
+
+		<keybind key="W-S-bracketleft">
+			<action name="MoveResizeTo">
+				<monitor>prev</monitor>
+			</action>
+		</keybind>
+		<keybind key="W-S-bracketright">
+			<action name="MoveResizeTo">
+				<monitor>next</monitor>
+			</action>
+		</keybind>
+
+		<keybind key="W-bracketleft">
+			<action name="FocusRoot">
+				<monitor>prev</monitor>
+				<pointer>
+					<x>100</x>
+					<y>100</y>
+				</pointer>
+			</action>
+		</keybind>
+		<keybind key="W-bracketright">
+			<action name="FocusRoot">
+				<monitor>next</monitor>
+				<pointer>
+					<x>100</x>
+					<y>100</y>
+				</pointer>
+			</action>
+		</keybind>
+
+
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
@@ -247,6 +286,11 @@
         <to>9</to>
       </action>
     </keybind>
+    <keybind key="W-S-s">
+      <action name="SendToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
     <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -290,6 +334,11 @@
     <keybind key="W-9">
       <action name="GoToDesktop">
         <to>9</to>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <action name="GoToDesktop">
+        <to>7</to>
       </action>
     </keybind>
     <keybind key="W-S-Insert">
@@ -424,11 +473,11 @@
         <command>gmrun</command>
       </action>
     </keybind>
-    <!--<keybind key="W-e">
+    <keybind key="W-e">
       <action name="Execute">
         <command>thunar</command>
       </action>
-    </keybind>-->
+    </keybind>
     <keybind key="W-S-Return">
       <action name="Execute">
         <command>urxvt</command>
@@ -898,7 +947,17 @@
       <maximized>true</maximized>
       <decor>no</decor>
     </application>
-    <application class="Okular">
+    <application class="Skype">
+      <desktop>7</desktop>
+    </application>
+    <application class="Geary">
+      <desktop>7</desktop>
+    </application>
+    <application class="Evince">
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application class="Remmina">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>

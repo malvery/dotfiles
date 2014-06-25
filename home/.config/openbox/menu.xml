@@ -69,7 +69,7 @@
 
 		<item label="Exit">
 			<action name="Execute">
-				<command>oblogout</command>
+				<command>lxsession-logout</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>
