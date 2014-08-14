@@ -38,7 +38,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/246251-1920x1200.jpg"
+theme.wallpaper = "/home/malvery/pictures/wallpapers/304904-1920x1200.jpg"
 --theme.wallpaper = "/usr/share/wallpapers/Elarun/contents/images/2560x1600.png"
 
 -- This is used later as the default terminal and editor to run.
@@ -267,7 +267,7 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) wrapped_kill(c)                  end),
+    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()			                   end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey,           }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
@@ -355,34 +355,12 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Shutter" },
       properties = { floating = true } },
-    { rule = { class = "Tilda" },
-      properties = { floating = true } },
-    { rule = { class = "Klipper" },
-      properties = { floating = true } },
-    { rule = { class = "Kmix" },
-      properties = { floating = true } },
 
 	  { rule = { name = "tmux-main" },
       properties = { tag = tags[1][1] } },
 		{ rule = { name = "tmux-remote" },
       properties = { tag = tags[2][1] } },	
 
-		{
-			rule = { class = "Plasma-desktop" },
-			properties = { floating = true },
-			callback = function(c)
-        c:geometry( { width = 100 , height = 150 } )
-			end,
-		},
-    --[[{ rule = { class = "Plasma" },
-      properties = { floating = true, 
-				focus = false, 
-				type = "desktop", 
-				sticky = true, 
-				border_width = 0, 
-				maximized_horizontal = true, 
-				maximized_vertical = true 
-			} },]]
 		
 --[[    { rule = { class = "Chromium" },]]
       --[[properties = { tag = tags[1][2] } },]]
@@ -392,7 +370,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-    { rule = { class = "Geary" },
+    { rule = { class = "Claws-mail" },
       properties = { tag = tags[1][9] } },
 }
 -- }}}
@@ -470,11 +448,11 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 --{{ Custom functions
-function wrapped_kill(client)
+--[[function wrapped_kill(client)
 	if client.class ~= 'Plasma' then
 		client:kill()
 	end
-end
+end]]
 
 --[[client.connect_signal("focus", function (c)
   if c.class == 'Plasma' then
