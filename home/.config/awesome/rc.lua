@@ -100,6 +100,23 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 
 -- {{{ Wibox
+-- Custom widget
+kbdwidget = wibox.widget.textbox(" Eng ")
+kbdwidget.border_width = 1
+kbdwidget.border_color = beautiful.fg_normal
+kbdwidget:set_text(" Eng ")
+
+kbdstrings = {[0] = " Eng ", 
+              [1] = " Рус "}
+
+dbus.request_name("session", "ru.gentoo.kbdd")
+dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
+dbus.connect_signal("ru.gentoo.kbdd", function(...)
+    local data = {...}
+    local layout = data[2]
+    kbdwidget:set_markup(kbdstrings[layout])
+    end
+)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -167,6 +184,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+		right_layout:add(kbdwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -370,7 +388,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-    { rule = { class = "Claws-mail" },
+    { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][9] } },
 }
 -- }}}
