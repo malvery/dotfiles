@@ -120,7 +120,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>7</number>
+    <number>9</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>desktop 1</name>
@@ -130,6 +130,8 @@
       <name>desktop 5</name>
       <name>desktop 6</name>
       <name>desktop 7</name>
+      <name>desktop 8</name>
+      <name>desktop 9</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -282,7 +284,12 @@
     </keybind>
     <keybind key="W-S-s">
       <action name="SendToDesktop">
-        <to>7</to>
+        <to>9</to>
+      </action>
+    </keybind>
+    <keybind key="W-S-g">
+      <action name="SendToDesktop">
+        <to>8</to>
       </action>
     </keybind>
     <keybind key="W-1">
@@ -332,7 +339,12 @@
     </keybind>
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>7</to>
+        <to>9</to>
+      </action>
+    </keybind>
+    <keybind key="W-g">
+      <action name="GoToDesktop">
+        <to>8</to>
       </action>
     </keybind>
     <keybind key="W-S-Insert">
@@ -358,11 +370,11 @@
         <maximized>yes</maximized>
         <then>
           <action name="Unmaximize"/>
-          <action name="Decorate"/>
+          <!--<action name="Decorate"/>-->
         </then>
         <else>
           <action name="Maximize"/>
-          <action name="Undecorate"/>
+          <!--<action name="Undecorate"/>-->
         </else>
       </action>
     </keybind>
@@ -445,43 +457,43 @@
       <action name="Execute">
         <command>mpc stop</command>
       </action>
-    </keybind>
-		<keybind key="XF86AudioRaiseVolume">
-			<action name="Execute">
-				<command>~/bin/volume.sh up</command>
-			</action>
-		</keybind>
-		<keybind key="XF86AudioLowerVolume">
-			<action name="Execute">
-				<command>~/bin/volume.sh down</command>
-			</action>
-		</keybind>
-		<keybind key="XF86AudioMute">
-			<action name="Execute">
-				<command>~/bin/volume.sh mute</command>
-			</action>
 		</keybind>-->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%+ unmute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer set Master 5%- unmute</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer set Master toggle</command>
+      </action>
+    </keybind>
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
       </action>
     </keybind>
-    <!--<keybind key="W-e">
+    <keybind key="W-e">
       <action name="Execute">
-        <command>thunar</command>
+        <command>pcmanfm</command>
       </action>
-    </keybind>-->
+    </keybind>
     <keybind key="W-S-Return">
       <action name="Execute">
         <command>urxvt</command>
       </action>
     </keybind>
-    <!--<keybind key="W-S-l">
+    <keybind key="W-S-l">
       <action name="Execute">
         <command>gnome-screensaver-command -l</command>
       </action>
-    </keybind>-->
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -562,11 +574,11 @@
           <maximized>yes</maximized>
           <then>
             <action name="Unmaximize"/>
-            <action name="Decorate"/>
+            <!--<action name="Decorate"/>-->
           </then>
           <else>
             <action name="Maximize"/>
-            <action name="Undecorate"/>
+            <!--<action name="Undecorate"/>-->
           </else>
         </action>
       </mousebind>
@@ -735,11 +747,11 @@
           <maximized>yes</maximized>
           <then>
             <action name="Unmaximize"/>
-            <action name="Decorate"/>
+            <!--<action name="Decorate"/>-->
           </then>
           <else>
             <action name="Maximize"/>
-            <action name="Undecorate"/>
+            <!--<action name="Undecorate"/>-->
           </else>
         </action>
       </mousebind>
@@ -936,20 +948,16 @@
 
   # end of the example
 -->
-    <application class="Chromium">
+    <!--<application class="Chromium">
       <desktop>2</desktop>
       <maximized>true</maximized>
       <decor>no</decor>
-    </application>
+    </application>-->
     <application class="Skype">
-      <desktop>7</desktop>
+      <desktop>9</desktop>
     </application>
-    <application class="Kmail">
-      <desktop>7</desktop>
-    </application>
-    <application class="Okular">
-      <decor>no</decor>
-      <maximized>true</maximized>
+    <application class="Geary">
+      <desktop>8</desktop>
     </application>
     <application role="app">
       <decor>yes</decor>
@@ -960,15 +968,7 @@
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
-    <application class="Aptana Studio 3">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="Geany">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="Krdc">
+    <application class="jetbrains-pycharm">
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
