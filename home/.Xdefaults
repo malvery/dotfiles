@@ -1,3 +1,30 @@
+URxvt.termName:	rxvt-unicode-256color
+URxvt.font:			xft:Monaco for Powerline:size=10:regular:pixelsize=13
+
+URxvt.perl-ext-common: clipboard,keyboard-select
+
+URxvt.keysym.M-s: perl:keyboard-select:activate
+
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
+URxvt.fading:	10
+URxvt.depth:	32
+
+URxvt.background:	#191919
+URxvt.foreground:	#babdb6
+
+URxvt.urlLauncher:      chromium
+URxvt.matcher.button:   1 
+
+URxvt.scrollBar:	false
+URxvt.saveLines:	32767
+
+URxvt.urgentOnBell:	False
+
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
@@ -82,25 +109,4 @@ Xft.rgba: rgb
 Xft.antialias: true
 Xft.lcdfilter:  lcddefault
 Xft.dpi: 96
-Xcursor.theme: FlatbedCursors.Blue.Small
-
-URxvt.termName:	rxvt-unicode-256color
-URxvt.font:			xft:Monaco for Powerline:size=10:regular:pixelsize=13
-
-URxvt.fading:	10
-URxvt.depth:	32
-
-URxvt.background:	#191919
-URxvt.foreground:	#babdb6
-
-!URxvt.underlineColor:	#656763
-!URxvt.colorUL:				#729fcf
-
-URxvt.perl-ext-common:	default,matcher
-URxvt.urlLauncher:      chromium
-URxvt.matcher.button:   1 
-
-URxvt.scrollBar:	false
-URxvt.saveLines:	32767
-
-URxvt.urgentOnBell:	False
+Xcursor.theme: FlatbedCursors.Black.Small
