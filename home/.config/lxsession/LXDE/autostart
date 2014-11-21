@@ -1,9 +1,4 @@
 @compton -e 0.9 -m 0.95 -C -c
 @gnome-screensaver
-@xrdb -merge ~/.Xdefaults
-
 @clipit -n
-@maximus -m
-#@thunar --daemon
-#@xfce4-volumed
-#@kbdd
+@kbdd

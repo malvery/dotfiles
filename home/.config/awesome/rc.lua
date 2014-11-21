@@ -82,6 +82,9 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
+
+xdg_menu = require("archmenu")
+
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -89,9 +92,10 @@ myawesomemenu = {
    --{ "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "URxvt", terminal },
-																		{ "Logout", "lxsession-logout" }
+mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
+																		{ "Apps", xdgmenu	},
+																		{ "Lock", "gnome-screensaver-command -l" },
+																		{ "Exit", "lxsession-logout" }
                                   }
                         })
 
@@ -256,9 +260,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
-		awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
+		awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("pcmanfm") end),
+		--awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
 		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+
+		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
+		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer set Master 5%- unmute") end),
+		awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer set Master toggle") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -375,20 +383,15 @@ awful.rules.rules = {
       properties = { floating = true } },
 
 	  { rule = { name = "tmux-main" },
-      properties = { tag = tags[1][1] } },
-		{ rule = { name = "tmux-remote" },
-      properties = { tag = tags[2][1] } },	
+      properties = { tag = tags[2][1] } },
 
-		
---[[    { rule = { class = "Chromium" },]]
-      --[[properties = { tag = tags[1][2] } },]]
     { rule = { class = "VirtualBox" },
       properties = { tag = tags[1][0] } },
     { rule = { class = "Shutter" },
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-    { rule = { class = "Thunderbird" },
+    { rule = { class = "Geary" },
       properties = { tag = tags[1][9] } },
 }
 -- }}}
@@ -466,22 +469,6 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 --{{ Custom functions
---[[function wrapped_kill(client)
-	if client.class ~= 'Plasma' then
-		client:kill()
-	end
-end]]
-
---[[client.connect_signal("focus", function (c)
-  if c.class == 'Plasma' then
-		--c:unmanage()
-		--c:lower()
-		--c.properties = { focus = false }
-		--client.focus:raise()
-		--awful.client.focus.cycle()
-		awful.util.spawn("xdotool getactivewindow mousemove --window %1 0 0 click --clearmodifiers 2")
-	end
-end)]]
 
 --}}
 
