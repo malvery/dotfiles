@@ -24,6 +24,9 @@ alias smount='sudo mount'
 alias sumount='sudo umount'
 alias tcpdump='sudo tcpdump'
 
+alias drive_push='drive push ~/gdrive/sync'
+alias drive_pull='drive pull ~/gdrive/sync'
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
