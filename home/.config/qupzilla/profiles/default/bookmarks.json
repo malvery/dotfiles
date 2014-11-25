@@ -1,0 +1,792 @@
+{
+ "roots": {
+  "bookmark_bar": {
+   "children": [],
+   "description": "Bookmarks located in Bookmarks Toolbar",
+   "expanded": true,
+   "expanded_sidebar": true,
+   "name": "Bookmarks Toolbar",
+   "type": "folder"
+  },
+  "bookmark_menu": {
+   "children": [
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "ZenMoney",
+       "type": "url",
+       "url": "https://zenmoney.ru/a/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Uкабинет",
+       "type": "url",
+       "url": "https://ucabinet.u-tel.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "PayPal",
+       "type": "url",
+       "url": "https://www.paypal.com/ru",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Index of /~malvery",
+       "type": "url",
+       "url": "http://localhost/~malvery/",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Servise",
+     "type": "folder"
+    },
+    {
+     "type": "separator"
+    },
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Английские материалы на Малибу",
+       "type": "url",
+       "url": "http://malibu.io/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "LinguaLeo",
+       "type": "url",
+       "url": "http://lingualeo.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Обои на рабочий стол",
+       "type": "url",
+       "url": "http://www.goodfon.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "2ГИС-Online",
+       "type": "url",
+       "url": "http://maps.2gis.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "SecurityXploded.com",
+       "type": "url",
+       "url": "http://securityxploded.com/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Stepic",
+       "type": "url",
+       "url": "https://stepic.org/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Base64 Decode and Encode - Online",
+       "type": "url",
+       "url": "http://www.base64decode.org/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Json Parser Online",
+       "type": "url",
+       "url": "http://json.parser.online.fr/",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Main",
+     "type": "folder"
+    },
+    {
+     "children": [
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Traveliving.org",
+         "type": "url",
+         "url": "http://traveliving.org/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "LifeWithoutDrugs.org",
+         "type": "url",
+         "url": "http://lifewithoutdrugs.org/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "GingerTea.ru",
+         "type": "url",
+         "url": "http://gingertea.ru/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "1way-to-english",
+         "type": "url",
+         "url": "http://1way-to-english.livejournal.com/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "sevprostor",
+         "type": "url",
+         "url": "http://sevprostor.ru/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Говори. Очаровывай. Убеждай.",
+         "type": "url",
+         "url": "http://ogrishchenko.livejournal.com/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Homage: Часы Своими Руками",
+         "type": "url",
+         "url": "http://handbmade.blogspot.ru/",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "Blogs",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Alfa-Lancia Club",
+         "type": "url",
+         "url": "http://www.alfa-lancia.com/smf/index.php",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "FIAT-Club.Ru",
+         "type": "url",
+         "url": "http://forum.fiat-club.ru/index.php",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Club Italia",
+         "type": "url",
+         "url": "http://www.alfisti.ru/phpBB3/viewforum.php?f=38&sid=b846b23dc7ca1217ff3283836f14e80a",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "Lancia",
+       "type": "folder"
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Часовой форум Watch.Ru",
+       "type": "url",
+       "url": "http://forum.watch.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Travelbloggers.ru",
+       "type": "url",
+       "url": "http://travelbloggers.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "bpclub.ru",
+       "type": "url",
+       "url": "http://www.bpclub.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "LG Nexus 4 4PDA",
+       "type": "url",
+       "url": "http://4pda.ru/forum/index.php?showtopic=400241",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Community",
+     "type": "folder"
+    },
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "101.ru",
+       "type": "url",
+       "url": "http://101.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Jamendo",
+       "type": "url",
+       "url": "http://www.jamendo.com/ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Серебряный дождь",
+       "type": "url",
+       "url": "http://www.moskva.fm/stations/FM_100.1",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Fidel.ru",
+       "type": "url",
+       "url": "http://www.fidel.ru/newuser.html",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Изучение слов онлайн",
+       "type": "url",
+       "url": "http://w2mem.com./",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Media",
+     "type": "folder"
+    },
+    {
+     "children": [
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Ресурсы, которые помогут выучить английский язык / Хабрахабр",
+         "type": "url",
+         "url": "http://habrahabr.ru/post/60133/",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "English",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Города | Не сидится - клуб желающих переехать",
+         "type": "url",
+         "url": "http://nesiditsa.ru/city",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "Travel",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Lehmann Audio Black Cube за 1000 р и 3 дня? Легко! / Хабрахабр",
+         "type": "url",
+         "url": "http://habrahabr.ru/post/152659/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Обзор недорогой звуковой карты Musiland Monitor 03 US с интерфейсом USB на TI PCM1798 с усилителем для наушников TI TPA6120A2",
+         "type": "url",
+         "url": "http://www.ixbt.com/multimedia/musiland-03us.shtml",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "DIY",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Bhyve – Virtualization on FreeBSD",
+         "type": "url",
+         "url": "http://fosskb.wordpress.com/2014/06/09/bhyve-virtualiztion-on-freebsd/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "VMware Unlocker for OS X - InsanelyMac Forum",
+         "type": "url",
+         "url": "http://www.insanelymac.com/forum/files/file/20-vmware-unlocker-for-os-x/",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "VM",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Unix Toolbox",
+         "type": "url",
+         "url": "http://cb.vu/unixtoolbox.xhtml",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Smart HDD мониторинг",
+         "type": "url",
+         "url": "http://www.opennet.ru/base/sys/smart_hdd_mon.txt.html",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "iRedMail",
+         "type": "url",
+         "url": "http://habrahabr.ru/post/96314/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "How to install VNC server on Ubuntu Server 12.04 | Lazy Geek -:)",
+         "type": "url",
+         "url": "http://rbgeek.wordpress.com/2012/06/25/how-to-install-vnc-server-on-ubuntu-server-12-04/",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "NIX",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Ремонт Lancia Lybra",
+         "type": "url",
+         "url": "http://lancialybra.wordpress.com/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Ремонт Lancia Lybra своими руками. Машина в ремонте",
+         "type": "url",
+         "url": "http://mashinavremonte.ru/lancia/lybra/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Характеристики модификации авто Lancia Lybra",
+         "type": "url",
+         "url": "http://catalog.am.ru/lancia/lybra/1_gen--sedan_4d/20_at/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Неоригинальный каталог | LANCIA LYBRA SW (839BX)",
+         "type": "url",
+         "url": "http://my-car96.ru/index.php?route=module/catalog/fraud&model=4136",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Фотографии двигателей после использования различных масел",
+         "type": "url",
+         "url": "http://www.2112.ru/showthread.php/23726",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Двигатель Густой дым с запахом жжёного масла... - Форумы FIAT-Club.Ru",
+         "type": "url",
+         "url": "http://forum.fiat-club.ru/showthread.php?t=12868",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "Lancia",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "children": [
+          {
+           "description": "",
+           "keyword": "",
+           "name": "Instruments User Guide: Automating UI Testing",
+           "type": "url",
+           "url": "https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/UsingtheAutomationInstrument/UsingtheAutomationInstrument.html",
+           "visit_count": 0
+          }
+         ],
+         "description": "",
+         "expanded": false,
+         "expanded_sidebar": false,
+         "name": "apple",
+         "type": "folder"
+        },
+        {
+         "children": [
+          {
+           "description": "",
+           "keyword": "",
+           "name": "Урок: Язык адресации XPath — ODA-Wiki",
+           "type": "url",
+           "url": "http://wiki.oda.su/index.php/%D0%A3%D1%80%D0%BE%D0%BA:_%D0%AF%D0%B7%D1%8B%D0%BA_%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0%D1%86%D0%B8%D0%B8_XPath",
+           "visit_count": 0
+          },
+          {
+           "description": "",
+           "keyword": "",
+           "name": "Примеры xpath-запросов к html / Хабрахабр",
+           "type": "url",
+           "url": "http://habrahabr.ru/post/114772/",
+           "visit_count": 0
+          },
+          {
+           "description": "",
+           "keyword": "",
+           "name": "Введение в XPath (часть 2). Основы построения запросов — Блог вебразработчика",
+           "type": "url",
+           "url": "http://internetka.in.ua/xpath-start-part2/",
+           "visit_count": 0
+          },
+          {
+           "description": "",
+           "keyword": "",
+           "name": "XPath Syntax",
+           "type": "url",
+           "url": "http://www.w3schools.com/xpath/xpath_syntax.asp",
+           "visit_count": 0
+          }
+         ],
+         "description": "",
+         "expanded": false,
+         "expanded_sidebar": false,
+         "name": "xpath",
+         "type": "folder"
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Темы - automated-testing.info",
+         "type": "url",
+         "url": "http://automated-testing.info/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Robot Framework « Virtuous Programmer",
+         "type": "url",
+         "url": "http://www.virtuousprogrammer.com/?p=264",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "QA",
+       "type": "folder"
+      },
+      {
+       "children": [
+        {
+         "description": "",
+         "keyword": "",
+         "name": "Selenium Python Bindings 2 doc",
+         "type": "url",
+         "url": "http://selenium-python.readthedocs.org/en/latest/",
+         "visit_count": 0
+        },
+        {
+         "description": "",
+         "keyword": "",
+         "name": "behave 1.2.4 doc",
+         "type": "url",
+         "url": "http://pythonhosted.org/behave/",
+         "visit_count": 0
+        }
+       ],
+       "description": "",
+       "expanded": false,
+       "expanded_sidebar": false,
+       "name": "Python",
+       "type": "folder"
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Wiki",
+     "type": "folder"
+    },
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "BitTorrent трекер RuTracker.org",
+       "type": "url",
+       "url": "http://rutracker.org/forum/index.php",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "EZTV - TV Torrents Online",
+       "type": "url",
+       "url": "http://eztv.it/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Notabenoid.com",
+       "type": "url",
+       "url": "http://notabenoid.com/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Флибуста | Книжное братство",
+       "type": "url",
+       "url": "http://flibusta.net/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Playble",
+       "type": "url",
+       "url": "http://playble.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Library Genesis",
+       "type": "url",
+       "url": "http://gen.lib.rus.ec/",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "WareZz",
+     "type": "folder"
+    },
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Bitcoin&#39;s бесплатно каждый час!",
+       "type": "url",
+       "url": "http://www.coolwebmasters.com/money-making/4948-bitcoins-besplatno-kazhdyy-chas.html",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "BitBillions: Welcome to Bitcoin Country - Часть 1",
+       "type": "url",
+       "url": "http://www.coolwebmasters.com/money-making/4903-bitbillions-welcome-to-bitcoin-country-chast-1.html",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Страница Виртуальных Путешественников - Путешественники ЖЖ",
+       "type": "url",
+       "url": "http://sergeydolya.livejournal.com/831535.html",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "Temp",
+     "type": "folder"
+    },
+    {
+     "type": "separator"
+    },
+    {
+     "children": [
+      {
+       "description": "",
+       "keyword": "",
+       "name": "JIRA",
+       "type": "url",
+       "url": "http://jira.edgex.ru/secure/Dashboard.jspa",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Jenkins",
+       "type": "url",
+       "url": "http://jenkins.edgex-team.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Confluence",
+       "type": "url",
+       "url": "http://confluence.edgex-team.ru/dashboard.action",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Bitbucket",
+       "type": "url",
+       "url": "https://bitbucket.org/edgexsoftware",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Redmine",
+       "type": "url",
+       "url": "https://redmine.edgex-team.ru/",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "Testia Tarantula",
+       "type": "url",
+       "url": "http://selenium.edgex-team.ru/#",
+       "visit_count": 0
+      },
+      {
+       "description": "",
+       "keyword": "",
+       "name": "qrbox-dist",
+       "type": "url",
+       "url": "https://drive.google.com/folderview?id=0B9bOFAR4y916MGUtQmxBYWV4NHc&usp=sharing",
+       "visit_count": 0
+      }
+     ],
+     "description": "",
+     "expanded": false,
+     "expanded_sidebar": false,
+     "name": "edgex",
+     "type": "folder"
+    }
+   ],
+   "description": "Bookmarks located in Bookmarks Menu",
+   "expanded": true,
+   "expanded_sidebar": true,
+   "name": "Bookmarks Menu",
+   "type": "folder"
+  },
+  "other": {
+   "children": [],
+   "description": "All other bookmarks",
+   "expanded": true,
+   "expanded_sidebar": true,
+   "name": "Unsorted Bookmarks",
+   "type": "folder"
+  }
+ },
+ "version": 1
+}
