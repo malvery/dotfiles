@@ -1,4 +1,3 @@
-@compton -e 0.9 -m 0.95 -C -c
-@gnome-screensaver
-@clipit -n
-@kbdd
+compton -e 0.9 -m 0.95 -C -c -f
+clipit -n
+#kbdd
