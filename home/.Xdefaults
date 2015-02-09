@@ -109,4 +109,4 @@ Xft.rgba: rgb
 Xft.antialias: true
 Xft.lcdfilter:  lcddefault
 Xft.dpi: 96
-Xcursor.theme: FlatbedCursors.Black.Small
+Xcursor.theme: FlatbedCursors.Blue.Small

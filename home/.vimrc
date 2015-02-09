@@ -10,8 +10,8 @@ call vundle#rc()
 
 filetype plugin indent on
 
-"Bundle 'xoria256.vim'
-Bundle 'Solarized'
+Bundle 'xoria256.vim'
+"Bundle 'Solarized'
 Bundle 'colorer-color-scheme'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
@@ -25,8 +25,8 @@ Bundle 'snipMate'
 if &t_Co == 256 || has("gui_running")
 	set t_Co=256
 	set background=dark
-	colorscheme solarized
-	"colorscheme xoria256
+	"colorscheme solarized
+	colorscheme xoria256
 else
 	colorscheme colorer
 endif

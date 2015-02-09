@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>el-dark</name>
+    <name>Numix-DarkBlue</name>
     <titleLayout>CLM</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -121,17 +121,18 @@
        use obconf if you want to change these without having to log out
        and back in -->
     <number>9</number>
+    <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
-      <name>desktop 1</name>
-      <name>desktop 2</name>
-      <name>desktop 3</name>
-      <name>desktop 4</name>
-      <name>desktop 5</name>
-      <name>desktop 6</name>
-      <name>desktop 7</name>
-      <name>desktop 8</name>
-      <name>desktop 9</name>
+      <name>Term</name>
+      <name>Opera</name>
+      <name>Chromium</name>
+      <name>IDE</name>
+      <name>Work 1</name>
+      <name>Work 2</name>
+      <name>Media</name>
+      <name>Mail</name>
+      <name>IM</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -458,7 +459,7 @@
         <command>mpc stop</command>
       </action>
 		</keybind>-->
-    <keybind key="XF86AudioRaiseVolume">
+    <!--<keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>amixer set Master 5%+ unmute</command>
       </action>
@@ -472,16 +473,16 @@
       <action name="Execute">
         <command>amixer set Master toggle</command>
       </action>
-    </keybind>
+    </keybind>-->
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
       </action>
     </keybind>
-    <keybind key="W-e">
+    <keybind key="W-S-e">
       <action name="Execute">
-        <command>pcmanfm</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -956,21 +957,25 @@
     <application class="Skype">
       <desktop>9</desktop>
     </application>
-    <application class="Geary">
+    <application class="Thunderbird">
       <desktop>8</desktop>
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application class="Chromium">
+      <desktop>3</desktop>
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application class="Opera">
+      <desktop>2</desktop>
+      <decor>no</decor>
+      <maximized>true</maximized>
     </application>
     <application role="app">
       <decor>yes</decor>
       <maximized>false</maximized>
       <desktop>all</desktop>
-    </application>
-    <application class="jetbrains-idea-ce">
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
-    <application class="jetbrains-pycharm">
-      <decor>no</decor>
-      <maximized>true</maximized>
     </application>
     <application name="tmux-main">
       <desktop>1</desktop>
