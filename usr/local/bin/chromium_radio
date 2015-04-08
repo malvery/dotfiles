@@ -1,0 +1,3 @@
+#!/bin/sh
+#xdg-open ~/.local/share/applications/chrome-iabmpiboiopbgfabjmgeedhcmjenhbla-Default.desktop
+chromium --app=http://www.radcap.ru/index.html

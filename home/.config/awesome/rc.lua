@@ -38,7 +38,12 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/304904-1920x1200.jpg"
+--theme.wallpaper = "/home/malvery/pictures/wallpapers/304904-1920x1200.jpg"
+--theme.wallpaper = "/home/malvery/pictures/wallpapers/android-line-abstractions-5599.jpg"
+--theme.wallpaper = "/home/malvery/pictures/wallpapers/android-5-0-lollipop-material-6216.jpg"
+--theme.wallpaper = "/home/malvery/pictures/wallpapers/zazhigalka-blesk-metall.jpg"
+theme.wallpaper = "/home/malvery/pictures/wallpapers/meduza-polosy-cveta.jpg"
+
 --theme.wallpaper = "/usr/share/wallpapers/Elarun/contents/images/2560x1600.png"
 
 -- This is used later as the default terminal and editor to run.
@@ -95,7 +100,9 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
 																		{ "Lock", "gnome-screensaver-command -l" },
-																		{ "Exit", "lxsession-logout" }
+																		--{ "Lock", "slock" },
+																		--{ "Exit", "lxsession-logout" }
+																		{ "Exit", "qlogout" }
                                   }
                         })
 
@@ -188,7 +195,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-		right_layout:add(kbdwidget)
+		--right_layout:add(kbdwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -260,13 +267,14 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("pcmanfm") end),
+		--awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
 		--awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("qlogout") end),
 
-		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
-		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer set Master 5%- unmute") end),
-		awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer set Master toggle") end),
+		--awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
+		--awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer set Master 5%- unmute") end),
+		--awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer set Master toggle") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -377,10 +385,14 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Kmix" },
+      properties = { floating = true } },
     { rule = { class = "Skype" },
       properties = { floating = true } },
     { rule = { class = "Shutter" },
       properties = { floating = true } },
+		{ rule = { class = "plasmashell" },
+      properties = { type = "desktop", maximised_vertical = true, maximised_horizontal = true} },
 
 	  { rule = { name = "tmux-main" },
       properties = { tag = tags[2][1] } },
@@ -393,6 +405,16 @@ awful.rules.rules = {
       properties = { tag = tags[2][9] } },
     { rule = { class = "Geary" },
       properties = { tag = tags[1][9] } },
+    { rule = { class = "Thunderbird" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[2][2] } },
+    { rule = { class = "Opera" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
 }
 -- }}}
 
