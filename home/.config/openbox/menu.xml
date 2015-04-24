@@ -69,7 +69,7 @@
 
 		<item label="Exit">
 			<action name="Execute">
-				<command>lxsession-logout</command>
+				<command>qlogout</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>

@@ -23,6 +23,7 @@
     <raiseOnFocus>no</raiseOnFocus>
     <!-- when followMouse is enabled, and a window is given focus by moving the
        mouse into it, also raise the window -->
+    <inactiveOpacity>95</inactiveOpacity>
   </focus>
   <placement>
     <policy>Smart</policy>
@@ -30,7 +31,7 @@
     <center>yes</center>
     <!-- whether to place windows in the center of the free area found or
        the top left corner -->
-    <monitor>Primary</monitor>
+    <monitor>Active</monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
        on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
        the active window is, 'Primary' - only on the primary monitor -->
@@ -42,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Numix-DarkBlue</name>
+    <name>Numix-ArchBlue</name>
     <titleLayout>CLM</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -120,19 +121,19 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>9</number>
+    <number>6</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
-      <name>Term</name>
-      <name>Opera</name>
-      <name>Chromium</name>
-      <name>IDE</name>
-      <name>Work 1</name>
-      <name>Work 2</name>
-      <name>Media</name>
-      <name>Mail</name>
-      <name>IM</name>
+      <name>Desktop 1</name>
+      <name>Desktop 2</name>
+      <name>Desktop 3</name>
+      <name>Desktop 4</name>
+      <name>Desktop 5</name>
+      <name>Desktop 6</name>
+      <name>Desktop 7</name>
+      <name>Desktop 8</name>
+      <name>Desktop 9</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -340,12 +341,12 @@
     </keybind>
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>9</to>
+        <to>6</to>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="GoToDesktop">
-        <to>8</to>
+        <to>5</to>
       </action>
     </keybind>
     <keybind key="W-S-Insert">
@@ -438,54 +439,66 @@
         <direction>down</direction>
       </action>
     </keybind>
+	<!-- Tiling -->
+			<keybind key="W-S-Right">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>50%</x>
+          <y>0</y>
+          <width>50%</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="W-S-Left">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>0</x>
+          <y>0</y>
+          <width>50%</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="W-S-Up">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>0%</x>
+          <y>0%</y>
+          <width>100%</width>
+          <height>50%</height>
+        </action>
+      </keybind>
+      <keybind key="W-S-Down">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>0</x>
+          <y>50%</y>
+          <width>100%</width>
+          <height>50%</height>
+        </action>
+      </keybind>
+			<keybind key="W-S-Return">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>center</x>
+          <y>center</y>
+          <width>50%</width>
+          <height>50%</height>
+        </action>
+      </keybind>
+	
     <!-- Keybindings for multimedia keys -->
-    <!--<keybind key="XF86AudioPrev">
-      <action name="Execute">
-        <command>mpc prev</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioPlay">
-      <action name="Execute">
-        <command>mpc toggle</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioNext">
-      <action name="Execute">
-        <command>mpc next</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioStop">
-      <action name="Execute">
-        <command>mpc stop</command>
-      </action>
-		</keybind>-->
-    <!--<keybind key="XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>amixer set Master 5%+ unmute</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume">
-      <action name="Execute">
-        <command>amixer set Master 5%- unmute</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioMute">
-      <action name="Execute">
-        <command>amixer set Master toggle</command>
-      </action>
-    </keybind>-->
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
       </action>
     </keybind>
-    <keybind key="W-S-e">
+    <!--<keybind key="W-S-e">
       <action name="Execute">
         <command>thunar</command>
       </action>
-    </keybind>
-    <keybind key="W-S-Return">
+    </keybind>-->
+    <keybind key="W-Return">
       <action name="Execute">
         <command>urxvt</command>
       </action>
@@ -955,19 +968,24 @@
       <decor>no</decor>
     </application>-->
     <application class="Skype">
-      <desktop>9</desktop>
+      <desktop>6</desktop>
     </application>
     <application class="Thunderbird">
-      <desktop>8</desktop>
+      <desktop>6</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application class="Chromium">
-      <desktop>3</desktop>
+      <!--<desktop>3</desktop>-->
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application class="Opera">
+      <desktop>2</desktop>
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
+    <application class="Firefox">
       <desktop>2</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
