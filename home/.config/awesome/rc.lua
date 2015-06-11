@@ -37,14 +37,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
---theme.wallpaper = "/home/malvery/pictures/wallpapers/304904-1920x1200.jpg"
---theme.wallpaper = "/home/malvery/pictures/wallpapers/android-line-abstractions-5599.jpg"
---theme.wallpaper = "/home/malvery/pictures/wallpapers/android-5-0-lollipop-material-6216.jpg"
---theme.wallpaper = "/home/malvery/pictures/wallpapers/zazhigalka-blesk-metall.jpg"
-theme.wallpaper = "/home/malvery/pictures/wallpapers/meduza-polosy-cveta.jpg"
-
---theme.wallpaper = "/usr/share/wallpapers/Elarun/contents/images/2560x1600.png"
+--beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
+theme.wallpaper = "/home/malvery/pictures/wallpapers/leather-kozha-fon-tekstura.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -100,6 +95,8 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
 																		{ "Lock", "gnome-screensaver-command -l" },
+																		--{ "Suspend", "dbus-send --system --print-reply --dest='org.freedesktop.login1' /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true" },
+																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
 																		--{ "Lock", "slock" },
 																		--{ "Exit", "lxsession-logout" }
 																		{ "Exit", "qlogout" }
@@ -295,7 +292,8 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
-		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end)
+		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end),
+		awful.key({ "Mod1" },            "F2",     function () awful.util.spawn("xfce4-appfinder") end)
 
 )
 
@@ -387,9 +385,13 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Kmix" },
       properties = { floating = true } },
+		{ rule = { class = "Xfce4-appfinder" },
+      properties = { floating = true } },
     { rule = { class = "Skype" },
       properties = { floating = true } },
     { rule = { class = "Shutter" },
+      properties = { floating = true } },
+    { rule = { class ="krunner" },
       properties = { floating = true } },
 		{ rule = { class = "plasmashell" },
       properties = { type = "desktop", maximised_vertical = true, maximised_horizontal = true} },
@@ -407,10 +409,14 @@ awful.rules.rules = {
       properties = { tag = tags[1][9] } },
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][9] } },
+		{ rule = { class = "Kmail" },
+      properties = { tag = tags[1][9] } },
+		{ rule = { class = "Claws-mail" },
+      properties = { tag = tags[1][9] } },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Chromium" },
-      properties = { tag = tags[2][2] } },
+    --[[{ rule = { class = "Chromium" },]]
+      --[[properties = { tag = tags[2][2] } },]]
     { rule = { class = "Opera" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "Firefox" },
@@ -493,6 +499,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --{{ Custom functions
 
 --}}
+
+awful.util.spawn_with_shell("compton -f")
+
 
 
 -- }}}
