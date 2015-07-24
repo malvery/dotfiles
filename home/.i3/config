@@ -78,7 +78,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -106,6 +106,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+g workspace 8
+bindsym $mod+s workspace 9
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -119,13 +122,19 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+F9 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F10 restart
 
+bindsym $mod+r exec "gmrun"
+bindsym $mod+F2 exec "xfce4-appfinder -r"
 bindsym $mod+Shift+e exec "thunar"
 bindsym $mod+Shift+Delete exec "lxsession-logout"
-bindsym $mod+Shift+F12 exec "gnome-screensaver-command -l"
+bindsym $mod+Shift+F12 exec "light-locker-command -l"
+
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse set Master 5%+ unmute"
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse set Master 5%- unmute"
+#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 
 # switch between the current and the previously focused one
 bindsym $mod+Escape workspace back_and_forth
@@ -137,10 +146,12 @@ bindsym $mod+"bracketleft" focus output left
 bindsym $mod+"bracketright" focus output right
 
 # Move the whole container to the next output
-bindsym $mod+Shift+"braceleft" move container to output left
+#bindsym $mod+Shift+"braceleft" move container to output left
+bindsym $mod+Shift+"braceleft" move workspace to output left
 
 # Move the whole container to the prev output
-bindsym $mod+Shift+"braceright" move container to output right
+#bindsym $mod+Shift+"braceright" move container to output right
+bindsym $mod+Shift+"braceright" move workspace to output right
 
 # Jump to urgent window
 bindsym $mod+x [urgent=latest] focus
@@ -169,7 +180,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -177,15 +188,14 @@ bar {
   #status_command i3status
 	status_command    i3blocks -c ~/.i3/i3blocks
 	position          top
-
   colors {
-    separator #666666
-    background #000000
-    statusline #ffffff
-    focused_workspace #4c7899 #285577 #ffffff
-    active_workspace #333333 #5f676a #ffffff
-    inactive_workspace #333333 #222222 #888888
-    urgent_workspace #2f343a #900000 #ffffff
+    separator #586e75
+    background #002b36
+    statusline #aea79f
+    focused_workspace #586e75 #586e75 #ffffff
+    active_workspace #073642 #073642 #ffffff
+    inactive_workspace #002b36 #002b36 #aea79f
+    urgent_workspace #77216f #77216f #ffffff
   }
 }
 
@@ -200,10 +210,12 @@ workspace_auto_back_and_forth yes
 # Workspace  
 ####################
 
-assign [class="Opera"] 2
+assign [class="tmux-main"] 1
+assign [class="Firefox"] 2
 assign [class="Chromium"] 3
 assign [class="Thunderbird"] 8
 assign [class="Skype"] 9
+assign [class="Pidgin"] 9
 
 workspace 1 output HDMI2
 workspace 2 output HDMI1
@@ -228,8 +240,9 @@ for_window [class="Xfce4-notifyd"]		floating enable
 for_window [class="Exe"]							floating enable
 for_window [class="Qiv"]							floating enable
 for_window [class="Gpicview"]					floating enable
+for_window [class="Xfce4-appfinder"]					floating enable
 
-client.focused #4c7899 #285577 #ffffff #2e9ef4
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused #333333 #222222 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+client.focused #586e75 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.unfocused #002b36 #002b36 #586e75 #002b36
+client.urgent #dc322f #dc322f #fdf6e3 #dc322f
