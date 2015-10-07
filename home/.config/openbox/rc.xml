@@ -43,8 +43,8 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Numix-ArchBlue</name>
-    <titleLayout>CLM</titleLayout>
+    <name>M0nst4-sky</name>
+    <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -341,14 +341,14 @@
     </keybind>
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>6</to>
-      </action>
-    </keybind>
-    <keybind key="W-g">
-      <action name="GoToDesktop">
         <to>5</to>
       </action>
     </keybind>
+    <!--   <keybind key="W-g">-->
+    <!--<action name="GoToDesktop">-->
+    <!--<to>5</to>-->
+    <!--</action>-->
+    <!--</keybind>-->
     <keybind key="W-S-Insert">
       <action name="AddDesktop"/>
     </keybind>
@@ -439,53 +439,52 @@
         <direction>down</direction>
       </action>
     </keybind>
-	<!-- Tiling -->
-			<keybind key="W-S-Right">
-        <action name="UnmaximizeFull"/>
-        <action name="MoveResizeTo">
-          <x>50%</x>
-          <y>0</y>
-          <width>50%</width>
-          <height>100%</height>
-        </action>
-      </keybind>
-      <keybind key="W-S-Left">
-        <action name="UnmaximizeFull"/>
-        <action name="MoveResizeTo">
-          <x>0</x>
-          <y>0</y>
-          <width>50%</width>
-          <height>100%</height>
-        </action>
-      </keybind>
-      <keybind key="W-S-Up">
-        <action name="UnmaximizeFull"/>
-        <action name="MoveResizeTo">
-          <x>0%</x>
-          <y>0%</y>
-          <width>100%</width>
-          <height>50%</height>
-        </action>
-      </keybind>
-      <keybind key="W-S-Down">
-        <action name="UnmaximizeFull"/>
-        <action name="MoveResizeTo">
-          <x>0</x>
-          <y>50%</y>
-          <width>100%</width>
-          <height>50%</height>
-        </action>
-      </keybind>
-			<keybind key="W-S-Return">
-        <action name="UnmaximizeFull"/>
-        <action name="MoveResizeTo">
-          <x>center</x>
-          <y>center</y>
-          <width>50%</width>
-          <height>50%</height>
-        </action>
-      </keybind>
-	
+    <!-- Tiling -->
+    <keybind key="W-S-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>50%</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-Up">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0%</x>
+        <y>0%</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-Down">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>50%</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-Return">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
     <!-- Keybindings for multimedia keys -->
     <!-- Keybindings for running applications -->
     <keybind key="W-r">
@@ -495,19 +494,19 @@
     </keybind>
     <!--<keybind key="W-S-e">
       <action name="Execute">
-        <command>thunar</command>
+        <command>pcmanfm-qt</command>
       </action>
-    </keybind>-->
+    </keybind>
     <keybind key="W-Return">
       <action name="Execute">
         <command>urxvt</command>
       </action>
-    </keybind>
-    <keybind key="W-S-l">
+    </keybind>-->
+    <!--<keybind key="W-S-l">
       <action name="Execute">
-        <command>gnome-screensaver-command -l</command>
+        <command>light-locker-command -l</command>
       </action>
-    </keybind>
+    </keybind>-->
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -968,26 +967,26 @@
       <decor>no</decor>
     </application>-->
     <application class="Skype">
-      <desktop>6</desktop>
+      <desktop>5</desktop>
     </application>
     <application class="Thunderbird">
-      <desktop>6</desktop>
+      <desktop>5</desktop>
+      <!--<decor>no</decor>-->
+      <!--<maximized>true</maximized>-->
+    </application>
+    <!--<application class="Chromium">
+      [><desktop>3</desktop><]
       <decor>no</decor>
       <maximized>true</maximized>
-    </application>
-    <application class="Chromium">
-      <!--<desktop>3</desktop>-->
-      <decor>no</decor>
-      <maximized>true</maximized>
-    </application>
+    </application>-->
     <application class="Opera">
       <desktop>2</desktop>
-      <decor>no</decor>
+      <!--<decor>no</decor>-->
       <maximized>true</maximized>
     </application>
     <application class="Firefox">
       <desktop>2</desktop>
-      <decor>no</decor>
+      <!--<decor>no</decor>-->
       <maximized>true</maximized>
     </application>
     <application role="app">
@@ -996,7 +995,7 @@
       <desktop>all</desktop>
     </application>
     <application name="tmux-main">
-      <desktop>1</desktop>
+      <desktop>all</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
