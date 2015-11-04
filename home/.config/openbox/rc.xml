@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>M0nst4-sky</name>
+    <name>breeze-dark</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -341,14 +341,14 @@
     </keybind>
     <keybind key="W-s">
       <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="W-g">
+      <action name="GoToDesktop">
         <to>5</to>
       </action>
     </keybind>
-    <!--   <keybind key="W-g">-->
-    <!--<action name="GoToDesktop">-->
-    <!--<to>5</to>-->
-    <!--</action>-->
-    <!--</keybind>-->
     <keybind key="W-S-Insert">
       <action name="AddDesktop"/>
     </keybind>
@@ -492,21 +492,21 @@
         <command>gmrun</command>
       </action>
     </keybind>
-    <!--<keybind key="W-S-e">
+    <keybind key="W-S-e">
       <action name="Execute">
         <command>pcmanfm-qt</command>
       </action>
     </keybind>
-    <keybind key="W-Return">
+    <keybind key="W-S-Return">
       <action name="Execute">
         <command>urxvt</command>
       </action>
-    </keybind>-->
-    <!--<keybind key="W-S-l">
+    </keybind>
+    <keybind key="W-S-l">
       <action name="Execute">
         <command>light-locker-command -l</command>
       </action>
-    </keybind>-->
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -967,26 +967,26 @@
       <decor>no</decor>
     </application>-->
     <application class="Skype">
-      <desktop>5</desktop>
+      <desktop>6</desktop>
     </application>
     <application class="Thunderbird">
-      <desktop>5</desktop>
-      <!--<decor>no</decor>-->
-      <!--<maximized>true</maximized>-->
-    </application>
-    <!--<application class="Chromium">
-      [><desktop>3</desktop><]
+      <desktop>6</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
-    </application>-->
+    </application>
+    <application class="Chromium">
+      <!--<desktop>3</desktop>-->
+      <decor>no</decor>
+      <maximized>true</maximized>
+    </application>
     <application class="Opera">
       <desktop>2</desktop>
-      <!--<decor>no</decor>-->
+      <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application class="Firefox">
       <desktop>2</desktop>
-      <!--<decor>no</decor>-->
+      <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application role="app">
@@ -995,7 +995,7 @@
       <desktop>all</desktop>
     </application>
     <application name="tmux-main">
-      <desktop>all</desktop>
+      <desktop>1</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>

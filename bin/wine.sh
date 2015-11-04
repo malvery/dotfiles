@@ -1,10 +1,10 @@
 #!/bin/sh
 
 case "$1" in
-	"hl2") 
-		cd ~/win32/stalker
+	"q4") 
+		cd ~/win32/quake4
 		X :1 -terminate &
-		DISPLAY=:1 nice -20 wine bin/XR_3DA.exe
+		DISPLAY=:1 nice -20 wine Quake4.exe
 		DISPLAY=:0
 	;;
 

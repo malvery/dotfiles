@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-	<menu execute="obm-xdg /etc/xdg/menus/xfce-applications.menu" id="xdg-menu" label="Apps"/>
+	<menu execute="obm-xdg /etc/xdg/menus/lxqt-applications.menu" id="xdg-menu" label="Apps"/>
 	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
 	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
 	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
@@ -69,7 +69,7 @@
 
 		<item label="Exit">
 			<action name="Execute">
-				<command>xfce4-session-logout</command>
+				<command>lxqt-leave</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>
