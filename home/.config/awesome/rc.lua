@@ -10,6 +10,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 
+vicious = require("vicious")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -39,7 +41,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/leather-kozha-fon-tekstura.jpg"
+theme.wallpaper = "/home/malvery/pictures/wallpapers/leather-skin-upholstery-7574.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -94,12 +96,12 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
-																		{ "Lock", "gnome-screensaver-command -l" },
+																		{ "Lock", "light-locker-command -l" },
 																		--{ "Suspend", "dbus-send --system --print-reply --dest='org.freedesktop.login1' /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true" },
 																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
 																		--{ "Lock", "slock" },
 																		--{ "Exit", "lxsession-logout" }
-																		{ "Exit", "qlogout" }
+																		{ "Exit", "lxqt-leave" }
                                   }
                         })
 
@@ -109,13 +111,13 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- {{{ Wibox
 -- Custom widget
-kbdwidget = wibox.widget.textbox(" Eng ")
+kbdwidget = wibox.widget.textbox("| LANG: Eng ")
 kbdwidget.border_width = 1
 kbdwidget.border_color = beautiful.fg_normal
-kbdwidget:set_text(" Eng ")
+kbdwidget:set_text(" ::  LANG: Eng ")
 
-kbdstrings = {[0] = " Eng ", 
-              [1] = " Рус "}
+kbdstrings = {[0] = " ::  LANG: Eng ", 
+              [1] = " ::  LANG: Rus "}
 
 dbus.request_name("session", "ru.gentoo.kbdd")
 dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
@@ -125,6 +127,18 @@ dbus.connect_signal("ru.gentoo.kbdd", function(...)
     kbdwidget:set_markup(kbdstrings[layout])
     end
 )
+
+memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
+ 
+cpuwidget = wibox.widget.textbox()
+vicious.register(cpuwidget, vicious.widgets.cpu, " | CPU: $1% |")
+
+volwidget = wibox.widget.textbox() 
+vicious.register(volwidget, vicious.widgets.volume, " VOL: $1%  ::  ", 2, "Master")
+
+netwidget = wibox.widget.textbox() 
+vicious.register(netwidget, vicious.widgets.net, " NET: ${enp2s0 down_kb}Kb/s |", 13)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -191,9 +205,16 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-		--right_layout:add(kbdwidget)
-    right_layout:add(mytextclock)
+    		
+		right_layout:add(kbdwidget)
+		right_layout:add(cpuwidget)
+		right_layout:add(memwidget)
+		right_layout:add(netwidget)
+		right_layout:add(volwidget)
+		
+		if s == 1 then right_layout:add(wibox.widget.systray()) end
+
+		right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -230,7 +251,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
+    awful.key({ modkey, "Shift"   }, "m", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -264,10 +285,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		--awful.key({ modkey, "Shift"   }, "e",			function () awful.util.spawn("thunar") end),
+		awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
 		--awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
-		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("qlogout") end),
+		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
+		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("qlogout") end),
 
 		--awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
 		--awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer set Master 5%- unmute") end),
@@ -285,15 +306,20 @@ globalkeys = awful.util.table.join(
 
 
 		-- Screen manipulation
-		awful.key({ modkey,           }, "[",			function () awful.screen.focus_relative(-1) end),	
-		awful.key({ modkey,           }, "]",			function () awful.screen.focus_relative( 1) end),
-		awful.key({ modkey, "Shift"   }, "[",			function (c) awful.client.movetoscreen(c, -1) end),
-		awful.key({ modkey, "Shift"   }, "]",			function (c) awful.client.movetoscreen(c,  1) end),
+		--awful.key({ modkey,           }, "[",			function () awful.screen.focus_relative(-1) end),	
+		--awful.key({ modkey,           }, "]",			function () awful.screen.focus_relative( 1) end),
+		--awful.key({ modkey, "Shift"   }, "[",			function (c) awful.client.movetoscreen(c, -1) end),
+		--awful.key({ modkey, "Shift"   }, "]",			function (c) awful.client.movetoscreen(c,  1) end),
+
+		awful.key({ modkey,           }, "w",			function () awful.screen.focus_relative(-1) end),	
+		awful.key({ modkey,           }, "e",			function () awful.screen.focus_relative( 1) end),
+		awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client.movetoscreen(c, -1) end),
+		awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client.movetoscreen(c,  1) end),
 
     -- Prompt
     --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
 		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end),
-		awful.key({ "Mod1" },            "F2",     function () awful.util.spawn("xfce4-appfinder") end)
+		awful.key({ modkey },            "F2",     function () awful.util.spawn("dmenu-launch") end)
 
 )
 
@@ -409,7 +435,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][9] } },
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][9] } },
-		{ rule = { class = "Kmail" },
+		{ rule = { class = "kmail2" },
       properties = { tag = tags[1][9] } },
 		{ rule = { class = "Claws-mail" },
       properties = { tag = tags[1][9] } },
