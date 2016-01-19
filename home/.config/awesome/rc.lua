@@ -40,8 +40,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/leather-skin-upholstery-7574.jpg"
+--beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
+theme.wallpaper = "/home/malvery/pictures/wallpapers/mozaika-plitka-zelenyy.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -96,12 +97,13 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
-																		{ "Lock", "light-locker-command -l" },
+																		--{ "Lock", "light-locker-command -l" },
+																		{ "Lock", "gnome-screensaver-command -l" },
 																		--{ "Suspend", "dbus-send --system --print-reply --dest='org.freedesktop.login1' /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true" },
 																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
 																		--{ "Lock", "slock" },
-																		--{ "Exit", "lxsession-logout" }
-																		{ "Exit", "lxqt-leave" }
+																		{ "Exit", "lxsession-logout" }
+																		--{ "Exit", "lxqt-leave" }
                                   }
                         })
 
@@ -285,9 +287,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
+		--awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
+	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
 		--awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
+		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
 		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("qlogout") end),
 
 		--awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
@@ -411,17 +415,15 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Kmix" },
       properties = { floating = true } },
+		{ rule = { class = "ViberPC" },
+      properties = { floating = true } },
 		{ rule = { class = "Xfce4-appfinder" },
       properties = { floating = true } },
     { rule = { class = "Skype" },
       properties = { floating = true } },
     { rule = { class = "Shutter" },
       properties = { floating = true } },
-    { rule = { class ="krunner" },
-      properties = { floating = true } },
-		{ rule = { class = "plasmashell" },
-      properties = { type = "desktop", maximised_vertical = true, maximised_horizontal = true} },
-
+    
 	  { rule = { name = "tmux-main" },
       properties = { tag = tags[2][1] } },
 
@@ -431,23 +433,23 @@ awful.rules.rules = {
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-    { rule = { class = "Geary" },
-      properties = { tag = tags[1][9] } },
+		{ rule = { class = "Ktorrent" },
+      properties = { tag = tags[1][8] } },
+		
+		{ rule = { class = "Krdc" },
+      properties = { tag = tags[2][3] } },
+		{ rule = { class = "Clementine" },
+      properties = { tag = tags[2][8] } },
+
+		{ rule = { class = "chromium" },
+      properties = { tag = tags[1][3] } },
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][9] } },
-		{ rule = { class = "kmail2" },
-      properties = { tag = tags[1][9] } },
-		{ rule = { class = "Claws-mail" },
-      properties = { tag = tags[1][9] } },
-    { rule = { class = "Firefox" },
+		{ rule = { class = "Firefox" },
       properties = { tag = tags[1][2] } },
-    --[[{ rule = { class = "Chromium" },]]
-      --[[properties = { tag = tags[2][2] } },]]
-    { rule = { class = "Opera" },
+		{ rule = { class = "Iceweasel" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
-}
+    }
 -- }}}
 
 -- {{{ Signals

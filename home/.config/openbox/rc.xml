@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>breeze-dark</name>
+    <name>Syscrash</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -186,12 +186,12 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!--Keybindings for monitors actions -->
-    <keybind key="W-S-bracketleft">
+    <keybind key="W-S-w">
       <action name="MoveResizeTo">
         <monitor>prev</monitor>
       </action>
     </keybind>
-    <keybind key="W-S-bracketright">
+    <keybind key="W-S-e">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
@@ -380,7 +380,7 @@
         </else>
       </action>
     </keybind>
-    <keybind key="W-w">
+    <keybind key="W-S-m">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
@@ -492,9 +492,9 @@
         <command>gmrun</command>
       </action>
     </keybind>
-    <keybind key="W-S-e">
+    <keybind key="W-S-p">
       <action name="Execute">
-        <command>pcmanfm-qt</command>
+        <command>caja --no-desktop</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -504,7 +504,7 @@
     </keybind>
     <keybind key="W-S-l">
       <action name="Execute">
-        <command>light-locker-command -l</command>
+        <command>mate-screensaver-command -l</command>
       </action>
     </keybind>
   </keyboard>
@@ -969,13 +969,19 @@
     <application class="Skype">
       <desktop>6</desktop>
     </application>
+    <application class="Clementine-qt5">
+      <desktop>4</desktop>
+    </application>
+    <application class="Krdc">
+      <desktop>3</desktop>
+    </application>
     <application class="Thunderbird">
-      <desktop>6</desktop>
+      <desktop>5</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
     <application class="Chromium">
-      <!--<desktop>3</desktop>-->
+      <desktop>3</desktop>
       <decor>no</decor>
       <maximized>true</maximized>
     </application>

@@ -60,7 +60,7 @@
 
 		<item label="Lock">
 			<action name="Execute">
-				<command>light-locker-command -l</command>
+				<command>mate-screensaver-command -l</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>
@@ -69,7 +69,7 @@
 
 		<item label="Exit">
 			<action name="Execute">
-				<command>lxqt-leave</command>
+				<command>mate-session-save --shutdown-dialog</command>
 				<startupnotify>
 					<enabled>no</enabled>
 				</startupnotify>
