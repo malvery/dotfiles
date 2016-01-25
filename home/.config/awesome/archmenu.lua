@@ -1,6 +1,5 @@
  local menu98edb85b00d9527ad5acebe451b3fae6 = {
      {"ClipIt", "clipit"},
-     {"Elementary Test", "elementary_test", "/usr/share/icons/elementary.png" },
      {"GVim", "gvim -f ", "/usr/share/pixmaps/gvim.png" },
      {"KWrite", "kwrite ", "/usr/share/icons/hicolor/16x16/apps/kwrite.png" },
      {"Kate", "kate -b ", "/usr/share/icons/hicolor/16x16/apps/kate.png" },
@@ -44,7 +43,6 @@
 
  local menue6f43c40ab1c07cd29e4e83e4ef6bf85 = {
      {"CMake", "cmake-gui ", "/usr/share/icons/hicolor/32x32/apps/CMakeSetup.png" },
-     {"Elementary Test", "elementary_test", "/usr/share/icons/elementary.png" },
      {"OpenJDK 1.7.0 Monitoring & Management Console", "_BINDIR_/jconsole"},
      {"OpenJDK 1.7.0 Policy Tool", "_BINDIR_/policytool"},
      {"PyCharm", "/usr/bin/pycharm", "/usr/share/pixmaps/pycharm.png" },
@@ -71,10 +69,8 @@
 
  local menuee69799670a33f75d45c57d1d1cd0ab3 = {
      {"Avahi Zeroconf Browser", "/usr/bin/avahi-discover", "/usr/share/icons/gnome/16x16/devices/network-wired.png" },
-     {"Bulk Rename", "/usr/lib/Thunar/ThunarBulkRename ", "/usr/share/icons/hicolor/16x16/apps/Thunar.png" },
      {"Configuration Editor", "gconf-editor", "/usr/share/icons/hicolor/16x16/apps/gconf-editor.png" },
      {"Dolphin", "dolphin ", "/usr/share/icons/gnome/16x16/apps/system-file-manager.png" },
-     {"Emixer", "emixer", "/usr/share/pixmaps/emixer.png" },
      {"File Manager PCManFM", "pcmanfm ", "/usr/share/icons/gnome/16x16/apps/system-file-manager.png" },
      {"GParted", "/usr/bin/gparted_polkit ", "/usr/share/icons/hicolor/16x16/apps/gparted.png" },
      {"Htop", "xterm -e htop", "/usr/share/pixmaps/htop.png" },

@@ -41,8 +41,8 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/mozaika-plitka-zelenyy.jpg"
+beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
+theme.wallpaper = "/home/malvery/pictures/wallpapers/uzory-chernyy.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
