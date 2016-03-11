@@ -19,8 +19,8 @@ conf = xfceConfig {
 				, focusedBorderColor = "#5194e2"
 	      , manageHook = myManageHook <+> manageDocks
         , layoutHook  = smartBorders (layoutHook xfceConfig)
-				, startupHook = setWMName "LG3D"
-				, handleEventHook = fullscreenEventHook
+				, startupHook = setWMName "LG3D" <+> ewmhDesktopsStartup
+				, handleEventHook = fullscreenEventHook <+> ewmhDesktopsEventHook
 
   } `additionalKeys` myKeys 
 
@@ -52,9 +52,9 @@ myKeys =
 
 				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "xmonad --restart")
 
-         , ((mod4Mask  .|. shiftMask, xK_p), spawn "pcmanfm")
+         , ((mod4Mask  .|. shiftMask, xK_p), spawn "pcmanfm-qt")
          , ((mod4Mask  .|. shiftMask, xK_F12), spawn "gnome-screensaver-command -l")
-				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "lxsession-logout")
+				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "lxqt-leave")
          ]
 
 
@@ -67,6 +67,7 @@ myManageHook = composeAll
 		, isFullscreen --> doFullFloat
 
     , className =? "Wrapper-1.0"     --> doFloat
+		, className =? "lxqt-runner"     --> doFloat
                 
     , className =? "Firefox"     --> doShift "0_2"
     , className =? "chromium"    --> doShift "0_3"
