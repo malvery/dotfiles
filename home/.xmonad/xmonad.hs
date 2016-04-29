@@ -1,5 +1,5 @@
 import XMonad
-import XMonad.Config.Xfce
+import XMonad.Config.Gnome
 import XMonad.Layout.NoBorders
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
@@ -12,13 +12,15 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
 
-conf = xfceConfig {
+
+conf = gnomeConfig {
         workspaces = myWorkspaces
         , modMask = mod4Mask
         , terminal = "urxvt"
+				, normalBorderColor = "#383838"
 				, focusedBorderColor = "#5194e2"
 	      , manageHook = myManageHook <+> manageDocks
-        , layoutHook  = smartBorders (layoutHook xfceConfig)
+        , layoutHook  = smartBorders (layoutHook gnomeConfig)
 				, startupHook = setWMName "LG3D" <+> ewmhDesktopsStartup
 				, handleEventHook = fullscreenEventHook <+> ewmhDesktopsEventHook
 
@@ -52,9 +54,10 @@ myKeys =
 
 				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "xmonad --restart")
 
-         , ((mod4Mask  .|. shiftMask, xK_p), spawn "pcmanfm-qt")
-         , ((mod4Mask  .|. shiftMask, xK_F12), spawn "gnome-screensaver-command -l")
-				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "lxqt-leave")
+				 , ((mod4Mask  .|. shiftMask, xK_p), spawn "thunar")
+
+         , ((mod4Mask  .|. shiftMask, xK_F12), spawn "light-locker-command -l")
+				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "xfce4-session-logout")
          ]
 
 
@@ -62,19 +65,21 @@ myManageHook = composeAll
 	[ 
 	  resource =? "realplay.bin"    --> doFloat
 
-    , className =? "Xfce4-panel"     --> doIgnore
-		, className =? "Xfce4-notifyd"   --> doIgnore
+    {-, className =? "Xfce4-panel"     --> doIgnore-}
+		{-, className =? "Xfce4-notifyd"   --> doIgnore-}
+		{-, className =? "lxqt-notificationd"   --> doFloat-}
+		{-, className =? "lxqt-panel"   --> doFloat-}
 		, isFullscreen --> doFullFloat
 
     , className =? "Wrapper-1.0"     --> doFloat
-		, className =? "lxqt-runner"     --> doFloat
+		{-, className =? "lxqt-runner"     --> doFloat-}
                 
     , className =? "Firefox"     --> doShift "0_2"
     , className =? "chromium"    --> doShift "0_3"
 		, className =? "Thunderbird" --> doShift "0_9"
 
     , className =? "tmux-main"   --> doShift "1_1"
-    , className =? "Clementine-qt5"  --> doShift "1_8"
+    , className =? "Clementine"  --> doShift "1_8"
 		, className =? "Skype"       --> doShift "1_9"
 
   ]
