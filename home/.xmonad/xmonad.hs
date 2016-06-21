@@ -38,7 +38,7 @@ myKeys =
          ++
          [
          -- swap screen order
-         ((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f)) | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2], (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+         ((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f)) | (key, sc) <- zip [xK_w, xK_e, xK_r] [0,1,2], (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
          ]
          ++
          [
@@ -57,7 +57,7 @@ myKeys =
 				 , ((mod4Mask  .|. shiftMask, xK_p), spawn "thunar")
 
          , ((mod4Mask  .|. shiftMask, xK_F12), spawn "light-locker-command -l")
-				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "xfce4-session-logout")
+				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "lxsession-logout")
          ]
 
 
@@ -67,8 +67,8 @@ myManageHook = composeAll
 
     {-, className =? "Xfce4-panel"     --> doIgnore-}
 		{-, className =? "Xfce4-notifyd"   --> doIgnore-}
-		{-, className =? "lxqt-notificationd"   --> doFloat-}
-		{-, className =? "lxqt-panel"   --> doFloat-}
+		, className =? "Xfce4-appfinder"   --> doFloat
+
 		, isFullscreen --> doFullFloat
 
     , className =? "Wrapper-1.0"     --> doFloat
