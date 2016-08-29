@@ -41,8 +41,8 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
-theme.wallpaper = "/home/malvery/pictures/wallpapers/uzory-chernyy.jpg"
+beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
+theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -92,18 +92,26 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   --{ "quit", awesome.quit }
+   { "quit", awesome.quit }
+}
+
+exit_menu = {
+   { "Logout", awesome.quit },
+   { "Suspend", "systemctl suspend" },
+   { "Reboot", "systemctl reboot" },
+	 { "Shutdowm", "systemctl poweroff" }
 }
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
 																		--{ "Lock", "light-locker-command -l" },
-																		{ "Lock", "gnome-screensaver-command -l" },
-																		--{ "Suspend", "dbus-send --system --print-reply --dest='org.freedesktop.login1' /org/freedesktop/login1 org.freedesktop.login1.Manager.Suspend boolean:true" },
+																		--{ "Lock", "gnome-screensaver-command -l" },
+																		{ "Lock", "slimlock" },
 																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
 																		--{ "Lock", "slock" },
-																		{ "Exit", "lxsession-logout" }
-																		--{ "Exit", "lxqt-leave" }
+																		--{ "Exit", "lxsession-logout" }
+																		--{ "Exit", exit_menu }
+																		{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
                                   }
                         })
 
@@ -140,7 +148,7 @@ volwidget = wibox.widget.textbox()
 vicious.register(volwidget, vicious.widgets.volume, " VOL: $1%  ::  ", 2, "Master")
 
 netwidget = wibox.widget.textbox() 
-vicious.register(netwidget, vicious.widgets.net, " NET: ${enp2s0 down_kb}Kb/s |", 13)
+vicious.register(netwidget, vicious.widgets.net, " NET: ${enp1s0f0 down_kb}Kb/s |", 13)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -289,14 +297,12 @@ globalkeys = awful.util.table.join(
 		-- Custom hotkeys
 		--awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
 	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
-		--awful.key({ modkey, "Shift"   }, "l",			function () awful.util.spawn("gnome-screensaver-command -l") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
-		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
-		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("qlogout") end),
+		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
+		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
 
-		--awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer set Master 5%+ unmute") end),
-		--awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer set Master 5%- unmute") end),
-		--awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer set Master toggle") end),
+		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
+		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
+		awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer -D pulse set Master toggle") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -322,8 +328,8 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end)
-		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end),
-		awful.key({ modkey },            "F2",     function () awful.util.spawn("dmenu-launch") end)
+		awful.key({ modkey },            "r",     function () awful.util.spawn("gmrun") end)
+		--awful.key({ modkey },            "F2",     function () awful.util.spawn("dmenu-launch") end)
 
 )
 
@@ -433,8 +439,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-		{ rule = { class = "Ktorrent" },
-      properties = { tag = tags[1][8] } },
+		{ rule = { class = "transmission" },
+      properties = { tag = tags[2][7] } },
 		
 		{ rule = { class = "Krdc" },
       properties = { tag = tags[2][3] } },
@@ -446,8 +452,6 @@ awful.rules.rules = {
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][9] } },
 		{ rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
-		{ rule = { class = "Iceweasel" },
       properties = { tag = tags[1][2] } },
     }
 -- }}}
@@ -528,8 +532,31 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --}}
 
-awful.util.spawn_with_shell("compton -f")
+awful.util.spawn_with_shell("compton")
+awful.util.spawn_with_shell("kbdd")
 
+-- Autostart
 
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+    findme = cmd:sub(0, firstspace-1)
+  end
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
+run_once('/home/malvery/bin/urxvt.sh')
+run_once('nm-applet')
+run_once('clipit')
+run_once('pulseaudio --start')
+run_once('redshift-gtk')
+run_once('chromium --incognito')
+run_once('firefox')
+run_once('thunderbird')
+run_once('skype')
+run_once('shutter --min_at_startup')
+run_once('clementine')
+run_once('pycharm')
 
 -- }}}
