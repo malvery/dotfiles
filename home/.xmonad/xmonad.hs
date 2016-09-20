@@ -2,7 +2,7 @@ import XMonad
 import XMonad.Config.Gnome
 import XMonad.Layout.NoBorders
 import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.EZConfig (additionalKeys, removeKeys)
 import XMonad.Layout.IndependentScreens
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.CycleWS
@@ -24,7 +24,8 @@ conf = gnomeConfig {
 				, startupHook = setWMName "LG3D" <+> ewmhDesktopsStartup
 				, handleEventHook = fullscreenEventHook <+> ewmhDesktopsEventHook
 
-  } `additionalKeys` myKeys 
+	} `additionalKeys` myKeys `removeKeys` [(mod4Mask  .|. shiftMask, xK_p)]
+  {-} `additionalKeys` myKeys -}
 
 myWorkspaces = withScreens 2 ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
@@ -54,10 +55,11 @@ myKeys =
 
 				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "xmonad --restart")
 
-				 , ((mod4Mask  .|. shiftMask, xK_p), spawn "thunar")
+				 {-, ((mod4Mask  .|. shiftMask, xK_p), spawn "thunar")-}
 
-         , ((mod4Mask  .|. shiftMask, xK_F12), spawn "light-locker-command -l")
-				 , ((mod4Mask  .|. shiftMask, xK_Delete), spawn "lxsession-logout")
+				 {-, ((mod4Mask  .|. shiftMask, xK_F12), spawn "/usr/local/bin/xscreensaver-command"-}
+				 {-, ((mod4Mask  .|. shiftMask, xK_F12), spawn "slimlock")-}
+				 {-, ((mod4Mask  .|. shiftMask, xK_Delete), spawn "xfce4-session-logout")-}
          ]
 
 
@@ -65,14 +67,9 @@ myManageHook = composeAll
 	[ 
 	  resource =? "realplay.bin"    --> doFloat
 
-    {-, className =? "Xfce4-panel"     --> doIgnore-}
-		{-, className =? "Xfce4-notifyd"   --> doIgnore-}
-		, className =? "Xfce4-appfinder"   --> doFloat
-
 		, isFullscreen --> doFullFloat
 
     , className =? "Wrapper-1.0"     --> doFloat
-		{-, className =? "lxqt-runner"     --> doFloat-}
                 
     , className =? "Firefox"     --> doShift "0_2"
     , className =? "chromium"    --> doShift "0_3"

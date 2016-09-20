@@ -40,8 +40,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
+--beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
 theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
 -- This is used later as the default terminal and editor to run.
@@ -91,27 +92,27 @@ xdg_menu = require("archmenu")
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "restart", awesome.restart }
+   --{ "quit", awesome.quit }
 }
 
-exit_menu = {
-   { "Logout", awesome.quit },
-   { "Suspend", "systemctl suspend" },
-   { "Reboot", "systemctl reboot" },
-	 { "Shutdowm", "systemctl poweroff" }
-}
+--[[exit_menu = {]]
+   --{ "Logout", awesome.quit },
+   --{ "Suspend", "systemctl suspend" },
+   --{ "Reboot", "systemctl reboot" },
+	 --{ "Shutdowm", "systemctl poweroff" }
+--[[}]]
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
 																		{ "Apps", xdgmenu	},
 																		--{ "Lock", "light-locker-command -l" },
-																		--{ "Lock", "gnome-screensaver-command -l" },
-																		{ "Lock", "slimlock" },
+																		{ "Lock", "gnome-screensaver-command -l" },
+																		--{ "Lock", "slimlock" },
 																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
-																		--{ "Lock", "slock" },
-																		--{ "Exit", "lxsession-logout" }
+																		--{ "Lock", "slock -c 383C4A" },
+																		{ "Exit", "lxqt-leave" }
 																		--{ "Exit", exit_menu }
-																		{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
+																		--{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
                                   }
                         })
 
@@ -297,8 +298,9 @@ globalkeys = awful.util.table.join(
 		-- Custom hotkeys
 		--awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
 	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
-		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
-		--awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxsession-logout") end),
+		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("gnome-screensaver-command -l") end),
+		--awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("i3lock -c 383C4A") end),
+		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
 
 		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
 		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
@@ -532,7 +534,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --}}
 
-awful.util.spawn_with_shell("compton")
+--awful.util.spawn_with_shell("compton")
 awful.util.spawn_with_shell("kbdd")
 
 -- Autostart
@@ -546,17 +548,17 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once('/home/malvery/bin/urxvt.sh')
-run_once('nm-applet')
-run_once('clipit')
-run_once('pulseaudio --start')
-run_once('redshift-gtk')
-run_once('chromium --incognito')
-run_once('firefox')
-run_once('thunderbird')
-run_once('skype')
-run_once('shutter --min_at_startup')
-run_once('clementine')
-run_once('pycharm')
+--[[run_once('/home/malvery/bin/urxvt.sh')]]
+--run_once('nm-applet')
+--run_once('clipit')
+--run_once('pulseaudio --start')
+--run_once('redshift-gtk')
+--run_once('chromium --incognito')
+--run_once('firefox')
+--run_once('thunderbird')
+--run_once('skype')
+--run_once('shutter --min_at_startup')
+--run_once('clementine')
+--[[run_once('pycharm')]]
 
 -- }}}
