@@ -2,10 +2,9 @@
      {"Android File Transfer (MTP)", "android-file-transfer", "/usr/share/icons/hicolor/128x128/apps/android-file-transfer.png" },
      {"ClipIt", "clipit"},
      {"GVim", "gvim -f ", "/usr/share/icons/hicolor/48x48/apps/gvim.png" },
-     {"PCManFM File Manager", "pcmanfm-qt ", "/usr/share/icons/gnome/16x16/apps/system-file-manager.png" },
+     {"Pluma", "pluma ", "/usr/share/icons/gnome/16x16/apps/accessories-text-editor.png" },
      {"Redshift", "redshift-gtk"},
      {"Shutter", "shutter ", "/usr/share/icons/hicolor/16x16/apps/shutter.png" },
-     {"Text Editor", "gedit ", "/usr/share/icons/hicolor/16x16/apps/gedit.png" },
      {"compton", "compton --xrender-sync-fence", "/usr/share/icons/hicolor/48x48/apps/compton.png" },
  }
 
@@ -14,7 +13,6 @@
  }
 
  local menud334dfcea59127bedfcdbe0a3ee7f494 = {
-     {"Document Viewer", "evince ", "/usr/share/icons/hicolor/16x16/apps/evince.png" },
      {"Image Viewer", "gpicview ", "/usr/share/icons/hicolor/48x48/apps/gpicview.png" },
      {"Inkscape", "inkscape ", "/usr/share/icons/hicolor/16x16/apps/inkscape.png" },
      {"LibreOffice Draw", "libreoffice --draw ", "/usr/share/icons/hicolor/16x16/apps/libreoffice-draw.png" },
@@ -25,7 +23,7 @@
      {"Avahi VNC Server Browser", "/usr/bin/bvnc", "/usr/share/icons/gnome/16x16/devices/network-wired.png" },
      {"Chromium", "chromium ", "/usr/share/icons/hicolor/16x16/apps/chromium.png" },
      {"Firefox", "firefox ", "/usr/share/icons/hicolor/16x16/apps/firefox.png" },
-     {"Opera", "opera ", "/usr/share/icons/hicolor/16x16/apps/opera.png" },
+     {"Google Chrome", "/usr/bin/google-chrome-stable ", "/usr/share/icons/hicolor/16x16/apps/google-chrome.png" },
      {"Pidgin Internet Messenger", "pidgin", "/usr/share/icons/hicolor/16x16/apps/pidgin.png" },
      {"Qtransmission Bittorrent Client", "transmission-qt ", "/usr/share/pixmaps/transmission-qt.png" },
      {"Skype", "skype ", "/usr/share/icons/hicolor/16x16/apps/skype.png" },
@@ -34,7 +32,7 @@
  }
 
  local menudf814135652a5a308fea15bff37ea284 = {
-     {"Document Viewer", "evince ", "/usr/share/icons/hicolor/16x16/apps/evince.png" },
+     {"Atril Document Viewer", "atril ", "/usr/share/icons/hicolor/16x16/apps/atril.png" },
      {"LibreOffice", "libreoffice ", "/usr/share/icons/hicolor/16x16/apps/libreoffice-startcenter.png" },
      {"LibreOffice Base", "libreoffice --base ", "/usr/share/icons/hicolor/16x16/apps/libreoffice-base.png" },
      {"LibreOffice Calc", "libreoffice --calc ", "/usr/share/icons/hicolor/16x16/apps/libreoffice-calc.png" },
@@ -45,9 +43,7 @@
  }
 
  local menue6f43c40ab1c07cd29e4e83e4ef6bf85 = {
-     {"Builder", "gnome-builder ", "/usr/share/icons/hicolor/16x16/apps/builder.png" },
      {"CMake", "cmake-gui ", "/usr/share/icons/hicolor/32x32/apps/CMakeSetup.png" },
-     {"Devhelp", "devhelp", "/usr/share/icons/hicolor/16x16/apps/devhelp.png" },
      {"IntelliJ IDEA Community Edition", "idea.sh ", "/usr/share/pixmaps/idea.png" },
      {"PyCharm", "/usr/bin/pycharm", "/usr/share/pixmaps/pycharm.png" },
      {"Qt4 Assistant ", "assistant-qt4", "/usr/share/icons/hicolor/32x32/apps/assistant-qt4.png" },
@@ -70,7 +66,6 @@
      {"Htop", "xterm -e htop", "/usr/share/pixmaps/htop.png" },
      {"Manage Printing", "/usr/bin/xdg-open http://localhost:631/", "/usr/share/icons/hicolor/16x16/apps/cups.png" },
      {"Oracle VM VirtualBox", "VirtualBox ", "/usr/share/icons/hicolor/16x16/mimetypes/virtualbox.png" },
-     {"VMware Player", "/usr/bin/vmplayer ", "/usr/share/icons/hicolor/16x16/apps/vmware-player.png" },
      {"dconf Editor", "dconf-editor", "/usr/share/icons/hicolor/16x16/apps/dconf-editor.png" },
      {"urxvt", "urxvt", "/usr/share/icons/gnome/16x16/apps/utilities-terminal.png" },
      {"urxvt (client)", "urxvtc", "/usr/share/icons/gnome/16x16/apps/utilities-terminal.png" },
