@@ -19,5 +19,8 @@ if [ -n "${ACTION}" ];then
 	Reboot)
    systemctl reboot
    ;;
+	#Logout)
+  # killall awesome
+  # ;;
  esac
 fi
