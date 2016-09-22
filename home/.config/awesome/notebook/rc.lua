@@ -149,25 +149,9 @@ dbus.connect_signal("ru.gentoo.kbdd", function(...)
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
 
-memwidget_tip = awful.tooltip({ objects = { memwidget }})
-memwidget:connect_signal(
-	"mouse::enter",
-	function() 
-		memwidget_tip:set_text(awful.util.pread("ps -Ao pmem,comm --sort=-pmem | head -n 10")) 
-	end
-)
-
 -- cpu
 cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, " | CPU: $1% |")
-
-cpuwidget_tip = awful.tooltip({ objects = { cpuwidget }})
-cpuwidget:connect_signal(
-	"mouse::enter",
-	function() 
-		cpuwidget_tip:set_text(awful.util.pread("ps -Ao pcpu,comm --sort=-pcpu | head -n 10")) 
-	end
-)
 
 -- volume
 volwidget = wibox.widget.textbox() 
@@ -181,13 +165,13 @@ function volume(action)
 		awful.util.spawn("amixer -D pulse set Master toggle")
 	end
 
-	volwidget_tip:set_text(awful.util.pread("amixer -D pulse get Master"))
+	volwidget_tip:set_text(awful.util.pread("~/bin/widget_volume.sh"))
 end
 
 volwidget:connect_signal(
 	"mouse::enter",
 	function() 
-		volwidget_tip:set_text(awful.util.pread("amixer -D pulse get Master")) 
+		volwidget_tip:set_text(awful.util.pread("~/bin/widget_volume.sh")) 
 	end
 )
 
@@ -208,14 +192,13 @@ batwidget = wibox.widget.textbox()
 vicious.register(batwidget, vicious.widgets.bat, " BAT: $2% ::", 120 , "BAT0")
 
 batwidget_tip = awful.tooltip({ objects = { batwidget }})
-batwidget_tip:set_text(awful.util.pread("xbacklight -get"))
 
 function backlight(action)
 	if action == "dec" or action == "inc" then
 		awful.util.spawn("xbacklight -" .. action .. " 2")
 	end
 
-	batwidget_tip:set_text(awful.util.pread("xbacklight -get"))
+	batwidget_tip:set_text(awful.util.pread("~/bin/widget_batt.sh"))
 end
 
 batwidget:buttons(awful.util.table.join(
@@ -226,6 +209,13 @@ batwidget:buttons(awful.util.table.join(
 		backlight("dec")
 	end)
 ))
+
+batwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		batwidget_tip:set_text(awful.util.pread("~/bin/widget_batt.sh"))
+	end
+)
 
 -- eth
 netwidget = wibox.widget.textbox() 
@@ -239,7 +229,7 @@ wifiwidget_tip = awful.tooltip({ objects = { wifiwidget }})
 wifiwidget:connect_signal(
 	"mouse::enter",
 	function() 
-		wifiwidget_tip:set_text(awful.util.pread("ifconfig")) 
+		wifiwidget_tip:set_text(awful.util.pread("echo && iwconfig wlp8s0 && ifconfig enp7s0")) 
 	end
 )
 
