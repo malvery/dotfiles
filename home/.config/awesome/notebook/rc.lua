@@ -41,7 +41,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
---beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
 --theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
@@ -119,12 +118,16 @@ mymainmenu = awful.menu({ items = {
   }
 })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
+mylauncher = awful.widget.launcher(
+	{ 
+		image = beautiful.awesome_icon,
+    menu = mymainmenu 
+	}
+)
 
 -- {{{ Wibox
 -- Custom widget
+-- kbdd
 kbdwidget = wibox.widget.textbox("| LANG: Eng ")
 kbdwidget.border_width = 1
 kbdwidget.border_color = beautiful.fg_normal
@@ -142,44 +145,103 @@ dbus.connect_signal("ru.gentoo.kbdd", function(...)
     end
 )
 
+-- mem
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
- 
+
+memwidget_tip = awful.tooltip({ objects = { memwidget }})
+memwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		memwidget_tip:set_text(awful.util.pread("ps -Ao pmem,comm --sort=-pmem | head -n 10")) 
+	end
+)
+
+-- cpu
 cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, " | CPU: $1% |")
 
+cpuwidget_tip = awful.tooltip({ objects = { cpuwidget }})
+cpuwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		cpuwidget_tip:set_text(awful.util.pread("ps -Ao pcpu,comm --sort=-pcpu | head -n 10")) 
+	end
+)
+
+-- volume
 volwidget = wibox.widget.textbox() 
 vicious.register(volwidget, vicious.widgets.volume, " VOL: $1% |", 2, "Master")
 
+volwidget_tip = awful.tooltip({ objects = { volwidget }})
+function volume(action)
+	if action == "+" or action == "-" then
+		awful.util.spawn("amixer -D pulse set Master 5%" .. action .. " unmute")
+	elseif action == "toggle" then
+		awful.util.spawn("amixer -D pulse set Master toggle")
+	end
+
+	volwidget_tip:set_text(awful.util.pread("amixer -D pulse get Master"))
+end
+
+volwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		volwidget_tip:set_text(awful.util.pread("amixer -D pulse get Master")) 
+	end
+)
+
 volwidget:buttons(awful.util.table.join(
 	awful.button({ }, 3, function()
-		awful.util.spawn("amixer -D pulse set Master toggle")
+		volume("toggle")
 	end),
 	awful.button({ }, 4, function()
-		awful.util.spawn("amixer -D pulse set Master 5%+ unmute")
+		volume("+")
 	end),
 	awful.button({ }, 5, function()
-		awful.util.spawn("amixer -D pulse set Master 5%- unmute")
+		volume("-")
 	end)
 ))
 
+-- batt
 batwidget = wibox.widget.textbox()
 vicious.register(batwidget, vicious.widgets.bat, " BAT: $2% ::", 120 , "BAT0")
 
+batwidget_tip = awful.tooltip({ objects = { batwidget }})
+batwidget_tip:set_text(awful.util.pread("xbacklight -get"))
+
+function backlight(action)
+	if action == "dec" or action == "inc" then
+		awful.util.spawn("xbacklight -" .. action .. " 2")
+	end
+
+	batwidget_tip:set_text(awful.util.pread("xbacklight -get"))
+end
+
 batwidget:buttons(awful.util.table.join(
 	awful.button({ }, 4, function()
-		awful.util.spawn("xbacklight -inc 2")
+		backlight("inc")
 	end),
 	awful.button({ }, 5, function()
-		awful.util.spawn("xbacklight -dec 2")
+		backlight("dec")
 	end)
 ))
 
+-- eth
 netwidget = wibox.widget.textbox() 
 vicious.register(netwidget, vicious.widgets.net, " NET: ${wlp8s0 down_kb}Kb/s |", 13)
 
+-- wlan
 wifiwidget = wibox.widget.textbox() 
 vicious.register(wifiwidget, vicious.widgets.wifi, " NET: ${linp}% |", 13, 'wlp8s0')
+
+wifiwidget_tip = awful.tooltip({ objects = { wifiwidget }})
+wifiwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		wifiwidget_tip:set_text(awful.util.pread("ifconfig")) 
+	end
+)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -547,7 +609,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --}}
 
 awful.util.spawn_with_shell("compton")
-awful.util.spawn_with_shell("kbdd")
+--awful.util.spawn_with_shell("kbdd")
 
 -- Autostart
 
@@ -567,5 +629,9 @@ run_once('redshift-gtk')
 run_once('nm-applet')
 run_once('chromium')
 run_once('nitrogen --restore')
+
+awful.util.spawn_with_shell("killall kbdd || true")
+awful.util.spawn_with_shell("kbdd")
+
 
 -- }}}
