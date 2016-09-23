@@ -1,0 +1,105 @@
+UnityDecoration {
+    /* Border properties (top, right, bottom, left) */
+    -UnityDecoration-extents: 28px 4px 4px 4px; /* the size of the decorations  */
+    -UnityDecoration-input-extents: 10px; /* the extra size of the input areas */
+
+    /* Shadows settings */
+    -UnityDecoration-shadow-offset-x: 1px; /* Size property, the shadow x offset */
+    -UnityDecoration-shadow-offset-y: 1px; /* Size property, the shadow y offset */
+    -UnityDecoration-active-shadow-color: rgba (0, 0, 0, 0.647); /* Color property, active window shadow color */
+    -UnityDecoration-active-shadow-radius: 8px; /* Size property, active window shadow radius */
+    -UnityDecoration-inactive-shadow-color: rgba (0, 0, 0, 0.647); /* Color property, inactive windows shadow color */
+    -UnityDecoration-inactive-shadow-radius: 5px; /* Size property, inactive windows shadow radius */
+
+    /* Glow applied to the selected scaled window */
+    -UnityDecoration-glow-size: 10px; /* Size property, size of glow */
+    -UnityDecoration-glow-color: rgb (221, 72, 20); /* Color property of the glow */
+
+    /* Title settings */
+    -UnityDecoration-title-indent: 10px; /* Size property, left indent of the title */
+    -UnityDecoration-title-fade: 35px; /* Size property, space of the title that can be faded */
+    -UnityDecoration-title-alignment: 0.0; /* Float from 0.0 to 1.0, to align the title */
+}
+
+
+/* This will theme the top decoration, so the whole space above the window */
+UnityDecoration.top {
+    border: 1px solid shade (@bg_color, 0.5);
+    border-bottom-width: 0;
+    /*border-radius: 8px 8px 0 0;*/ /* Corner radius, only the top ones should be */
+    padding: 1px 8px 0 8px; /* This padding will be applied to the content of the top layout */
+	background-image: none;
+    background-color: shade(@bg_color, 0.5); /* Decoration background */
+    color: @dark_fg_color; /* The foreground color will be used to paint the text */
+    text-shadow: 1px 0 #333, -1px 0 #333, 0 1px #333, 0 -1px #333;
+}
+
+/* Top decoration for inactive windows */
+UnityDecoration.top:backdrop {
+    border: 1px solid shade (@bg_color, 0.5);
+    border-bottom-width: 0;
+	background-image: none;
+    background-color: @bg_color;
+    color: shade(@bg_color, 0.5);
+	text-shadow: none;
+}
+
+/* Left decoration, it themes only the space at the left of the window */
+UnityDecoration.left,
+/* Right decoration, it themes only the space at the right of the window */
+UnityDecoration.right,
+/* Bottom decoration, it themes all the space below the window */
+UnityDecoration.bottom {
+	border: 1px solid shade (@bg_color, 0.5);
+	background-image: none;
+    background-color: shade(@bg_color, 0.5);
+}
+
+UnityDecoration.left {
+	border-width: 0 0 0 1px;
+}
+
+UnityDecoration.right {
+	border-width: 0 1px 0 0;
+}
+UnityDecoration.bottom {
+	border-width: 0 1px 1px 1px;
+}
+
+
+/* Left, right and bottom decorations themes for inactive windows */
+UnityDecoration.left:backdrop,
+UnityDecoration.right:backdrop,
+UnityDecoration.bottom:backdrop {
+    background-color: @bg_color;
+}
+
+
+
+UnityPanelWidget,
+.unity-panel {
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade(@theme_bg_dark_color, 0.98)),
+                                     to   (shade(@theme_bg_dark_color, 1.00)));
+
+    border-width:   0px;
+	border-style:   none;
+    box-shadow:     none; 
+}
+
+.unity-panel.menubar,
+.unity-panel .menubar {
+    color:			@theme_fg_dark_color;
+	text-shadow: 	0px 1px @theme_shadow_dark_color;    
+
+    border-width:   0px;
+	border-style:   none;
+    box-shadow:     none;
+}
+
+.unity-panel.menuitem,
+.unity-panel .menuitem {
+    border-width: 0px;
+
+    /* icon-shadow: 0 1 shade (@theme_bg_dark_color, 1.06); */
+}
