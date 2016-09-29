@@ -40,9 +40,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
---beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
---beautiful.init("/home/malvery/.config/awesome/themes/snow/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
+--beautiful.init("/home/malvery/.config/awesome/themes/default.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/arc.lua")
+--beautiful.init("/home/malvery/.config/awesome/themes/sl-dark.lua")
 theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
 -- This is used later as the default terminal and editor to run.
@@ -85,15 +85,16 @@ end
 -- }}}
 
 -- {{{ Menu
--- Create a laucher widget and a main menu
+-- Create a laucher widget and add in main menu
 
+awful.util.spawn_with_shell("xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua")
 xdg_menu = require("archmenu")
 
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+	 { "quit", awesome.quit },
+   { "restart", awesome.restart }
 }
 
 --[[exit_menu = {
@@ -103,24 +104,33 @@ myawesomemenu = {
 	 { "Shutdowm", "systemctl poweroff" }
 }]]
 
-mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
-																		{ "Apps", xdgmenu	},
-																		--{ "Lock", "light-locker-command -l" },
-																		{ "Lock", "slimlock" },
-																		--{ "Lock", "qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock" }
-																		--{ "Lock", "slock -c 383C4A" },
-																		--{ "Exit", "lxqt-leave" }
-																		--{ "Exit", exit_menu }
-																		{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
-                                  }
-                        })
+mymainmenu = awful.menu({ items = { 
+		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
+		{ "Apps", xdgmenu	},	
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+		{ "" },
+		{ "Browser", "chromium" },
+		{ "URXvt", "urxvt" },
+		{ "HTop", "urxvt -e htop" },
+		
+		{ "" },
+		{ "Lock", "slimlock" },
+		--{ "Exit", exit_menu }
+		{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
+  }
+})
+
+mylauncher = awful.widget.launcher(
+	{ 
+		image = beautiful.awesome_icon,
+    menu = mymainmenu 
+	}
+)
 
 
 -- {{{ Wibox
 -- Custom widget
+-- kbdd
 kbdwidget = wibox.widget.textbox("| LANG: Eng ")
 kbdwidget.border_width = 1
 kbdwidget.border_color = beautiful.fg_normal
@@ -138,18 +148,58 @@ dbus.connect_signal("ru.gentoo.kbdd", function(...)
     end
 )
 
+-- mem
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
- 
+
+-- cpu
 cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, " | CPU: $1% |")
 
+-- volume
 volwidget = wibox.widget.textbox() 
-vicious.register(volwidget, vicious.widgets.volume, " VOL: $1%  ::  ", 2, "Master")
+vicious.register(volwidget, vicious.widgets.volume, " VOL: $1% :: ", 2, "Master")
 
+volwidget_tip = awful.tooltip({ objects = { volwidget }})
+function volume(action)
+	if action == "+" or action == "-" then
+		awful.util.spawn("amixer -D pulse set Master 5%" .. action .. " unmute")
+	elseif action == "toggle" then
+		awful.util.spawn("amixer -D pulse set Master toggle")
+	end
+
+	volwidget_tip:set_text(awful.util.pread("~/bin/widget_volume.sh"))
+end
+
+volwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		volwidget_tip:set_text(awful.util.pread("~/bin/widget_volume.sh")) 
+	end
+)
+
+volwidget:buttons(awful.util.table.join(
+	awful.button({ }, 3, function()
+		volume("toggle")
+	end),
+	awful.button({ }, 4, function()
+		volume("+")
+	end),
+	awful.button({ }, 5, function()
+		volume("-")
+	end)
+))
+-- network
 netwidget = wibox.widget.textbox() 
 vicious.register(netwidget, vicious.widgets.net, " NET: ${enp1s0f0 down_kb}Kb/s |", 13)
 
+netwidget_tip = awful.tooltip({ objects = { netwidget }})
+netwidget:connect_signal(
+	"mouse::enter",
+	function() 
+		netwidget_tip:set_text(awful.util.pread("~/bin/widget_network.sh desktop")) 
+	end
+)
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -295,10 +345,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		--awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("dolphin") end),
 	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
 		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
-		awful.key({ modkey, "Shift"   }, "Delete",function () awful.util.spawn("lxqt-leave") end),
 
 		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
 		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
@@ -538,7 +586,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --}}
 
 awful.util.spawn_with_shell("compton")
-awful.util.spawn_with_shell("kbdd")
+--awful.util.spawn_with_shell("kbdd")
 
 -- Autostart
 
@@ -564,5 +612,8 @@ run_once('skype')
 run_once('shutter --min_at_startup')
 run_once('clementine')
 --run_once('pycharm')
+
+awful.util.spawn_with_shell("killall kbdd || true")
+awful.util.spawn_with_shell("kbdd")
 
 -- }}}
