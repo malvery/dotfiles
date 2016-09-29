@@ -19,12 +19,14 @@ for root, sub_dirs, files in os.walk(dir_in):
         create_dir = dir_out + root.replace(dir_in, '')
         subprocess.call(['mkdir', '-p', create_dir])
 
-        for filename in files:
-            file_in = root + '/' + filename
-            file_out = root.replace(dir_in, dir_out) + '/' + filename.replace('flac', 'mp3')
+        subprocess.check_call('flac2all mp3 "%s" -o "%s" -l "b 320"' % (root, create_dir), shell=True)
 
-            subprocess.check_call(
-                '/usr/bin/cat "%s" | /usr/bin/flac -d -c - | /usr/bin/lame --cbr -b 320 - - | /usr/bin/cat - > "%s"' %
-                (file_in, file_out),
-                shell=True
-            )
+        # for filename in files:
+        #     file_in = root + '/' + filename
+        #     file_out = root.replace(dir_in, dir_out) + '/' + filename.replace('flac', 'mp3')
+        #
+        #     subprocess.check_call(
+        #         '/usr/bin/cat "%s" | /usr/bin/flac -d -c - | /usr/bin/lame --cbr -b 320 - - | /usr/bin/cat - > "%s"' %
+        #         (file_in, file_out),
+        #         shell=True
+        #     )
