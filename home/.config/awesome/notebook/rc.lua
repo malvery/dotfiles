@@ -40,8 +40,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/default/theme.lua")
---beautiful.init("/home/malvery/.config/awesome/themes/sl-dark/theme.lua")
+--beautiful.init("/home/malvery/.config/awesome/themes/default.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/arc.lua")
+--beautiful.init("/home/malvery/.config/awesome/themes/sl-dark.lua")
 --theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
 -- This is used later as the default terminal and editor to run.
@@ -107,9 +108,10 @@ mymainmenu = awful.menu({ items = {
 		{ "Apps", xdgmenu	},	
 
 		{ "" },
-		{ "Browser", "chromium" },
+		{ "PCManFM", "pcmanfm" },
 		{ "SMPlayer", "smplayer" },
 		{ "Torrent", "transmission-qt" },
+		{ "Browser", "chromium" },
 		
 		{ "" },
 		{ "Lock", "slimlock" },
@@ -221,15 +223,14 @@ batwidget:connect_signal(
 netwidget = wibox.widget.textbox() 
 vicious.register(netwidget, vicious.widgets.net, " NET: ${wlp8s0 down_kb}Kb/s |", 13)
 
--- wlan
-wifiwidget = wibox.widget.textbox() 
-vicious.register(wifiwidget, vicious.widgets.wifi, " NET: ${linp}% |", 13, 'wlp8s0')
+--netwidget = wibox.widget.textbox() 
+--vicious.register(netwidget, vicious.widgets.wifi, " NET: ${linp}% |", 13, 'wlp8s0')
 
-wifiwidget_tip = awful.tooltip({ objects = { wifiwidget }})
-wifiwidget:connect_signal(
+netwidget_tip = awful.tooltip({ objects = { netwidget }})
+netwidget:connect_signal(
 	"mouse::enter",
 	function() 
-		wifiwidget_tip:set_text(awful.util.pread("echo && iwconfig wlp8s0 && ifconfig enp7s0")) 
+		netwidget_tip:set_text(awful.util.pread("echo && iwconfig wlp8s0 && ifconfig enp7s0")) 
 	end
 )
 
@@ -302,8 +303,7 @@ for s = 1, screen.count() do
 		right_layout:add(kbdwidget)
 		right_layout:add(cpuwidget)
 		right_layout:add(memwidget)
-		--right_layout:add(netwidget)
-    right_layout:add(wifiwidget)
+		right_layout:add(netwidget)
 		right_layout:add(volwidget)
 		right_layout:add(batwidget)
 		
@@ -614,6 +614,7 @@ end
 
 run_once('/home/malvery/bin/urxvt.sh')
 run_once('clipit')
+run_once('syndaemon -t -i 1')
 run_once('pulseaudio --start')
 run_once('redshift-gtk')
 run_once('nm-applet')
