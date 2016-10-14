@@ -1,0 +1,59 @@
+/*
+# name: Darkilouche gtk3
+# author: Maxime Doyen
+# date: Feb xx, 2014
+# description: Darkilouche Gtk3
+*/
+
+/* GTK NAMED COLORS */
+/* @define-color */
+
+@define-color theme_fg_color #000000;
+@define-color theme_text_color #000000;
+@define-color theme_bg_color #888a85;
+@define-color theme_base_color #babdb6;
+@define-color theme_selected_bg_color #424344;
+@define-color theme_selected_fg_color #ffffff;
+
+@define-color insensitive_bg_color @theme_bg_color;
+@define-color insensitive_fg_color shade (@theme_bg_color, 0.70);
+
+@define-color borders shade(@theme_bg_color, 0.68);
+@define-color insensitive_borders shade(@theme_bg_color, 0.82);
+
+
+/* widget colors : to be defined later with shade */
+@define-color border_menu_color #363635;
+@define-color border_frame_color #5a5b59;
+
+
+@define-color border_separator_color #7a7c77;
+@define-color border_focus_color mix(@theme_base_color, @theme_selected_bg_color, 0.49);
+@define-color border_progress_color #b5671b;
+@define-color selected_color_s #fc7e03;
+@define-color selected_color_e #cd6d10;
+
+
+
+@define-color theme_tooltip_bg_color #000000;
+@define-color theme_tooltip_fg_color #eeeeee;
+
+
+/* widget colors */
+@define-color toolbar_bg_color @theme_bg_color;
+@define-color toolbar_fg_color @theme_fg_color;
+@define-color menu_border_color #979797;
+@define-color menu_bg_color @theme_bg_color;
+@define-color menu_fg_color @theme_fg_color;
+@define-color panel_bg_color @theme_bg_color;
+@define-color panel_fg_color @theme_fg_color;
+
+/***********
+ * imports *
+ ***********/
+
+@import url("gtk-contained.css");
+@import url("gtk-widgets-img.css");
+
+/*@import url("apps/gnome-applications.css");*/
+@import url("apps/unity.css");
