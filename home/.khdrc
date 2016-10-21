@@ -1,0 +1,60 @@
+# sample config for khd
+
+
+# Workspaces
+alt - 1 : /usr/local/bin/kwmc space -fExperimental 1
+alt - 2 : /usr/local/bin/kwmc space -fExperimental 2
+alt - 3 : /usr/local/bin/kwmc space -fExperimental 3
+alt - 4 : /usr/local/bin/kwmc space -fExperimental 4
+alt - 5 : /usr/local/bin/kwmc space -fExperimental 5
+alt - 6 : /usr/local/bin/kwmc space -fExperimental 6
+alt - 7 : /usr/local/bin/kwmc space -fExperimental 7
+alt - 8 : /usr/local/bin/kwmc space -fExperimental 8
+alt - 9 : /usr/local/bin/kwmc space -fExperimental 9
+
+alt - s : /usr/local/bin/kwmc space -fExperimental 6
+
+alt + shift - 1 : /usr/local/bin/kwmc window -m space 1
+alt + shift - 2 : /usr/local/bin/kwmc window -m space 2
+alt + shift - 3 : /usr/local/bin/kwmc window -m space 3
+alt + shift - 4 : /usr/local/bin/kwmc window -m space 4
+alt + shift - 5 : /usr/local/bin/kwmc window -m space 5
+alt + shift - 6 : /usr/local/bin/kwmc window -m space 6
+alt + shift - 7 : /usr/local/bin/kwmc window -m space 7
+alt + shift - 8 : /usr/local/bin/kwmc window -m space 8
+alt + shift - 9 : /usr/local/bin/kwmc window -m space 9
+
+alt - escape : /usr/local/bin/kwmc space -fExperimental previous
+
+
+# Screens
+alt - w : /usr/local/bin/kwmc display -f 1
+alt - e : /usr/local/bin/kwmc display -f 0
+
+alt + shift - w : /usr/local/bin/kwmc window -m display 1
+alt + shift - e : /usr/local/bin/kwmc window -m display 0
+
+
+# Tiling mode
+alt - t : /usr/local/bin/kwmc space -t bsp
+alt - m : /usr/local/bin/kwmc space -t monocle
+
+alt + shift - f : /usr/local/bin/kwmc space -t float
+
+# Windows actions
+alt					- tab : /usr/local/bin/kwmc window -f next
+alt + shift - tab : /usr/local/bin/kwmc window -f prev
+
+alt - f : /usr/local/bin/kwmc window -z fullscreen
+
+# Container action
+alt - h : /usr/local/bin/kwmc window -c expand 0.01 west
+alt - j : /usr/local/bin/kwmc window -c expand 0.01 north
+alt - k : /usr/local/bin/kwmc window -c expand 0.01 south
+alt - l : /usr/local/bin/kwmc window -c expand 0.01 east
+
+alt + shift - l : /usr/local/bin/kwmc window -c reduce 0.01 west
+alt + shift - k : /usr/local/bin/kwmc window -c reduce 0.01 north
+alt + shift - j : /usr/local/bin/kwmc window -c reduce 0.01 south
+alt + shift - h : /usr/local/bin/kwmc window -c reduce 0.01 east
+
