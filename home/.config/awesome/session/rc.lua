@@ -41,7 +41,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/default.lua")
-beautiful.init("/home/malvery/.config/awesome/themes/idea.lua")
+beautiful.init("/home/malvery/.config/awesome/themes/arc.lua")
 --beautiful.init("/home/malvery/.config/awesome/themes/sl-dark.lua")
 theme.wallpaper = "/home/malvery/pictures/wallpapers/setka-linii-tekstura-seryy.jpg"
 
@@ -114,10 +114,9 @@ mymainmenu = awful.menu({ items = {
 		{ "HTop", "urxvt -e htop" },
 		
 		{ "" },
-		{ "Lock", "mate-screensaver-command -l" },
+		{ "Lock", "slimlock" },
 		--{ "Exit", exit_menu }
-		{ "Logout", "mate-session-save --logout-dialog" },
-		{ "Exit", "mate-session-save --shutdown-dialog" }
+		{ "Exit", "/home/malvery/bin/logout_dialog.sh" }
   }
 })
 
@@ -155,7 +154,7 @@ vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
 
 -- cpu
 cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, " :: CPU: $1% |")
+vicious.register(cpuwidget, vicious.widgets.cpu, " | CPU: $1% |")
 
 -- volume
 volwidget = wibox.widget.textbox() 
@@ -267,7 +266,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     		
-		--right_layout:add(kbdwidget)
+		right_layout:add(kbdwidget)
 		right_layout:add(cpuwidget)
 		right_layout:add(memwidget)
 		right_layout:add(netwidget)
@@ -346,12 +345,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-		--awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
-		--awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
+	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
+		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
 
-		--awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
-		--awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
-		--awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer -D pulse set Master toggle") end),
+		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
+		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
+		awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer -D pulse set Master toggle") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -468,6 +467,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Kmix" },
+      properties = { floating = true } },
 		{ rule = { class = "VirtualBox" },
       properties = { floating = true } },
 		{ rule = { class = "Xfce4-appfinder" },
@@ -486,8 +487,6 @@ awful.rules.rules = {
       properties = { tag = tags[1][0] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[2][9] } },
-		{ rule = { class = "skypeforlinux" },
-      properties = { tag = tags[2][9] } },
 		{ rule = { class = "transmission" },
       properties = { tag = tags[2][7] } },
 		
@@ -496,9 +495,11 @@ awful.rules.rules = {
 		{ rule = { class = "Clementine" },
       properties = { tag = tags[2][8] } },
 
-		{ rule = { class = "Chromium" },
+	 --[[ { rule = { class = "chromium" },]]
+      --[[properties = { tag = tags[1][3] } },]]
+		{ rule = { class = "chromium" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Google-chrome" },
+    { rule = { class = "google-chrome" },
       properties = { tag = tags[1][3] } },
     
 		{ rule = { class = "Thunderbird" },
@@ -584,7 +585,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --}}
 
---awful.util.spawn_with_shell("compton")
+awful.util.spawn_with_shell("compton")
 --awful.util.spawn_with_shell("kbdd")
 
 -- Autostart
@@ -598,21 +599,21 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
---[[run_once('/home/malvery/bin/urxvt.sh')]]
---run_once('nm-applet')
---run_once('numlockx')
---run_once('clipit')
---run_once('pulseaudio --start')
---run_once('redshift-gtk')
---run_once('google-chrome-stable --incognito')
---run_once('chromium')
---run_once('thunderbird')
---run_once('skype')
---run_once('shutter --min_at_startup')
---run_once('clementine')
-----run_once('pycharm')
+run_once('/home/malvery/bin/urxvt.sh')
+run_once('nm-applet')
+run_once('numlockx')
+run_once('clipit')
+run_once('pulseaudio --start')
+run_once('redshift-gtk')
+run_once('google-chrome-stable --incognito')
+run_once('chromium')
+run_once('thunderbird')
+run_once('skype')
+run_once('shutter --min_at_startup')
+run_once('clementine')
+--run_once('pycharm')
 
---awful.util.spawn_with_shell("killall kbdd || true")
---awful.util.spawn_with_shell("kbdd")
+awful.util.spawn_with_shell("killall kbdd || true")
+awful.util.spawn_with_shell("kbdd")
 
 -- }}}
