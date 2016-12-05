@@ -18,7 +18,7 @@ conf = gnomeConfig {
         , modMask = mod4Mask
         , terminal = "urxvt"
 				, normalBorderColor = "#383838"
-				, focusedBorderColor = "#5194e2"
+				, focusedBorderColor = "#7eb53c"
 	      , manageHook = myManageHook <+> manageDocks
         , layoutHook  = smartBorders (layoutHook gnomeConfig)
 				, startupHook = setWMName "LG3D" <+> ewmhDesktopsStartup
@@ -50,7 +50,8 @@ myKeys =
 				 , ((mod4Mask, xK_w), nextScreen)
 				 , ((mod4Mask, xK_e), prevScreen)
 	 
-         , ((mod4Mask, xK_s), raise (className =? "Skype"))
+				 {-, ((mod4Mask, xK_s), raise (className =? "Skype"))-}
+				 , ((mod4Mask, xK_s), raise (className =? "skypeforlinux"))
          , ((mod4Mask, xK_g), raise (className =? "Thunderbird"))
 
 				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "xmonad --restart")
@@ -70,14 +71,17 @@ myManageHook = composeAll
 		, isFullscreen --> doFullFloat
 
     , className =? "Wrapper-1.0"     --> doFloat
+		, className =? "VirtualBox"      --> doFloat
                 
     , className =? "Firefox"     --> doShift "0_2"
-    , className =? "chromium"    --> doShift "0_3"
+    , className =? "Chromium"    --> doShift "0_2"
+		, className =? "Google-chrome"    --> doShift "0_3"
 		, className =? "Thunderbird" --> doShift "0_9"
 
     , className =? "tmux-main"   --> doShift "1_1"
     , className =? "Clementine"  --> doShift "1_8"
 		, className =? "Skype"       --> doShift "1_9"
+		, className =? "skypeforlinux"  --> doShift "1_9"
 
   ]
 

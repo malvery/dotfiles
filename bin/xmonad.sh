@@ -1,4 +1,5 @@
 #!/bin/sh
 sleep 3
 xmonad --replace &
-nitrogen --restore &
+compton --xrender-sync-fence &
+#nitrogen --restore &
