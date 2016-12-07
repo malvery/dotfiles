@@ -54,7 +54,7 @@ myKeys =
 				 , ((mod4Mask, xK_s), raise (className =? "skypeforlinux"))
          , ((mod4Mask, xK_g), raise (className =? "Thunderbird"))
 
-				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "xmonad --restart")
+				 , ((mod4Mask  .|. shiftMask, xK_q), spawn "~/bin/xmonad-restart.sh")
 
 				 {-, ((mod4Mask  .|. shiftMask, xK_p), spawn "thunar")-}
 
