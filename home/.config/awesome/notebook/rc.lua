@@ -108,7 +108,7 @@ mymainmenu = awful.menu({ items = {
 		{ "Apps", xdgmenu	},	
 
 		{ "" },
-		{ "PCManFM", "pcmanfm" },
+		{ "Thunar", "thunar" },
 		{ "SMPlayer", "smplayer" },
 		{ "Torrent", "transmission-qt" },
 		{ "Browser", "chromium" },
@@ -380,7 +380,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "n", awful.client.restore),
 
 		-- Custom hotkeys
-	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("pcmanfm") end),
+	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("thunar") end),
 		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("slimlock") end),
 
 		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
@@ -504,8 +504,8 @@ awful.rules.rules = {
      { rule = { class = "gimp" },
       properties = { floating = true } },
 		{ rule = { class = "VirtualBox" },
-      properties = { floating = true } },
-    { rule = { class = "Skype" },
+      --properties = { floating = true } },
+    --{ rule = { class = "Skype" },
       properties = { floating = true } },
     { rule = { class = "Shutter" },
       properties = { floating = true } },
@@ -618,7 +618,8 @@ run_once('syndaemon -t -i 1')
 run_once('pulseaudio --start')
 run_once('redshift-gtk')
 run_once('nm-applet')
-run_once('chromium')
+run_once('xfce4-power-manager')
+run_once('firefox')
 run_once('nitrogen --restore')
 
 awful.util.spawn_with_shell("killall kbdd || true")

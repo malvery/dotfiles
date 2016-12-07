@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#!/bin/sh
+
+case "$1" in
+    resume|thaw)
+			DISPLAY=:0.0; export DISPLAY
+			su $USER -c "nm-applet" &
+
+			xbacklight -set `cat /tmp/xbacklight`
+			;;
+
+		suspend)
+			su $USER -c "killall nm-applet" || true
+			xbacklight -get > /tmp/xbacklight
+			;;
+esac
