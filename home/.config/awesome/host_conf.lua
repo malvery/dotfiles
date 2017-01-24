@@ -1,75 +1,93 @@
 -- #################################################
 -- vostro
+local conf_vostro = {
+	['theme'] = "themes/arc.lua",
 
-local run_vostro = {
-	'~/bin/urxvt.sh',
-	'clipit',
-	'syndaemon -t -i 1',
-	'pulseaudio --start',
-	'redshift-gtk',
-	'nm-applet',
-	'light-locker',
-	'xfce4-power-manager',
-	'chromium',
-	'nitrogen --restore'
-}
+	['autostart'] = {
+			'~/bin/urxvt.sh',
+			'clipit',
+			'syndaemon -t -i 1',
+			'pulseaudio --start',
+			'redshift-gtk',
+			'nm-applet',
+			'light-locker',
+			'xfce4-power-manager',
+			'chromium',
+			'nitrogen --restore'
+	},
+	
+	['w_rules'] = {
+			{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
+	},
 
-local rules_vostro = {
-	{ 
-		rule = { class = "Chromium" },
-    properties = { screen = 1, tag = "2" } 
-	}
-}
-
-local apps_vostro = {
-	["theme_name"]							= "themes/arc.lua",
-
-	["lock_manager"]	= "light-locker-command -l",
-	["file_manager"]	= "thunar",
-	["media_player"]	= "smplayer",
-	["torrents"]			= "transmission-qt",
-	["browser"]				= "chromium"
-}
-
-local widgets_vostro = {
-	['network'] = {
-		['name']		= "wifi",
-		['device']	= "wlp8s0"
+	['d_apps'] = {
+			["lock_manager"]	= "light-locker-command -l",
+			["file_manager"]	= "thunar",
+			["media_player"]	= "smplayer",
+			["torrents"]			= "transmission-qt",
+			["browser"]				= "chromium"
+	},
+	
+	['widget'] = {
+			['network'] = {
+					['name']		= "wifi",
+					['device']	= "wlp8s0"
+			}
 	}
 }
 
 -- #################################################
+-- work
+local conf_work = {
+	['theme'] = "themes/arc.lua",
 
+	['autostart'] = {
+			'~/bin/urxvt.sh',
+			'clipit',
+			'syndaemon -t -i 1',
+			'pulseaudio --start',
+			'redshift-gtk',
+			'nm-applet',
+			'xfce4-power-manager',
+			'google-chrome',
+			'nitrogen --restore'
+	},
+	
+	['w_rules'] = {
+			{ rule = { class = "google-chrome" }, properties = { screen = 1, tag = "2" } },
+			{ rule = { class = "Clementine" },		properties = { screen = 1, tag = "7" } },
+			{ rule = { class = "SkypeForLinux" }, properties = { screen = 1, tag = "8" } },
+			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "9" } },
+
+			--{ rule = { class = "Chromium" },			properties = { screen = 3, tag = "2" } },
+	},
+
+	['d_apps'] = {
+			["lock_manager"]	= "slimlock",
+			["file_manager"]	= "thunar",
+			["media_player"]	= "smplayer",
+			["torrents"]			= "transmission-qt",
+			["browser"]				= "chromium"
+	},
+	
+	['widget'] = {
+			['network'] = {
+					['name']		= "net",
+					['device']	= "wlp8s0"
+			}
+	}
+}
 -- #################################################
 
-function getRunList (hostname)
+function getConfList (hostname)
 	if string.find(hostname, "vostro") then
-		return run_vostro
+		return conf_vostro
+
+	elseif string.find(hostname, "ZAVYALOV_NB") then
+		return conf_work
+
 	else
 		return { }
 	end
 end
 
-function getRulesList (hostname)
-	if string.find(hostname, "vostro") then
-		return rules_vostro
-	else
-		return { }
-	end
-end
-
-function getAppsList (hostname)
-	if string.find(hostname, "vostro") then
-		return apps_vostro
-	else
-		return { }
-	end
-end
-
-function getWidgetsList (hostname)
-	if string.find(hostname, "vostro") then
-		return widgets_vostro
-	else
-		return { }
-	end
-end

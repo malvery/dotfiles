@@ -22,8 +22,7 @@ local conf_hostname = popen:read('*all')
 
 popen:close()
 
--- default apps list
-local default_apps = getAppsList(conf_hostname) 
+local host_conf = getConfList(conf_hostname)
 ----------------------------------------------
 
 -- {{{ Error handling
@@ -53,7 +52,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_configuration_dir() .. default_apps.theme_name)
+beautiful.init(awful.util.get_configuration_dir() .. host_conf.theme)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -109,12 +108,12 @@ exit_menu = {
 mymainmenu = awful.menu({ items = {
 		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
 		{ "" },
-		{ "Files",		default_apps.file_manager },
-		{ "Player",		default_apps.media_player },
-		{ "Torrent",	default_apps.torrents			},
-		{ "Browser",	default_apps.browser			},
+		{ "Files",		host_conf.d_apps.file_manager },
+		{ "Player",		host_conf.d_apps.media_player },
+		{ "Torrent",	host_conf.d_apps.torrents			},
+		{ "Browser",	host_conf.d_apps.browser			},
 		{ "" },
-		{ "Lock",			default_apps.lock_manager },
+		{ "Lock",			host_conf.d_apps.lock_manager },
 		{ "Exit",			exit_menu									}
 	}
 })
@@ -192,8 +191,6 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Custom widgets ---------------------------
-local widget_settings = getWidgetsList(conf_hostname)
-
 -- cpu
 cpuwidget = wibox.widget.textbox()
 vicious.register(cpuwidget, vicious.widgets.cpu, " CPU: $1% |")
@@ -205,10 +202,10 @@ vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
 -- eth
 netwidget = wibox.widget.textbox() 
 
-if widget_settings.network.name == 'net' then
-	vicious.register(netwidget, vicious.widgets.net, " NET: ${" .. widget_settings.network.device .. " down_kb}Kb/s |", 13)
-elseif widget_settings.network.name == 'wifi' then
-	vicious.register(netwidget, vicious.widgets.wifi, " WLAN: ${ssid} ${linp}% |", 13, widget_settings.network.device)
+if host_conf.widget.network.name == 'net' then
+	vicious.register(netwidget, vicious.widgets.net, " NET: ${" .. host_conf.widget.network.device .. " down_kb}Kb/s |", 13)
+elseif host_conf.widget.network.name == 'wifi' then
+	vicious.register(netwidget, vicious.widgets.wifi, " WLAN: ${ssid} ${linp}% |", 13, host_conf.widget.network.device)
 end
 
 -- volume
@@ -422,8 +419,8 @@ globalkeys = awful.util.table.join(
 		-- Custom hotkeys
 		awful.key({ modkey,           }, "r",			function () awful.util.spawn("gmrun") end),
 
-	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn(default_apps.file_manager) end),
-		awful.key({ modkey, "Shift"   }, "F12",		function () awful.util.spawn(default_apps.lock_manager) end),
+	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn(host_conf.d_apps.file_manager) end),
+		awful.key({ modkey, "Shift"   }, "F12",		function () awful.util.spawn(host_conf.d_apps.lock_manager) end),
 
 		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
 		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
@@ -580,7 +577,7 @@ local win_rules = {
 }
 
 -- load custom rules from host_conf.lua
-for key, value in ipairs(getRulesList(conf_hostname))
+for key, value in ipairs(host_conf.w_rules)
 do
 	table.insert(win_rules, value)	
 end
@@ -622,8 +619,7 @@ end
 
 awful.util.spawn_with_shell("(killall kbdd || true) && kbdd")
 
---naughty.notify({ text = conf_hostname })
-for key, value in ipairs(getRunList(conf_hostname))
+for key, value in ipairs(host_conf.autostart)
 do
 	run_once(value)
 end
