@@ -10,8 +10,21 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
--- Custom hosts rules
+
+--widgets
+local vicious = require("vicious") 
+
+-- Custom hosts rules -------------------------
 require("host_conf")
+
+local popen = assert(io.popen('hostname', 'r'))
+local conf_hostname = popen:read('*all')
+
+popen:close()
+
+-- default apps list
+local default_apps = getAppsList(conf_hostname) 
+----------------------------------------------
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -40,7 +53,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_configuration_dir() .. "themes/idea.lua")
+beautiful.init(awful.util.get_configuration_dir() .. default_apps.theme_name)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -96,13 +109,13 @@ exit_menu = {
 mymainmenu = awful.menu({ items = {
 		{ "Awesome", myawesomemenu, beautiful.awesome_icon },
 		{ "" },
-		{ "Thunar", "thunar" },
-		{ "SMPlayer", "smplayer" },
-		{ "Torrent", "transmission-qt" },
-		{ "Browser", "chromium" },
+		{ "Files",		default_apps.file_manager },
+		{ "Player",		default_apps.media_player },
+		{ "Torrent",	default_apps.torrents			},
+		{ "Browser",	default_apps.browser			},
 		{ "" },
-		{ "Lock", "light-locker-command -l" },
-		{ "Exit", exit_menu	}
+		{ "Lock",			default_apps.lock_manager },
+		{ "Exit",			exit_menu									}
 	}
 })
 
@@ -139,7 +152,7 @@ local taglist_buttons = awful.util.table.join(
                 )
 
 local tasklist_buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
+                     --[[awful.button({ }, 1, function (c)
                                               if c == client.focus then
                                                   c.minimized = true
                                               else
@@ -154,7 +167,7 @@ local tasklist_buttons = awful.util.table.join(
                                                   client.focus = c
                                                   c:raise()
                                               end
-                                          end),
+                                          end),]]
                      awful.button({ }, 3, client_menu_toggle_fn()),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
@@ -177,6 +190,72 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
+
+-- Custom widgets ---------------------------
+local widget_settings = getWidgetsList(conf_hostname)
+
+-- cpu
+cpuwidget = wibox.widget.textbox()
+vicious.register(cpuwidget, vicious.widgets.cpu, " CPU: $1% |")
+
+-- mem
+memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, " MEM: $1% |", 13)
+
+-- eth
+netwidget = wibox.widget.textbox() 
+
+if widget_settings.network.name == 'net' then
+	vicious.register(netwidget, vicious.widgets.net, " NET: ${" .. widget_settings.network.device .. " down_kb}Kb/s |", 13)
+elseif widget_settings.network.name == 'wifi' then
+	vicious.register(netwidget, vicious.widgets.wifi, " WLAN: ${ssid} ${linp}% |", 13, widget_settings.network.device)
+end
+
+-- volume
+volwidget = wibox.widget.textbox() 
+vicious.register(volwidget, vicious.widgets.volume, " VOL: $1% |", 2, "Master")
+
+function volume(action)
+	if action == "+" or action == "-" then
+		awful.util.spawn("amixer -D pulse set Master 5%" .. action .. " unmute")
+	elseif action == "toggle" then
+		awful.util.spawn("amixer -D pulse set Master toggle")
+	end
+	vicious.force({ volwidget })
+end
+
+volwidget:buttons(awful.util.table.join(
+	awful.button({ }, 3, function()
+		volume("toggle")
+	end),
+	awful.button({ }, 4, function()
+		volume("+")
+	end),
+	awful.button({ }, 5, function()
+		volume("-")
+	end)
+))
+
+-- batt
+batwidget = wibox.widget.textbox()
+vicious.register(batwidget, vicious.widgets.bat, " BAT: $2% :: ", 120 , "BAT0")
+
+function backlight(action)
+	if action == "dec" or action == "inc" then
+		awful.util.spawn("xbacklight -" .. action .. " 2")
+	end
+end
+
+batwidget:buttons(awful.util.table.join(
+	awful.button({ }, 4, function()
+		backlight("inc")
+	end),
+	awful.button({ }, 5, function()
+		backlight("dec")
+	end)
+))
+--
+------------------------------------------------------
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -216,7 +295,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+						cpuwidget,
+						memwidget,
+						netwidget,
+						volwidget,
+						batwidget,
+						mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -235,12 +319,15 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "a",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+
+    --[[awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
+
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+              {description = "view next", group = "tag"}),]]
+
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
@@ -316,17 +403,27 @@ globalkeys = awful.util.table.join(
 
 							
 		-- Custom screen navigation
-		awful.key({ modkey,           }, "w",			function () awful.screen.focus_relative(-1) end),	
-		awful.key({ modkey,           }, "e",			function () awful.screen.focus_relative( 1) end),
-		awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client.movetoscreen(c, -1) end),
-		awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client.movetoscreen(c,  1) end),
+		
+		awful.key({ modkey,           }, "q",			function () awful.screen.focus( 1) end),
+		awful.key({ modkey,           }, "w",			function () awful.screen.focus( 2) end),	
+		awful.key({ modkey,           }, "e",			function () awful.screen.focus( 3) end),
+		
+		awful.key({ modkey, "Shift"   }, "q",			function (c) awful.client.movetoscreen(c, 1) end),
+		awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client.movetoscreen(c, 2) end),
+		awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client.movetoscreen(c, 3) end),
+		
+		--awful.key({ modkey,           }, "w",			function () awful.screen.focus_relative(-1) end),	
+		--awful.key({ modkey,           }, "e",			function () awful.screen.focus_relative( 1) end),
+	  --	
+		--awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client:move_to_screen(c.screen.index-1) end),
+		--awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client:move_to_screen(c.screen.index+1) end),
 
 
 		-- Custom hotkeys
 		awful.key({ modkey,           }, "r",			function () awful.util.spawn("gmrun") end),
 
-	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn("thunar") end),
-		awful.key({ modkey, "Shift"   }, "F12",			function () awful.util.spawn("light-locker-command -l") end),
+	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn(default_apps.file_manager) end),
+		awful.key({ modkey, "Shift"   }, "F12",		function () awful.util.spawn(default_apps.lock_manager) end),
 
 		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
 		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
@@ -334,7 +431,15 @@ globalkeys = awful.util.table.join(
 
 		awful.key({ }, "XF86MonBrightnessUp",		function () awful.util.spawn("xbacklight -inc 2") end),
 		awful.key({ }, "XF86MonBrightnessDown",	function () awful.util.spawn("xbacklight -dec 2") end),
+		
+		-- Custom client manipulation
+		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
+		awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
+		awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),	
+		awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
 
+		awful.key({ modkey,           }, "s",	function () awful.tag.viewonly(awful.tag.gettags(1)[9])	end),
+		awful.key({ modkey,           }, "g",	function () awful.tag.viewonly(awful.tag.gettags(1)[8])	end),
 
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
@@ -439,18 +544,18 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
+local win_rules = {
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
+      properties = { 
+				border_width = beautiful.border_width,
+        border_color = beautiful.border_normal,
+        focus = awful.client.focus.filter,
+        raise = true,
+        keys = clientkeys,
+        buttons = clientbuttons,
+        screen = awful.screen.preferred,
+        placement = awful.placement.no_overlap+awful.placement.no_offscreen			
+			}
     },
 
     -- Floating clients.
@@ -472,11 +577,15 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
+
+-- load custom rules from host_conf.lua
+for key, value in ipairs(getRulesList(conf_hostname))
+do
+	table.insert(win_rules, value)	
+end
+
+awful.rules.rules = win_rules
 
 -- }}}
 
@@ -501,7 +610,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-
 -- Autostart
 function run_once(cmd)
   findme = cmd
@@ -514,13 +622,10 @@ end
 
 awful.util.spawn_with_shell("(killall kbdd || true) && kbdd")
 
-awful.spawn.with_line_callback("hostname", {
-	stdout = function(hostname)
-		for key, value in ipairs(getRunList(hostname))
-		do
-			run_once(value)
-		end
-	end
-})
+--naughty.notify({ text = conf_hostname })
+for key, value in ipairs(getRunList(conf_hostname))
+do
+	run_once(value)
+end
 
 -- }}}
