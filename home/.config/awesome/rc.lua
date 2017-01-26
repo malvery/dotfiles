@@ -22,6 +22,7 @@ local conf_hostname = popen:read('*all')
 
 popen:close()
 
+--naughty.notify({ text = conf_hostname })
 local host_conf = getConfList(conf_hostname)
 ----------------------------------------------
 
@@ -52,6 +53,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
+--naughty.notify({ text = awful.util.get_configuration_dir() .. host_conf.theme })
 beautiful.init(awful.util.get_configuration_dir() .. host_conf.theme)
 
 -- This is used later as the default terminal and editor to run.
@@ -402,12 +404,12 @@ globalkeys = awful.util.table.join(
 		-- Custom screen navigation
 		
 		awful.key({ modkey,           }, "q",			function () awful.screen.focus( 1) end),
-		awful.key({ modkey,           }, "w",			function () awful.screen.focus( 2) end),	
-		awful.key({ modkey,           }, "e",			function () awful.screen.focus( 3) end),
+		awful.key({ modkey,           }, "w",			function () awful.screen.focus( 3) end),	
+		awful.key({ modkey,           }, "e",			function () awful.screen.focus( 2) end),
 		
 		awful.key({ modkey, "Shift"   }, "q",			function (c) awful.client.movetoscreen(c, 1) end),
-		awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client.movetoscreen(c, 2) end),
-		awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client.movetoscreen(c, 3) end),
+		awful.key({ modkey, "Shift"   }, "w",			function (c) awful.client.movetoscreen(c, 3) end),
+		awful.key({ modkey, "Shift"   }, "e",			function (c) awful.client.movetoscreen(c, 2) end),
 		
 		--awful.key({ modkey,           }, "w",			function () awful.screen.focus_relative(-1) end),	
 		--awful.key({ modkey,           }, "e",			function () awful.screen.focus_relative( 1) end),

@@ -54,10 +54,10 @@ local conf_work = {
 	},
 	
 	['w_rules'] = {
-			{ rule = { class = "google-chrome" }, properties = { screen = 1, tag = "2" } },
+			{ rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "2" } },
 			{ rule = { class = "Clementine" },		properties = { screen = 1, tag = "7" } },
-			{ rule = { class = "SkypeForLinux" }, properties = { screen = 1, tag = "8" } },
-			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "9" } },
+			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "8" } },
+			{ rule = { class = "skypeforlinux" }, properties = { screen = 1, tag = "9" } },
 
 			--{ rule = { class = "Chromium" },			properties = { screen = 3, tag = "2" } },
 	},
@@ -65,7 +65,7 @@ local conf_work = {
 	['d_apps'] = {
 			["lock_manager"]	= "slimlock",
 			["file_manager"]	= "thunar",
-			["media_player"]	= "smplayer",
+			["media_player"]	= "clementine",
 			["torrents"]			= "transmission-qt",
 			["browser"]				= "chromium"
 	},
@@ -73,21 +73,23 @@ local conf_work = {
 	['widget'] = {
 			['network'] = {
 					['name']		= "net",
-					['device']	= "wlp8s0"
+					['device']	= "enp0s31f6"
 			}
 	}
 }
 -- #################################################
 
 function getConfList (hostname)
+
 	if string.find(hostname, "vostro") then
 		return conf_vostro
 
-	elseif string.find(hostname, "ZAVYALOV_NB") then
+	elseif string.find(hostname, "NB-ZAVYALOV") then
 		return conf_work
 
 	else
-		return { }
+		return conf_work
+
 	end
 end
 
