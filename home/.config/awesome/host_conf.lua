@@ -10,9 +10,10 @@ local conf_vostro = {
 			'pulseaudio --start',
 			'redshift-gtk',
 			'nm-applet',
-			'light-locker',
+			--'light-locker',
 			'xfce4-power-manager',
 			'chromium',
+			--'firefox',
 			'nitrogen --restore'
 	},
 	
@@ -21,7 +22,8 @@ local conf_vostro = {
 	},
 
 	['d_apps'] = {
-			["lock_manager"]	= "light-locker-command -l",
+			--["lock_manager"]	= "light-locker-command -l",
+			["lock_manager"]	= "slimlock",
 			["file_manager"]	= "thunar",
 			["media_player"]	= "smplayer",
 			["torrents"]			= "transmission-qt",
