@@ -567,6 +567,10 @@ local win_rules = {
           "Wpa_gui",
 				},
 
+				class = {
+          "Chromium",
+				},
+
         name = {
           "Event Tester",  -- xev.
         },
