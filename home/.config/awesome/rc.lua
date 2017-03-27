@@ -437,8 +437,8 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),	
 		awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
 
-		awful.key({ modkey,           }, "s",	function () awful.tag.viewonly(awful.tag.gettags(1)[9])	end),
-		awful.key({ modkey,           }, "g",	function () awful.tag.viewonly(awful.tag.gettags(1)[8])	end),
+		awful.key({ modkey,           }, "s",	function () awful.tag.viewonly(awful.tag.gettags(awful.tag.getscreen())[9])	end),
+		awful.key({ modkey,           }, "g",	function () awful.tag.viewonly(awful.tag.gettags(awful.tag.getscreen())[8])	end),
 
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
