@@ -78,7 +78,7 @@ theme.wallpaper = "/usr/share/awesome/themes/default/background.png"
 -- You can use your own layout icons like this:
 --theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
 --theme.layout_fairv = "/usr/share/awesome/themes/default/layouts/fairvw.png"
---theme.layout_floating  = "/usr/share/awesome/themes/zenburn/layouts/floatingw.png"
+theme.layout_floating  = "/usr/share/awesome/themes/zenburn/layouts/floating.png"
 theme.layout_magnifier = "/usr/share/awesome/themes/zenburn/layouts/magnifier.png"
 theme.layout_max = "/usr/share/awesome/themes/zenburn/layouts/max.png"
 --theme.layout_fullscreen = "/usr/share/awesome/themes/default/layouts/fullscreenw.png"
