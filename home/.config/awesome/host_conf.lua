@@ -52,15 +52,18 @@ local conf_work = {
 			'nm-applet',
 			'xfce4-power-manager',
 			'google-chrome',
-			'nitrogen --restore'
+			'nitrogen --restore',
+			'thunderbird',
+			'slack',
+			'skypeforlinux'
 	},
 	
 	['w_rules'] = {
 			{ rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "2" } },
-			{ rule = { class = "Clementine" },		properties = { screen = 1, tag = "7" } },
+			{ rule = { class = "Clementine" },		properties = { screen = 1, tag = "6" } },
+			{ rule = { class = "skypeforlinux" }, properties = { screen = 1, tag = "7" } },
 			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "8" } },
-			{ rule = { class = "skypeforlinux" }, properties = { screen = 1, tag = "9" } },
-
+			{ rule = { class = "Slack" },					properties = { screen = 1, tag = "9" } },
 			--{ rule = { class = "Chromium" },			properties = { screen = 3, tag = "2" } },
 	},
 
