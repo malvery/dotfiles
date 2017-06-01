@@ -47,6 +47,7 @@ local conf_work = {
 			'~/bin/urxvt.sh',
 			'clipit',
 			'syndaemon -t -i 1',
+			'lxpolkit',
 			'pulseaudio --start',
 			'redshift-gtk',
 			'nm-applet',
@@ -56,7 +57,7 @@ local conf_work = {
 			'thunderbird',
 			'slack',
 			--'skypeforlinux',
-			'xset m 1/4 1'
+			--'xset m 1/4 1'
 	},
 	
 	['w_rules'] = {

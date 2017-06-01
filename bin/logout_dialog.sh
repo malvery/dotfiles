@@ -20,7 +20,7 @@ if [ -n "${ACTION}" ];then
    systemctl reboot
    ;;
 	Logout)
-	 #killall xmonad-x86_64-linux
+	 killall i3
    ;;
  esac
 fi
