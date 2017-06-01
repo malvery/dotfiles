@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-	<menu execute="obm-xdg /etc/xdg/menus/lxqt-applications.menu" id="xdg-menu" label="Apps"/>
+	<menu execute="obm-xdg /etc/xdg/menus/xfce-applications.menu" id="xdg-menu" label="Apps"/>
 	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
 	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
 	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
@@ -50,7 +50,65 @@
 		</item>
 	</menu>
 
+	<menu id="exit" label="Exit">
+		<item label="Lock">
+			<action name="Execute">
+				<command>slimlock</command>
+				<startupnotify>
+					<enabled>no</enabled>
+				</startupnotify>
+			</action>
+		</item>
+
+		<item label="Reboot">
+			<action name="Execute">
+				<command>systemctl reboot</command>
+				<prompt>Reboot this host?</prompt>
+			</action>
+		</item>
+
+		<item label="Halt">
+			<action name="Execute">
+				<command>systemctl poweroff</command>
+				<prompt>Shutdowm this host?</prompt>
+			</action>
+		</item>
+
+		<item label="Log Out">
+			<action name="Exit">
+				<prompt>yes</prompt>
+			</action>
+		</item>
+	</menu>
+
 	<menu id="root-menu" label="Openbox 3">
+
+		<item label="Term">
+			<action name="Execute">
+				<command>urxvt</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="File">
+			<action name="Execute">
+				<command>thunar</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Video">
+			<action name="Execute">
+				<command>smplayer</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+
+		<separator/>
 		<menu id="xdg-menu"/>
 		<menu id="places-menu"/>
 
@@ -58,22 +116,6 @@
 		<menu id="system-menu"/>
 		<separator/>
 
-		<item label="Lock">
-			<action name="Execute">
-				<command>mate-screensaver-command -l</command>
-				<startupnotify>
-					<enabled>no</enabled>
-				</startupnotify>
-			</action>
-		</item>
-
-		<item label="Exit">
-			<action name="Execute">
-				<command>mate-session-save --shutdown-dialog</command>
-				<startupnotify>
-					<enabled>no</enabled>
-				</startupnotify>
-			</action>
-		</item>
+		<menu id="exit"/>
 	</menu>
 </openbox_menu>
