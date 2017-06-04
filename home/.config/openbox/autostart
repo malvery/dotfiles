@@ -22,3 +22,4 @@ xfce4-panel -d &
 redshift-gtk &
 syndaemon -t -i 1 &
 nitrogen --restore &
+compton --xrender-sync-fence &

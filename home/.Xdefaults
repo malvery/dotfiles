@@ -1,5 +1,6 @@
 URxvt.termName:	rxvt-unicode-256color
 URxvt.font:			xft:Hack:size=10:regular:pixelsize=13
+!URxvt.iconFile:    /usr/share/icons/Faience/apps/scalable/Terminal.svg
 
 URxvt.perl-ext-common: clipboard,keyboard-select
 

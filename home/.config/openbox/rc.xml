@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arc-Dark</name>
+    <name>oomox-mediterranean-dark</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -487,31 +487,31 @@
     </keybind>
     <!-- Keybindings for multimedia keys -->
     <!-- Keybindings for running applications -->
-		<keybind key="W-r">
-			<action name="Execute">
-				<command>gmrun</command>
-			</action>
-		</keybind>
-		<keybind key="C-grave">
-			<action name="Execute">
-				<command>xfce4-popup-clipman</command>
-			</action>
-		</keybind>
-		<keybind key="W-S-p">
-			<action name="Execute">
-				<command>thunar</command>
-			</action>
-		</keybind>
-		<keybind key="W-S-F12">
-			<action name="Execute">
-				<command>slimlock</command>
-			</action>
-		</keybind>
-		<keybind key="W-S-Return">
-			<action name="Execute">
-				<command>urxvt</command>
-			</action>
-		</keybind>
+    <keybind key="W-r">
+      <action name="Execute">
+        <command>gmrun</command>
+      </action>
+    </keybind>
+    <keybind key="C-grave">
+      <action name="Execute">
+        <command>xfce4-popup-clipman</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-p">
+      <action name="Execute">
+        <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F12">
+      <action name="Execute">
+        <command>slimlock</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-Return">
+      <action name="Execute">
+        <command>urxvt</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
@@ -971,6 +971,9 @@
       <maximized>true</maximized>
       <decor>no</decor>
     </application>-->
+    <application class="Firefox">
+      <decor>no</decor>
+    </application>
     <application role="app">
       <decor>yes</decor>
       <maximized>false</maximized>
