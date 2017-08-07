@@ -1,60 +1,111 @@
-# sample config for khd
+# reload config
+cmd + alt + ctrl - r : khd -e "reload"
+
+# open terminal, blazingly fast compared to iTerm/Hyper
+shift + alt - return : open -na /Applications/iTerm.app
+
+# maximize window
+alt - m     : chunkc tiling::window --warp-floating fullscreen
+#
+# toggle window native fullscreen
+alt - f : chunkc tiling::window --toggle native-fullscreen
+
+# move floating windows / windows on a floating space
+shift + alt - up     : chunkc tiling::window --warp-floating top-left
+shift + alt - down   : chunkc tiling::window --warp-floating bottom-left
+shift + alt - left   : chunkc tiling::window --warp-floating left
+shift + alt - right  : chunkc tiling::window --warp-floating right
 
 
-# Workspaces
-alt - 1 : /usr/local/bin/kwmc space -fExperimental 1
-alt - 2 : /usr/local/bin/kwmc space -fExperimental 2
-alt - 3 : /usr/local/bin/kwmc space -fExperimental 3
-alt - 4 : /usr/local/bin/kwmc space -fExperimental 4
-alt - 5 : /usr/local/bin/kwmc space -fExperimental 5
-alt - 6 : /usr/local/bin/kwmc space -fExperimental 6
-alt - 7 : /usr/local/bin/kwmc space -fExperimental 7
-alt - 8 : /usr/local/bin/kwmc space -fExperimental 8
-alt - 9 : /usr/local/bin/kwmc space -fExperimental 9
+## send window to desktop
+shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
+shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
+shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
+shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
+shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
+shift + alt - 7 : chunkc tiling::window --send-to-desktop 6
 
-alt - s : /usr/local/bin/kwmc space -fExperimental 6
+## switch to last active desktop
+alt - escape : `id=$(chunkc get _last_active_desktop); khd -p "alt - $id" &> /dev/null`
 
-alt + shift - 1 : /usr/local/bin/kwmc window -m space 1
-alt + shift - 2 : /usr/local/bin/kwmc window -m space 2
-alt + shift - 3 : /usr/local/bin/kwmc window -m space 3
-alt + shift - 4 : /usr/local/bin/kwmc window -m space 4
-alt + shift - 5 : /usr/local/bin/kwmc window -m space 5
-alt + shift - 6 : /usr/local/bin/kwmc window -m space 6
-alt + shift - 7 : /usr/local/bin/kwmc window -m space 7
-alt + shift - 8 : /usr/local/bin/kwmc window -m space 8
-alt + shift - 9 : /usr/local/bin/kwmc window -m space 9
+## switch to <NUM> desktop
 
-alt - escape : /usr/local/bin/kwmc space -fExperimental previous
+alt - g : `khd -p "alt - 7" &> /dev/null`
+alt - s : `khd -p "alt - 8" &> /dev/null`
 
-
-# Screens
-alt - w : /usr/local/bin/kwmc display -f 1
-alt - e : /usr/local/bin/kwmc display -f 0
-
-alt + shift - w : /usr/local/bin/kwmc window -m display 1
-alt + shift - e : /usr/local/bin/kwmc window -m display 0
+## send window to desktop and switch desktop
+##shift + cmd - 1 : chunkc window -d 1; khd -p "alt - 1"
+##shift + cmd - 2 : chunkc window -d 2; khd -p "alt - 2"
+##shift + cmd - 3 : chunkc window -d 3; khd -p "alt - 3"
+##shift + cmd - 4 : chunkc window -d 4; khd -p "alt - 4"
+##shift + cmd - 5 : chunkc window -d 5; khd -p "alt - 5"
+##shift + cmd - 6 : chunkc window -d 6; khd -p "alt - 6"
 
 
-# Tiling mode
-alt - t : /usr/local/bin/kwmc space -t bsp
-alt - m : /usr/local/bin/kwmc space -t monocle
+### focus monitor
+##ctrl + alt - z  : chunkc monitor -f prev
+##ctrl + alt - c  : chunkc monitor -f next
+##ctrl + alt - 1  : chunkc monitor -f 1
+##ctrl + alt - 2  : chunkc monitor -f 2
+##ctrl + alt - 3  : chunkc monitor -f 3
 
-alt + shift - f : /usr/local/bin/kwmc space -t float
+### send window to monitor and follow focus
+##ctrl + cmd - z  : chunkc window --send-to-monitor prev; chunkc monitor -f prev
+##ctrl + cmd - c  : chunkc window --send-to-monitor next; chunkc monitor -f next
+##ctrl + cmd - 1  : chunkc window --send-to-monitor 1; chunkc monitor -f 1
+##ctrl + cmd - 2  : chunkc window --send-to-monitor 2; chunkc monitor -f 2
+##ctrl + cmd - 3  : chunkc window --send-to-monitor 3; chunkc monitor -f 3
 
-# Windows actions
-alt					- tab : /usr/local/bin/kwmc window -f next
-alt + shift - tab : /usr/local/bin/kwmc window -f prev
 
-alt - f : /usr/local/bin/kwmc window -z fullscreen
 
-# Container action
-alt - h : /usr/local/bin/kwmc window -c expand 0.01 west
-alt - j : /usr/local/bin/kwmc window -c expand 0.01 north
-alt - k : /usr/local/bin/kwmc window -c expand 0.01 south
-alt - l : /usr/local/bin/kwmc window -c expand 0.01 east
+#### Tiling
 
-alt + shift - l : /usr/local/bin/kwmc window -c reduce 0.01 west
-alt + shift - k : /usr/local/bin/kwmc window -c reduce 0.01 north
-alt + shift - j : /usr/local/bin/kwmc window -c reduce 0.01 south
-alt + shift - h : /usr/local/bin/kwmc window -c reduce 0.01 east
+## focus window
+#alt - h : chunkc tiling::window --focus west
+#alt - j : chunkc tiling::window --focus south
+#alt - k : chunkc tiling::window --focus north
+#alt - l : chunkc tiling::window --focus east
+
+#alt - tab : chunkc tiling::window --focus next
+#alt + shift - tab : chunkc tiling::window --focus prev
+
+## equalize size of windows
+#shift + alt - 0 : chunkc tiling::desktop --equalize
+
+## swap window
+#shift + alt - h : chunkc tiling::window --swap west
+#shift + alt - j : chunkc tiling::window --swap south
+#shift + alt - k : chunkc tiling::window --swap north
+#shift + alt - l : chunkc tiling::window --swap east
+
+## increase region size
+#ctrl + alt - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west
+#ctrl + alt - j : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south
+#ctrl + alt - k : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north
+#ctrl + alt - l : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east
+
+## decrease region size
+#ctrl + shift + alt - h : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
+#ctrl + shift + alt - j : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
+#ctrl + shift + alt - k : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
+#ctrl + shift + alt - l : chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
+
+
+
+## toggle window parent zoom
+#alt - d : chunkc tiling::window --toggle parent
+
+## toggle window split type
+#alt - e : chunkc tiling::window --toggle split
+
+## rotate tree
+#alt - r : chunkc tiling::desktop --rotate 90
+
+## float / unfloat window
+#alt - t : chunkc tiling::window --toggle float
+
+## change layout of desktop
+#ctrl + alt - a : chunkc tiling::desktop --layout bsp
+#ctrl + alt - s : chunkc tiling::desktop --layout monocle
+#ctrl + alt - d : chunkc tiling::desktop --layout float
 
