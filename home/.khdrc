@@ -4,17 +4,20 @@ cmd + alt + ctrl - r : khd -e "reload"
 # open terminal, blazingly fast compared to iTerm/Hyper
 shift + alt - return : open -na /Applications/iTerm.app
 
+# close window
+shift + alt - c : chunkc tiling::window --close
+
 # maximize window
-alt - m     : chunkc tiling::window --warp-floating fullscreen
-#
+shift + alt - m     : chunkc tiling::window --warp-floating fullscreen
+
 # toggle window native fullscreen
-alt - f : chunkc tiling::window --toggle native-fullscreen
+shift + alt - f : chunkc tiling::window --toggle native-fullscreen
 
 # move floating windows / windows on a floating space
-shift + alt - up     : chunkc tiling::window --warp-floating top-left
-shift + alt - down   : chunkc tiling::window --warp-floating bottom-left
-shift + alt - left   : chunkc tiling::window --warp-floating left
-shift + alt - right  : chunkc tiling::window --warp-floating right
+shift + alt - h : chunkc tiling::window --warp-floating left
+shift + alt - j : chunkc tiling::window --warp-floating top-left
+shift + alt - k : chunkc tiling::window --warp-floating bottom-left
+shift + alt - l : chunkc tiling::window --warp-floating right
 
 
 ## send window to desktop
@@ -23,15 +26,17 @@ shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
 shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
 shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
 shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
-shift + alt - 7 : chunkc tiling::window --send-to-desktop 6
+shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+shift + alt - 7 : chunkc tiling::window --send-to-desktop 7
+shift + alt - 8 : chunkc tiling::window --send-to-desktop 8
 
 ## switch to last active desktop
 alt - escape : `id=$(chunkc get _last_active_desktop); khd -p "alt - $id" &> /dev/null`
 
 ## switch to <NUM> desktop
 
-alt - g : `khd -p "alt - 7" &> /dev/null`
-alt - s : `khd -p "alt - 8" &> /dev/null`
+# alt - g : `khd -p "alt - 7" &> /dev/null`
+# alt - s : `khd -p "alt - 8" &> /dev/null`
 
 ## send window to desktop and switch desktop
 ##shift + cmd - 1 : chunkc window -d 1; khd -p "alt - 1"
