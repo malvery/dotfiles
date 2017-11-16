@@ -1,5 +1,5 @@
 # reload config
-cmd + alt + ctrl - r : khd -e "reload"
+# cmd + alt + ctrl - r : khd -e "reload"
 
 # open terminal, blazingly fast compared to iTerm/Hyper
 shift + alt - return : open -na /Applications/iTerm.app
@@ -31,12 +31,12 @@ shift + alt - 7 : chunkc tiling::window --send-to-desktop 7
 shift + alt - 8 : chunkc tiling::window --send-to-desktop 8
 
 ## switch to last active desktop
-alt - escape : `id=$(chunkc get _last_active_desktop); khd -p "alt - $id" &> /dev/null`
+#alt - escape : ID=$(chunkc get _last_active_desktop); CMD=$(echo tell application \"System Events\" to key code \{item \(id of \"$ID\" - 47\) of \{29, 18, 19, 20, 21, 23, 22, 26, 28, 25\}\} using \{option down\}); osascript -e $CMD
 
 ## switch to <NUM> desktop
+#alt - g : osascript -e 'tell application "System Events" to key code "26" using {option down}'
+#alt - s : osascript -e 'tell application "System Events" to key code "28" using {option down}'
 
-# alt - g : `khd -p "alt - 7" &> /dev/null`
-# alt - s : `khd -p "alt - 8" &> /dev/null`
 
 ## send window to desktop and switch desktop
 ##shift + cmd - 1 : chunkc window -d 1; khd -p "alt - 1"
