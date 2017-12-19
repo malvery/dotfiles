@@ -32,24 +32,45 @@ hs.hotkey.bind({"alt", "shift"}, "f", function()
 end)
 
 -- resize window ------------------------------------
+--[[-- inc size]]
+--hs.hotkey.bind({"alt", "shift"}, ".", function()
+  --local win = hs.window.focusedWindow()
+  --local f = win:frame()
+
+  --f.w = f.w + 15
+  --f.h = f.h + 15
+  --win:setFrame(f)
+--end)
+
+---- dec size
+--hs.hotkey.bind({"alt", "shift"}, ",", function()
+  --local win = hs.window.focusedWindow()
+  --local f = win:frame()
+
+  --f.w = f.w - 15
+  --f.h = f.h - 15
+  --win:setFrame(f)
+--[[end)]]
+
+-- GRID ---------------------------------------------
+hs.grid.setMargins({0, 0})
+hs.grid.setGrid('16x9', '2560x1440')
+
 -- inc size
 hs.hotkey.bind({"alt", "shift"}, ".", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-
-  f.w = f.w + 15
-  f.h = f.h + 15
-  win:setFrame(f)
+	local win = hs.window.focusedWindow()
+	hs.grid.resizeWindowWider(win)
+  
 end)
 
 -- dec size
 hs.hotkey.bind({"alt", "shift"}, ",", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
+	hs.grid.resizeWindowThinner(ws)
+end)
 
-  f.w = f.w - 15
-  f.h = f.h - 15
-  win:setFrame(f)
+hs.hotkey.bind({"alt", "shift"}, "w", function()
+	hs.grid.toggleShow()
 end)
 
 -- move window --------------------------------------
@@ -115,20 +136,19 @@ hs.hotkey.bind({"alt", "shift"}, "l", function()
   win:setFrame(f)
 end)
 
--------------------------------------------------------
--- windows switch
-hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
-hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
+-- windows switch -----------------------------------
+--[[hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}]]
+--hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
 
-hs.window.switcher.ui.showThumbnails = false
-hs.window.switcher.ui.showSelectedThumbnail = false
-hs.window.switcher.ui.showSelectedTitle = false
-hs.window.switcher.ui.showTitles = false
-hs.window.switcher.ui.thumbnailSize = 128
+--hs.window.switcher.ui.showThumbnails = false
+--hs.window.switcher.ui.showSelectedThumbnail = false
+--hs.window.switcher.ui.showSelectedTitle = false
+--hs.window.switcher.ui.showTitles = false
+--hs.window.switcher.ui.thumbnailSize = 128
 
-switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}) -- include minimized/hidden windows, current Space only
+--switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}) include minimized/hidden windows, current Space only
 
-hs.hotkey.bind({'alt'}, 'tab', function()
-	switcher:next()
-end)
+--hs.hotkey.bind({'alt'}, 'tab', function()
+	--switcher:next()
+--[[end)]]
 
