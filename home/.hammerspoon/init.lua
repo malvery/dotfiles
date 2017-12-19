@@ -15,7 +15,8 @@ end)
 -- maximize
 hs.hotkey.bind({"alt", "shift"}, "m", function()
   local win = hs.window.focusedWindow()
-	win:maximize()
+	--win:maximize()
+	hs.grid.maximizeWindow(win)
 end)
 
 -- hide to dock
