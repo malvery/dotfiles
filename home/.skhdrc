@@ -66,22 +66,22 @@ shift + alt - 8 : chunkc tiling::window --send-to-desktop 8
 #### Tiling
 
 ## focus window
-#alt - h : chunkc tiling::window --focus west
-#alt - j : chunkc tiling::window --focus south
-#alt - k : chunkc tiling::window --focus north
-#alt - l : chunkc tiling::window --focus east
+alt - h : chunkc tiling::window --focus west
+alt - j : chunkc tiling::window --focus south
+alt - k : chunkc tiling::window --focus north
+alt - l : chunkc tiling::window --focus east
 
 #alt - tab : chunkc tiling::window --focus next
 #alt + shift - tab : chunkc tiling::window --focus prev
 
 ## equalize size of windows
-#shift + alt - 0 : chunkc tiling::desktop --equalize
+shift + alt - 0 : chunkc tiling::desktop --equalize
 
 ## swap window
-#shift + alt - h : chunkc tiling::window --swap west
-#shift + alt - j : chunkc tiling::window --swap south
-#shift + alt - k : chunkc tiling::window --swap north
-#shift + alt - l : chunkc tiling::window --swap east
+shift + alt - h : chunkc tiling::window --swap west
+shift + alt - j : chunkc tiling::window --swap south
+shift + alt - k : chunkc tiling::window --swap north
+shift + alt - l : chunkc tiling::window --swap east
 
 ## increase region size
 #ctrl + alt - h : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west
@@ -101,16 +101,16 @@ shift + alt - 8 : chunkc tiling::window --send-to-desktop 8
 #alt - d : chunkc tiling::window --toggle parent
 
 ## toggle window split type
-#alt - e : chunkc tiling::window --toggle split
+alt - e : chunkc tiling::window --toggle split
 
 ## rotate tree
 #alt - r : chunkc tiling::desktop --rotate 90
 
 ## float / unfloat window
-#alt - t : chunkc tiling::window --toggle float
+alt - t : chunkc tiling::window --toggle float
 
 ## change layout of desktop
-#ctrl + alt - a : chunkc tiling::desktop --layout bsp
-#ctrl + alt - s : chunkc tiling::desktop --layout monocle
-#ctrl + alt - d : chunkc tiling::desktop --layout float
+ctrl + alt - a : chunkc tiling::desktop --layout bsp
+ctrl + alt - s : chunkc tiling::desktop --layout monocle
+ctrl + alt - d : chunkc tiling::desktop --layout float
 
