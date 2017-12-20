@@ -1,5 +1,5 @@
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-	hs.alert.show(hs.application.runningApplications())
+	hs.alert.show('test alert')
 end)
 
 -- setup animations params
@@ -49,12 +49,6 @@ hs.hotkey.bind({"alt", "shift"}, "f", function()
 	win:toggleFullScreen()
 end)
 
--- hide to dock
-hs.hotkey.bind({"alt", "shift"}, "i", function()
-  local win = hs.window.focusedWindow()
-	win:minimize()
-end)
-
 -- center
 hs.hotkey.bind({"alt", "shift"}, "return", function()
   local win = hs.window.focusedWindow()
@@ -85,7 +79,7 @@ hs.grid.ui.showExtraKeys = false
 --hs.grid.setGrid('32x18', '2560x1440')
 
 -- show grid selector
-hs.hotkey.bind({"alt", "shift"}, "w", function()
+hs.hotkey.bind({"alt", "shift"}, "g", function()
 	hs.grid.toggleShow()
 end)
 
@@ -126,7 +120,9 @@ hs.hotkey.bind({"alt", "ctrl"}, "l", function()
 end)
 
 
--- windows switch -----------------------------------
+----------------------------------------------------
+-- windows switcher 
+----------------------------------------------------
 --[[hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}]]
 --hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
 
@@ -142,32 +138,95 @@ end)
 	--switcher:next()
 --[[end)]]
 
---  -----------------------------------
-local chooser = hs.chooser.new(function(choice)
-	if not (choice == nil) then
-		--hs.alert.show(choice['text'])
-		local window = hs.window.find(choice['id'])
+----------------------------------------------------
+-- choosers for minimized to dock windows
+----------------------------------------------------
+-- callback func for selected window
+local min_windows_chooser = hs.chooser.new(function(windows_choices)
+	if not (windows_choices == nil) then
+		local window = hs.window.find(windows_choices['id'])
 		window:unminimize()
 		window:focus()
 	end
 end)
 
-chooser:searchSubText(true)
-chooser:bgDark(true)
+-- chooser params
+min_windows_chooser:searchSubText(true)
+min_windows_chooser:bgDark(true)
 
-wf_min = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
-hs.hotkey.bind({"alt", "ctrl"}, "i", function()
-	local choices = {}
-	for k,v in pairs(wf_min:getWindows()) do
-		if v:isMinimized() then 
-			table.insert(choices, {
-				["text"] = v:application():name(),
-				["subText"] = v:title(),
-				["id"] = v:id()
+-- window filter
+curr_space_wf = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
+all_wf = hs.window.filter.new():setDefaultFilter{}
+
+-- bind hotkey
+hs.hotkey.bind({"alt", "shift"}, "i", function()
+	local windows_choices = {}
+	
+	-- windows from filter -> chooser
+	for k,window in pairs(curr_space_wf:getWindows()) do
+		if window:isMinimized() then 
+			table.insert(windows_choices, {
+				["text"] = window:application():name(),
+				["subText"] = window:title(),
+				["id"] = window:id()
 			})
 		end
 	end
-
-	chooser:choices(choices)
-	chooser:show() 
+	
+	-- show chooser
+	min_windows_chooser:choices(windows_choices)
+	min_windows_chooser:show() 
 end)
+
+hs.hotkey.bind({"alt", "shift"}, "a", function()
+	local windows_choices = {}
+	
+	-- windows from filter -> chooser
+	for k,window in pairs(all_wf:getWindows()) do
+		table.insert(windows_choices, {
+			["text"] = window:application():name(),
+			["subText"] = window:title(),
+			["id"] = window:id()
+		})
+	end
+	
+	-- show chooser
+	min_windows_chooser:choices(windows_choices)
+	min_windows_chooser:show() 
+end)
+
+----------------------------------------------------
+-- ??? 
+----------------------------------------------------
+-- dec size
+--[[hs.hotkey.bind({"alt", "shift"}, ",", function()]]
+  --local win = hs.window.focusedWindow()
+  --local f = win:frame()
+	--local screen = win:screen()
+  --local max = screen:frame()
+	--local offset = 30
+
+  --f.w = f.w - offset
+  --f.h = f.h - offset
+	--if max.x < f.x then f.x = f.x + offset / 2 end
+	--if max.y < f.y then f.y = f.y + offset / 2 end
+
+  --win:setFrame(f)
+--[[end)]]
+
+-- inc size
+--[[hs.hotkey.bind({"alt", "shift"}, ".", function()]]
+  --local win = hs.window.focusedWindow()
+  --local f = win:frame()
+	--local screen = win:screen()
+  --local max = screen:frame()
+	--local offset = 30
+
+  --f.w = f.w + offset
+  --f.h = f.h + offset 
+	--if max.x < f.x then f.x = f.x - offset / 2 end
+	--if max.y < f.y then f.y = f.y - offset / 2 end
+  
+	--win:setFrame(f)
+--[[end)]]
+
