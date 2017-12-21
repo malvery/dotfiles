@@ -142,17 +142,22 @@ end)
 -- choosers for minimized to dock windows
 ----------------------------------------------------
 -- callback func for selected window
-local min_windows_chooser = hs.chooser.new(function(windows_choices)
+local windows_chooser = hs.chooser.new(function(windows_choices)
 	if not (windows_choices == nil) then
 		local window = hs.window.find(windows_choices['id'])
-		window:unminimize()
-		window:focus()
+
+		if (windows_choices['action'] == 'unminimize') then
+			window:unminimize()
+			window:focus()
+		elseif (windows_choices['action'] == 'focus') then
+			hs.application.launchOrFocus(windows_choices['text'])
+		end
 	end
 end)
 
 -- chooser params
-min_windows_chooser:searchSubText(true)
-min_windows_chooser:bgDark(true)
+windows_chooser:searchSubText(true)
+windows_chooser:bgDark(true)
 
 -- window filter
 curr_space_wf = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
@@ -168,14 +173,15 @@ hs.hotkey.bind({"alt", "shift"}, "i", function()
 			table.insert(windows_choices, {
 				["text"] = window:application():name(),
 				["subText"] = window:title(),
-				["id"] = window:id()
-			})
+				["id"] = window:id(),
+				["action"] = 'unminimize'
+		})
 		end
 	end
 	
 	-- show chooser
-	min_windows_chooser:choices(windows_choices)
-	min_windows_chooser:show() 
+	windows_chooser:choices(windows_choices)
+	windows_chooser:show() 
 end)
 
 hs.hotkey.bind({"alt", "shift"}, "a", function()
@@ -186,13 +192,14 @@ hs.hotkey.bind({"alt", "shift"}, "a", function()
 		table.insert(windows_choices, {
 			["text"] = window:application():name(),
 			["subText"] = window:title(),
-			["id"] = window:id()
+			["id"] = window:id(),
+			["action"] = 'focus'
 		})
 	end
 	
 	-- show chooser
-	min_windows_chooser:choices(windows_choices)
-	min_windows_chooser:show() 
+	windows_chooser:choices(windows_choices)
+	windows_chooser:show() 
 end)
 
 ----------------------------------------------------
