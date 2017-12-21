@@ -30,12 +30,17 @@ hs.hotkey.bind({"alt", "shift"}, "m", function()
 	local win = hs.window.focusedWindow()
 	local frame = win:screen():frame()
 	local win_size = win:size()
+	local win_frame = win:frame()
 
 	if (frame.w == win_size.w and frame.h == win_size.h) then
-		w_frame = win:frame()
-		w_frame.w = frame.w / 1.3
-		w_frame.h = frame.h / 1.3
-		win:setFrame(w_frame)
+		if (frame.x ~= win_frame.x or frame.y ~= win_frame.y) then
+			hs.grid.maximizeWindow(win)
+		else
+			w_frame = win:frame()
+			w_frame.w = frame.w / 1.3
+			w_frame.h = frame.h / 1.3
+			win:setFrame(w_frame)
+		end
 	else
 		hs.grid.maximizeWindow(win)
 		--win:maximize()
@@ -64,19 +69,15 @@ end)
 -- GRID 
 ----------------------------------------------------
 --- grid params
+hs.grid.setGrid('5x4')
 hs.grid.setMargins({0, 0})
 
 hs.grid.ui.highlightColor = {0,0.8,0.5,0.2}
 hs.grid.ui.cyclingHighlightColor = {0,0.8,0.5,0.2}
-
 hs.grid.ui.textSize = 100
 hs.grid.ui.cellStrokeWidth = 3
 hs.grid.ui.highlightStrokeWidth = 1
-
 hs.grid.ui.showExtraKeys = false
-
---hs.grid.setGrid('16x9', '2560x1440')
---hs.grid.setGrid('32x18', '2560x1440')
 
 -- show grid selector
 hs.hotkey.bind({"alt", "shift"}, "g", function()
@@ -181,34 +182,18 @@ end)
 -- ??? 
 ----------------------------------------------------
 -- dec size
---[[hs.hotkey.bind({"alt", "shift"}, ",", function()]]
-  --local win = hs.window.focusedWindow()
-  --local f = win:frame()
-	--local screen = win:screen()
-  --local max = screen:frame()
-	--local offset = 30
+hs.hotkey.bind({"alt", "shift"}, ",", function()
+	local win = hs.window.focusedWindow()
 
-  --f.w = f.w - offset
-  --f.h = f.h - offset
-	--if max.x < f.x then f.x = f.x + offset / 2 end
-	--if max.y < f.y then f.y = f.y + offset / 2 end
-
-  --win:setFrame(f)
---[[end)]]
+	hs.grid.resizeWindowThinner(win)
+	hs.grid.resizeWindowShorter(win)
+end)
 
 -- inc size
---[[hs.hotkey.bind({"alt", "shift"}, ".", function()]]
-  --local win = hs.window.focusedWindow()
-  --local f = win:frame()
-	--local screen = win:screen()
-  --local max = screen:frame()
-	--local offset = 30
-
-  --f.w = f.w + offset
-  --f.h = f.h + offset 
-	--if max.x < f.x then f.x = f.x - offset / 2 end
-	--if max.y < f.y then f.y = f.y - offset / 2 end
-  
-	--win:setFrame(f)
---[[end)]]
+hs.hotkey.bind({"alt", "shift"}, ".", function()
+	local win = hs.window.focusedWindow()
+	
+	hs.grid.resizeWindowTaller(win)
+	hs.grid.resizeWindowWider(win)
+end)
 
