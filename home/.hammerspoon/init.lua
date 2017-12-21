@@ -123,7 +123,7 @@ end)
 ----------------------------------------------------
 -- windows switcher 
 ----------------------------------------------------
---[[hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}]]
+--hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
 --hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
 
 --hs.window.switcher.ui.showThumbnails = false
@@ -132,11 +132,10 @@ end)
 --hs.window.switcher.ui.showTitles = false
 --hs.window.switcher.ui.thumbnailSize = 128
 
---switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}) include minimized/hidden windows, current Space only
-
+--switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
 --hs.hotkey.bind({'alt'}, 'tab', function()
 	--switcher:next()
---[[end)]]
+--end)
 
 ----------------------------------------------------
 -- choosers for minimized to dock windows
@@ -146,12 +145,8 @@ local windows_chooser = hs.chooser.new(function(windows_choices)
 	if not (windows_choices == nil) then
 		local window = hs.window.find(windows_choices['id'])
 
-		if (windows_choices['action'] == 'unminimize') then
-			window:unminimize()
-			window:focus()
-		elseif (windows_choices['action'] == 'focus') then
-			hs.application.launchOrFocus(windows_choices['text'])
-		end
+		window:unminimize()
+		window:focus()
 	end
 end)
 
@@ -161,7 +156,6 @@ windows_chooser:bgDark(true)
 
 -- window filter
 curr_space_wf = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
-all_wf = hs.window.filter.new():setDefaultFilter{}
 
 -- bind hotkey
 hs.hotkey.bind({"alt", "shift"}, "i", function()
@@ -174,27 +168,8 @@ hs.hotkey.bind({"alt", "shift"}, "i", function()
 				["text"] = window:application():name(),
 				["subText"] = window:title(),
 				["id"] = window:id(),
-				["action"] = 'unminimize'
 		})
 		end
-	end
-	
-	-- show chooser
-	windows_chooser:choices(windows_choices)
-	windows_chooser:show() 
-end)
-
-hs.hotkey.bind({"alt", "shift"}, "a", function()
-	local windows_choices = {}
-	
-	-- windows from filter -> chooser
-	for k,window in pairs(all_wf:getWindows()) do
-		table.insert(windows_choices, {
-			["text"] = window:application():name(),
-			["subText"] = window:title(),
-			["id"] = window:id(),
-			["action"] = 'focus'
-		})
 	end
 	
 	-- show chooser
