@@ -12,7 +12,7 @@ hs.hotkey.bind({"alt", "shift"}, "t", function()
 	hs.application.launchOrFocus("iTerm")
 end)
 
-hs.hotkey.bind({"alt", "shift"}, "e", function()
+hs.hotkey.bind({"alt", "shift"}, "p", function()
 	hs.application.launchOrFocus("Finder")
 end)
 
