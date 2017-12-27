@@ -124,19 +124,19 @@ end)
 ----------------------------------------------------
 -- windows switcher 
 ----------------------------------------------------
-hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
-hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
+--hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
+--hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
 
-hs.window.switcher.ui.showThumbnails = false
-hs.window.switcher.ui.showSelectedThumbnail = false
-hs.window.switcher.ui.showSelectedTitle = false
-hs.window.switcher.ui.showTitles = false
-hs.window.switcher.ui.thumbnailSize = 128
+--hs.window.switcher.ui.showThumbnails = false
+--hs.window.switcher.ui.showSelectedThumbnail = false
+--hs.window.switcher.ui.showSelectedTitle = false
+--hs.window.switcher.ui.showTitles = false
+--hs.window.switcher.ui.thumbnailSize = 128
 
-switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
-hs.hotkey.bind({'alt'}, 'tab', function()
-	switcher:next()
-end)
+--switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
+--hs.hotkey.bind({'alt'}, 'tab', function()
+	--switcher:next()
+--end)
 
 ----------------------------------------------------
 -- choosers for minimized to dock windows
