@@ -124,19 +124,19 @@ end)
 ----------------------------------------------------
 -- windows switcher 
 ----------------------------------------------------
---hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
---hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
+hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
+hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
 
---hs.window.switcher.ui.showThumbnails = false
---hs.window.switcher.ui.showSelectedThumbnail = false
---hs.window.switcher.ui.showSelectedTitle = false
---hs.window.switcher.ui.showTitles = false
---hs.window.switcher.ui.thumbnailSize = 128
+hs.window.switcher.ui.showThumbnails = false
+hs.window.switcher.ui.showSelectedThumbnail = false
+hs.window.switcher.ui.showSelectedTitle = false
+hs.window.switcher.ui.showTitles = false
+hs.window.switcher.ui.thumbnailSize = 128
 
---switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
---hs.hotkey.bind({'alt'}, 'tab', function()
-	--switcher:next()
---end)
+switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
+hs.hotkey.bind({'alt'}, 'tab', function()
+	switcher:next()
+end)
 
 ----------------------------------------------------
 -- choosers for minimized to dock windows
@@ -197,3 +197,44 @@ hs.hotkey.bind({"alt", "shift"}, ".", function()
 	hs.grid.resizeWindowWider(win)
 end)
 
+
+
+-----
+--local currentWindowSet = {}
+--local windowCycler = nil
+
+--local wf = hs.window.filter.new(function(win)
+    --local fw = hs.window.focusedWindow()
+    --return (
+      --win:isStandard() and
+      ----win:application() == fw:application() and
+      --win:screen() == fw:screen()
+    --)
+  --end)
+
+--local function makeTableCycler(t)
+  --local i = 1
+  --return function(d)
+    --local j = d and d < 0 and -2 or 0
+    --i = (i + j) % #t + 1
+    --local x = t[i]
+    --return x
+  --end
+--end
+
+--local function updateWindowCycler()
+  --if not hs.fnutils.contains(currentWindowSet, hs.window.focusedWindow()) then
+    --currentWindowSet = wf:getWindows()
+    --windowCycler = makeTableCycler(currentWindowSet)
+  --end
+--end
+
+--hs.hotkey.bind({"alt"}, "]", function()
+    --updateWindowCycler()
+    --windowCycler():focus()
+  --end)
+
+--hs.hotkey.bind({"alt"}, "[", function()
+    --updateWindowCycler()
+    --windowCycler(-1):focus()
+  --end)
