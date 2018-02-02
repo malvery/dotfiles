@@ -29,43 +29,47 @@ alias smount='sudo mount'
 alias sumount='sudo umount'
 alias tcpdump='sudo tcpdump'
 
-alias int-ib-app-1='ssh azavyalov@be01.int.internal-billing.wz-ams.lo.mobbtech.com'
-alias int-ib-app-2='ssh azavyalov@be02.int.internal-billing.wz-ams.lo.mobbtech.com'
-#alias int-ib-app-3='ssh azavyalov@be03.int.internal-billing.wz-ams.lo.mobbtech.com'
-alias int-ib-db='psql -U azavyalov -h pgsql01.int.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
+if [[ "$(hostname)" == "NB-ZAVYALOV2.local" ]]
+then
 
-alias int-tr-app-1='ssh azavyalov@be01.int.tournaments.wz-ams.lo.mobbtech.com'
-alias int-tr-admin-1='ssh azavyalov@admin01.int.tournaments.wz-ams.lo.mobbtech.com'
-alias int-tr-db='psql -U azavyalov -h pgsql01.int.tournaments.wz-ams.lo.mobbtech.com -W tournaments'
+	alias int-ib-app-1='ssh azavyalov@be01.int.internal-billing.wz-ams.lo.mobbtech.com'
+	alias int-ib-app-2='ssh azavyalov@be02.int.internal-billing.wz-ams.lo.mobbtech.com'
+	#alias int-ib-app-3='ssh azavyalov@be03.int.internal-billing.wz-ams.lo.mobbtech.com'
+	alias int-ib-db='psql -U azavyalov -h pgsql01.int.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
 
-alias int-bo-app-1='ssh azavyalov@be01.int.binary-options.wz-ams.lo.mobbtech.com'
-alias int-bo-app-2='ssh azavyalov@be02.int.binary-options.wz-ams.lo.mobbtech.com'
-alias int-bo-app-3='ssh azavyalov@be03.int.binary-options.wz-ams.lo.mobbtech.com'
-#alias int-bo-app-4='ssh azavyalov@be04.int.binary-options.wz-ams.lo.mobbtech.com'
-alias int-bo-db='psql -U azavyalov -h pgsql01.int.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
+	alias int-tr-app-1='ssh azavyalov@be01.int.tournaments.wz-ams.lo.mobbtech.com'
+	alias int-tr-admin-1='ssh azavyalov@admin01.int.tournaments.wz-ams.lo.mobbtech.com'
+	alias int-tr-db='psql -U azavyalov -h pgsql01.int.tournaments.wz-ams.lo.mobbtech.com -W tournaments'
 
-alias int-core-db='psql -h wicpg01.mobbtech.com -U azavyalov -W options_instance'
-alias int-core-app-1='ssh azavyalov@be-core-01.int.core.wz-ams.lo.mobbtech.com'
-alias int-core-app-2='ssh azavyalov@be-core-02.int.core.wz-ams.lo.mobbtech.com'
+	alias int-bo-app-1='ssh azavyalov@be01.int.binary-options.wz-ams.lo.mobbtech.com'
+	alias int-bo-app-2='ssh azavyalov@be02.int.binary-options.wz-ams.lo.mobbtech.com'
+	alias int-bo-app-3='ssh azavyalov@be03.int.binary-options.wz-ams.lo.mobbtech.com'
+	#alias int-bo-app-4='ssh azavyalov@be04.int.binary-options.wz-ams.lo.mobbtech.com'
+	alias int-bo-db='psql -U azavyalov -h pgsql01.int.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
 
-alias int-busapi-app-1='ssh azavyalov@busapi-01.int.root.wz-ams.lo.mobbtech.com'
-alias int-busapi-app-2='ssh azavyalov@busapi-02.int.root.wz-ams.lo.mobbtech.com'
-#alias int-busapi-app-3='ssh azavyalov@busapi-03.int.root.wz-ams.lo.mobbtech.com'
+	alias int-core-db='psql -h wicpg01.mobbtech.com -U azavyalov -W options_instance'
+	alias int-core-app-1='ssh azavyalov@be-core-01.int.core.wz-ams.lo.mobbtech.com'
+	alias int-core-app-2='ssh azavyalov@be-core-02.int.core.wz-ams.lo.mobbtech.com'
 
+	alias int-busapi-app-1='ssh azavyalov@busapi-01.int.root.wz-ams.lo.mobbtech.com'
+	alias int-busapi-app-2='ssh azavyalov@busapi-02.int.root.wz-ams.lo.mobbtech.com'
+	#alias int-busapi-app-3='ssh azavyalov@busapi-03.int.root.wz-ams.lo.mobbtech.com'
 
-alias prod-ib-app-1='ssh azavyalov@be01.prod.internal-billing.wz-ams.lo.mobbtech.com'
-alias prod-ib-app-2='ssh azavyalov@be02.prod.internal-billing.wz-ams.lo.mobbtech.com'
-alias prod-ib-db='psql -U azavyalov -h pgsql-01.prod.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
+	alias prod-ib-app-1='ssh azavyalov@be01.prod.internal-billing.wz-ams.lo.mobbtech.com'
+	alias prod-ib-app-2='ssh azavyalov@be02.prod.internal-billing.wz-ams.lo.mobbtech.com'
+	alias prod-ib-db='psql -U azavyalov -h pgsql-01.prod.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
 
-alias prod-bo-app-1='ssh azavyalov@be01.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-app-2='ssh azavyalov@be02.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-app-3='ssh azavyalov@be03.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-app-4='ssh azavyalov@be04.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-app-5='ssh azavyalov@be05.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-app-6='ssh azavyalov@be06.prod.binary-options.wz-ams.lo.mobbtech.com'
-alias prod-bo-db='psql -U azavyalov -h pgsql-01.prod.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
+	alias prod-bo-app-1='ssh azavyalov@be01.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-app-2='ssh azavyalov@be02.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-app-3='ssh azavyalov@be03.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-app-4='ssh azavyalov@be04.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-app-5='ssh azavyalov@be05.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-app-6='ssh azavyalov@be06.prod.binary-options.wz-ams.lo.mobbtech.com'
+	alias prod-bo-db='psql -U azavyalov -h pgsql-01.prod.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
 
-alias prod-core-db='psql -h wpcpg01.mobbtech.com -U azharovina -W options_instance'
+	alias prod-core-db='psql -h wpcpg01.mobbtech.com -U azharovina -W options_instance'
+
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
