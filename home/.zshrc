@@ -31,44 +31,7 @@ alias tcpdump='sudo tcpdump'
 
 if [[ "$(hostname)" == "NB-ZAVYALOV2.local" ]]
 then
-
-	alias int-ib-app-1='ssh azavyalov@be01.int.internal-billing.wz-ams.lo.mobbtech.com'
-	alias int-ib-app-2='ssh azavyalov@be02.int.internal-billing.wz-ams.lo.mobbtech.com'
-	#alias int-ib-app-3='ssh azavyalov@be03.int.internal-billing.wz-ams.lo.mobbtech.com'
-	alias int-ib-db='psql -U azavyalov -h pgsql01.int.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
-
-	alias int-tr-app-1='ssh azavyalov@be01.int.tournaments.wz-ams.lo.mobbtech.com'
-	alias int-tr-admin-1='ssh azavyalov@admin01.int.tournaments.wz-ams.lo.mobbtech.com'
-	alias int-tr-db='psql -U azavyalov -h pgsql01.int.tournaments.wz-ams.lo.mobbtech.com -W tournaments'
-
-	alias int-bo-app-1='ssh azavyalov@be01.int.binary-options.wz-ams.lo.mobbtech.com'
-	alias int-bo-app-2='ssh azavyalov@be02.int.binary-options.wz-ams.lo.mobbtech.com'
-	alias int-bo-app-3='ssh azavyalov@be03.int.binary-options.wz-ams.lo.mobbtech.com'
-	#alias int-bo-app-4='ssh azavyalov@be04.int.binary-options.wz-ams.lo.mobbtech.com'
-	alias int-bo-db='psql -U azavyalov -h pgsql01.int.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
-
-	alias int-core-db='psql -h wicpg01.mobbtech.com -U azavyalov -W options_instance'
-	alias int-core-app-1='ssh azavyalov@be-core-01.int.core.wz-ams.lo.mobbtech.com'
-	alias int-core-app-2='ssh azavyalov@be-core-02.int.core.wz-ams.lo.mobbtech.com'
-
-	alias int-busapi-app-1='ssh azavyalov@busapi-01.int.root.wz-ams.lo.mobbtech.com'
-	alias int-busapi-app-2='ssh azavyalov@busapi-02.int.root.wz-ams.lo.mobbtech.com'
-	#alias int-busapi-app-3='ssh azavyalov@busapi-03.int.root.wz-ams.lo.mobbtech.com'
-
-	alias prod-ib-app-1='ssh azavyalov@be01.prod.internal-billing.wz-ams.lo.mobbtech.com'
-	alias prod-ib-app-2='ssh azavyalov@be02.prod.internal-billing.wz-ams.lo.mobbtech.com'
-	alias prod-ib-db='psql -U azavyalov -h pgsql-01.prod.internal-billing.wz-ams.lo.mobbtech.com -W internal_billing'
-
-	alias prod-bo-app-1='ssh azavyalov@be01.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-app-2='ssh azavyalov@be02.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-app-3='ssh azavyalov@be03.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-app-4='ssh azavyalov@be04.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-app-5='ssh azavyalov@be05.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-app-6='ssh azavyalov@be06.prod.binary-options.wz-ams.lo.mobbtech.com'
-	alias prod-bo-db='psql -U azavyalov -h pgsql-01.prod.binary-options.wz-ams.lo.mobbtech.com -W binary_options'
-
-	alias prod-core-db='psql -h wpcpg01.mobbtech.com -U azharovina -W options_instance'
-
+	echo ""
 fi
 
 # Uncomment the following line to use case-sensitive completion.
@@ -135,5 +98,5 @@ export EDITOR='vim'
 #export GOPATH=/Users/anton.zavyalov/GoglandProjects/azavyalov/test-go
 #export PATH=/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin/:/opt/local/bin/
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
