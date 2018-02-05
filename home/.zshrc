@@ -31,7 +31,7 @@ alias tcpdump='sudo tcpdump'
 
 if [[ "$(hostname)" == "NB-ZAVYALOV2.local" ]]
 then
-	echo ""
+	source ~/.zsh_alias
 fi
 
 # Uncomment the following line to use case-sensitive completion.
