@@ -98,5 +98,5 @@ export EDITOR='vim'
 #export GOPATH=/Users/anton.zavyalov/GoglandProjects/azavyalov/test-go
 #export PATH=/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin/:/opt/local/bin/
 
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
