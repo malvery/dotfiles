@@ -9,7 +9,7 @@ hs.window.animationDuration = 0
 -- apps runner
 ----------------------------------------------------
 hs.hotkey.bind({"alt", "shift"}, "t", function()
-	hs.application.launchOrFocus("kitty")
+	hs.application.launchOrFocus("iTerm")
 end)
 
 hs.hotkey.bind({"alt", "shift"}, "p", function()
