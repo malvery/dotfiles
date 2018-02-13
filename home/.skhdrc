@@ -3,7 +3,7 @@
 
 # open terminal, blazingly fast compared to iTerm/Hyper
 shift + alt - t : open -na /Applications/iTerm.app
-shift + alt - e : open -na Finder
+shift + alt - p : open -na Finder
 
 # close window
 shift + alt - c : chunkc tiling::window --close
@@ -33,11 +33,11 @@ shift + alt - 7 : chunkc tiling::window --send-to-desktop 7
 shift + alt - 8 : chunkc tiling::window --send-to-desktop 8
 
 ## switch to last active desktop
-#alt - escape : ID=$(chunkc get _last_active_desktop); CMD=$(echo tell application \"System Events\" to key code \{item \(id of \"$ID\" - 47\) of \{29, 18, 19, 20, 21, 23, 22, 26, 28, 25\}\} using \{option down\}); osascript -e $CMD
+alt - escape : `id=$(chunkc get _last_active_desktop); /usr/local/bin/qes -k "alt - $id" &> /dev/null`
 
 ## switch to <NUM> desktop
-#alt - g : osascript -e 'tell application "System Events" to key code "26" using {option down}'
-#alt - s : osascript -e 'tell application "System Events" to key code "28" using {option down}'
+alt - g : /usr/local/bin/qes -k "alt - 6"
+alt - s : /usr/local/bin/qes -k "alt - 7"
 
 
 ## send window to desktop and switch desktop
