@@ -1,6 +1,6 @@
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-	hs.alert.show('test alert')
-end)
+-- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
+-- 	hs.alert.show('test alert')
+-- end)
 
 -- setup animations params
 hs.window.animationDuration = 0
@@ -17,11 +17,11 @@ hs.hotkey.bind({"alt", "shift"}, "p", function()
 end)
 
 ----------------------------------------------------
--- window actions 
+-- window actions
 ----------------------------------------------------
 -- close
 hs.hotkey.bind({"alt", "shift"}, "c", function()
-  local win = hs.window.focusedWindow()
+	local win = hs.window.focusedWindow()
 	win:close()
 end)
 
@@ -49,14 +49,14 @@ end)
 
 -- toggle fullscreen
 hs.hotkey.bind({"alt", "shift"}, "f", function()
-  local win = hs.window.focusedWindow()
+	local win = hs.window.focusedWindow()
 	--win:toggleZoom()
 	win:toggleFullScreen()
 end)
 
 -- center
 hs.hotkey.bind({"alt", "shift"}, "return", function()
-  local win = hs.window.focusedWindow()
+	local win = hs.window.focusedWindow()
 	local frame = win:screen():frame()
 	local win_size = win:size()
 
@@ -66,7 +66,7 @@ hs.hotkey.bind({"alt", "shift"}, "return", function()
 end)
 
 ----------------------------------------------------
--- GRID 
+-- GRID
 ----------------------------------------------------
 --- grid params
 hs.grid.setGrid('5x4')
@@ -122,21 +122,21 @@ end)
 
 
 ----------------------------------------------------
--- windows switcher 
+-- windows switcher
 ----------------------------------------------------
---hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
---hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
-
---hs.window.switcher.ui.showThumbnails = false
---hs.window.switcher.ui.showSelectedThumbnail = false
---hs.window.switcher.ui.showSelectedTitle = false
---hs.window.switcher.ui.showTitles = false
---hs.window.switcher.ui.thumbnailSize = 128
-
---switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
---hs.hotkey.bind({'alt'}, 'tab', function()
-	--switcher:next()
---end)
+-- hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
+-- hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
+--
+-- hs.window.switcher.ui.showThumbnails = false
+-- hs.window.switcher.ui.showSelectedThumbnail = false
+-- hs.window.switcher.ui.showSelectedTitle = false
+-- hs.window.switcher.ui.showTitles = false
+-- hs.window.switcher.ui.thumbnailSize = 128
+--
+-- switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
+-- hs.hotkey.bind({'alt'}, 'tab', function()
+-- 	switcher:next()
+-- end)
 
 ----------------------------------------------------
 -- choosers for minimized to dock windows
@@ -161,117 +161,81 @@ curr_space_wf = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
 -- bind hotkey
 hs.hotkey.bind({"alt", "shift"}, "i", function()
 	local windows_choices = {}
-	
+
 	-- windows from filter -> chooser
 	for k,window in pairs(curr_space_wf:getWindows()) do
-		if window:isMinimized() then 
+		if window:isMinimized() then
 			table.insert(windows_choices, {
 				["text"] = window:application():name(),
 				["subText"] = window:title(),
 				["id"] = window:id(),
-		})
+			})
 		end
 	end
-	
+
 	-- show chooser
 	windows_chooser:choices(windows_choices)
-	windows_chooser:show() 
+	windows_chooser:show()
 end)
 
 ----------------------------------------------------
--- workspaces 
+-- workspaces
 ----------------------------------------------------
-hs.hotkey.bind({"alt"}, "g", function()
-	hs.eventtap.keyStroke({'alt'}, '6')
-end)
-
-hs.hotkey.bind({"alt"}, "s", function()
-	hs.eventtap.keyStroke({'alt'}, '7')
-end)
-
+local spaces = require("hs._asm.undocumented.spaces")
 
 function get_key_for_value(t, value)
 	for k,v in pairs(t) do
-		if v==value then 
+		if v==value then
 			return k
 		end
-		end
+	end
 	return nil
 end
 
-local spaces = require("hs._asm.undocumented.spaces")
-space_watcher = hs.spaces.watcher.new(function(space_id)
-	local space_id = spaces.activeSpace()
-
+function get_current_layout()
 	local win = hs.window.focusedWindow()
 	local uuid = win:screen():spacesUUID()
-
 	local layout = spaces.layout()[uuid]
-	local space_n = get_key_for_value(layout, space_id)
-	
-	--hs.alert.show(space_id)
-	--hs.alert.show(space_n)
 
+	return layout
+end
+
+last_space_id = 1
+curr_space_id = 1
+
+space_watcher = hs.spaces.watcher.new(function(space_id)
+	last_space_id = curr_space_id
+	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
 end)
 space_watcher:start()
 
-----------------------------------------------------
--- ??? 
-----------------------------------------------------
--- dec size
-hs.hotkey.bind({"alt", "shift"}, ",", function()
-	local win = hs.window.focusedWindow()
-
-	hs.grid.resizeWindowThinner(win)
-	hs.grid.resizeWindowShorter(win)
+hs.hotkey.bind({"alt"}, "ESCAPE", function()
+	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
 end)
 
--- inc size
-hs.hotkey.bind({"alt", "shift"}, ".", function()
-	local win = hs.window.focusedWindow()
-	
-	hs.grid.resizeWindowTaller(win)
-	hs.grid.resizeWindowWider(win)
+hs.hotkey.bind({"alt"}, "g", function()
+	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
 end)
 
+hs.hotkey.bind({"alt"}, "s", function()
+	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
+end)
 
-
------
---local currentWindowSet = {}
---local windowCycler = nil
-
---local wf = hs.window.filter.new(function(win)
-    --local fw = hs.window.focusedWindow()
-    --return (
-      --win:isStandard() and
-      ----win:application() == fw:application() and
-      --win:screen() == fw:screen()
-    --)
-  --end)
-
---local function makeTableCycler(t)
-  --local i = 1
-  --return function(d)
-    --local j = d and d < 0 and -2 or 0
-    --i = (i + j) % #t + 1
-    --local x = t[i]
-    --return x
-  --end
---end
-
---local function updateWindowCycler()
-  --if not hs.fnutils.contains(currentWindowSet, hs.window.focusedWindow()) then
-    --currentWindowSet = wf:getWindows()
-    --windowCycler = makeTableCycler(currentWindowSet)
-  --end
---end
-
---hs.hotkey.bind({"alt"}, "]", function()
-    --updateWindowCycler()
-    --windowCycler():focus()
-  --end)
-
---hs.hotkey.bind({"alt"}, "[", function()
-    --updateWindowCycler()
-    --windowCycler(-1):focus()
-  --end)
+----------------------------------------------------
+-- resize window
+----------------------------------------------------
+-- -- dec size
+-- hs.hotkey.bind({"alt", "shift"}, ",", function()
+-- 	local win = hs.window.focusedWindow()
+--
+-- 	hs.grid.resizeWindowThinner(win)
+-- 	hs.grid.resizeWindowShorter(win)
+-- end)
+--
+-- -- inc size
+-- hs.hotkey.bind({"alt", "shift"}, ".", function()
+-- 	local win = hs.window.focusedWindow()
+--
+-- 	hs.grid.resizeWindowTaller(win)
+-- 	hs.grid.resizeWindowWider(win)
+-- end)
