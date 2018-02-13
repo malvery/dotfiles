@@ -189,16 +189,28 @@ hs.hotkey.bind({"alt"}, "s", function()
 	hs.eventtap.keyStroke({'alt'}, '7')
 end)
 
+
+function get_key_for_value(t, value)
+	for k,v in pairs(t) do
+		if v==value then 
+			return k
+		end
+		end
+	return nil
+end
+
 local spaces = require("hs._asm.undocumented.spaces")
 space_watcher = hs.spaces.watcher.new(function(space_id)
-	--hs.alert.show(space_id)
+	local space_id = spaces.activeSpace()
+
 	local win = hs.window.focusedWindow()
 	local uuid = win:screen():spacesUUID()
-	local spaceID = spaces.layout()[uuid][sp]
+
+	local layout = spaces.layout()[uuid]
+	local space_n = get_key_for_value(layout, space_id)
 	
-	--hs.alert.show(spaces.layout())
-	--spaces.changeToSpace(4)
-	--hs.alert.show(spaceID)
+	--hs.alert.show(space_id)
+	--hs.alert.show(space_n)
 
 end)
 space_watcher:start()
