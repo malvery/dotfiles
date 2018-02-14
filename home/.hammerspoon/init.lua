@@ -179,46 +179,88 @@ hs.hotkey.bind({"alt", "shift"}, "i", function()
 end)
 
 ----------------------------------------------------
--- workspaces
+-- workspaces - dynamic
+----------------------------------------------------
+-- local spaces = require("hs._asm.undocumented.spaces")
+--
+-- function get_key_for_value(t, value)
+-- 	for k,v in pairs(t) do
+-- 		if v==value then
+-- 			return k
+-- 		end
+-- 	end
+-- 	return nil
+-- end
+--
+-- function get_current_layout()
+-- 	local win = hs.window.focusedWindow()
+-- 	local uuid = win:screen():spacesUUID()
+-- 	local layout = spaces.layout()[uuid]
+--
+-- 	return layout
+-- end
+--
+-- last_space_id = 1
+-- curr_space_id = 1
+--
+-- space_watcher = hs.spaces.watcher.new(function(space_id)
+-- 	last_space_id = curr_space_id
+-- 	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
+-- end)
+-- space_watcher:start()
+--
+-- hs.hotkey.bind({"alt"}, "ESCAPE", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
+-- end)
+--
+-- hs.hotkey.bind({"alt"}, "g", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
+-- end)
+--
+-- hs.hotkey.bind({"alt"}, "s", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
+-- end)
+
+----------------------------------------------------
+-- workspaces - static
 ----------------------------------------------------
 local spaces = require("hs._asm.undocumented.spaces")
 
-function get_key_for_value(t, value)
-	for k,v in pairs(t) do
-		if v==value then
-			return k
-		end
-	end
-	return nil
-end
+LAST_SPACE_ID = 1
+CURR_SPACE_ID = 1
 
-function get_current_layout()
-	local win = hs.window.focusedWindow()
-	local uuid = win:screen():spacesUUID()
+function get_current_screen_layout()
+	local uuid = hs.screen.mainScreen():spacesUUID()
 	local layout = spaces.layout()[uuid]
 
-	return layout
+	local layout_parsed = {}
+	for k,v in pairs(layout) do
+		layout_parsed[v] = k
+	end
+
+	return layout_parsed
 end
 
-last_space_id = 1
-curr_space_id = 1
-
+SCREEN_LAYOUT = get_current_screen_layout()
 space_watcher = hs.spaces.watcher.new(function(space_id)
-	last_space_id = curr_space_id
-	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
+	LAST_SPACE_ID = CURR_SPACE_ID
+	CURR_SPACE_ID = SCREEN_LAYOUT[spaces.activeSpace()]
+	-- SCREEN_LAYOUT = get_current_screen_layout()
 end)
 space_watcher:start()
 
 hs.hotkey.bind({"alt"}, "ESCAPE", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
+	hs.eventtap.keyStroke({'alt'}, tostring(LAST_SPACE_ID))
 end)
 
+DESKTOP_G = tostring(#SCREEN_LAYOUT - 2)
 hs.hotkey.bind({"alt"}, "g", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
+	hs.eventtap.keyStroke({'alt'}, DESKTOP_G)
 end)
 
+DESKTOP_S = tostring(#SCREEN_LAYOUT - 1)
 hs.hotkey.bind({"alt"}, "s", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
+	hs.eventtap.keyStroke({'alt'}, DESKTOP_S)
 end)
 
 ----------------------------------------------------
@@ -239,3 +281,20 @@ end)
 -- 	hs.grid.resizeWindowTaller(win)
 -- 	hs.grid.resizeWindowWider(win)
 -- end)
+
+----------------------------------------------------
+-- helpers
+----------------------------------------------------
+
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
