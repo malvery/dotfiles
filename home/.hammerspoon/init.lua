@@ -181,50 +181,50 @@ end)
 ----------------------------------------------------
 -- workspaces - dynamic
 ----------------------------------------------------
-local spaces = require("hs._asm.undocumented.spaces")
-
-function get_key_for_value(t, value)
-	for k,v in pairs(t) do
-		if v==value then
-			return k
-		end
-	end
-	return nil
-end
-
-function get_current_layout()
-	local win = hs.window.focusedWindow()
-	local uuid = win:screen():spacesUUID()
-	local layout = spaces.layout()[uuid]
-
-	-- local layout_parsed = {}
-	-- for k,v in pairs(layout) do
-	-- 	layout_parsed[v] = k
-	-- end
-
-	return layout
-end
-
-last_space_id = 1
-curr_space_id = 1
-
-space_watcher = hs.spaces.watcher.new(function(space_id)
-	last_space_id = curr_space_id
-	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
-end)
-space_watcher:start()
-
-hs.hotkey.bind({"alt"}, "ESCAPE", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
-end)
-
-hs.hotkey.bind({"alt"}, "g", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
-end)
-
-hs.hotkey.bind({"alt"}, "s", function()
-	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
-end)
+-- local spaces = require("hs._asm.undocumented.spaces")
+--
+-- function get_key_for_value(t, value)
+-- 	for k,v in pairs(t) do
+-- 		if v==value then
+-- 			return k
+-- 		end
+-- 	end
+-- 	return nil
+-- end
+--
+-- function get_current_layout()
+-- 	local win = hs.window.focusedWindow()
+-- 	local uuid = win:screen():spacesUUID()
+-- 	local layout = spaces.layout()[uuid]
+--
+-- 	-- local layout_parsed = {}
+-- 	-- for k,v in pairs(layout) do
+-- 	-- 	layout_parsed[v] = k
+-- 	-- end
+--
+-- 	return layout
+-- end
+--
+-- last_space_id = 1
+-- curr_space_id = 1
+--
+-- space_watcher = hs.spaces.watcher.new(function(space_id)
+-- 	last_space_id = curr_space_id
+-- 	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
+-- end)
+-- space_watcher:start()
+--
+-- hs.hotkey.bind({"alt"}, "ESCAPE", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
+-- end)
+--
+-- hs.hotkey.bind({"alt"}, "g", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
+-- end)
+--
+-- hs.hotkey.bind({"alt"}, "s", function()
+-- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
+-- end)
 
 ----------------------------------------------------
 -- workspaces - static
