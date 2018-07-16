@@ -9,21 +9,23 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Hotkeys helper
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-
---widgets
+require("awful.hotkeys_popup.keys")
+-- Widgets library
 local vicious = require("vicious") 
 
 -- Custom hosts rules -------------------------
 require("host_conf")
 
-local popen = assert(io.popen('hostname', 'r'))
-local conf_hostname = popen:read('*all')
+--local popen = assert(io.popen('hostname', 'r'))
+--local conf_hostname = popen:read('*all')
 
-popen:close()
+--popen:close()
 
 --naughty.notify({ text = conf_hostname })
-local host_conf = getConfList(conf_hostname)
+--local host_conf = getConfList(conf_hostname)
+local host_conf = getConfList("test")
 ----------------------------------------------
 
 -- {{{ Error handling
@@ -53,11 +55,14 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---naughty.notify({ text = awful.util.get_configuration_dir() .. host_conf.theme })
-beautiful.init(awful.util.get_configuration_dir() .. host_conf.theme)
+--beautiful.init(awful.util.get_configuration_dir() .. host_conf.theme)
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.font = "Ubuntu Bold 9"
+beautiful.border_width = 4
+
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = host_conf.d_apps.terminal
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -239,9 +244,19 @@ volwidget:buttons(awful.util.table.join(
 batwidget = wibox.widget.textbox()
 vicious.register(batwidget, vicious.widgets.bat, " BAT: $2% :: ", 120 , "BAT0")
 
+--[[
 function backlight(action)
 	if action == "dec" or action == "inc" then
 		awful.util.spawn("xbacklight -" .. action .. " 2")
+	end
+end
+]]--
+
+function backlight(action)
+	if action == "inc" then
+		awful.util.spawn("brightnessctl set +10%")
+	elseif action == "dec" then
+		awful.util.spawn("brightnessctl set 10%-")
 	end
 end
 
@@ -419,17 +434,17 @@ globalkeys = awful.util.table.join(
 
 
 		-- Custom hotkeys
-		awful.key({ modkey,           }, "r",			function () awful.util.spawn("gmrun") end),
+		awful.key({ modkey,           }, "r",			function () awful.util.spawn(host_conf.d_apps.launcher) end),
 
 	  awful.key({ modkey, "Shift"   }, "p",			function () awful.util.spawn(host_conf.d_apps.file_manager) end),
 		awful.key({ modkey, "Shift"   }, "F12",		function () awful.util.spawn(host_conf.d_apps.lock_manager) end),
 
-		awful.key({	}, "XF86AudioRaiseVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%+ unmute") end),
-		awful.key({ }, "XF86AudioLowerVolume",	function () awful.util.spawn("amixer -D pulse set Master 5%- unmute") end),
-		awful.key({ }, "XF86AudioMute",					function () awful.util.spawn("amixer -D pulse set Master toggle") end),
+		awful.key({	}, "XF86AudioRaiseVolume",	function () volume("+") end),
+		awful.key({ }, "XF86AudioLowerVolume",	function () volume("-") end),
+		awful.key({ }, "XF86AudioMute",					function () volume("toggle") end),
 
-		awful.key({ }, "XF86MonBrightnessUp",		function () awful.util.spawn("xbacklight -inc 2") end),
-		awful.key({ }, "XF86MonBrightnessDown",	function () awful.util.spawn("xbacklight -dec 2") end),
+		awful.key({ }, "XF86MonBrightnessUp",		function () backlight("inc") end),
+		awful.key({ }, "XF86MonBrightnessDown",	function () backlight("dec") end),
 		
 		-- Custom client manipulation
 		awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
@@ -543,6 +558,12 @@ root.keys(globalkeys)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+
+clientbuttons_jetbrains = gears.table.join(
+		awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 3, awful.mouse.client.resize)
+)
+
 local win_rules = {
     { rule = { },
       properties = { 
@@ -555,6 +576,17 @@ local win_rules = {
         screen = awful.screen.preferred,
         placement = awful.placement.no_overlap+awful.placement.no_offscreen			
 			}
+    },
+		{
+        rule = {
+        	class = "jetbrains-*",
+        	}, properties = { focus = true, buttons = clientbuttons_jetbrains }
+        },
+    {
+        rule = {
+         	class = "jetbrains-*",
+          name = "win.*"
+        }, properties = { titlebars_enabled = false, focusable = false, focus = true, floating = true, placement = awful.placement.restore }
     },
 
     -- Floating clients.

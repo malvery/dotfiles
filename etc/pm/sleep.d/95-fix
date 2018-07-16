@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#!/bin/sh
-
 case "$1" in
     resume|thaw)
 			DISPLAY=:0.0; export DISPLAY

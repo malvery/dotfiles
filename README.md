@@ -1,4 +1,1 @@
-sync
-====
-
-config sync
+some dotfiles

@@ -1,85 +1,50 @@
 -- #################################################
 -- vostro
-local conf_vostro = {
-	['theme'] = "themes/arc.lua",
+local conf_vostro = {} 
 
+-- #################################################
+-- work
+local conf_work = {
 	['autostart'] = {
-			'~/bin/urxvt.sh',
-			'clipit',
-			'syndaemon -t -i 1',
+			--'/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh',
+			'xsettingsd',
+			'setxkbmap -layout "us,de"',
 			'pulseaudio --start',
+			--'lxpolkit',
+			'clipit',
+			'~/src/touchpad_settings.sh',
+			'syndaemon -t -R -i 0.1',
 			'redshift-gtk',
 			'nm-applet',
+			'thunderbird',
+			'slack',
+			'lxterminal',
+			'shutter',
+			'blueman-applet',
 			'light-locker',
-			'xfce4-power-manager',
-			'chromium',
-			--'firefox',
-			'nitrogen --restore'
+			--'xsetroot -solid "#323232"'
 	},
 	
 	['w_rules'] = {
-			{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
+			{ rule = { class = "Atom" },					properties = { screen = 1, tag = "8" } },
+			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "9" } },
+			{ rule = { class = "Slack" },					properties = { screen = 1, tag = "9" } },
 	},
 
 	['d_apps'] = {
+			["launcher"]			= "dmenu_run",
+			["terminal"]			= "lxterminal",
 			["lock_manager"]	= "light-locker-command -l",
-			--["lock_manager"]	= "slimlock",
 			["file_manager"]	= "thunar",
-			["media_player"]	= "smplayer",
-			["torrents"]			= "transmission-qt",
-			["browser"]				= "chromium"
+			["media_player"]	= "vlc",
+			["torrents"]			= "transmission-gtk",
+			["browser"]				= "chromium-browser"
 	},
 	
 	['widget'] = {
 			['network'] = {
 					['name']		= "wifi",
-					['device']	= "wlp8s0"
-			}
-	}
-}
-
--- #################################################
--- work
-local conf_work = {
-	['theme'] = "themes/arc.lua",
-
-	['autostart'] = {
-			'~/bin/urxvt.sh',
-			'clipit',
-			'syndaemon -t -i 1',
-			'lxpolkit',
-			'pulseaudio --start',
-			'redshift-gtk',
-			'nm-applet',
-			'xfce4-power-manager',
-			'google-chrome',
-			'nitrogen --restore',
-			'thunderbird',
-			'slack',
-			--'skypeforlinux',
-			--'xset m 1/4 1'
-	},
-	
-	['w_rules'] = {
-			{ rule = { class = "Google-chrome" }, properties = { screen = 1, tag = "2" } },
-			{ rule = { class = "skypeforlinux" }, properties = { screen = 1, tag = "7" } },
-			{ rule = { class = "Thunderbird" },		properties = { screen = 1, tag = "9" } },
-			{ rule = { class = "Slack" },					properties = { screen = 1, tag = "9" } },
-			--{ rule = { class = "Chromium" },			properties = { screen = 3, tag = "2" } },
-	},
-
-	['d_apps'] = {
-			["lock_manager"]	= "slimlock",
-			["file_manager"]	= "thunar",
-			["media_player"]	= "clementine",
-			["torrents"]			= "transmission-qt",
-			["browser"]				= "chromium"
-	},
-	
-	['widget'] = {
-			['network'] = {
-					['name']		= "net",
-					['device']	= "enp0s31f6"
+					['device']	= "wlp3s0"
 			}
 	}
 }
@@ -90,7 +55,7 @@ function getConfList (hostname)
 	if string.find(hostname, "vostro") then
 		return conf_vostro
 
-	elseif string.find(hostname, "NB-ZAVYALOV") then
+	elseif string.find(hostname, "NB-ZAVYALOV2") then
 		return conf_work
 
 	else

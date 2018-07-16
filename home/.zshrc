@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$PATH:/usr/local/bin:/opt/local/bin/:/usr/local/go/bin
-export LC_CTYPE=UTF-8
+#export PATH=$PATH:/usr/local/bin:/opt/local/bin/:/usr/local/go/bin
+#export LC_CTYPE=UTF-8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -29,7 +29,7 @@ alias smount='sudo mount'
 alias sumount='sudo umount'
 alias tcpdump='sudo tcpdump'
 
-if [[ "$(hostname)" == "NB-ZAVYALOV2.local" ]]
+if [[ "$(hostname)" == "NB-ZAVYALOV2" ]]
 then
 	source ~/.zsh_alias
 fi
@@ -93,10 +93,17 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-#export PATH=$PATH:/usr/local/go/bin
-#export GOROOT=/usr/local/go
-#export GOPATH=/Users/anton.zavyalov/GoglandProjects/azavyalov/test-go
-#export PATH=/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin/:/opt/local/bin/
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [[ $TERM == "xterm" ]]
+	then 
+		export TERM=xterm-256color 
+	fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+#export TERM=xterm-256color
+test -e ~/.zsh_comp && fpath=(~/.zsh_comp $fpath)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
+	compinit -d $ZSH_COMPDUMP;
+else
+	compinit -C;
+fi;

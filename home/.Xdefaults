@@ -1,6 +1,5 @@
 URxvt.termName:	rxvt-unicode-256color
-URxvt.font:			xft:Hack:size=10:regular:pixelsize=13
-!URxvt.iconFile:    /usr/share/icons/Faience/apps/scalable/Terminal.svg
+URxvt.font:			xft:Hack:size=10:regular:pixelsize=20
 
 URxvt.perl-ext-common: clipboard,keyboard-select
 
@@ -19,7 +18,7 @@ URxvt.depth:	32
 URxvt.background:	#1e262a
 URxvt.foreground:	#babdb6
 
-URxvt.urlLauncher:      chromium
+URxvt.urlLauncher:      chromium-browser
 URxvt.matcher.button:   1 
 
 URxvt.scrollBar:	false
@@ -105,14 +104,11 @@ URxvt.urgentOnBell:	False
 *color7:                S_base2
 *color15:               S_base3
 
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.rgba: rgb
-Xft.antialias: true
-Xft.lcdfilter:  lcddefault
-Xft.dpi: 96
-
-!Xcursor.theme: FlatbedCursors.Blue.Small
-!Xcursor.theme: Breeze
-!Xcursor.theme: breeze_cursors
-Xcursor.theme: Vanilla-DMZ
+!Xft.hinting:		true
+!Xft.hintstyle:	hintslight
+!Xft.rgba:				rgb
+!Xft.antialias:	true
+!Xft.lcdfilter:  lcddefault
+!Xft.dpi:				195
+!Xcursor.theme:	DMZ-Black
+!Xcursor.size:		40

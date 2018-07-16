@@ -48,6 +48,8 @@ set autochdir
 set nu
 set showcmd
 
+"set paste
+
 set hlsearch
 set incsearch
 set ignorecase
