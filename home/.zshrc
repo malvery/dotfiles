@@ -17,9 +17,6 @@ alias q="exit"
 alias ..='cd ..'
 alias bc='bc -ql'
 
-alias tailf='tail -f'
-alias open='reattach-to-user-namespace -l open'
-
 alias mc='mc -d'
 alias mnt='cd /media'
 
