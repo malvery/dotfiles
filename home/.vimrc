@@ -127,7 +127,7 @@ endfunction
 "autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "===========================================================================
-" Sessions
+" Plugins
 "===========================================================================
 
 " NERDTree
@@ -136,6 +136,12 @@ let NERDTreeQuitOnOpen=1
 " vim-session
 let g:session_autoload = 'no'
 let g:session_autosave = 'no'
+
+"===========================================================================
+" Alias
+"===========================================================================
+"
+command JsonFormat %! python -m json.tool
 
 "===========================================================================
 " Hotkeys
