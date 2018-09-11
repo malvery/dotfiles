@@ -16,7 +16,9 @@ Bundle 'colorer-color-scheme'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
-Bundle 'snipMate'
+Bundle 'vim-misc'
+Bundle 'vim-session'
+
 
 "===========================================================================
 " theme
@@ -67,6 +69,26 @@ highlight PMenu ctermbg=238 gui=bold
 highlight PMenuSel ctermbg=248 ctermfg=238 gui=bold
 
 "===========================================================================
+" GUI options
+"===========================================================================
+
+if has("gui_running")
+	set guioptions-=T
+	set guifont=Hack\ 9
+	set linespace=1
+	set wildmenu
+	set wcm=<Tab> 
+
+	menu Encoding.utf-8 :e ++enc=utf8 <CR>
+	menu Encoding.windows-1251 :e ++enc=cp1251<CR>
+	menu Encoding.koi8-r :e ++enc=koi8-r<CR>
+	menu Encoding.cp866 :e ++enc=cp866<CR>
+
+	nnoremap yy yy"+yy
+	vnoremap y ygv"+y
+endif
+
+"===========================================================================
 " Functions
 "===========================================================================
 
@@ -105,14 +127,25 @@ endfunction
 "autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "===========================================================================
+" Sessions
+"===========================================================================
+
+" NERDTree
+let NERDTreeQuitOnOpen=1
+
+" vim-session
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
+
+"===========================================================================
 " Hotkeys
 "===========================================================================
 
 inoremap <C-f> <c-r>=TabComplete()<CR>
 
-nmap <C-o> <esc>:sh<cr>
-vmap <C-o> <esc>:sh<cr>
-imap <C-o> <esc>:sh<cr>
+"nmap <C-o> <esc>:sh<cr>
+"vmap <C-o> <esc>:sh<cr>
+"imap <C-o> <esc>:sh<cr>
 
 "nmap <C-p> <esc>:r! clipit -c<cr>
 "vmap <C-p> <esc>:r! clipit -c<cr>
@@ -126,4 +159,8 @@ nmap <F12>  <esc>:NERDTreeToggle<CR>
 vmap <F12>  <esc>:NERDTreeToggle<CR>
 imap <F12>  <esc>:NERDTreeToggle<CR>
 
-noremap <F9> :! ./% 
+"noremap <F9> :! ./% 
+
+nnoremap <C-n>			:tabnew<CR>
+nnoremap <C-Left>		:tabprevious<CR>
+nnoremap <C-Right>	:tabnext<CR>
