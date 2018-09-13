@@ -37,7 +37,8 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r				exec --no-startup-id dmenu_run -fn 'Hack-8'
+bindsym $mod+r				exec --no-startup-id gmrun 
+#bindsym $mod+r				exec --no-startup-id dmenu_run -fn 'Hack-8'
 bindsym $mod+Shift+d	exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -fn "Hack-8" -i'
 
 # change focus
@@ -130,8 +131,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 ###############################################################################
 
 # workspace hotkeys
-bindsym $mod+g workspace 8
-bindsym $mod+s workspace 9
+bindsym $mod+g workspace 9
+bindsym $mod+s workspace 10
 
 # jump to urgent window
 bindsym $mod+u [urgent=latest] focus
@@ -181,8 +182,8 @@ bindsym XF86AudioMute					exec "amixer -D pulse set Master toggle && pkill -RTMI
 
 # set apps workspace
 assign [class="Atom"] 8
-assign [class="Slack"] 9
-assign [class="Thunderbird"] 9
+assign [class="Slack"] 10
+assign [class="Thunderbird"] 10
 
 # set floating apps
 for_window [class="Qiv"]							floating enable
@@ -192,7 +193,6 @@ for_window [class="Shutter"]					floating enable
 # disable windows decoration
 #for_window [class="^.*"] border pixel 1
 #for_window [floating] border normal
-
 
 ###############################################################################
 
@@ -259,7 +259,22 @@ bar {
 				status_command	i3blocks -c ~/.config/i3/i3blocks.conf
 				position				top
 				font pango:			hack 8
+
+				#colors {
+					#background #002b36
+					#statusline #839496
+					#separator  #586e75
+					#focused_workspace  #b58900 #b58900 #002b36
+					#active_workspace   #586e75 #586e75 #002b36
+					#inactive_workspace #073642 #002b36 #839496
+					#urgent_workspace   #dc322f #dc322f #fdf6e3
+				#}
 }
+
+#client.focused          #002b36 #586e75 #fdf6e3 #268bd2
+#client.focused_inactive #002b36 #073642 #839496 #073642
+#client.unfocused        #002b36 #073642 #839496 #073642
+#client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 
 ###############################################################################
 # autostart
