@@ -153,7 +153,7 @@ bindsym $mod+Shift+"braceleft"	move workspace to output left
 bindsym $mod+Shift+"braceright" move workspace to output right
 
 # automatic back-and-forth when switching to the current workspace
-#workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 
 ###############################################################################
 set $file-manager "pcmanfm"
@@ -165,8 +165,8 @@ bindsym $mod+Shift+p		exec --no-startup-id $file-manager
 bindsym $mod+Shift+F12	exec --no-startup-id $lock-manager
 
 # brightnessctl
-bindsym XF86MonBrightnessUp		exec "brightnessctl set +10%"
-bindsym XF86MonBrightnessDown exec "brightnessctl set 10%-"
+bindsym XF86MonBrightnessUp		exec "brightnessctl set +4%"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 4%-"
 
 # volume ctl
 bindsym XF86AudioRaiseVolume	exec "amixer -D pulse set Master 5%+ unmute && pkill -RTMIN+10 i3blocks"

@@ -99,8 +99,9 @@ if [[ $TERM == "xterm" ]]
 #export TERM=xterm-256color
 test -e ~/.zsh_comp && fpath=(~/.zsh_comp $fpath)
 autoload -Uz compinit
-if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
+
+if [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
 	compinit -d $ZSH_COMPDUMP;
 else
-	compinit -C;
+	compinit -c;
 fi;
