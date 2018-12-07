@@ -1,7 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-#export PATH=$PATH:/usr/local/bin:/opt/local/bin/:/usr/local/go/bin
-#export LC_CTYPE=UTF-8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -70,11 +68,10 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git tmux)
 
+test -e ~/.zsh_comp && fpath=(~/.zsh_comp $fpath)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-#export PATH="/usr/lib64/lxqt-xdg-tools:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -90,18 +87,8 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 if [[ $TERM == "xterm" ]]
-	then 
-		export TERM=xterm-256color 
-	fi
+then 
+	export TERM=xterm-256color 
+fi
 
-#export TERM=xterm-256color
-test -e ~/.zsh_comp && fpath=(~/.zsh_comp $fpath)
-autoload -Uz compinit
-
-if [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
-	compinit -d $ZSH_COMPDUMP;
-else
-	compinit -c;
-fi;
