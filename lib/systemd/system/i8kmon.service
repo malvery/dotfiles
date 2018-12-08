@@ -1,0 +1,11 @@
+[Unit]
+Description=Dell laptop thermal monitoring
+ConditionPathExists=/proc/i8k
+
+[Service]
+ExecStartPre=/usr/bin/dell-bios-fan-control 0    
+ExecStopPost=/usr/bin/dell-bios-fan-control 1
+ExecStart=/usr/bin/i8kmon
+
+[Insetall]
+WantedBy=multi-user.target
