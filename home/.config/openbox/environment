@@ -10,3 +10,4 @@
 # http://www.google.com/search?q=how+to+set+keyboard+layout+xorg
 
 export QT_QPA_PLATFORMTHEME="gtk2"
+#export QT_QPA_PLATFORMTHEME="qt5ct"

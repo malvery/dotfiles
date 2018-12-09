@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-	<menu execute="obm-xdg /etc/xdg/menus/lxde-applications.menu" id="xdg-menu" label="Apps"/>
+	<menu execute="obm-xdg /etc/xdg/menus/arch-applications.menu" id="xdg-menu" label="Apps"/>
 	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
 	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
 	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
