@@ -173,22 +173,16 @@ bindsym XF86AudioRaiseVolume	exec "amixer -D pulse set Master 5%+ unmute && pkil
 bindsym XF86AudioLowerVolume	exec "amixer -D pulse set Master 5%- unmute && pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioMute					exec "amixer -D pulse set Master toggle && pkill -RTMIN+10 i3blocks"
 
-#bindsym XF86AudioRaiseVolume	exec "~/src/volume.sh up"
-#bindsym XF86AudioLowerVolume	exec "~/src/volume.sh down"
-#bindsym XF86AudioMute					exec "~/src/volume.sh mute"
-
-
 ###############################################################################
 
 # set apps workspace
-assign [class="Atom"] 8
 assign [class="Slack"] 10
 assign [class="Thunderbird"] 10
 
 # set floating apps
 for_window [class="Qiv"]							floating enable
 for_window [class="Shutter"]					floating enable
-#for_window [class="TelegramDesktop"]	floating enable
+for_window [class="Blueman-manager"]	floating enable
 
 # disable windows decoration
 #for_window [class="^.*"] border pixel 1
