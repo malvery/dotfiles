@@ -92,3 +92,6 @@ then
 	export TERM=xterm-256color 
 fi
 
+# disable history sharing
+# setopt no_share_history
+unsetopt share_history
