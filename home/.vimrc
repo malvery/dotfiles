@@ -74,7 +74,7 @@ highlight PMenuSel ctermbg=248 ctermfg=238 gui=bold
 
 if has("gui_running")
 	set guioptions-=T
-	set guifont=Hack\ 9
+	set guifont=Hack\ 10
 	set linespace=1
 	set wildmenu
 	set wcm=<Tab> 
