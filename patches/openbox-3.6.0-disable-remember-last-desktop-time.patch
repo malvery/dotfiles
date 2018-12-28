@@ -1,0 +1,11 @@
+--- openbox/openbox/screen.c	2018-12-28 16:55:34.923004638 +0300
++++ openbox/openbox/screen.c~	2018-12-28 16:59:00.424962095 +0300
+@@ -85,7 +85,7 @@
+ 
+ /*! The number of microseconds that you need to be on a desktop before it will
+   replace the remembered "last desktop" */
+-#define REMEMBER_LAST_DESKTOP_TIME 750
++#define REMEMBER_LAST_DESKTOP_TIME 0
+ 
+ static gboolean replace_wm(void)
+ {
