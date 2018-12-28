@@ -51,14 +51,7 @@
 	</menu>
 
 	<menu id="exit" label="Exit">
-		<item label="Lock">
-			<action name="Execute">
-				<command>slimlock</command>
-				<startupnotify>
-					<enabled>no</enabled>
-				</startupnotify>
-			</action>
-		</item>
+
 
 		<item label="Reboot">
 			<action name="Execute">
@@ -85,7 +78,7 @@
 
 		<item label="Term">
 			<action name="Execute">
-				<command>urxvt</command>
+				<command>lxterminal</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
@@ -111,11 +104,16 @@
 		<separator/>
 		<menu id="xdg-menu"/>
 		<menu id="places-menu"/>
-
-		<separator/>
 		<menu id="system-menu"/>
-		<separator/>
 
+		<separator/>
 		<menu id="exit"/>
+		
+		<item label="Lock">
+			<action name="Execute">
+				<command>light-locker-command -l</command>
+			</action>
+		</item>
+
 	</menu>
 </openbox_menu>

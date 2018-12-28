@@ -59,7 +59,7 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -68,7 +68,7 @@
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -121,7 +121,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>8</number>
+    <number>6</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
@@ -186,12 +186,12 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!--Keybindings for monitors actions -->
-    <keybind key="W-S-w">
+    <keybind key="W-S-bracketleft">
       <action name="MoveResizeTo">
         <monitor>prev</monitor>
       </action>
     </keybind>
-    <keybind key="W-S-e">
+    <keybind key="W-S-bracketright">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
@@ -214,7 +214,7 @@
         </pointer>
       </action>
     </keybind>
-    <!-- Keybindings for desktop switching -->
+    <!-- desktop switching by direction -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
         <to>left</to>
@@ -227,18 +227,8 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Up">
-      <action name="GoToDesktop">
-        <to>up</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Down">
-      <action name="GoToDesktop">
-        <to>down</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
+		
+		<!-- send window to desktop -->
     <keybind key="W-S-1">
       <action name="SendToDesktop">
         <to>1</to>
@@ -284,16 +274,8 @@
         <to>9</to>
       </action>
     </keybind>
-    <keybind key="W-S-s">
-      <action name="SendToDesktop">
-        <to>9</to>
-      </action>
-    </keybind>
-    <keybind key="W-S-g">
-      <action name="SendToDesktop">
-        <to>8</to>
-      </action>
-    </keybind>
+
+		<!-- desktop switching by index -->
     <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -339,30 +321,32 @@
         <to>9</to>
       </action>
     </keybind>
+		
+		<!-- desktop switching extra hotkeys -->
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>8</to>
+        <to>6</to>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="GoToDesktop">
-        <to>7</to>
+        <to>5</to>
       </action>
     </keybind>
-    <keybind key="W-S-Insert">
-      <action name="AddDesktop"/>
-    </keybind>
-    <keybind key="W-S-Delete">
-      <action name="RemoveDesktop"/>
-    </keybind>
+
     <keybind key="W-Escape">
       <action name="GoToDesktop">
         <to>last</to>
         <wrap>yes</wrap>
       </action>
     </keybind>
-    <keybind key="W-S-d">
-      <action name="ToggleShowDesktop"/>
+
+		<!-- windows actions -->
+    <keybind key="W-S-c">
+      <action name="Close"/>
+    </keybind>
+		<keybind key="W-S-s">
+			<action name="ToggleShade"/>
     </keybind>
     <keybind key="W-S-f">
       <action name="ToggleFullscreen"/>
@@ -370,26 +354,26 @@
     <keybind key="W-S-m">
       <action name="ToggleMaximize"/>
     </keybind>
-    <keybind key="W-S-w">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
+		<keybind key="W-S-r">
+      <action name="Resize"/>
     </keybind>
-    <!-- Keybindings for windows -->
-    <keybind key="W-S-c">
-      <action name="Close"/>
-    </keybind>
-    <keybind key="A-Escape">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
-    </keybind>
+
+		<!-- wm actions -->
     <keybind key="W-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
     </keybind>
-    <!-- Keybindings for window switching -->
+    <keybind key="W-S-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <keybind key="W-S-w">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+
+    <!-- windows switching -->
     <keybind key="W-Tab">
       <action name="NextWindow">
         <finalactions>
@@ -408,7 +392,8 @@
         </finalactions>
       </action>
     </keybind>
-    <!-- Keybindings for window switching with the arrow keys -->
+
+    <!-- windows switching with the arrow keys -->
     <keybind key="W-Right">
       <action name="DirectionalCycleWindows">
         <direction>right</direction>
@@ -429,7 +414,8 @@
         <direction>down</direction>
       </action>
     </keybind>
-    <!-- Tiling -->
+
+    <!-- windows tiling -->
     <keybind key="W-S-Right">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -466,7 +452,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-Return">
+    <keybind key="W-S-Return">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>center</x>
@@ -475,43 +461,43 @@
         <height>80%</height>
       </action>
     </keybind>
-    <!-- Keybindings for multimedia keys -->
+
+    <!-- multimedia keys -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <!--<command>notify-send "inc"</command>-->
-        <command>xbacklight -inc 10</command>
+        <command>xbacklight -inc 2</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <!--<command>notify-send "dec"</command>-->
-        <command>xbacklight -dec 10</command>
+        <command>xbacklight -dec 2</command>
       </action>
     </keybind>
-    <!-- Keybindings for running applications -->
+
+    <!-- run applications keys -->
+		<keybind key="W-F2">
+      <action name="Execute">
+        <command>xfce4-appfinder</command>
+      </action>
+    </keybind>
     <keybind key="W-r">
       <action name="Execute">
         <command>gmrun</command>
       </action>
     </keybind>
-    <!--<keybind key="C-less">-->
-    <!--<action name="Execute">-->
-    <!--<command>xfce4-popup-clipman</command>-->
-    <!--</action>-->
-    <!--</keybind>-->
+		<keybind key="W-S-l">
+      <action name="Execute">
+        <command>light-locker-command -l</command>
+      </action>
+    </keybind>
     <keybind key="W-S-p">
       <action name="Execute">
         <command>thunar</command>
       </action>
     </keybind>
-    <!--<keybind key="W-S-F12">-->
-    <!--<action name="Execute">-->
-    <!--<command>slimlock</command>-->
-    <!--</action>-->
-    <!--</keybind>-->
-    <keybind key="W-S-Return">
+    <keybind key="W-S-t">
       <action name="Execute">
-        <command>urxvt</command>
+        <command>lxterminal</command>
       </action>
     </keybind>
   </keyboard>
@@ -593,17 +579,7 @@
         <action name="Move"/>
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
-        <action name="If">
-          <maximized>yes</maximized>
-          <then>
-            <action name="Unmaximize"/>
-            <!--<action name="Decorate"/>-->
-          </then>
-          <else>
-            <action name="Maximize"/>
-            <!--<action name="Undecorate"/>-->
-          </else>
-        </action>
+				<action name="ToggleMaximize"/>
       </mousebind>
       <mousebind button="Up" action="Click">
         <action name="if">
@@ -766,17 +742,7 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Click">
-        <action name="If">
-          <maximized>yes</maximized>
-          <then>
-            <action name="Unmaximize"/>
-            <!--<action name="Decorate"/>-->
-          </then>
-          <else>
-            <action name="Maximize"/>
-            <!--<action name="Undecorate"/>-->
-          </else>
-        </action>
+				<action name="ToggleMaximize"/>
       </mousebind>
       <mousebind button="Middle" action="Click">
         <action name="ToggleMaximize">
@@ -800,36 +766,6 @@
       </mousebind>
     </context>
     <context name="Desktop">
-      <!--<mousebind button="Up" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>previous</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
-      <!--<mousebind button="Down" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>next</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
-      <!--<mousebind button="A-Up" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>previous</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
-      <!--<mousebind button="A-Down" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>next</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
-      <!--<mousebind button="C-A-Up" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>previous</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
-      <!--<mousebind button="C-A-Down" action="Click">-->
-      <!--<action name="GoToDesktop">-->
-      <!--<to>next</to>-->
-      <!--</action>-->
-      <!--</mousebind>-->
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -875,110 +811,16 @@
       </mousebind>
     </context>
   </mouse>
-  <menu><!-- You can specify more than one menu file in here and they are all loaded,
-       just don't make menu ids clash or, well, it'll be kind of pointless --><!-- default menu file (or custom one in $HOME/.config/openbox/) --><file>menu.xml</file><hideDelay>200</hideDelay><!-- if a press-release lasts longer than this setting (in milliseconds), the
-       menu is hidden again --><middle>no</middle><!-- center submenus vertically about the parent entry --><submenuShowDelay>100</submenuShowDelay><!-- time to delay before showing a submenu after hovering over the parent
-       entry.
-       if this is a negative value, then the delay is infinite and the
-       submenu will not be shown until it is clicked on --><submenuHideDelay>400</submenuHideDelay><!-- time to delay before hiding a submenu when selecting another
-       entry in parent menu -->
-       if this is a negative value, then the delay is infinite and the
-       submenu will not be hidden until a different submenu is opened --&gt;
-  <applicationIcons>yes</applicationIcons>
-  <!-- controls if icons appear in the client-list-(combined-)menu -->
-  <manageDesktops>yes</manageDesktops>
-  <!-- show the manage desktops section in the client-list-(combined-)menu -->
-</menu>
+	<menu>
+		<file>menu.xml</file>
+		<hideDelay>200</hideDelay>
+		<middle>no</middle>
+		<submenuShowDelay>100</submenuShowDelay>
+		<submenuHideDelay>400</submenuHideDelay>
+		<applicationIcons>yes</applicationIcons>
+		<manageDesktops>yes</manageDesktops>
+	</menu>
   <applications>
-    <!--
-  # this is an example with comments through out. use these to make your
-  # own rules, but without the comments of course.
-  # you may use one or more of the name/class/role/title/type rules to specify
-  # windows to match
-
-  <application name="the window's _OB_APP_NAME property (see obxprop)"
-              class="the window's _OB_APP_CLASS property (see obxprop)"
-               role="the window's _OB_APP_ROLE property (see obxprop)"
-              title="the window's _OB_APP_TITLE property (see obxprop)"
-               type="the window's _OB_APP_TYPE property (see obxprob)..
-                      (if unspecified, then it is 'dialog' for child windows)">
-  # you may set only one of name/class/role/title/type, or you may use more
-  # than one together to restrict your matches.
-
-  # the name, class, role, and title use simple wildcard matching such as those
-  # used by a shell. you can use * to match any characters and ? to match
-  # any single character.
-
-  # the type is one of: normal, dialog, splash, utility, menu, toolbar, dock,
-  #    or desktop
-
-  # when multiple rules match a window, they will all be applied, in the
-  # order that they appear in this list
-
-
-    # each rule element can be left out or set to 'default' to specify to not 
-    # change that attribute of the window
-
-    <decor>yes</decor>
-    # enable or disable window decorations
-
-    <shade>no</shade>
-    # make the window shaded when it appears, or not
-
-    <position force="no">
-      # the position is only used if both an x and y coordinate are provided
-      # (and not set to 'default')
-      # when force is "yes", then the window will be placed here even if it
-      # says you want it placed elsewhere.  this is to override buggy
-      # applications who refuse to behave
-      <x>center</x>
-      # a number like 50, or 'center' to center on screen. use a negative number
-      # to start from the right (or bottom for <y>), ie -50 is 50 pixels from the
-      # right edge (or bottom).
-      <y>200</y>
-      <monitor>1</monitor>
-      # specifies the monitor in a xinerama setup.
-      # 1 is the first head, or 'mouse' for wherever the mouse is
-    </position>
-
-    <focus>yes</focus>
-    # if the window should try be given focus when it appears. if this is set
-    # to yes it doesn't guarantee the window will be given focus. some
-    # restrictions may apply, but Openbox will try to
-
-    <desktop>1</desktop>
-    # 1 is the first desktop, 'all' for all desktops
-
-    <layer>normal</layer>
-    # 'above', 'normal', or 'below'
-
-    <iconic>no</iconic>
-    # make the window iconified when it appears, or not
-
-    <skip_pager>no</skip_pager>
-    # asks to not be shown in pagers
-
-    <skip_taskbar>no</skip_taskbar>
-    # asks to not be shown in taskbars. window cycling actions will also
-    # skip past such windows
-
-    <fullscreen>yes</fullscreen>
-    # make the window in fullscreen mode when it appears
-
-    <maximized>true</maximized>
-    # 'Horizontal', 'Vertical' or boolean (yes/no)
-  </application>
-
-  # end of the example
--->
-    <!--<application class="Chromium">
-      <desktop>2</desktop>
-      <maximized>true</maximized>
-      <decor>no</decor>
-    </application>-->
-    <application class="Chromium-browser">
-      <decor>no</decor>
-    </application>
     <application role="app">
       <decor>yes</decor>
       <maximized>false</maximized>
@@ -988,5 +830,13 @@
       <decor>yes</decor>
       <maximized>false</maximized>
     </application>
+
+		<application class="TelegramDesktop">
+      <desktop>6</desktop>
+    </application>
+		<application class="Thunderbird">
+      <desktop>6</desktop>
+    </application>
+
   </applications>
 </openbox_config>
