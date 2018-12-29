@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 SYS_PATH='/sys/class/power_supply'
 BATT_ID='BAT0'
 

@@ -26,7 +26,7 @@
     <inactiveOpacity>95</inactiveOpacity>
   </focus>
   <placement>
-    <policy>Smart</policy>
+    <policy>UnderMouse</policy>
     <!-- 'Smart' or 'UnderMouse' -->
     <center>yes</center>
     <!-- whether to place windows in the center of the free area found or
@@ -121,7 +121,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>6</number>
+    <number>7</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
@@ -185,6 +185,7 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
+
     <!--Keybindings for monitors actions -->
     <keybind key="W-S-bracketleft">
       <action name="MoveResizeTo">
@@ -214,6 +215,7 @@
         </pointer>
       </action>
     </keybind>
+
     <!-- desktop switching by direction -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
@@ -325,12 +327,12 @@
 		<!-- desktop switching extra hotkeys -->
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>6</to>
+        <to>7</to>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="GoToDesktop">
-        <to>5</to>
+        <to>6</to>
       </action>
     </keybind>
 
@@ -356,6 +358,9 @@
     </keybind>
 		<keybind key="W-S-r">
       <action name="Resize"/>
+    </keybind>
+		<keybind key="W-S-v">
+			<action name="Move"/>
     </keybind>
 
 		<!-- wm actions -->
@@ -465,12 +470,12 @@
     <!-- multimedia keys -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight -inc 2</command>
+        <command>xbacklight -inc 5</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -dec 2</command>
+        <command>xbacklight -dec 5</command>
       </action>
     </keybind>
 
@@ -543,36 +548,6 @@
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
       </mousebind>
-      <mousebind button="W-Up" action="Click">
-        <action name="GoToDesktop">
-          <to>previous</to>
-        </action>
-      </mousebind>
-      <mousebind button="W-Down" action="Click">
-        <action name="GoToDesktop">
-          <to>next</to>
-        </action>
-      </mousebind>
-      <mousebind button="C-A-Up" action="Click">
-        <action name="GoToDesktop">
-          <to>previous</to>
-        </action>
-      </mousebind>
-      <mousebind button="C-A-Down" action="Click">
-        <action name="GoToDesktop">
-          <to>next</to>
-        </action>
-      </mousebind>
-      <mousebind button="A-S-Up" action="Click">
-        <action name="SendToDesktop">
-          <to>previous</to>
-        </action>
-      </mousebind>
-      <mousebind button="A-S-Down" action="Click">
-        <action name="SendToDesktop">
-          <to>next</to>
-        </action>
-      </mousebind>
     </context>
     <context name="Titlebar">
       <mousebind button="Left" action="Drag">
@@ -586,9 +561,9 @@
           <shaded>no</shaded>
           <then>
             <action name="Shade"/>
-            <action name="FocusToBottom"/>
-            <action name="Unfocus"/>
-            <action name="Lower"/>
+            <!--<action name="FocusToBottom"/>-->
+            <!--<action name="Unfocus"/>-->
+            <!--<action name="Lower"/>-->
           </then>
         </action>
       </mousebind>
@@ -607,11 +582,6 @@
         <action name="Focus"/>
         <action name="Raise"/>
         <action name="Unshade"/>
-      </mousebind>
-      <mousebind button="Middle" action="Press">
-        <action name="Lower"/>
-        <action name="FocusToBottom"/>
-        <action name="Unfocus"/>
       </mousebind>
       <mousebind button="Right" action="Press">
         <action name="Focus"/>
@@ -799,16 +769,6 @@
           <to>next</to>
         </action>
       </mousebind>
-      <mousebind button="A-Up" action="Click">
-        <action name="GoToDesktop">
-          <to>previous</to>
-        </action>
-      </mousebind>
-      <mousebind button="A-Down" action="Click">
-        <action name="GoToDesktop">
-          <to>next</to>
-        </action>
-      </mousebind>
     </context>
   </mouse>
 	<menu>
@@ -834,8 +794,11 @@
 		<application class="TelegramDesktop">
       <desktop>6</desktop>
     </application>
+		<application class="Slack">
+      <desktop>7</desktop>
+    </application>
 		<application class="Thunderbird">
-      <desktop>6</desktop>
+      <desktop>7</desktop>
     </application>
 
   </applications>
