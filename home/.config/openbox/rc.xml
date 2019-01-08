@@ -26,7 +26,7 @@
     <inactiveOpacity>95</inactiveOpacity>
   </focus>
   <placement>
-    <policy>UnderMouse</policy>
+    <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
     <center>yes</center>
     <!-- whether to place windows in the center of the free area found or
@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arc-Darker</name>
+    <name>materia</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -121,7 +121,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>7</number>
+    <number>6</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
@@ -185,7 +185,6 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-
     <!--Keybindings for monitors actions -->
     <keybind key="W-S-bracketleft">
       <action name="MoveResizeTo">
@@ -215,7 +214,6 @@
         </pointer>
       </action>
     </keybind>
-
     <!-- desktop switching by direction -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
@@ -229,8 +227,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-		
-		<!-- send window to desktop -->
+    <!-- send window to desktop -->
     <keybind key="W-S-1">
       <action name="SendToDesktop">
         <to>1</to>
@@ -276,8 +273,7 @@
         <to>9</to>
       </action>
     </keybind>
-
-		<!-- desktop switching by index -->
+    <!-- desktop switching by index -->
     <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
@@ -323,32 +319,29 @@
         <to>9</to>
       </action>
     </keybind>
-		
-		<!-- desktop switching extra hotkeys -->
+    <!-- desktop switching extra hotkeys -->
     <keybind key="W-s">
-      <action name="GoToDesktop">
-        <to>7</to>
-      </action>
-    </keybind>
-    <keybind key="W-g">
       <action name="GoToDesktop">
         <to>6</to>
       </action>
     </keybind>
-
+    <keybind key="W-g">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
     <keybind key="W-Escape">
       <action name="GoToDesktop">
         <to>last</to>
         <wrap>yes</wrap>
       </action>
     </keybind>
-
-		<!-- windows actions -->
+    <!-- windows actions -->
     <keybind key="W-S-c">
       <action name="Close"/>
     </keybind>
-		<keybind key="W-S-s">
-			<action name="ToggleShade"/>
+    <keybind key="W-S-s">
+      <action name="ToggleShade"/>
     </keybind>
     <keybind key="W-S-f">
       <action name="ToggleFullscreen"/>
@@ -356,28 +349,23 @@
     <keybind key="W-S-m">
       <action name="ToggleMaximize"/>
     </keybind>
-		<keybind key="W-S-r">
+    <keybind key="W-S-r">
       <action name="Resize"/>
     </keybind>
-		<keybind key="W-S-v">
-			<action name="Move"/>
+    <keybind key="W-S-v">
+      <action name="Move"/>
     </keybind>
-
-		<!-- wm actions -->
+    <!-- wm actions -->
     <keybind key="W-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
-    </keybind>
-    <keybind key="W-S-d">
-      <action name="ToggleShowDesktop"/>
     </keybind>
     <keybind key="W-S-w">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
     </keybind>
-
     <!-- windows switching -->
     <keybind key="W-Tab">
       <action name="NextWindow">
@@ -397,7 +385,6 @@
         </finalactions>
       </action>
     </keybind>
-
     <!-- windows switching with the arrow keys -->
     <keybind key="W-Right">
       <action name="DirectionalCycleWindows">
@@ -419,7 +406,6 @@
         <direction>down</direction>
       </action>
     </keybind>
-
     <!-- windows tiling -->
     <keybind key="W-S-Right">
       <action name="UnmaximizeFull"/>
@@ -466,31 +452,29 @@
         <height>80%</height>
       </action>
     </keybind>
-
     <!-- multimedia keys -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight -inc 5</command>
+        <command>xbacklight -inc 2</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -dec 5</command>
+        <command>xbacklight -dec 2</command>
       </action>
     </keybind>
-
     <!-- run applications keys -->
-		<keybind key="W-F2">
-      <action name="Execute">
-        <command>xfce4-appfinder</command>
-      </action>
-    </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <command>gmrun</command>
+        <command>rofi -show run</command>
       </action>
     </keybind>
-		<keybind key="W-S-l">
+		<keybind key="W-S-d">
+			<action name="Execute">
+        <command>rofi -show drun</command>
+      </action>
+		</keybind>
+    <keybind key="W-S-l">
       <action name="Execute">
         <command>light-locker-command -l</command>
       </action>
@@ -554,7 +538,7 @@
         <action name="Move"/>
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
-				<action name="ToggleMaximize"/>
+        <action name="ToggleMaximize"/>
       </mousebind>
       <mousebind button="Up" action="Click">
         <action name="if">
@@ -712,7 +696,7 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="Left" action="Click">
-				<action name="ToggleMaximize"/>
+        <action name="ToggleMaximize"/>
       </mousebind>
       <mousebind button="Middle" action="Click">
         <action name="ToggleMaximize">
@@ -771,15 +755,15 @@
       </mousebind>
     </context>
   </mouse>
-	<menu>
-		<file>menu.xml</file>
-		<hideDelay>200</hideDelay>
-		<middle>no</middle>
-		<submenuShowDelay>100</submenuShowDelay>
-		<submenuHideDelay>400</submenuHideDelay>
-		<applicationIcons>yes</applicationIcons>
-		<manageDesktops>yes</manageDesktops>
-	</menu>
+  <menu>
+    <file>menu.xml</file>
+    <hideDelay>200</hideDelay>
+    <middle>no</middle>
+    <submenuShowDelay>100</submenuShowDelay>
+    <submenuHideDelay>400</submenuHideDelay>
+    <applicationIcons>yes</applicationIcons>
+    <manageDesktops>yes</manageDesktops>
+  </menu>
   <applications>
     <application role="app">
       <decor>yes</decor>
@@ -790,16 +774,14 @@
       <decor>yes</decor>
       <maximized>false</maximized>
     </application>
-
-		<application class="TelegramDesktop">
+    <application class="TelegramDesktop">
       <desktop>6</desktop>
     </application>
-		<application class="Slack">
-      <desktop>7</desktop>
+    <application class="Slack">
+      <desktop>6</desktop>
     </application>
-		<application class="Thunderbird">
-      <desktop>7</desktop>
+    <application class="Thunderbird">
+      <desktop>6</desktop>
     </application>
-
   </applications>
 </openbox_config>
