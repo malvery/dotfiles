@@ -38,9 +38,9 @@ bindsym $mod+Shift+Return exec lxterminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r				exec --no-startup-id gmrun 
+bindsym $mod+r				exec --no-startup-id rofi -show run 
 #bindsym $mod+r				exec --no-startup-id dmenu_run -fn 'Hack-8'
-bindsym $mod+Shift+d	exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -fn "Hack-10" -i'
+bindsym $mod+Shift+d	exec --no-startup-id rofi -show window
 
 # change focus
 #bindsym $mod+j					focus left
@@ -132,8 +132,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 ###############################################################################
 
 # workspace hotkeys
-bindsym $mod+g workspace 9
-bindsym $mod+s workspace 10
+bindsym $mod+g workspace 8
+bindsym $mod+s workspace 9
 
 # jump to urgent window
 bindsym $mod+u [urgent=latest] focus
@@ -177,9 +177,9 @@ bindsym XF86AudioMute					exec "amixer -D pulse set Master toggle && pkill -RTMI
 ###############################################################################
 
 # set apps workspace
-assign [class="Slack"] 10
-assign [class="Thunderbird"] 10
-assign [class="TelegramDesktop"] 10
+assign [class="Slack"] 9
+assign [class="Thunderbird"] 9
+assign [class="TelegramDesktop"] 9
 
 # set floating apps
 for_window [class="Qiv"]							floating enable
