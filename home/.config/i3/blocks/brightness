@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 BR_STEP=2
 if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then

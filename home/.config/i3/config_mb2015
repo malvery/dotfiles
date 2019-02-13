@@ -37,9 +37,8 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r				exec --no-startup-id gmrun 
-#bindsym $mod+r				exec --no-startup-id dmenu_run -fn 'Hack-8'
-bindsym $mod+Shift+d	exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -fn "Hack-8" -i'
+bindsym $mod+r				exec --no-startup-id rofi -show run 
+bindsym $mod+Shift+d	exec --no-startup-id rofi -show window
 
 # change focus
 #bindsym $mod+j					focus left
@@ -252,7 +251,8 @@ bindsym $mod+Shift+r mode "resize"
 bar {
 				status_command	INTERFACE=wlp3s0 INLABEL='RX: ' OUTLABEL='TX: ' SENSOR_CHIP='coretemp-isa-0000' i3blocks -c ~/.config/i3/i3blocks.conf
 				position				top
-				font pango:			hack 8
+				#font pango:			hack bold 8
+				font pango:			ubuntu mono bold 10
 
 				#colors {
 					#background #002b36
