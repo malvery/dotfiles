@@ -19,7 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- *****************
-local host_conf = require("host_conf")
+local host_conf     = require("host_conf")
 -- *****************
 
 -- {{{ Error handling
@@ -52,6 +52,7 @@ end
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- *****************
 host_conf.initTheme()
+local host_widgets  = require("host_widgets")
 -- *****************
 
 
@@ -120,7 +121,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock(" %a %b %d, %H:%M:%S ", 1)
+-- mytextclock = wibox.widget.textclock(" %a %b %d, %H:%M:%S ", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -228,9 +229,20 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            -- *****************
+            host_widgets.cpu_widget,
+            host_widgets.mem_widget,
+            host_widgets.thermal_widget,
+            host_widgets.wifi_widget,
+            host_widgets.vol_widget,
+            host_widgets.bat_widget,
+            -- *****************
             mykeyboardlayout,
             wibox.widget.systray(),
-            mytextclock,
+            -- *****************
+            host_widgets.time_widget,
+            -- *****************
+            -- mytextclock,
             s.mylayoutbox,
         },
     }
