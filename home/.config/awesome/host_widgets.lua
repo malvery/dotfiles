@@ -12,8 +12,8 @@ if helpers.hostname == "xps9570" then
     thermal_source  =   "hwmon" 
 
 elseif helpers.hostname == "NB-ZAVYALOV2" then
-    wifi_device     =   "wlp59s0"
-    thermal_zone    =   "hwmon2"
+    wifi_device     =   "wlp3s0"
+    thermal_zone    =   "hwmon1"
     thermal_source  =   "hwmon"
 end
 

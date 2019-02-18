@@ -164,7 +164,6 @@ end
 -- Autostart
 function initAutostart()
 	apps_list = {
-		'kbdd',
 		'xsettingsd',
 		'lxpolkit',
 		'clipit',
@@ -195,6 +194,8 @@ function initAutostart()
 
 	awful.spawn.with_shell('nitrogen --restore')
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
+
+	awful.spawn.with_shell('kbdd')
 end
 
 -- ############################################################################################
