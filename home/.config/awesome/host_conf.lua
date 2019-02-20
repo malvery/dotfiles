@@ -19,7 +19,7 @@ local APPS = {
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 	beautiful.notification_border_color = '#cc9393'
 	beautiful.useless_gap	= 1
 
@@ -73,23 +73,18 @@ end
 -- Hotkeys
 function getHotkeys()
 		hotkeys = gears.table.join(
-			awful.key({ modkey,           }, "r",	function () awful.spawn('rofi -show run')  end),
-			awful.key({ modkey, "Shift"   }, "d",	function () awful.spawn('rofi -show windowcd') end),
+			awful.key({ modkey,           }, "r",		function () awful.spawn('rofi -show run')				end),
+			awful.key({ modkey, "Shift"   }, "d",		function () awful.spawn('rofi -show windowcd')	end),
+			awful.key({ modkey, "Shift"   }, "p",		function () awful.spawn(APPS.file_manager)			end),
+			awful.key({ modkey, "Shift"   }, "F12",	function () awful.spawn(APPS.lock_manager)			end),
 
-			awful.key({ modkey, "Shift"   }, "p",	function () awful.spawn(APPS.file_manager) end),
-			awful.key({ modkey, "Shift"   }, "F12",	function () awful.spawn(APPS.lock_manager) end),
+			awful.key({ }, "XF86AudioRaiseVolume",	function () helpers.volume("+")				end),
+			awful.key({ }, "XF86AudioLowerVolume",	function () helpers.volume("-")				end),
+			awful.key({ }, "XF86AudioMute",					function () helpers.volume("toggle")	end),
+			awful.key({ }, "XF86MonBrightnessUp",		function () helpers.backlight("inc")	end),
+			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
-			-- awful.key({ }, "XF86AudioRaiseVolume",	function () awful.spawn('amixer -D pulse set Master 5%+ unmute') end),
-			-- awful.key({ }, "XF86AudioLowerVolume",	function () awful.spawn('amixer -D pulse set Master 5%- unmute') end),
-			-- awful.key({ }, "XF86AudioMute",			function () awful.spawn('amixer -D pulse set Master toggle') end),
-
-			awful.key({ }, "XF86AudioRaiseVolume",	function () helpers.volume("+") end),
-			awful.key({ }, "XF86AudioLowerVolume",	function () helpers.volume("-") end),
-			awful.key({ }, "XF86AudioMute",			function () helpers.volume("toggle") end),
-			awful.key({ }, "XF86MonBrightnessUp",	function () helpers.backlight("inc") end),
-			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec") end),
-
-			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),	
+			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
 			awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
 			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),	
 			awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
@@ -120,6 +115,7 @@ function getLayouts()
 		layouts[3] = awful.layout.suit.max
 		layouts[4] = awful.layout.suit.max
 		layouts[5] = awful.layout.suit.max
+		layouts[8] = awful.layout.suit.max
 	end
 
 	return layouts
@@ -201,11 +197,11 @@ end
 -- ############################################################################################
 
 return {
-	apps			=	APPS,
-	initTheme		=	initTheme,
-	initAutostart	=	initAutostart,
-	getMenu			=	getMenu,
-	getHotkeys		=	getHotkeys,
-	getLayouts		=	getLayouts,
+	apps						=	APPS,
+	initTheme				=	initTheme,
+	initAutostart		=	initAutostart,
+	getMenu					=	getMenu,
+	getHotkeys			=	getHotkeys,
+	getLayouts			=	getLayouts,
 	getClientRules	=	getClientRules
 }
