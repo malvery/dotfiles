@@ -46,5 +46,3 @@ for tag in desktop_list:
 if new_desktop is not None:
     subprocess.check_output(['wmctrl', '-s', str(new_desktop)])
 
-print('current: %s' % current_desktop)
-print('new: %s' % new_desktop)
