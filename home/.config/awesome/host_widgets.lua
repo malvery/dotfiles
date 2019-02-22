@@ -61,6 +61,7 @@ wifi_widget =  awful.widget.watch(
 	string.format('bash -c "cat /proc/net/wireless | grep %s | awk \'{ print int($3 * 100 / 70) }\'"', wifi_device), 5,
 	function(widget, stdout)
 		val = tonumber(stdout)
+		if not val then val = 0 end
 		if val < 40 then color = color_h elseif val < 80 then color = color_m else color = color_g end
 		widget:set_markup(string.format('<span color="%s">WIFI: %.0f%%  </span>', color, val))
 end)
