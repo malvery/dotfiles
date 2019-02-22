@@ -3,6 +3,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
+local capi = {awesome = awesome}
 
 -- ############################################################################################
 
@@ -76,7 +77,7 @@ vol_widget, vol_widget_t =  awful.widget.watch(
 		vol_v = tonumber(values[1])
 		vol_s = values[2]
 
-		if vol_v > 50 then color = color_m else color = color_n end
+		if vol_v >= 50 then color = color_m else color = color_n end
 		if vol_s:match("off") then color = color_h end
 
 		widget:set_markup(string.format('<span color="%s">VOL: %.0f%%  </span>', color, vol_v))
@@ -91,16 +92,18 @@ vol_widget:buttons(gears.table.join(
 
 -- ############################################################################################
 -- batt
-local power_supply = '/sys/class/power_supply/BAT0'
+local power_supply = '/sys/class/power_supply/' .. 'BAT0'
 
 power_widget =  awful.widget.watch(string.format('cat %s/current_now', power_supply), 5, function(widget, stdout)
-	widget:set_text(string.format("PC: %.1fW  ", tonumber(stdout) / 100000))
+	val = tonumber(stdout) / 100000
+	if val > 40 then color = color_h else color = color_n end
+	widget:set_markup(string.format('<span color="%s">PC: %.1fW</span>  ', color, val))
 end)
 
 bat_widget =  awful.widget.watch(string.format('cat %s/capacity', power_supply), 15, function(widget, stdout)
 	val = tonumber(stdout)
 	if val < 35 then color = color_h elseif val < 70 then color = color_m else color = color_g end
-	widget:set_markup(string.format('<span color="%s">BAT: %.0f%%</span>  :: ', color, val))
+	widget:set_markup(string.format('<span color="%s">BAT: %.0f%%</span>  ', color, val))
 end)
 
 bat_widget:buttons(gears.table.join(
@@ -110,12 +113,17 @@ bat_widget:buttons(gears.table.join(
 
 -- ############################################################################################
 -- keyboard layout
-keyboard_widget = awful.widget.keyboardlayout()
+keyboard_widget = wibox.widget.textbox()
 
--- local capi = {awesome = awesome}
--- capi.awesome.connect_signal("xkb::group_changed", function ()
--- 	-- helpers.printNotify(keyboard_widget:get_groups_from_group_names(capi.xkb_get_group_names()))
--- end)
+local dbus_cmd = 'dbus-send --print-reply=literal --dest=ru.gentoo.KbddService /ru/gentoo/KbddService ru.gentoo.kbdd.getCurrentLayout'
+local kbdd_locales = {[0] = 'EN', [1] = 'RU'}
+capi.awesome.connect_signal("xkb::group_changed", function ()
+	awful.spawn.easy_async(dbus_cmd, function(stdout, stderr, reason, exit_code)
+		kbdd_value = tonumber(string.match(stdout, ' %d+'))
+		keyboard_widget.markup = string.format('<span color="%s">%s</span>  ', color_m, kbdd_locales[kbdd_value])
+		-- keyboard_widget.text = '  ' .. kbdd_locales[kbdd_value] .. ' '
+	end)
+end)
 
 -- ############################################################################################
 

@@ -73,24 +73,24 @@ end
 -- Hotkeys
 function getHotkeys()
 		hotkeys = gears.table.join(
-			awful.key({ modkey,           }, "r",		function () awful.spawn('rofi -show run')				end),
+			awful.key({ modkey,           }, "r",		function () awful.spawn('rofi -show run')		end),
 			awful.key({ modkey, "Shift"   }, "d",		function () awful.spawn('rofi -show windowcd')	end),
-			awful.key({ modkey, "Shift"   }, "p",		function () awful.spawn(APPS.file_manager)			end),
-			awful.key({ modkey, "Shift"   }, "F12",	function () awful.spawn(APPS.lock_manager)			end),
+			awful.key({ modkey, "Shift"   }, "p",		function () awful.spawn(APPS.file_manager)		end),
+			awful.key({ modkey, "Shift"   }, "F12",		function () awful.spawn(APPS.lock_manager)		end),
 
-			awful.key({ }, "XF86AudioRaiseVolume",	function () helpers.volume("+")				end),
-			awful.key({ }, "XF86AudioLowerVolume",	function () helpers.volume("-")				end),
-			awful.key({ }, "XF86AudioMute",					function () helpers.volume("toggle")	end),
-			awful.key({ }, "XF86MonBrightnessUp",		function () helpers.backlight("inc")	end),
+			awful.key({ }, "XF86AudioRaiseVolume",	function () helpers.volume("+")			end),
+			awful.key({ }, "XF86AudioLowerVolume",	function () helpers.volume("-")			end),
+			awful.key({ }, "XF86AudioMute",			function () helpers.volume("toggle")	end),
+			awful.key({ }, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
 			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
-			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")		end),	
+			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),	
 			awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
 			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),	
 			awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
 
-			awful.key({ modkey,           }, "s",	function () awful.tag.viewonly(awful.tag.gettags(awful.tag.getscreen())[9])	end),
-			awful.key({ modkey,           }, "g",	function () awful.tag.viewonly(awful.tag.gettags(awful.tag.getscreen())[8])	end),
+			awful.key({ modkey,           }, "s",	function () awful.screen.focused().tags[9]:view_only()	end),
+			awful.key({ modkey,           }, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
 			awful.key({ modkey,  "Shift"  }, "/", 		hotkeys_popup.show_help),
 			awful.key({ 'Ctrl',           }, "space",	naughty.destroy_all_notifications)
@@ -161,7 +161,7 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		'lxpolkit',
+		-- 'lxpolkit',
 		'clipit',
 		'redshift-gtk',
 		'nm-applet',
@@ -169,7 +169,7 @@ function initAutostart()
 		'light-locker',
 		'compton --backend glx --vsync opengl -f -D 2',
 		'libinput-gestures-setup start',
-		'pasystray',
+		-- 'pasystray',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
@@ -197,11 +197,11 @@ end
 -- ############################################################################################
 
 return {
-	apps						=	APPS,
-	initTheme				=	initTheme,
-	initAutostart		=	initAutostart,
-	getMenu					=	getMenu,
-	getHotkeys			=	getHotkeys,
-	getLayouts			=	getLayouts,
+	apps			=	APPS,
+	initTheme		=	initTheme,
+	initAutostart	=	initAutostart,
+	getMenu			=	getMenu,
+	getHotkeys		=	getHotkeys,
+	getLayouts		=	getLayouts,
 	getClientRules	=	getClientRules
 }
