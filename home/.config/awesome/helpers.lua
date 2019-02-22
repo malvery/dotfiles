@@ -43,10 +43,8 @@ function backlight(action)
 	end
 end
 
-local vol_widget = nil
-function setVolumeWidget(widget)
-	vol_widget = widget
-end
+local vol_widget_t = nil
+function setVolumeWidgetTimer(timer) vol_widget_t = timer end
 
 function volume(action)
 	if action == "+" or action == "-" then
@@ -54,10 +52,8 @@ function volume(action)
 	elseif action == "toggle" then
 		awful.spawn.with_shell("amixer -D pulse set Master toggle")
 	end
-	
-	if vol_widget then
-		vicious.force({ vol_widget })
-	end
+
+	if vol_widget_t then vol_widget_t.timeout = 0 end
 end
 
 -- ############################################################################################
@@ -67,7 +63,6 @@ return {
 	printNotify	=	printNotify,
 	runOnce		=	runOnce,
 	backlight	=	backlight,
-
-	setVolumeWidget	=	setVolumeWidget,
-	volume			=	volume
+	volume		=	volume,
+	setVolumeWidgetTimer	=	setVolumeWidgetTimer,
 }

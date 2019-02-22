@@ -1,21 +1,24 @@
 local helpers = require("helpers")
-local vicious = require("vicious")
 local wibox = require("wibox")
 local gears = require("gears")
 local awful = require("awful")
+local beautiful = require("beautiful")
 
 -- ############################################################################################
 
 if helpers.hostname == "xps9570" then
     wifi_device     =   "wlp59s0"
-    thermal_zone    =   "hwmon2"
-    thermal_source  =   "hwmon" 
+	thermal_chip	=	"coretemp-isa-0000"
 
 elseif helpers.hostname == "NB-ZAVYALOV2" then
     wifi_device     =   "wlp3s0"
-    thermal_zone    =   "hwmon1"
-    thermal_source  =   "hwmon"
+	thermal_chip	=	"coretemp-isa-0000"
 end
+
+local color_h	=	'#FF0000'
+local color_m	=	'#FFAE00'
+local color_g	=	'#A8FF00'
+local color_n	=	beautiful.fg_normal
 
 -- ############################################################################################
 -- clock
@@ -23,56 +26,95 @@ time_widget = wibox.widget.textclock(" %a %b %d, %H:%M:%S ", 1)
 
 -- ############################################################################################
 -- cpu
-cpu_widget = wibox.widget.textbox()
-vicious.register(cpu_widget, vicious.widgets.cpu, "  CPU: $1%  ")
+cpu_widget =  awful.widget.watch('bash -c "echo $[100-$(vmstat 1 2|tail -1|awk \'{print $15}\')]"', 5,
+	function(widget, stdout)
+		val = tonumber(stdout)
+		if val > 80 then color = color_h elseif val > 30 then color = color_m else color = color_n end
+		widget:set_markup(string.format(' <span color="%s">CPU: %.0f%%  </span>', color, val))
+	end
+)
 
 -- ############################################################################################
 -- mem
-mem_widget = wibox.widget.textbox()
-vicious.register(mem_widget, vicious.widgets.mem, "MEM: $1%  ", 10)
+mem_widget =  awful.widget.watch('bash -c "free | grep Mem | awk \'{print $3/$2 * 100.0}\'"', 5,
+	function(widget, stdout)
+		val = tonumber(stdout)
+		if val > 90 then color = color_h elseif val > 60 then color = color_m else color = color_n end
+		widget:set_markup(string.format('<span color="%s">MEM: %.0f%%  </span>', color, val))
+	end
+)
 
 -- ############################################################################################
 -- thermal
-thermal_widget = wibox.widget.textbox()
-vicious.register(thermal_widget, vicious.widgets.thermal, "TH: $1°C  ", 10, {thermal_zone, thermal_source})
-
+thermal_widget =  awful.widget.watch(
+	string.format('bash -c "sensors -u %s | grep temp1_input | awk \'{print $2}\'"', thermal_chip), 5,
+	function(widget, stdout)
+		val = tonumber(stdout)
+		if val > 75 then color = color_h elseif val > 50 then color = color_m else color = color_n end
+		widget:set_markup(string.format('<span color="%s">TH: %.0f°C  </span>', color, val))
+	end
+)
 
 -- ############################################################################################
--- eth
-wifi_widget = wibox.widget.textbox() 
-vicious.register(wifi_widget, vicious.widgets.wifi, "WLAN: ${linp}%  ", 5, wifi_device)
+-- wifi
+wifi_widget =  awful.widget.watch(
+	string.format('bash -c "cat /proc/net/wireless | grep %s | awk \'{ print int($3 * 100 / 70) }\'"', wifi_device), 5,
+	function(widget, stdout)
+		val = tonumber(stdout)
+		if val < 40 then color = color_h elseif val < 80 then color = color_m else color = color_g end
+		widget:set_markup(string.format('<span color="%s">WIFI: %.0f%%  </span>', color, val))
+end)
 
 -- ############################################################################################
 -- volume
-vol_widget = wibox.widget.textbox() 
-vicious.register(vol_widget, vicious.widgets.volume, "VOL: $1%  ", 2, {"Master", "-D", "pulse"})
+vol_widget, vol_widget_t =  awful.widget.watch(
+	'bash -c "amixer -D pulse get Master | grep \'Left:\'  | awk -F \'[][]\' \'{print $2 $4}\'"', 2,
+	function(widget, stdout)
+		values = {}
+		for str in string.gmatch(stdout, "([^%%]+)") do table.insert(values, str) end
+		vol_v = tonumber(values[1])
+		vol_s = values[2]
 
-helpers.setVolumeWidget(vol_widget)
+		if vol_v > 50 then color = color_m else color = color_n end
+		if vol_s:match("off") then color = color_h end
+
+		widget:set_markup(string.format('<span color="%s">VOL: %.0f%%  </span>', color, vol_v))
+end)
+
+helpers.setVolumeWidgetTimer(vol_widget_t)
 vol_widget:buttons(gears.table.join(
-	awful.button({ }, 3, function()
-		helpers.volume("toggle")
-	end),
-	awful.button({ }, 4, function()
-		helpers.volume("+")
-	end),
-	awful.button({ }, 5, function()
-		helpers.volume("-")
-	end)
+	awful.button({ }, 3, function()	helpers.volume("toggle")	end),
+	awful.button({ }, 4, function()	helpers.volume("+")			end),
+	awful.button({ }, 5, function()	helpers.volume("-")			end)
 ))
 
 -- ############################################################################################
 -- batt
-bat_widget = wibox.widget.textbox()
-vicious.register(bat_widget, vicious.widgets.bat, "DIS: $5W  BAT: $2%  :: ", 5, "BAT0")
+local power_supply = '/sys/class/power_supply/BAT0'
+
+power_widget =  awful.widget.watch(string.format('cat %s/current_now', power_supply), 5, function(widget, stdout)
+	widget:set_text(string.format("PC: %.1fW  ", tonumber(stdout) / 100000))
+end)
+
+bat_widget =  awful.widget.watch(string.format('cat %s/capacity', power_supply), 15, function(widget, stdout)
+	val = tonumber(stdout)
+	if val < 35 then color = color_h elseif val < 70 then color = color_m else color = color_g end
+	widget:set_markup(string.format('<span color="%s">BAT: %.0f%%</span>  :: ', color, val))
+end)
 
 bat_widget:buttons(gears.table.join(
-	awful.button({ }, 4, function()
-		backlight("inc")
-	end),
-	awful.button({ }, 5, function()
-		backlight("dec")
-	end)
+	awful.button({ }, 4, function() backlight("inc") end),
+	awful.button({ }, 5, function() backlight("dec") end)
 ))
+
+-- ############################################################################################
+-- keyboard layout
+keyboard_widget = awful.widget.keyboardlayout()
+
+-- local capi = {awesome = awesome}
+-- capi.awesome.connect_signal("xkb::group_changed", function ()
+-- 	-- helpers.printNotify(keyboard_widget:get_groups_from_group_names(capi.xkb_get_group_names()))
+-- end)
 
 -- ############################################################################################
 
@@ -83,5 +125,7 @@ return {
     thermal_widget  =   thermal_widget,
     wifi_widget     =   wifi_widget,
     vol_widget      =   vol_widget,
-    bat_widget      =   bat_widget,
+	bat_widget		=	bat_widget,
+	power_widget	=	power_widget,
+	keyboard_widget	=	keyboard_widget
 }

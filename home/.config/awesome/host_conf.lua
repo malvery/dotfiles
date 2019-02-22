@@ -182,7 +182,7 @@ function initAutostart()
 		apps_list = gears.table.join(apps_list, {
 			'pulseaudio --start',
 			'thunderbird',
-			'telegram-desktop',
+			-- 'telegram-desktop',
 			'slack',
 			'shutter  --min_at_startup'
 		})
