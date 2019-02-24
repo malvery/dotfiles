@@ -74,7 +74,7 @@ vol_widget, vol_widget_t =  awful.widget.watch(
 	function(widget, stdout)
 		values = {}
 		for str in string.gmatch(stdout, "([^%%]+)") do table.insert(values, str) end
-		vol_v = tonumber(values[1])
+		if values[1] then vol_v = tonumber(values[1]) else vol_v = 0 end
 		vol_s = values[2]
 
 		if vol_v >= 50 then color = color_m else color = color_n end
