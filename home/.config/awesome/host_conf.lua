@@ -169,7 +169,7 @@ function initAutostart()
 		'light-locker',
 		'compton --backend glx --vsync opengl -f -D 2',
 		'libinput-gestures-setup start',
-		-- 'pasystray',
+		'pasystray',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')

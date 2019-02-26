@@ -1,6 +1,5 @@
 local awful = require("awful")
 local naughty = require("naughty")
-local vicious = require("vicious")
 
 -- ############################################################################################
 
@@ -53,7 +52,7 @@ function volume(action)
 		awful.spawn.with_shell("amixer -D pulse set Master toggle")
 	end
 
-	if vol_widget_t then vol_widget_t.timeout = 0 end
+	-- if vol_widget_t then vol_widget_t.timeout = 0 end
 end
 
 -- ############################################################################################
