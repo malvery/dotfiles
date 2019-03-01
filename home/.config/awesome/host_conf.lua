@@ -19,7 +19,7 @@ local APPS = {
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 	beautiful.notification_border_color = '#cc9393'
 	beautiful.useless_gap	= 1
 
