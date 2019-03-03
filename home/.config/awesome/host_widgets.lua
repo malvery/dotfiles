@@ -16,7 +16,8 @@ elseif helpers.hostname == "NB-ZAVYALOV2" then
 	thermal_chip	=	"coretemp-isa-0000"
 end
 
-local color_h	=	'#FF0000'
+-- local color_h	=	'#FF0000'
+local color_h	=	'#FF5500'
 local color_m	=	'#FFAE00'
 local color_g	=	'#A8FF00'
 local color_n	=	beautiful.fg_normal

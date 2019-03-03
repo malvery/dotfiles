@@ -30,7 +30,7 @@ function initTheme()
 		beautiful.xresources.set_dpi(128)
 		beautiful.font			= "Ubuntu Bold 9"
 		beautiful.border_width	= 3
-		beautiful.wibar_height	= 23
+		beautiful.wibar_height	= 22
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
@@ -133,6 +133,7 @@ function getClientRules(client_rules)
 					"Chromium-browser",
 					"Chromium",
 					"Nitrogen",
+					"Pavucontrol",
         }
 			}, properties = {floating = true}},
 		

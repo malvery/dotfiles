@@ -36,9 +36,9 @@ end
 
 function backlight(action)
 	if action == "inc" then
-		awful.spawn.with_shell("brightnessctl set +4%")
+		awful.spawn.with_shell("brightnessctl set +2%")
 	elseif action == "dec" then
-		awful.spawn.with_shell("brightnessctl -n set 4%-")
+		awful.spawn.with_shell("brightnessctl -n set 2%-")
 	end
 end
 
@@ -47,7 +47,7 @@ function setVolumeWidgetTimer(timer) vol_widget_t = timer end
 
 function volume(action)
 	if action == "+" or action == "-" then
-		awful.spawn.with_shell("amixer -D pulse set Master 5%" .. action .. " unmute")
+		awful.spawn.with_shell("amixer -D pulse set Master 2%" .. action .. " unmute")
 	elseif action == "toggle" then
 		awful.spawn.with_shell("amixer -D pulse set Master toggle")
 	end

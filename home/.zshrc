@@ -27,6 +27,8 @@ alias tcpdump='sudo tcpdump'
 if [[ "$(hostname)" == "NB-ZAVYALOV2" ]]
 then
 	source ~/.zsh_alias
+else
+	alias aliases-iqoption='source ~/.zsh_alias-work'
 fi
 
 # Uncomment the following line to use case-sensitive completion.
