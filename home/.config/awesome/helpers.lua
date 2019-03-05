@@ -46,11 +46,25 @@ local vol_widget_t = nil
 function setVolumeWidgetTimer(timer) vol_widget_t = timer end
 
 function volume(action)
+	-- if action == "+" or action == "-" then
+	-- 	awful.spawn.with_shell("amixer -D pulse set Master 2%" .. action .. " unmute")
+	-- elseif action == "toggle" then
+	-- 	awful.spawn.with_shell("amixer -D pulse set Master toggle")
+	-- end
+	
 	if action == "+" or action == "-" then
-		awful.spawn.with_shell("amixer -D pulse set Master 2%" .. action .. " unmute")
+		awful.spawn.with_shell("pulsemixer --change-volume " .. action .. "2")
 	elseif action == "toggle" then
-		awful.spawn.with_shell("amixer -D pulse set Master toggle")
+		awful.spawn.with_shell("pulsemixer --toggle-mute")
 	end
+	
+	-- if action == "+" then
+	-- 	awful.spawn.with_shell("pamixer -i 2")
+	-- elseif action == '-' then
+	-- 	awful.spawn.with_shell("pamixer -d 2")
+	-- elseif action == "toggle" then
+	-- 	awful.spawn.with_shell("pamixer -t")
+	-- end
 
 	-- if vol_widget_t then vol_widget_t.timeout = 0 end
 end
