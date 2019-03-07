@@ -132,7 +132,6 @@ function getClientRules(client_rules)
 					"Google Play Music Desktop Player",
 					"Chromium-browser",
 					"Chromium",
-					"Nitrogen",
 					"Pavucontrol",
         }
 			}, properties = {floating = true}},
@@ -140,6 +139,7 @@ function getClientRules(client_rules)
 		{rule_any	= {type	= {"normal"}},			properties = {titlebars_enabled = false}},
 		{rule		= {class = "Thunderbird"},		properties = {screen = 1, tag = "9"}},
 		{rule		= {class = "Gnome-calculator"},	properties = {floating = true, ontop = true}},
+		{rule		= {class = "flameshot"},		properties = {floating = true, ontop = true}},
 	})
 
 	if HOSTNAME == "xps9570" then
@@ -185,7 +185,7 @@ function initAutostart()
 			'thunderbird',
 			-- 'telegram-desktop',
 			'slack',
-			'shutter  --min_at_startup'
+			'flameshot'
 		})
 	end
 
