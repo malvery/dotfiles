@@ -1,72 +1,54 @@
 "===========================================================================
-" bundle
+" Vundle
 "===========================================================================
-
-set nocompatible 
-filetype off
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-filetype plugin indent on
-
-Bundle 'xoria256.vim'
-"Bundle 'Solarized'
-Bundle 'colorer-color-scheme'
-Bundle 'bufexplorer.zip'
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
-Bundle 'vim-misc'
-Bundle 'vim-session'
-
-
 "===========================================================================
-" theme
+" Theme
 "===========================================================================
+Plugin 'sheerun/vim-polyglot'
+Plugin 'morhetz/gruvbox'
+Plugin 'joshdick/onedark.vim'
 
 if &t_Co == 256 || has("gui_running")
 	set t_Co=256
 	set background=dark
-	"colorscheme solarized
-	colorscheme xoria256
+	let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
 else
-	colorscheme colorer
+	colorscheme default
 endif
 
 "===========================================================================
 " options
 "===========================================================================
-
 syntax enable
 
+set nocompatible
 set autoindent
 set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-
 set autoread
 set autochdir
 set nu
 set showcmd
-
-"set paste
 
 set hlsearch
 set incsearch
 set ignorecase
 
 set nobackup
-set noswapfile
+"set noswapfile
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
 
 set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P 
 set laststatus=2
-
-highlight PMenu ctermbg=238 gui=bold
-highlight PMenuSel ctermbg=248 ctermfg=238 gui=bold
 
 "===========================================================================
 " GUI options
@@ -92,81 +74,74 @@ endif
 " Functions
 "===========================================================================
 
-function! TabComplete()
-  let line = getline('.')                         " current line
-
-  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  " line to one character right
-                                                  " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  if (strlen(substr)==0)                          " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1      " position of period, if any
-  let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  if (!has_period && !has_slash)
-		return "\<C-X>\<C-O>"                         " plugin matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                         " file matching
-  else
-   	return "\<C-X>\<C-P>"                         " existing text matching
-  endif
-endfunction
 
 "===========================================================================
 " Completion
 "===========================================================================
 
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
-"===========================================================================
-" Plugins
-"===========================================================================
-
-" NERDTree
-let NERDTreeQuitOnOpen=1
-
-" vim-session
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
 
 "===========================================================================
 " Alias
 "===========================================================================
-"
-command JsonFormat %! python -m json.tool
+
+"command JsonFormat %! python -m json.tool
 
 "===========================================================================
 " Hotkeys
 "===========================================================================
 
-inoremap <C-f> <c-r>=TabComplete()<CR>
+"nnoremap <C-n>			:tabnew<CR>
+"nnoremap <C-Left>		:tabprevious<CR>
+"nnoremap <C-Right>	:tabnext<CR>
 
-"nmap <C-o> <esc>:sh<cr>
-"vmap <C-o> <esc>:sh<cr>
-"imap <C-o> <esc>:sh<cr>
+"===========================================================================
+" Plugins
+"===========================================================================
 
-"nmap <C-p> <esc>:r! clipit -c<cr>
-"vmap <C-p> <esc>:r! clipit -c<cr>
-"imap <C-p> <esc>:r! clipit -c<cr>
+"===== Session
+Bundle 'vim-misc'
+Bundle 'vim-session'
+
+let g:session_autoload = 'no'
+let g:session_autosave = 'yes'
+
+"===== Buffers explorer
+Plugin 'jlanzarotta/bufexplorer'
 
 nmap <F1> <esc>:BufExplorer<cr>
 vmap <F1> <esc>:BufExplorer<cr>
 imap <F1> <esc>:BufExplorer<cr>
 
+"===== File navigator
+Plugin 'scrooloose/nerdtree'
+
+let NERDTreeQuitOnOpen=1
+
 nmap <F12>  <esc>:NERDTreeToggle<CR>
 vmap <F12>  <esc>:NERDTreeToggle<CR>
 imap <F12>  <esc>:NERDTreeToggle<CR>
 
-"noremap <F9> :! ./% 
+"===== Comments
+Plugin 'scrooloose/nerdcommenter'
+filetype plugin on
 
-nnoremap <C-n>			:tabnew<CR>
-nnoremap <C-Left>		:tabprevious<CR>
-nnoremap <C-Right>	:tabnext<CR>
+let g:NERDCommentEmptyLines=1
+let g:NERDDefaultAlign = 'left'
+
+nmap <C-_>	<Plug>NERDCommenterToggle<CR>
+vmap <C-_>	<Plug>NERDCommenterToggle<CR>
+imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
+
+"===== File formatting
+Plugin 'Chiel92/vim-autoformat'
+
+"===== Linters
+
+"===== Completions
+
+"===== Python
+
+"===== Git integration
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
+
