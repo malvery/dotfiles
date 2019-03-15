@@ -7,7 +7,6 @@ call vundle#rc()
 "===========================================================================
 " Theme
 "===========================================================================
-Plugin 'sheerun/vim-polyglot'
 Plugin 'morhetz/gruvbox'
 Plugin 'joshdick/onedark.vim'
 
@@ -15,7 +14,7 @@ if &t_Co == 256 || has("gui_running")
 	set t_Co=256
 	set background=dark
 	let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+	colorscheme gruvbox
 
 else
 	colorscheme default
@@ -24,7 +23,6 @@ endif
 "===========================================================================
 " options
 "===========================================================================
-syntax enable
 
 set nocompatible
 set autoindent
@@ -90,13 +88,20 @@ endif
 " Hotkeys
 "===========================================================================
 
-"nnoremap <C-n>			:tabnew<CR>
-"nnoremap <C-Left>		:tabprevious<CR>
-"nnoremap <C-Right>	:tabnext<CR>
+nnoremap <C-A-n>			:tabnew<CR>
+nnoremap <C-A-Left>		:tabprevious<CR>
+nnoremap <C-A-Right>	:tabnext<CR>
 
 "===========================================================================
 " Plugins
 "===========================================================================
+
+"===== Syntax highlighting
+Plugin 'sheerun/vim-polyglot'
+Plugin 'mtdl9/vim-log-highlighting'
+
+syntax enable
+autocmd BufRead,BufNewFile *.log set syntax=log
 
 "===== Session
 Bundle 'vim-misc'
@@ -138,6 +143,7 @@ Plugin 'Chiel92/vim-autoformat'
 "===== Linters
 
 "===== Completions
+Plugin 'valloric/youcompleteme'
 
 "===== Python
 
