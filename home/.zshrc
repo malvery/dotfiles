@@ -31,6 +31,8 @@ else
 	alias aliases-iqoption='source ~/.zsh_alias-work'
 fi
 
+alias venv-activate='source ./.venv/bin/activate || source ./venv/bin/activate'
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

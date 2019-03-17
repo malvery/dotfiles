@@ -1,15 +1,61 @@
 "===========================================================================
-" Vundle
+" vim-plug
 "===========================================================================
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+	" themes
+	Plug 'morhetz/gruvbox'
+	Plug 'joshdick/onedark.vim'
+	
+	" syntax highlighting
+	Plug 'sheerun/vim-polyglot'
+	Plug 'mtdl9/vim-log-highlighting'
+
+	" buffers explorer
+	Plug 'jlanzarotta/bufexplorer'
+
+	" session
+	Plug 'xolox/vim-misc'
+	Plug 'xolox/vim-session'
+	
+	" file navigator
+	Plug 'scrooloose/nerdtree'
+
+	" comments
+	Plug 'scrooloose/nerdcommenter'
+
+	" file formatting
+	Plug 'Chiel92/vim-autoformat'
+
+	" git integration
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'mhinz/vim-signify'
+	Plug 'cohama/agit.vim'
+
+	" LSP
+	Plug 'prabirshrestha/async.vim'
+	Plug 'prabirshrestha/vim-lsp'
+
+	" complete
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'prabirshrestha/asyncomplete-file.vim'
+	"Plug 'yami-beta/asyncomplete-omni.vim'
+	
+	" debugger
+	Plug 'KangOl/vim-pudb'
+	"Plug 'SkyLeach/pudb.vim'
+
+call plug#end()
 
 "===========================================================================
 " Theme
 "===========================================================================
-Plugin 'morhetz/gruvbox'
-Plugin 'joshdick/onedark.vim'
-
 if &t_Co == 256 || has("gui_running")
 	set t_Co=256
 	set background=dark
@@ -21,9 +67,8 @@ else
 endif
 
 "===========================================================================
-" options
+" VIM options
 "===========================================================================
-
 set nocompatible
 set autoindent
 set smartindent
@@ -40,18 +85,19 @@ set incsearch
 set ignorecase
 
 set nobackup
-"set noswapfile
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
 
-set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P 
+set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
+
+"set ttymouse=xterm2
+set mouse=a
 
 "===========================================================================
 " GUI options
 "===========================================================================
-
 if has("gui_running")
 	set guioptions-=T
 	set guifont=Hack\ 10
@@ -72,62 +118,46 @@ endif
 " Functions
 "===========================================================================
 
-
-"===========================================================================
-" Completion
-"===========================================================================
-
-
 "===========================================================================
 " Alias
 "===========================================================================
-
 "command JsonFormat %! python -m json.tool
 
 "===========================================================================
 " Hotkeys
 "===========================================================================
-
 nnoremap <C-A-n>			:tabnew<CR>
 nnoremap <C-A-Left>		:tabprevious<CR>
 nnoremap <C-A-Right>	:tabnext<CR>
 
 "===========================================================================
-" Plugins
+" Syntax highlighting
 "===========================================================================
-
-"===== Syntax highlighting
-Plugin 'sheerun/vim-polyglot'
-Plugin 'mtdl9/vim-log-highlighting'
-
 syntax enable
 autocmd BufRead,BufNewFile *.log set syntax=log
-
-"===== Session
-Bundle 'vim-misc'
-Bundle 'vim-session'
 
 let g:session_autoload = 'no'
 let g:session_autosave = 'yes'
 
-"===== Buffers explorer
-Plugin 'jlanzarotta/bufexplorer'
-
+"===========================================================================
+" Buffer explorer
+"===========================================================================
 nmap <F1> <esc>:BufExplorer<cr>
 vmap <F1> <esc>:BufExplorer<cr>
 imap <F1> <esc>:BufExplorer<cr>
 
-"===== File navigator
-Plugin 'scrooloose/nerdtree'
-
+"===========================================================================
+" File navigator
+"===========================================================================
 let NERDTreeQuitOnOpen=1
 
-nmap <F12>  <esc>:NERDTreeToggle<CR>
-vmap <F12>  <esc>:NERDTreeToggle<CR>
-imap <F12>  <esc>:NERDTreeToggle<CR>
+nmap <F2>  <esc>:NERDTreeToggle<CR>
+vmap <F2>  <esc>:NERDTreeToggle<CR>
+imap <F2>  <esc>:NERDTreeToggle<CR>
 
-"===== Comments
-Plugin 'scrooloose/nerdcommenter'
+"===========================================================================
+" Comments
+"===========================================================================
 filetype plugin on
 
 let g:NERDCommentEmptyLines=1
@@ -137,17 +167,93 @@ nmap <C-_>	<Plug>NERDCommenterToggle<CR>
 vmap <C-_>	<Plug>NERDCommenterToggle<CR>
 imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 
-"===== File formatting
-Plugin 'Chiel92/vim-autoformat'
+"===========================================================================
+" Completion
+"===========================================================================
+let g:asyncomplete_remove_duplicates = 1
+"let g:asyncomplete_smart_completion = 1
+"let g:asyncomplete_auto_popup = 1
 
-"===== Linters
+inoremap <expr> <Tab>		pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 
-"===== Completions
-Plugin 'valloric/youcompleteme'
+imap <c-space> <Plug>(asyncomplete_force_refresh)
 
-"===== Python
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+  \ 'name': 'file',
+  \ 'whitelist': ['*'],
+  \ 'priority': 10,
+  \ 'completor': function('asyncomplete#sources#file#completor')
+  \ }))
 
-"===== Git integration
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'airblade/vim-gitgutter'
+"au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+"  \ 'name': 'omni',
+"  \ 'whitelist': ['*'],
+"  \ 'blacklist': ['c', 'cpp', 'html'],
+"  \ 'priority': 0,
+"  \ 'completor': function('asyncomplete#sources#omni#completor')
+"  \  }))
+
+"===========================================================================
+" LSP Sources
+"===========================================================================
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/vim-lsp.log')
+"let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+if executable('pyls')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'pyls',
+		\ 'cmd': {server_info->['pyls']},
+		\ 'whitelist': ['python'],
+		\ })
+endif
+
+if executable('lua-lsp')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'lua-lsp',
+		 \ 'cmd': {server_info->[&shell, &shellcmdflag, 'lua-lsp']},
+		 \ 'whitelist': ['lua'],
+		 \ })
+endif
+
+if executable('bash-language-server')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'bash-language-server',
+		\ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+		\ 'whitelist': ['sh'],
+		\ })
+endif
+
+if executable('vscode-json-languageserver')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'vscode-json-languageserver',
+		\ 'cmd': {server_info->[&shell, &shellcmdflag, 'vscode-json-languageserver --stdio']},
+		\ 'whitelist': ['json'],
+		\ })
+endif
+
+"===========================================================================
+" LSP Hotkeys
+"===========================================================================
+:nnoremap <leader>lr :LspRename<CR>
+:nnoremap <leader>ln :LspReferences<CR>
+:nnoremap <leader>ld :LspDefinition<CR>
+:nnoremap <leader>lk :LspHover<CR>
+
+:nnoremap <leader>li :LspDocumentFormat<CR>
+:vnoremap <leader>li :LspDocumentRangeFormat<CR>
+
+:nnoremap <leader>lo :LspDocumentDiagnostics<CR>
+:nnoremap <leader>ls :LspDocumentSymbol<CR>
+
+:nnoremap <leader>lw :LspNextError<CR>
+:nnoremap <leader>lW :LspPreviousError<CR>
+
+"===========================================================================
+" Debbuger Hotkeys
+"===========================================================================
+nnoremap <leader>db :TogglePudbBreakPoint<CR>
+inoremap <leader>db <ESC>:TogglePudbBreakPoint<CR>a
 
