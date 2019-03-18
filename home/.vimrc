@@ -8,10 +8,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
 	" themes
 	Plug 'morhetz/gruvbox'
 	Plug 'joshdick/onedark.vim'
-	
+
 	" syntax highlighting
 	Plug 'sheerun/vim-polyglot'
 	Plug 'mtdl9/vim-log-highlighting'
@@ -22,33 +23,23 @@ call plug#begin('~/.vim/plugged')
 	" session
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
-	
+
 	" file navigator
 	Plug 'scrooloose/nerdtree'
 
 	" comments
 	Plug 'scrooloose/nerdcommenter'
 
-	" file formatting
-	Plug 'Chiel92/vim-autoformat'
-
 	" git integration
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'mhinz/vim-signify'
 	Plug 'cohama/agit.vim'
 
-	" LSP
-	Plug 'prabirshrestha/async.vim'
-	Plug 'prabirshrestha/vim-lsp'
+	" linter / autoformat / completion / LSP
+	Plug 'w0rp/ale'
 
-	" complete
-	Plug 'prabirshrestha/asyncomplete.vim'
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
-	Plug 'prabirshrestha/asyncomplete-file.vim'
-	"Plug 'yami-beta/asyncomplete-omni.vim'
-	
 	" debugger
-	Plug 'KangOl/vim-pudb'
+	"Plug 'KangOl/vim-pudb'
 	"Plug 'SkyLeach/pudb.vim'
 
 call plug#end()
@@ -92,7 +83,6 @@ set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
 
-"set ttymouse=xterm2
 set mouse=a
 
 "===========================================================================
@@ -103,7 +93,7 @@ if has("gui_running")
 	set guifont=Hack\ 10
 	set linespace=1
 	set wildmenu
-	set wcm=<Tab> 
+	set wcm=<Tab>
 
 	menu Encoding.utf-8 :e ++enc=utf8 <CR>
 	menu Encoding.windows-1251 :e ++enc=cp1251<CR>
@@ -121,7 +111,6 @@ endif
 "===========================================================================
 " Alias
 "===========================================================================
-"command JsonFormat %! python -m json.tool
 
 "===========================================================================
 " Hotkeys
@@ -168,92 +157,60 @@ vmap <C-_>	<Plug>NERDCommenterToggle<CR>
 imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 
 "===========================================================================
+" Debbuger Hotkeys
+"===========================================================================
+"nnoremap <leader>db :TogglePudbBreakPoint<CR>
+"inoremap <leader>db <ESC>:TogglePudbBreakPoint<CR>a
+
+"===========================================================================
+" Linter Fixing
+"===========================================================================
+let b:ale_fixers = {
+			\ '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+			\	'python': ['autopep8'],
+			\	}
+
+"===========================================================================
 " Completion
 "===========================================================================
-let g:asyncomplete_remove_duplicates = 1
-"let g:asyncomplete_smart_completion = 1
-"let g:asyncomplete_auto_popup = 1
+let g:ale_completion_enabled = 1
+set completeopt=menu,menuone,preview,noselect,noinsert
 
 inoremap <expr> <Tab>		pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-  \ 'name': 'file',
-  \ 'whitelist': ['*'],
-  \ 'priority': 10,
-  \ 'completor': function('asyncomplete#sources#file#completor')
-  \ }))
-
-"au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-"  \ 'name': 'omni',
-"  \ 'whitelist': ['*'],
-"  \ 'blacklist': ['c', 'cpp', 'html'],
-"  \ 'priority': 0,
-"  \ 'completor': function('asyncomplete#sources#omni#completor')
-"  \  }))
-
 "===========================================================================
-" LSP Sources
+" LSP Support
 "===========================================================================
-"let g:lsp_log_verbose = 1
-"let g:lsp_log_file = expand('~/vim-lsp.log')
-"let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+function! EmptyProjectPath(buffer) abort
+	return ''
+endfunction
 
-if executable('pyls')
-	au User lsp_setup call lsp#register_server({
-		\ 'name': 'pyls',
-		\ 'cmd': {server_info->['pyls']},
-		\ 'whitelist': ['python'],
-		\ })
-endif
+" lua-lsp
+call ale#Set('lua_lsp_executable', 'lua-lsp')
+call ale#linter#Define('lua', {
+\   'name': 'lua-lsp',
+\   'lsp': 'stdio',
+\   'executable': {b -> ale#Var(b, 'lua_lsp_executable')},
+\   'command': {b -> ale#Var(b, 'lua_lsp_executable')},
+\   'project_root': function('ale#python#FindProjectRoot'),
+\	})
 
-if executable('lua-lsp')
-	au User lsp_setup call lsp#register_server({
-		\ 'name': 'lua-lsp',
-		 \ 'cmd': {server_info->[&shell, &shellcmdflag, 'lua-lsp']},
-		 \ 'whitelist': ['lua'],
-		 \ })
-endif
-
-if executable('bash-language-server')
-	au User lsp_setup call lsp#register_server({
-		\ 'name': 'bash-language-server',
-		\ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-		\ 'whitelist': ['sh'],
-		\ })
-endif
-
-if executable('vscode-json-languageserver')
-	au User lsp_setup call lsp#register_server({
-		\ 'name': 'vscode-json-languageserver',
-		\ 'cmd': {server_info->[&shell, &shellcmdflag, 'vscode-json-languageserver --stdio']},
-		\ 'whitelist': ['json'],
-		\ })
-endif
+" setup linters
+let g:ale_linters = {
+	\ 'python': ['pyls'],
+	\ 'lua': ['lua-lsp'],
+	\ 'vim': ['vint'],
+	\	}
 
 "===========================================================================
 " LSP Hotkeys
 "===========================================================================
-:nnoremap <leader>lr :LspRename<CR>
-:nnoremap <leader>ln :LspReferences<CR>
-:nnoremap <leader>ld :LspDefinition<CR>
-:nnoremap <leader>lk :LspHover<CR>
+:nnoremap <leader>ld :ALEGoToDefinitionInTab<CR>
+:nnoremap <leader>lk :ALEHover<CR>
+:nnoremap <leader>li :ALEFix<CR>
+:nnoremap <leader>ls :ALEFindReferences<CR>
 
-:nnoremap <leader>li :LspDocumentFormat<CR>
-:vnoremap <leader>li :LspDocumentRangeFormat<CR>
-
-:nnoremap <leader>lo :LspDocumentDiagnostics<CR>
-:nnoremap <leader>ls :LspDocumentSymbol<CR>
-
-:nnoremap <leader>lw :LspNextError<CR>
-:nnoremap <leader>lW :LspPreviousError<CR>
-
-"===========================================================================
-" Debbuger Hotkeys
-"===========================================================================
-nnoremap <leader>db :TogglePudbBreakPoint<CR>
-inoremap <leader>db <ESC>:TogglePudbBreakPoint<CR>a
-
+nmap <silent> <leader>lw <Plug>(ale_next_wrap)
+nmap <silent> <leader>lW <Plug>(ale_previous_wrap)
