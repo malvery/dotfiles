@@ -176,7 +176,7 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "===========================================================================
 " Linter Fixing
 "===========================================================================
-let b:ale_fixers = {
+let g:ale_fixers = {
 			\ '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
 			\	'python': ['autopep8'],
 			\	}
@@ -194,10 +194,6 @@ inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 "===========================================================================
 " LSP Support
 "===========================================================================
-function! EmptyProjectPath(buffer) abort
-	return ''
-endfunction
-
 " lua-lsp
 call ale#Set('lua_lsp_executable', 'lua-lsp')
 call ale#linter#Define('lua', {
