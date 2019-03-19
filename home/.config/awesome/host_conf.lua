@@ -6,7 +6,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 
 -- ############################################################################################
--- local HOSTNAME = getHostName()
 local HOSTNAME = helpers.hostname
 
 local APPS = {
@@ -16,15 +15,29 @@ local APPS = {
 			["browser"]			=	"firefox",
 }
 
+local TITLEBAR_SIZE = 22
+
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
-	beautiful.notification_border_color = '#cc9393'
+	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 	beautiful.useless_gap	= 1
+	beautiful.titlebar_bg_focus = "#2c2c2c"
+	beautiful.titlebar_bg_normal = "#222222"
+	beautiful.bg_urgent = beautiful.bg_normal
+	beautiful.fg_urgent = "#FF5500"
+	beautiful.border_focus = '#285577'
 
+	-- disable default wallpaper
 	beautiful.wallpaper = nil
 	gears.wallpaper.set("#1e231f")
+
+	-- notifications
+	beautiful.notification_width = 250
+	--beautiful.notification_font = "Hack 10"
+	beautiful.notification_bg = "#285577"
+	beautiful.notification_fg = "#ffffff"
+	beautiful.notification_border_color = "#aaaaaa"
 
 	if HOSTNAME == "xps9570" then
 		beautiful.xresources.set_dpi(128)
@@ -84,9 +97,9 @@ function getHotkeys()
 			awful.key({ }, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
 			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
-			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),	
+			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),
 			awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
-			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),	
+			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),
 			awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
 
 			awful.key({ modkey,           }, "s",	function () awful.screen.focused().tags[9]:view_only()	end),
@@ -135,7 +148,7 @@ function getClientRules(client_rules)
 					"Pavucontrol",
         }
 			}, properties = {floating = true}},
-		
+
 		{rule_any	= {type	= {"normal"}},			properties = {titlebars_enabled = false}},
 		{rule		= {class = "Thunderbird"},		properties = {screen = 1, tag = "9"}},
 		{rule		= {class = "Gnome-calculator"},	properties = {floating = true, ontop = true}},
@@ -199,6 +212,7 @@ end
 
 return {
 	apps			=	APPS,
+	titlebar_size = TITLEBAR_SIZE,
 	initTheme		=	initTheme,
 	initAutostart	=	initAutostart,
 	getMenu			=	getMenu,

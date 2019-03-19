@@ -1,4 +1,4 @@
 rofi.font:          ubuntu medium 14
-rofi.theme: /usr/share/rofi/themes/android_notification.rasi
-rofi.modi:          run,drun,ssh
+rofi.modi:          run,drun,windowcd,window
 rofi.terminal:			lxterminal
+rofi.theme: /home/malvery/.config/rofi/themes/materia.rasi
