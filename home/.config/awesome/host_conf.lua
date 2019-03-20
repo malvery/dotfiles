@@ -49,8 +49,8 @@ function initTheme()
 	beautiful.border_normal = color_n
 
 	-- tasklist
-	--beautiful.tasklist_fg_focus = '#d3d7cf'
-	--beautiful.tasklist_bg_focus = beautiful.bg_normal
+	beautiful.tasklist_fg_focus = '#d3d7cf'
+	beautiful.tasklist_bg_focus = beautiful.bg_normal
 
 	beautiful.fg_minimize   = beautiful.bg_minimize
 	beautiful.bg_minimize   = beautiful.bg_normal
@@ -74,8 +74,8 @@ function initTheme()
 		beautiful.border_width	= 3
 		beautiful.wibar_height	= 22
 
-		beautiful.notification_width = 250
-		beautiful.notification_height = 65
+		beautiful.notification_width = 300
+		beautiful.notification_height = 55
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
