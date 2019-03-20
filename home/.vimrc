@@ -194,6 +194,8 @@ inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 "===========================================================================
 " LSP Support
 "===========================================================================
+let g:ale_echo_cursor=0 
+
 " lua-lsp
 call ale#Set('lua_lsp_executable', 'lua-lsp')
 call ale#linter#Define('lua', {

@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
+local theme_assets = require("beautiful.theme_assets")
 
 -- ############################################################################################
 local HOSTNAME = helpers.hostname
@@ -15,29 +16,52 @@ local APPS = {
 			["browser"]			=	"firefox",
 }
 
+
 local TITLEBAR_SIZE = 22
+if HOSTNAME == "NB-ZAVYALOV2" then
+	TITLEBAR_SIZE = 30
+end
 
 -- ############################################################################################
 -- Theme
 function initTheme()
 	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 	beautiful.useless_gap	= 1
-	beautiful.titlebar_bg_focus = "#2c2c2c"
-	beautiful.titlebar_bg_normal = "#222222"
+
+	local color_f = "#285577"
+	local color_n = "#5f676a"
+	local color_u = "#FF5500"
+
+	beautiful.bg_focus = color_f
+
+	-- menu icon
+	beautiful.awesome_icon = theme_assets.awesome_icon(
+    beautiful.menu_height, beautiful.bg_normal , beautiful.fg_focus
+	)
+
+	-- urgent
 	beautiful.bg_urgent = beautiful.bg_normal
-	beautiful.fg_urgent = "#FF5500"
-	beautiful.border_focus = '#285577'
+	beautiful.fg_urgent = color_u
+
+	-- borders
+	beautiful.border_focus = color_f
+	beautiful.border_normal = color_n
+
+	-- tasklist
+	beautiful.tasklist_bg_focus = beautiful.bg_normal
+
+	-- titlebar
+	beautiful.titlebar_bg_focus = color_f
+	beautiful.titlebar_bg_normal = beautiful.bg_normal
+
+	-- notifications
+	beautiful.notification_bg = color_f
+	beautiful.notification_fg = "#ffffff"
+	beautiful.notification_border_color = "#aaaaaa"
 
 	-- disable default wallpaper
 	beautiful.wallpaper = nil
 	gears.wallpaper.set("#1e231f")
-
-	-- notifications
-	beautiful.notification_width = 250
-	--beautiful.notification_font = "Hack 10"
-	beautiful.notification_bg = "#285577"
-	beautiful.notification_fg = "#ffffff"
-	beautiful.notification_border_color = "#aaaaaa"
 
 	if HOSTNAME == "xps9570" then
 		beautiful.xresources.set_dpi(128)
@@ -45,11 +69,17 @@ function initTheme()
 		beautiful.border_width	= 3
 		beautiful.wibar_height	= 22
 
+		beautiful.notification_width = 250
+		beautiful.notification_height = 65
+
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
 		beautiful.font			= "Ubuntu Medium 10"
 		beautiful.border_width	= 5
 		beautiful.wibar_height	= 35
+
+		beautiful.notification_width = 450
+		beautiful.notification_height = 90
 	end
 end
 
