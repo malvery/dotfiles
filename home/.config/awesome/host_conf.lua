@@ -33,6 +33,7 @@ function initTheme()
 	local color_u = "#FF5500"
 
 	beautiful.bg_focus = color_f
+	beautiful.fg_focus = beautiful.fg_normal
 
 	-- menu icon
 	beautiful.awesome_icon = theme_assets.awesome_icon(
@@ -48,7 +49,11 @@ function initTheme()
 	beautiful.border_normal = color_n
 
 	-- tasklist
-	beautiful.tasklist_bg_focus = beautiful.bg_normal
+	--beautiful.tasklist_fg_focus = '#d3d7cf'
+	--beautiful.tasklist_bg_focus = beautiful.bg_normal
+
+	beautiful.fg_minimize   = beautiful.bg_minimize
+	beautiful.bg_minimize   = beautiful.bg_normal
 
 	-- titlebar
 	beautiful.titlebar_bg_focus = color_f
