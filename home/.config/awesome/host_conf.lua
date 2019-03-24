@@ -181,6 +181,7 @@ function getClientRules(client_rules)
 					"Chromium-browser",
 					"Chromium",
 					"Pavucontrol",
+					"Nitrogen"
         }
 			}, properties = {floating = true}},
 
@@ -223,8 +224,8 @@ function initAutostart()
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
+			'telegram-desktop',
 			'thunderbird',
-			'telegram-desktop'
 		})
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru(mac)" -option grp:caps_toggle')
