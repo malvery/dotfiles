@@ -10,12 +10,11 @@ local theme_assets = require("beautiful.theme_assets")
 local HOSTNAME = helpers.hostname
 
 local APPS = {
-			["terminal"]		=	"lxterminal",
-			["lock_manager"]	=	"light-locker-command -l",
+			["terminal"]			=	"lxterminal",
+			["lock_manager"]	=	"slock",
 			["file_manager"]	=	"pcmanfm",
-			["browser"]			=	"firefox",
+			["browser"]				=	"firefox",
 }
-
 
 local TITLEBAR_SIZE = 22
 if HOSTNAME == "NB-ZAVYALOV2" then
@@ -75,7 +74,6 @@ function initTheme()
 		beautiful.wibar_height	= 22
 
 		beautiful.notification_width = 300
-		beautiful.notification_height = 55
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
@@ -84,7 +82,6 @@ function initTheme()
 		beautiful.wibar_height	= 35
 
 		beautiful.notification_max_width = 600
-		--beautiful.notification_height = 90
 	end
 end
 
@@ -110,7 +107,7 @@ function getMenu()
 			{"Calculator", "gnome-calculator"},
 			{"Terminal", APPS.terminal},
 			{"System", exit_menu},
-			{"Lock", "light-locker-command -l"}
+			{"Lock", APPS.lock_manager}
 		}
 	})
 
@@ -185,21 +182,25 @@ function getClientRules(client_rules)
         }
 			}, properties = {floating = true}},
 
-		{rule_any	= {type	= {"normal"}},			properties = {titlebars_enabled = false}},
-		{rule		= {class = "Thunderbird"},		properties = {screen = 1, tag = "9"}},
+		{rule_any	= {type	= {"normal"}},				properties = {titlebars_enabled = false}},
 		{rule		= {class = "Gnome-calculator"},	properties = {floating = true, ontop = true}},
-		{rule		= {class = "flameshot"},		properties = {floating = true, ontop = true}},
+		{rule		= {class = "flameshot"},				properties = {floating = true, ontop = true}},
+		{rule		= {class = "Thunderbird"},			properties = {screen = 1, tag = "9",
+				callback=function(c)
+					awful.client.setslave(c)
+					awful.tag.incmwfact(0.05, c.first_tag)
+				end,
+		}},
 	})
 
 	if HOSTNAME == "xps9570" then
 		client_rules = gears.table.join(client_rules, {
 			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "9"}},
-			{rule = {class = "Slack"},				properties = {screen = 1, tag = "9"}},
 		})
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		client_rules = gears.table.join(client_rules, {
 			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "8", floating = true}},
-			{rule = {class = "Slack"},				properties = {screen = 1, tag = "9"}},
+			{rule = {class = "Slack"},						properties = {screen = 1, tag = "9"}},
 		})
 	end
 
@@ -211,13 +212,12 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		-- 'lxpolkit',
 		'clipit',
 		'redshift-gtk',
 		'nm-applet',
 		'blueman-applet',
-		'light-locker',
-		'compton --backend glx --vsync opengl -f -D 2',
+		'xss-lock -- ' .. APPS.lock_manager,
+		'compton --backend glx --vsync -f -D 2',
 		'libinput-gestures-setup start',
 		'pasystray',
 	}
@@ -232,7 +232,6 @@ function initAutostart()
 		apps_list = gears.table.join(apps_list, {
 			'pulseaudio --start',
 			'thunderbird',
-			-- 'telegram-desktop',
 			'slack',
 			'flameshot'
 		})
