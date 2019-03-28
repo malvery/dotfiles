@@ -1,0 +1,45 @@
+{
+    // "python.linting.pylintUseMinimalCheckers": false,
+    "python.formatting.autopep8Args": [
+        "--max-line-length",
+        "120",
+        "--experimental"
+    ],
+    "vim.handleKeys": {
+        "<C-k>": false,
+        "<C-w>": true,
+        "<C-n>": true
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "v",
+                "f"
+            ],
+            "commands": [
+                "actions.find"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v",
+                "r"
+            ],
+            "commands": [
+                "editor.action.startFindReplaceAction"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.files.newUntitledFile"
+            ]
+        }
+    ]
+}

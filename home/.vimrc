@@ -126,9 +126,13 @@ endif
 "===========================================================================
 " Hotkeys
 "===========================================================================
-nnoremap <C-A-n>			:tabnew<CR>
-nnoremap <C-A-Left>		:tabprevious<CR>
-nnoremap <C-A-Right>	:tabnext<CR>
+nnoremap <A-Left>		:tabprevious<CR>
+nnoremap <A-Right>	:tabnext<CR>
+
+nnoremap <Esc>[1;3C	:tabnext<CR>
+nnoremap <Esc>[1;3D	:tabprevious<CR>
+
+nnoremap <leader>tt :tabnew<CR>
 
 "===========================================================================
 " Syntax highlighting
