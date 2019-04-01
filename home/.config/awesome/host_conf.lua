@@ -217,13 +217,13 @@ function initAutostart()
 		'nm-applet',
 		'blueman-applet',
 		'xss-lock -- ' .. APPS.lock_manager,
-		'compton --backend glx --vsync -f -D 2',
 		'libinput-gestures-setup start',
 		'pasystray',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
+			'compton --backend glx --vsync -f -D 2',
 			'telegram-desktop',
 			'thunderbird',
 		})
@@ -231,6 +231,7 @@ function initAutostart()
 		awful.spawn.with_shell('setxkbmap -layout "us,ru(mac)" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
 			'pulseaudio --start',
+			'compton --backend glx --vsync opengl -f -D 2',
 			'thunderbird',
 			'slack',
 			'flameshot'
@@ -247,11 +248,11 @@ end
 
 return {
 	apps			=	APPS,
-	titlebar_size = TITLEBAR_SIZE,
-	initTheme		=	initTheme,
-	initAutostart	=	initAutostart,
-	getMenu			=	getMenu,
-	getHotkeys		=	getHotkeys,
-	getLayouts		=	getLayouts,
+	titlebar_size		= TITLEBAR_SIZE,
+	initTheme				=	initTheme,
+	initAutostart		=	initAutostart,
+	getMenu					=	getMenu,
+	getHotkeys			=	getHotkeys,
+	getLayouts			=	getLayouts,
 	getClientRules	=	getClientRules
 }
