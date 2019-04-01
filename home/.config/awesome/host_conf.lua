@@ -12,7 +12,7 @@ local HOSTNAME = helpers.hostname
 local APPS = {
 			["terminal"]			=	"lxterminal",
 			["lock_manager"]	=	"slock",
-			["file_manager"]	=	"pcmanfm",
+			["file_manager"]	=	"thunar",
 			["browser"]				=	"firefox",
 }
 
@@ -74,6 +74,7 @@ function initTheme()
 		beautiful.wibar_height	= 22
 
 		beautiful.notification_width = 300
+		beautiful.systray_icon_spacing = 2
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
