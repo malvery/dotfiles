@@ -148,10 +148,11 @@ assign [class="Thunderbird"] 9
 assign [class="TelegramDesktop"] 9
 
 # set floating apps
-for_window [class="Qiv"]							floating enable
-for_window [class="Nitrogen"]					floating enable
-for_window [class="Pavucontrol"]			floating enable
-for_window [class="Blueman-manager"]	floating enable
+for_window [class="Qiv"]									floating enable
+for_window [class="Nitrogen"]							floating enable
+for_window [class="Pavucontrol"]					floating enable
+for_window [class="Blueman-manager"]			floating enable
+for_window [class="Nm-connection-editor"]	floating enable
 
 # set size
 for_window [class="Thunderbird"] resize set 950
