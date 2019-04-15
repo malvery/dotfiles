@@ -120,7 +120,7 @@ end
 function getHotkeys()
 		hotkeys = gears.table.join(
 			awful.key({ modkey,           }, "r",		function () awful.spawn('rofi -show run')		end),
-			awful.key({ modkey, "Shift"   }, "d",		function () awful.spawn('rofi -show windowcd')	end),
+			awful.key({ modkey, "Shift"   }, "d",		function () awful.spawn('rofi -show drun')	end),
 			awful.key({ modkey, "Shift"   }, "p",		function () awful.spawn(APPS.file_manager)		end),
 			awful.key({ modkey, "Shift"   }, "F12",		function () awful.spawn(APPS.lock_manager)		end),
 
@@ -179,7 +179,8 @@ function getClientRules(client_rules)
 					"Chromium-browser",
 					"Chromium",
 					"Pavucontrol",
-					"Nitrogen"
+					"Nitrogen",
+					"Transmission-gtk"
         }
 			}, properties = {floating = true}},
 
