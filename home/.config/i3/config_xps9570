@@ -121,7 +121,7 @@ bindsym $mod+Shift+"braceleft"	move workspace to output left
 bindsym $mod+Shift+"braceright" move workspace to output right
 
 # automatic back-and-forth when switching to the current workspace
-workspace_auto_back_and_forth yes
+#workspace_auto_back_and_forth yes
 
 ###############################################################################
 set $file-manager "pcmanfm"
