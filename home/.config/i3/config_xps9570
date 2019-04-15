@@ -191,16 +191,21 @@ bindsym $mod+Shift+i mode "$config_i3"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-	bindsym h resize shrink width 5 px or 5 ppt
-	bindsym j resize grow height 5 px or 5 ppt
-	bindsym k resize shrink height 5 px or 5 ppt
-	bindsym l resize grow width 5 px or 5 ppt
+	bindsym h resize shrink width		15 px or 5 ppt
+	bindsym j resize grow		height	15 px or 5 ppt
+	bindsym k resize shrink height	15 px or 5 ppt
+	bindsym l resize grow		width		15 px or 5 ppt
 
 	# same bindings, but for the arrow keys
-	bindsym Left resize shrink width 5 px or 5 ppt
-	bindsym Down resize grow height 5 px or 5 ppt
-	bindsym Up resize shrink height 5 px or 5 ppt
-	bindsym Right resize grow width 5 px or 5 ppt
+	bindsym Left	resize shrink		width		25 px or 5 ppt
+	bindsym Down	resize grow			height	25 px or 5 ppt
+	bindsym Up		resize shrink		height	25 px or 5 ppt
+	bindsym Right resize grow			width		25 px or 5 ppt
+
+	bindsym Shift+Left	resize shrink		width		100 px
+	bindsym Shift+Down	resize grow			height	100 px
+	bindsym Shift+Up		resize shrink		height	100 px
+	bindsym Shift+Right resize grow			width		100 px
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -213,12 +218,12 @@ bindsym $mod+Shift+r mode "resize"
 # finds out, if available)
 bar {
 	i3bar_command		i3bar -t
-	status_command
-		INTERFACE=wlp59s0
-		INLABEL='RX: ' 
-		OUTLABEL='TX: '
-		SENSOR_CHIP='coretemp-isa-0000' 
-		T_WARN=50 T_CRIT=70
+	status_command \
+		INTERFACE=wlp59s0 \
+		INLABEL='RX: '	\
+		OUTLABEL='TX: ' \
+		SENSOR_CHIP='coretemp-isa-0000' \
+		T_WARN=50 T_CRIT=70 \
 		i3blocks -c ~/.config/i3/i3blocks.conf
 
 	position				top
