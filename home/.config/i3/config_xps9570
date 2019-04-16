@@ -106,8 +106,9 @@ bindsym $mod+s workspace 9
 bindsym $mod+u [urgent=latest] focus
 
 # focus switch
-bindsym $mod+Shift+Tab	focus left
-bindsym $mod+Tab				focus right
+#bindsym $mod+Shift+Tab	focus left
+#bindsym $mod+Tab				focus right
+bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -f i3-window-switcher
 
 # switch between the current and the previously focused one
 bindsym $mod+Escape workspace back_and_forth
@@ -156,6 +157,7 @@ for_window [class="Nm-connection-editor"]	floating enable
 
 # set size
 for_window [class="Thunderbird"] resize set 950
+for_window [class="Thunderbird"] move right
 
 ###############################################################################
 
