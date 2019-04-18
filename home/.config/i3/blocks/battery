@@ -8,9 +8,9 @@ B_STATUS=$(cat $SYS_PATH/$BATT_ID/status)
 
 B_VOLTAGE=$(echo "scale=1;$B_VOLTAGE / 100000" | bc -l)
 
-if [[ "${B_STATUS}" -eq 'Discharging' ]]; then
+if [[ "${B_STATUS}" == 'Discharging' ]]; then
   B_STATUS='DIS'
-elif [[ "${B_STATUS}" -eq 'Charging' ]]; then
+elif [[ "${B_STATUS}" == 'Charging' ]]; then
   B_STATUS='CHR'
 fi
 
@@ -21,13 +21,14 @@ echo "${B_LEVEL}% ${B_STATUS} (${B_VOLTAGE}W)"
 if [[ ${B_LEVEL} -lt 5 ]]; then
 	exit 33
 
-elif [[ ${B_LEVEL} -lt 20 ]]; then
-	echo "#FF0000"
-elif [[ ${B_LEVEL} -lt 40 ]]; then
-	echo "#FFAE00"
+elif [[ ${B_LEVEL} -lt 30 ]]; then
+	echo ${COLOR_H}
+
 elif [[ ${B_LEVEL} -lt 60 ]]; then
-	echo "#FFF600"
-elif [[ ${B_LEVEL} -lt 90 ]]; then
-	echo "#A8FF00"
+	echo ${COLOR_M}
+
+elif [[ ${B_LEVEL} -gt 90 ]]; then
+	echo ${COLOR_G}
+
 fi
 

@@ -2,17 +2,26 @@
 
 BR_STEP=2
 if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
-  xbacklight -inc $BR_STEP
+  brightnessctl set +${BR_STEP}% >> /dev/null
 
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
-	BR_NEW=$(echo "scale=0;$(xbacklight -get)-$BR_STEP" | bc -l)
-	if [[ "${BR_NEW%.*}" -ge 1 ]]; then
-		xbacklight -dec $BR_STEP
-	fi
+	brightnessctl -n set ${BR_STEP}%- >> /dev/null
 fi
 
-BR_CURR=$(echo "scale=0;$(xbacklight -get)" | bc -l)
-BR_CURR=${BR_CURR%.*}
+VALUE=$(echo "scale=0;$(xbacklight -get)" | bc -l)
+VALUE=${VALUE%.*}
 
-echo "${BR_CURR}%"
-echo "${BR_CURR}%"
+echo "${VALUE}%"
+echo "${VALUE}%"
+
+
+if [[ ${VALUE} -lt 2 ]]; then
+	exit 33
+
+elif [[ ${VALUE} -gt 75 ]]; then
+	echo ${COLOR_H}
+
+elif [[ ${VALUE} -gt 40 ]]; then
+	echo ${COLOR_M}
+
+fi

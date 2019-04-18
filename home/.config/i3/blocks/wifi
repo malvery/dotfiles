@@ -1,0 +1,23 @@
+#!/bin/bash
+VALUE=$(cat /proc/net/wireless | tail -n 1 | awk '{print int($3 * 100 / 70)}')
+
+if [[ ${VALUE} -eq 0 ]]; then
+	echo "down"
+	echo "down"
+	echo ${COLOR_H}
+
+else
+	echo ${VALUE}%
+	echo ${VALUE}%
+
+	if [[ ${VALUE} -lt 30 ]]; then
+		echo ${COLOR_H}
+
+	elif [[ ${VALUE} -lt 70 ]]; then
+		echo ${COLOR_M}
+	
+	else
+		echo ${COLOR_G}
+
+	fi
+fi

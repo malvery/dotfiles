@@ -146,18 +146,18 @@ let g:session_autosave = 'yes'
 "===========================================================================
 " Buffer explorer
 "===========================================================================
-nmap <F1> <esc>:BufExplorer<cr>
-vmap <F1> <esc>:BufExplorer<cr>
-imap <F1> <esc>:BufExplorer<cr>
+nmap <F2> <esc>:BufExplorer<cr>
+vmap <F2> <esc>:BufExplorer<cr>
+imap <F2> <esc>:BufExplorer<cr>
 
 "===========================================================================
 " File navigator
 "===========================================================================
 let NERDTreeQuitOnOpen=1
 
-nmap <F2>  <esc>:NERDTreeToggle<CR>
-vmap <F2>  <esc>:NERDTreeToggle<CR>
-imap <F2>  <esc>:NERDTreeToggle<CR>
+nmap <F1>  <esc>:NERDTreeToggle<CR>
+vmap <F1>  <esc>:NERDTreeToggle<CR>
+imap <F1>  <esc>:NERDTreeToggle<CR>
 
 "===========================================================================
 " Comments

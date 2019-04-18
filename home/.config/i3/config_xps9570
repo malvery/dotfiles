@@ -153,6 +153,7 @@ for_window [class="Qiv"]									floating enable
 for_window [class="Nitrogen"]							floating enable
 for_window [class="Pavucontrol"]					floating enable
 for_window [class="Blueman-manager"]			floating enable
+for_window [class="Gnome-calculator"]			floating enable
 for_window [class="Nm-connection-editor"]	floating enable
 
 # set size
@@ -222,11 +223,9 @@ bindsym $mod+Shift+r mode "resize"
 bar {
 	i3bar_command		i3bar -t
 	status_command \
-		INTERFACE=wlp59s0 \
-		INLABEL='RX: '	\
-		OUTLABEL='TX: ' \
-		SENSOR_CHIP='coretemp-isa-0000' \
-		T_WARN=50 T_CRIT=70 \
+		COLOR_H="#FF5500" \
+		COLOR_M="#FFAE00" \
+		COLOR_G="#A8FF00" \
 		i3blocks -c ~/.config/i3/i3blocks.conf
 
 	position				top
@@ -248,4 +247,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # autostart
 exec --no-startup-id ~/.config/i3/autostart.sh
 exec --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
-exec exec_always --no-startup-id ( killall kbdd || true ) && kbdd
+
+# after each restart
+exec_always --no-startup-id ( killall kbdd || true ) && kbdd
+exec_always --no-startup-id ~/.config/i3/i3-window-switcher.py
