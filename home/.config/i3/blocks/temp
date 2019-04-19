@@ -2,7 +2,7 @@
 
 SENSOR_CHIP="${SENSOR_CHIP:-coretemp-isa-0000}"
 VALUE=$(sensors -u ${SENSOR_CHIP} | grep temp1_input | awk '{print $2}')
-VALUE=$(printf %.f ${VALUE})
+VALUE=${VALUE%.*}
 
 echo ${VALUE}°C
 echo ${VALUE}°C

@@ -111,9 +111,13 @@ if has("gui_running")
 	menu Encoding.koi8-r :e ++enc=koi8-r<CR>
 	menu Encoding.cp866 :e ++enc=cp866<CR>
 
-	nnoremap yy yy"+yy
-	vnoremap y ygv"+y
+	"nnoremap yy yy"+yy
+	"vnoremap y ygv"+y
 endif
+
+nnoremap yy yy"+yy
+vnoremap y ygv"+y
+
 
 "===========================================================================
 " Functions
