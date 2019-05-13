@@ -8,18 +8,11 @@ if [[ ${VALUE} -eq 0 ]]; then
 
 else
 	SSID=$(iwgetid -r)
-	echo "${VALUE}% ${SSID}"
-	#echo ${VALUE}%
-	echo ${VALUE}%
+
+	echo ${SSID}
+	echo ${SSID}
 
 	if [[ ${VALUE} -lt 30 ]]; then
 		echo ${COLOR_H}
-
-	elif [[ ${VALUE} -lt 70 ]]; then
-		echo ${COLOR_M}
-	
-	else
-		echo ${COLOR_G}
-
 	fi
 fi
