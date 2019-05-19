@@ -121,9 +121,6 @@ bindsym $mod+"bracketright" focus output right
 bindsym $mod+Shift+"braceleft"	move workspace to output left
 bindsym $mod+Shift+"braceright" move workspace to output right
 
-# automatic back-and-forth when switching to the current workspace
-#workspace_auto_back_and_forth yes
-
 ###############################################################################
 set $file-manager "pcmanfm"
 set $lock-manager "i3lock -c 000000"
@@ -140,6 +137,11 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 2%-"
 bindsym XF86AudioRaiseVolume	exec --no-startup-id "amixer -D pulse set Master 5%+ unmute && pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioLowerVolume	exec --no-startup-id "amixer -D pulse set Master 5%- unmute && pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioMute					exec --no-startup-id "amixer -D pulse set Master toggle && pkill -RTMIN+10 i3blocks"
+ 
+# MRIS2 ctl
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause" 
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 
 ###############################################################################
 
@@ -163,12 +165,13 @@ for_window [class="Thunderbird"] move right
 ###############################################################################
 
 # logout dialog
-set $mode_system System: (l) lock, (Shift-e) logout, (Shift-r) reboot, (Shift+s) shutdown
+set $mode_system System: (l) lock, (Shift-s) suspend, (Shift-r) reboot, (Shift+p) shutdown
 mode "$mode_system" {
 	bindsym l				exec --no-startup-id $lock-manager,					mode "default"
-	bindsym Shift+e exec --no-startup-id i3-msg exit,						mode "default"
+	
 	bindsym Shift+r exec --no-startup-id systemctl reboot,			mode "default"
-	bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+	bindsym Shift+s exec --no-startup-id systemctl suspend,			mode "default"  
+	bindsym Shift+p exec --no-startup-id systemctl poweroff -i, mode "default"
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -177,13 +180,11 @@ mode "$mode_system" {
 bindsym $mod+Shift+BackSpace mode "$mode_system"
 
 # i3 dialog
-set $config_i3 i3: (c) reload config, (r) restart
+set $config_i3 i3: (c) reload config, (r) restart, (Shift-e) logout
 mode "$config_i3" {
-	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 	bindsym r	restart	
-	
-	# reload the configuration file
 	bindsym c	reload
+	bindsym Shift+e exec --no-startup-id i3-msg exit, mode "default"
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
