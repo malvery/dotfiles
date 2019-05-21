@@ -8,8 +8,9 @@ elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
 	brightnessctl -n set ${BR_STEP}%- >> /dev/null
 fi
 
-VALUE=$(echo "scale=0;$(xbacklight -get)" | bc -l)
-VALUE=${VALUE%.*}
+#VALUE=$(echo "scale=0;$(xbacklight -get)" | bc -l)
+#VALUE=${VALUE%.*}
+VALUE=$(brightnessctl | grep "Current" | grep -Po '(?<=\().*?(?=\%)')
 
 echo "${VALUE}%"
 echo "${VALUE}%"

@@ -37,4 +37,4 @@ else
 	fi
 fi
 
-echo ${STATUS}%
+#echo ${STATUS}%
