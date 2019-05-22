@@ -96,7 +96,7 @@ bar {
 			COLOR_H="#FF5500" \
 			COLOR_M="#FFAE00" \
 			COLOR_G="#A8FF00" \
-			i3blocks -c ~/.config/i3/i3blocks.conf
+			i3blocks -c ~/.config/sway/i3blocks.conf
 
 		position top
 		font pango:			Ubuntu Mono Bold 14
