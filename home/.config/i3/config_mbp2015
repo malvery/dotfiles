@@ -134,8 +134,14 @@ bindsym $mod+Shift+p		exec --no-startup-id $file-manager
 bindsym $mod+Shift+F12	exec --no-startup-id $lock-manager
 
 # brightnessctl
-bindsym XF86MonBrightnessUp		exec --no-startup-id "brightnessctl set +2%"
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 2%-"
+#bindsym XF86MonBrightnessUp		exec --no-startup-id "brightnessctl set +2%"
+#bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 2%-"
+bindsym XF86MonBrightnessUp		exec --no-startup-id "light -A 2"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 2"
+bindsym XF86KbdBrightnessUp		exec --no-startup-id "light -s sysfs/leds/smc::kbd_backlight -A 50"
+bindsym XF86KbdBrightnessDown exec --no-startup-id "light -s sysfs/leds/smc::kbd_backlight -U 50"
+
+
 
 # volume ctl
 bindsym XF86AudioRaiseVolume	exec --no-startup-id "amixer -D pulse set Master 5%+ unmute && pkill -RTMIN+10 i3blocks"
