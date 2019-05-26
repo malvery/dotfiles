@@ -6,7 +6,7 @@ default_border pixel
 
 set $terminal			"lxterminal"
 set $file-manager "pcmanfm"
-set $lock-manager "swaylock -f -c 000000"
+set $lock-manager "swaylock -f -c 222f42"
 
 ###############################################################################
 # hotkeys
