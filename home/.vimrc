@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
 
 	" themes
 	Plug 'morhetz/gruvbox'
-	Plug 'joshdick/onedark.vim'
+	"Plug 'joshdick/onedark.vim'
 
 	" syntax highlighting
 	Plug 'sheerun/vim-polyglot'
@@ -42,16 +42,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 
 	" git integration
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'mhinz/vim-signify'
-	Plug 'cohama/agit.vim'
-
-	" linter / autoformat / completion / LSP
-	Plug 'w0rp/ale'
-
-	" debugger
-	"Plug 'KangOl/vim-pudb'
-	"Plug 'SkyLeach/pudb.vim'
 
 call plug#end()
 
@@ -178,56 +169,17 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "===========================================================================
 " Debbuger Hotkeys
 "===========================================================================
-"nnoremap <leader>db :TogglePudbBreakPoint<CR>
-"inoremap <leader>db <ESC>:TogglePudbBreakPoint<CR>a
 
 "===========================================================================
 " Linter Fixing
 "===========================================================================
-let g:ale_fixers = {
-			\ '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-			\	'python': ['autopep8'],
-			\	}
 
 "===========================================================================
 " Completion
 "===========================================================================
-let g:ale_completion_enabled = 1
 set completeopt=menu,menuone,preview,noselect,noinsert
 
 inoremap <expr> <Tab>		pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 
-"===========================================================================
-" LSP Support
-"===========================================================================
-let g:ale_echo_cursor=0 
-
-" lua-lsp
-call ale#Set('lua_lsp_executable', 'lua-lsp')
-call ale#linter#Define('lua', {
-\   'name': 'lua-lsp',
-\   'lsp': 'stdio',
-\   'executable': {b -> ale#Var(b, 'lua_lsp_executable')},
-\   'command': {b -> ale#Var(b, 'lua_lsp_executable')},
-\   'project_root': function('ale#python#FindProjectRoot'),
-\	})
-
-" setup linters
-let g:ale_linters = {
-	\ 'python': ['pyls'],
-	\ 'lua': ['lua-lsp'],
-	\ 'vim': ['vint'],
-	\	}
-
-"===========================================================================
-" LSP Hotkeys
-"===========================================================================
-:nnoremap <leader>ld :ALEGoToDefinitionInTab<CR>
-:nnoremap <leader>lk :ALEHover<CR>
-:nnoremap <leader>li :ALEFix<CR>
-:nnoremap <leader>ls :ALEFindReferences<CR>
-
-nmap <silent> <leader>lw <Plug>(ale_next_wrap)
-nmap <silent> <leader>lW <Plug>(ale_previous_wrap)
