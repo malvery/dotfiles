@@ -99,3 +99,6 @@ fi
 # disable history sharing
 # setopt no_share_history
 unsetopt share_history
+
+# disable bracketed paste mode
+unset zle_bracketed_paste
