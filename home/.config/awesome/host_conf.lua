@@ -48,7 +48,8 @@ function initTheme()
 	-- disable default wallpaper
 	beautiful.wallpaper = nil
 	--gears.wallpaper.set("#1e231f")
-	gears.wallpaper.set("#222f42")
+	--gears.wallpaper.set("#222f42")
+	gears.wallpaper.set("#1F1F1F")
 
 	if HOSTNAME == "xps9570" then
 		beautiful.xresources.set_dpi(128)
