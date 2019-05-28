@@ -5,6 +5,7 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 local theme_assets = require("beautiful.theme_assets")
+local xdg_menu = require("archmenu")
 
 -- ############################################################################################
 local HOSTNAME = helpers.hostname
@@ -24,7 +25,6 @@ end
 -- ############################################################################################
 -- Theme
 function initTheme()
-	--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 	beautiful.useless_gap	= 1
 
@@ -47,7 +47,8 @@ function initTheme()
 
 	-- disable default wallpaper
 	beautiful.wallpaper = nil
-	gears.wallpaper.set("#1e231f")
+	--gears.wallpaper.set("#1e231f")
+	gears.wallpaper.set("#222f42")
 
 	if HOSTNAME == "xps9570" then
 		beautiful.xresources.set_dpi(128)
@@ -73,24 +74,24 @@ end
 function getMenu()
 	awesome_menu = {
 		{"Restart",	awesome.restart},
-		{"Exit",	function() awesome.quit() end}
+		{"Exit",	function() helpers.promptRun("exit ?", awesome.quit) end}
 	}
 
 	exit_menu = {
-		{"Shutdowm",	"systemctl poweroff"},
-		{"Reboot",		"systemctl reboot"},
 		{"Suspend",		"systemctl suspend"},
+		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff"	) end},
+		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot"		) end},
 	}
 
 	main_menu = awful.menu({
 		items = {
-			{"Awesome", awesome_menu, beautiful.awesome_icon},
-			{"Applications", "rofi -no-click-to-exit -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun"},
-			{"File Manager", APPS.file_manager},
-			{"Calculator", "galculator"},
-			{"Terminal", APPS.terminal},
-			{"System", exit_menu},
-			{"Lock", APPS.lock_manager}
+			{"Awesome",			awesome_menu, beautiful.awesome_icon},
+			{"Applications",	xdgmenu},
+			{"File Manager",	APPS.file_manager},
+			{"Calculator",		"galculator"},
+			{"Mixer",			"pavucontrol"},
+			{"System",			exit_menu},
+			{"Lock",			APPS.lock_manager}
 		}
 	})
 
@@ -162,6 +163,7 @@ end
 function getClientRules(client_rules)
 	float_app = {
 		"Nm-connection-editor",
+		"Vpnui",
 		"Google Play Music Desktop Player",
 		"MellowPlayer",
 		"Chromium-browser",
@@ -244,10 +246,9 @@ function initAutostart()
 		})
 	end
 
-	awful.spawn.with_shell('nitrogen --restore')
+	--awful.spawn.with_shell('nitrogen --restore')
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
-
-	awful.spawn.with_shell('kbdd')
+	awful.spawn.with_shell('( killall kbdd || true ) && kbdd')
 end
 
 -- ############################################################################################

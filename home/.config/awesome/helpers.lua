@@ -57,11 +57,46 @@ end
 
 -- ############################################################################################
 
+function promptRun (message, command)
+	awful.prompt.run {
+	  prompt	   = message .. " (type 'yes' to confirm) ",
+	  textbox	   = awful.screen.focused().mypromptbox.widget,
+	  exe_callback = function (t)
+		 if string.lower(t) == "yes" then
+			awesome.emit_signal("exit", nil)
+			if type(command) == "function"
+				then command()
+				else awful.spawn(command)
+			end
+		 end
+	  end,
+	  completion_callback = function (t, p, n)
+		 return awful.completion.generic(t, p, n, {"no", "NO", "yes", "YES"})
+	  end
+   }
+end
+
+local function nonEmptyTag (direction)
+   local s = awful.screen.focused()
+
+   for i = 1, #s.tags do
+	  awful.tag.viewidx(direction, s)
+	  if #s.clients > 0 then
+		 return
+	  end
+	end
+end
+
+
+-- ############################################################################################
+
 return {
 	hostname	=	getHostName(),
 	printNotify	=	printNotify,
 	runOnce		=	runOnce,
 	backlight	=	backlight,
 	volume		=	volume,
+	promptRun	=	promptRun,
+	nonEmptyTag	=	nonEmptyTag
 	--setVolumeWidgetTimer	=	setVolumeWidgetTimer,
 }
