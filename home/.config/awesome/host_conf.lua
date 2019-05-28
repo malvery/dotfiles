@@ -220,7 +220,7 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		'compton --backend glx --vsync -f -D 4',
+		'compton',
 		'parcellite',
 		'redshift-gtk',
 		'nm-applet',
