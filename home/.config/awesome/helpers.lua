@@ -36,9 +36,9 @@ end
 
 function backlight(action)
 	if action == "inc" then
-		awful.spawn.with_shell("brightnessctl set +2%")
+		awful.spawn.with_shell("light -A 2")
 	elseif action == "dec" then
-		awful.spawn.with_shell("brightnessctl -n set 2%-")
+		awful.spawn.with_shell("light -U 2")
 	end
 end
 
@@ -57,14 +57,6 @@ function volume(action)
 	elseif action == "toggle" then
 		awful.spawn.with_shell("pulsemixer --toggle-mute")
 	end
-	
-	-- if action == "+" then
-	-- 	awful.spawn.with_shell("pamixer -i 2")
-	-- elseif action == '-' then
-	-- 	awful.spawn.with_shell("pamixer -d 2")
-	-- elseif action == "toggle" then
-	-- 	awful.spawn.with_shell("pamixer -t")
-	-- end
 
 	-- if vol_widget_t then vol_widget_t.timeout = 0 end
 end

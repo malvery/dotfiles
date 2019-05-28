@@ -25,6 +25,7 @@ end
 -- Theme
 function initTheme()
 	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+	--beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 	beautiful.useless_gap	= 1
 
 	local color_f = "#285577"
@@ -78,9 +79,9 @@ function initTheme()
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
-		beautiful.font			= "Ubuntu Medium 10"
-		beautiful.border_width	= 5
-		beautiful.wibar_height	= 35
+		beautiful.font			= "Ubuntu Bold 9"
+		beautiful.border_width	= 3
+		beautiful.wibar_height	= 32
 
 		beautiful.notification_max_width = 600
 	end
@@ -130,6 +131,10 @@ function getHotkeys()
 			awful.key({ }, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
 			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
+			awful.key({ }, "XF86AudioPlay",	function () awful.spawn('playerctl play-pause')	end),
+			awful.key({ }, "XF86AudioPrev",	function () awful.spawn('playerctl previous')	end),
+			awful.key({ }, "XF86AudioNext",	function () awful.spawn('playerctl next')	end),
+
 			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),
 			awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
 			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),
@@ -144,6 +149,10 @@ function getHotkeys()
 
 	if HOSTNAME == "xps9570" then
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
+			hotkets = gears.table.join(hotkeys,
+					awful.key({ }, "XF86KbdBrightnessUp",		function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
+					awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
+			)
 	end
 
 	return hotkeys
@@ -174,12 +183,13 @@ function getClientRules(client_rules)
 		{ rule_any = {
         class = {
 					"Nm-connection-editor",
-					"Shutter",
 					"Google Play Music Desktop Player",
+					"MellowPlayer",
 					"Chromium-browser",
 					"Chromium",
 					"Pavucontrol",
 					"Nitrogen",
+					"Gcolor3",
 					"Transmission-gtk"
         }
 			}, properties = {floating = true}},
@@ -214,29 +224,30 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		'clipit',
+		'compton --backend glx --vsync -f -D 4',
+		'parcellite',
 		'redshift-gtk',
 		'nm-applet',
-		'blueman-applet',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-		'pasystray',
+
+		--'blueman-applet',
+		--'pasystray',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
-			'compton --backend glx --vsync -f -D 2',
 			'telegram-desktop',
 			'thunderbird',
+			'light -N 1'
 		})
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru(mac)" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
-			'pulseaudio --start',
-			'compton --backend glx --vsync opengl -f -D 2',
 			'thunderbird',
 			'slack',
-			'flameshot'
+			'flameshot',
+			'light -N 5'
 		})
 	end
 
