@@ -42,16 +42,10 @@ function backlight(action)
 	end
 end
 
-local vol_widget_t = nil
-function setVolumeWidgetTimer(timer) vol_widget_t = timer end
+--local vol_widget_t = nil
+--function setVolumeWidgetTimer(timer) vol_widget_t = timer end
 
 function volume(action)
-	-- if action == "+" or action == "-" then
-	-- 	awful.spawn.with_shell("amixer -D pulse set Master 2%" .. action .. " unmute")
-	-- elseif action == "toggle" then
-	-- 	awful.spawn.with_shell("amixer -D pulse set Master toggle")
-	-- end
-	
 	if action == "+" or action == "-" then
 		awful.spawn.with_shell("pulsemixer --change-volume " .. action .. "2")
 	elseif action == "toggle" then
@@ -69,5 +63,5 @@ return {
 	runOnce		=	runOnce,
 	backlight	=	backlight,
 	volume		=	volume,
-	setVolumeWidgetTimer	=	setVolumeWidgetTimer,
+	--setVolumeWidgetTimer	=	setVolumeWidgetTimer,
 }

@@ -10,10 +10,10 @@ local theme_assets = require("beautiful.theme_assets")
 local HOSTNAME = helpers.hostname
 
 local APPS = {
-			["terminal"]			=	"lxterminal",
-			["lock_manager"]	=	"slock",
-			["file_manager"]	=	"pcmanfm",
-			["browser"]				=	"firefox",
+	["terminal"]		=	"lxterminal",
+	["lock_manager"]	=	"slock",
+	["file_manager"]	=	"pcmanfm",
+	["browser"]			=	"firefox",
 }
 
 local TITLEBAR_SIZE = 22
@@ -24,21 +24,13 @@ end
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-	--beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+	--beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 	beautiful.useless_gap	= 1
 
 	local color_f = "#285577"
 	local color_n = "#5f676a"
 	local color_u = "#FF5500"
-
-	beautiful.bg_focus = color_f
-	beautiful.fg_focus = beautiful.fg_normal
-
-	-- menu icon
-	beautiful.awesome_icon = theme_assets.awesome_icon(
-    beautiful.menu_height, beautiful.bg_normal , beautiful.fg_focus
-	)
 
 	-- urgent
 	beautiful.bg_urgent = beautiful.bg_normal
@@ -47,17 +39,6 @@ function initTheme()
 	-- borders
 	beautiful.border_focus = color_f
 	beautiful.border_normal = color_n
-
-	-- tasklist
-	beautiful.tasklist_fg_focus = '#d3d7cf'
-	beautiful.tasklist_bg_focus = beautiful.bg_normal
-
-	beautiful.fg_minimize   = beautiful.bg_minimize
-	beautiful.bg_minimize   = beautiful.bg_normal
-
-	-- titlebar
-	beautiful.titlebar_bg_focus = color_f
-	beautiful.titlebar_bg_normal = beautiful.bg_normal
 
 	-- notifications
 	beautiful.notification_bg = color_f
@@ -91,14 +72,14 @@ end
 -- Menu
 function getMenu()
 	awesome_menu = {
-		{"Restart", awesome.restart},
-		{"Exit", function() awesome.quit() end}
+		{"Restart",	awesome.restart},
+		{"Exit",	function() awesome.quit() end}
 	}
 
 	exit_menu = {
-		{"Shutdowm", "systemctl poweroff"},
-		{"Reboot", "systemctl reboot"},
-		{"Suspend", "systemctl suspend"},
+		{"Shutdowm",	"systemctl poweroff"},
+		{"Reboot",		"systemctl reboot"},
+		{"Suspend",		"systemctl suspend"},
 	}
 
 	main_menu = awful.menu({
@@ -106,7 +87,7 @@ function getMenu()
 			{"Awesome", awesome_menu, beautiful.awesome_icon},
 			{"Applications", "rofi -no-click-to-exit -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun"},
 			{"File Manager", APPS.file_manager},
-			{"Calculator", "gnome-calculator"},
+			{"Calculator", "galculator"},
 			{"Terminal", APPS.terminal},
 			{"System", exit_menu},
 			{"Lock", APPS.lock_manager}
@@ -120,39 +101,39 @@ end
 -- Hotkeys
 function getHotkeys()
 		hotkeys = gears.table.join(
-			awful.key({ modkey,           }, "r",		function () awful.spawn('rofi -show run')		end),
-			awful.key({ modkey, "Shift"   }, "d",		function () awful.spawn('rofi -show drun')	end),
-			awful.key({ modkey, "Shift"   }, "p",		function () awful.spawn(APPS.file_manager)		end),
-			awful.key({ modkey, "Shift"   }, "F12",		function () awful.spawn(APPS.lock_manager)		end),
+			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')	end),
+			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show drun')	end),
+			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager)	end),
+			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager)	end),
 
-			awful.key({ }, "XF86AudioRaiseVolume",	function () helpers.volume("+")			end),
-			awful.key({ }, "XF86AudioLowerVolume",	function () helpers.volume("-")			end),
-			awful.key({ }, "XF86AudioMute",			function () helpers.volume("toggle")	end),
-			awful.key({ }, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
-			awful.key({ }, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
+			awful.key({	}, "XF86AudioRaiseVolume",	function () helpers.volume("+")			end),
+			awful.key({	}, "XF86AudioLowerVolume",	function () helpers.volume("-")			end),
+			awful.key({	}, "XF86AudioMute",			function () helpers.volume("toggle")	end),
+			awful.key({	}, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
+			awful.key({	}, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
 			awful.key({ }, "XF86AudioPlay",	function () awful.spawn('playerctl play-pause')	end),
 			awful.key({ }, "XF86AudioPrev",	function () awful.spawn('playerctl previous')	end),
-			awful.key({ }, "XF86AudioNext",	function () awful.spawn('playerctl next')	end),
+			awful.key({ }, "XF86AudioNext",	function () awful.spawn('playerctl next')		end),
 
-			awful.key({ modkey,           }, "Up",		function () awful.client.focus.bydirection("up")	end),
-			awful.key({ modkey,           }, "Down",	function () awful.client.focus.bydirection("down")	end),
-			awful.key({ modkey,           }, "Left",	function () awful.client.focus.bydirection("left")	end),
-			awful.key({ modkey,           }, "Right",	function () awful.client.focus.bydirection("right")	end),
+			awful.key({ modkey,			}, "Up",	function () awful.client.focus.bydirection("up")	end),
+			awful.key({ modkey,			}, "Down",	function () awful.client.focus.bydirection("down")	end),
+			awful.key({ modkey,			}, "Left",	function () awful.client.focus.bydirection("left")	end),
+			awful.key({ modkey,			}, "Right",	function () awful.client.focus.bydirection("right")	end),
 
-			awful.key({ modkey,           }, "s",	function () awful.screen.focused().tags[9]:view_only()	end),
-			awful.key({ modkey,           }, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
+			awful.key({ modkey,			}, "s",	function () awful.screen.focused().tags[9]:view_only()	end),
+			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
-			awful.key({ modkey,  "Shift"  }, "/", 		hotkeys_popup.show_help),
-			awful.key({ 'Ctrl',           }, "space",	naughty.destroy_all_notifications)
+			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
+			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications)
 	)
 
 	if HOSTNAME == "xps9570" then
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
-			hotkets = gears.table.join(hotkeys,
-					awful.key({ }, "XF86KbdBrightnessUp",		function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
-					awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
-			)
+		hotkets = gears.table.join(hotkeys,
+			awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
+			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
+		)
 	end
 
 	return hotkeys
@@ -179,25 +160,29 @@ end
 -- ############################################################################################
 -- Client rules
 function getClientRules(client_rules)
-	client_rules = gears.table.join(client_rules, {
-		{ rule_any = {
-        class = {
-					"Nm-connection-editor",
-					"Google Play Music Desktop Player",
-					"MellowPlayer",
-					"Chromium-browser",
-					"Chromium",
-					"Pavucontrol",
-					"Nitrogen",
-					"Gcolor3",
-					"Transmission-gtk"
-        }
-			}, properties = {floating = true}},
+	float_app = {
+		"Nm-connection-editor",
+		"Google Play Music Desktop Player",
+		"MellowPlayer",
+		"Chromium-browser",
+		"Chromium",
+		"Pavucontrol",
+		"Nitrogen",
+		"Gcolor3",
+		"Transmission-gtk"
+	}
+	float_app_top = {
+		"Gcolor3",
+		"Galculator",
+		"flameshot"
+	}
 
-		{rule_any	= {type	= {"normal"}},				properties = {titlebars_enabled = false}},
-		{rule		= {class = "Gnome-calculator"},	properties = {floating = true, ontop = true}},
-		{rule		= {class = "flameshot"},				properties = {floating = true, ontop = true}},
-		{rule		= {class = "Thunderbird"},			properties = {screen = 1, tag = "9",
+	client_rules = gears.table.join(client_rules, {
+		{rule_any	=	{class	= float_app		},	properties = {floating = true}},
+		{rule_any	=	{class	= float_app_top	},	properties = {floating = true, ontop = true}},
+		{rule_any	=	{type	= {"normal"}	},	properties = {titlebars_enabled = false}},
+
+		{rule	= {class = "Thunderbird"},	properties = {screen = 1, tag = "9",
 				callback=function(c)
 					awful.client.setslave(c)
 					awful.tag.incmwfact(0.05, c.first_tag)
@@ -207,12 +192,21 @@ function getClientRules(client_rules)
 
 	if HOSTNAME == "xps9570" then
 		client_rules = gears.table.join(client_rules, {
-			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "9"}},
+			{
+				rule = {class = "TelegramDesktop"},
+				properties = {screen = 1, tag = "9"}
+			},
 		})
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		client_rules = gears.table.join(client_rules, {
-			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "8", floating = true}},
-			{rule = {class = "Slack"},						properties = {screen = 1, tag = "9"}},
+			{
+				rule = {class = "TelegramDesktop"},
+				properties = {screen = 1, tag = "8", floating = true}
+			},
+			{
+				rule = {class = "Slack"},
+				properties = {screen = 1, tag = "9"}
+			},
 		})
 	end
 
@@ -230,7 +224,6 @@ function initAutostart()
 		'nm-applet',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-
 		--'blueman-applet',
 		--'pasystray',
 	}
@@ -261,11 +254,11 @@ end
 
 return {
 	apps			=	APPS,
-	titlebar_size		= TITLEBAR_SIZE,
-	initTheme				=	initTheme,
-	initAutostart		=	initAutostart,
-	getMenu					=	getMenu,
-	getHotkeys			=	getHotkeys,
-	getLayouts			=	getLayouts,
+	titlebar_size	=	TITLEBAR_SIZE,
+	initTheme		=	initTheme,
+	initAutostart	=	initAutostart,
+	getMenu			=	getMenu,
+	getHotkeys		=	getHotkeys,
+	getLayouts		=	getLayouts,
 	getClientRules	=	getClientRules
 }
