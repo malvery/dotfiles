@@ -103,8 +103,8 @@ end
 -- Hotkeys
 function getHotkeys()
 		hotkeys = gears.table.join(
-			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')	end),
-			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show drun')	end),
+			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')		end),
+			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show windowcd')	end),
 			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager)	end),
 			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager)	end),
 
@@ -132,10 +132,10 @@ function getHotkeys()
 
 	if HOSTNAME == "xps9570" then
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
-		hotkets = gears.table.join(hotkeys,
-			awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
-			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
-		)
+		--hotkets = gears.table.join(hotkeys,
+		--    awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
+		--    awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
+		--)
 	end
 
 	return hotkeys
