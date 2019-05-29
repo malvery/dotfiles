@@ -234,8 +234,8 @@ awful.screen.connect_for_each_screen(function(s)
             host_widgets.mem_widget,
             host_widgets.thermal_widget,
             host_widgets.wifi_widget,
+			host_widgets.power_widget,
             host_widgets.vol_widget,
-            host_widgets.power_widget,
             host_widgets.bat_widget,
             host_widgets.keyboard_widget,
             -- *****************

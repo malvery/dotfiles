@@ -34,6 +34,11 @@ end
 
 -- ############################################################################################
 
+local vol_widget_t = nil
+function setVolTimer(timer) vol_widget_t = timer end
+
+-- ############################################################################################
+
 function backlight(action)
 	if action == "inc" then
 		awful.spawn.with_shell("light -A 2")
@@ -42,17 +47,16 @@ function backlight(action)
 	end
 end
 
---local vol_widget_t = nil
---function setVolumeWidgetTimer(timer) vol_widget_t = timer end
-
 function volume(action)
 	if action == "+" or action == "-" then
-		awful.spawn.with_shell("pulsemixer --change-volume " .. action .. "2")
+		command = "pulsemixer --change-volume " .. action .. "2"
 	elseif action == "toggle" then
-		awful.spawn.with_shell("pulsemixer --toggle-mute")
+		command = "pulsemixer --toggle-mute"
 	end
 
-	-- if vol_widget_t then vol_widget_t.timeout = 0 end
+	awful.spawn.easy_async_with_shell(command, function()
+		if vol_widget_t then vol_widget_t:emit_signal("timeout") end
+	end)
 end
 
 -- ############################################################################################
@@ -97,6 +101,6 @@ return {
 	backlight	=	backlight,
 	volume		=	volume,
 	promptRun	=	promptRun,
-	nonEmptyTag	=	nonEmptyTag
-	--setVolumeWidgetTimer	=	setVolumeWidgetTimer,
+	nonEmptyTag	=	nonEmptyTag,
+	setVolTimer	=	setVolTimer,
 }

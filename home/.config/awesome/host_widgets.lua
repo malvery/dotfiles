@@ -16,11 +16,13 @@ elseif helpers.hostname == "NB-ZAVYALOV2" then
 	thermal_chip	=	"coretemp-isa-0000"
 end
 
--- local color_h	=	'#FF0000'
-local color_h	=	'#FF5500'
-local color_m	=	'#FFAE00'
-local color_g	=	'#A8FF00'
 local color_n	=	beautiful.fg_normal
+--local color_n	=	"#86AD85"
+local color_g	=	'#AFAF02'
+--local color_g	=	'#A8FF00'
+local color_m	=	'#FFAE00'
+local color_h	=	'#FF5500'
+--local color_h	=	'#FF0000'
 
 local w_sep = '  '
 
@@ -59,15 +61,32 @@ thermal_widget =  awful.widget.watch(
 	end
 )
 
+local thermal_t = awful.tooltip({objects = {thermal_widget}}) 
+thermal_widget:connect_signal("mouse::enter", function()
+	awful.spawn.easy_async_with_shell("sensors | grep -i 'package id\\|fan'", function(stdout)
+		thermal_t.text = stdout
+	end)
+end)
+
 -- ############################################################################################
 -- wifi
 wifi_widget =  awful.widget.watch(
 	string.format('bash -c "cat /proc/net/wireless | grep %s | awk \'{ print int($3 * 100 / 70) }\'"', wifi_device), 5,
 	function(widget, stdout)
 		val = tonumber(stdout)
-		if not val then val = 0 end
+		if not val then
+			widget:set_markup(string.format('<span color="%s">WIFI: Down</span>' .. w_sep, color_h))
+			return
+		end
 		if val < 40 then color = color_h elseif val < 80 then color = color_m else color = color_g end
 		widget:set_markup(string.format('<span color="%s">WIFI: %.0f%%</span>' .. w_sep, color, val))
+end)
+
+local wifi_t = awful.tooltip({objects = {wifi_widget}}) 
+wifi_widget:connect_signal("mouse::enter", function()
+	awful.spawn.easy_async_with_shell("iwconfig", function(stdout)
+		wifi_t.text = stdout
+	end)
 end)
 
 -- ############################################################################################
@@ -80,13 +99,23 @@ vol_widget, vol_widget_t =	awful.widget.watch(
 		if values[1] then vol_v = tonumber(values[1]) else vol_v = 0 end
 		vol_s = values[2]
 
-		if vol_v >= 50 then color = color_m else color = color_n end
-		if vol_s:match("off") then color = color_h end
+		if vol_v < 35 then color = color_n elseif vol_v < 70 then color = color_m else color = color_h end
+		if vol_s:match("off") then
+			widget:set_markup(string.format('<span color="%s">VOL: Mute</span>' .. w_sep, color_h))
+			return
+		end
 
 		widget:set_markup(string.format('<span color="%s">VOL: %.0f%%</span>' .. w_sep, color, vol_v))
 end)
 
---helpers.setVolumeWidgetTimer(vol_widget_t)
+local vol_t = awful.tooltip({objects = {vol_widget}}) 
+vol_widget:connect_signal("mouse::enter", function()
+	awful.spawn.easy_async_with_shell("pulsemixer --list-sinks", function(stdout)
+		vol_t.text = stdout
+	end)
+end)
+
+helpers.setVolTimer(vol_widget_t)
 vol_widget:buttons(gears.table.join(
 	awful.button({ }, 3, function()	helpers.volume("toggle")	end),
 	awful.button({ }, 4, function()	helpers.volume("+")			end),
@@ -99,7 +128,7 @@ local power_supply = '/sys/class/power_supply/' .. 'BAT0'
 
 power_widget =	awful.widget.watch(string.format('cat %s/current_now', power_supply), 5, function(widget, stdout)
 	val = tonumber(stdout) / 100000
-	if val > 40 then color = color_h else color = color_n end
+	if val > 20 then color = color_h else color = color_n end
 	widget:set_markup(string.format('<span color="%s">PC: %.1fW</span>' .. w_sep, color, val))
 end)
 
@@ -107,6 +136,13 @@ bat_widget =  awful.widget.watch(string.format('cat %s/capacity', power_supply),
 	val = tonumber(stdout)
 	if val < 35 then color = color_h elseif val < 70 then color = color_m else color = color_g end
 	widget:set_markup(string.format('<span color="%s">BAT: %.0f%%</span>'.. w_sep, color, val))
+end)
+
+local bat_t = awful.tooltip({objects = {bat_widget}}) 
+bat_widget:connect_signal("mouse::enter", function()
+	awful.spawn.easy_async_with_shell('echo "Brightness: ${$(light)%.*}%"', function(stdout)
+		bat_t.text = stdout
+	end)
 end)
 
 bat_widget:buttons(gears.table.join(

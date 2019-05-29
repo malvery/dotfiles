@@ -31,6 +31,7 @@ function initTheme()
 	local color_f = "#285577"
 	local color_n = "#5f676a"
 	local color_u = "#FF5500"
+	--local color_u = "#FE8600"
 
 	-- urgent
 	beautiful.bg_urgent = beautiful.bg_normal
@@ -172,7 +173,8 @@ function getClientRules(client_rules)
 		"Pavucontrol",
 		"Nitrogen",
 		"Gcolor3",
-		"Transmission-gtk"
+		"Transmission-gtk",
+		"mpv"
 	}
 	float_app_top = {
 		"Gcolor3",
