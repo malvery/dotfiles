@@ -96,7 +96,6 @@ function getMenu()
 			{"Applications",	xdgmenu},
 			{"File Manager",	APPS.file_manager},
 			{"Calculator",		"galculator"},
-			{"Mixer",			"pavucontrol"},
 			{"System",			exit_menu},
 			{"Lock",			APPS.lock_manager}
 		}
@@ -186,6 +185,24 @@ function getClientRules(client_rules)
 		"Galculator",
 		"flameshot"
 	}
+
+	-- titlebar for floating
+	--client.connect_signal("property::floating", function(c)
+	--    exclude = {
+	--        ["Chromium"] = true,
+	--        ["Chromium-browser"] = true,
+	--        ["Firefox"] = true,
+	--    }
+	--    if exclude[c.class] then
+	--        return
+	--    end
+    --
+	--    if c.floating then
+	--        awful.titlebar.show(c)
+	--    else
+	--        awful.titlebar.hide(c)
+	--    end
+	--end)
 
 	client_rules = gears.table.join(client_rules, {
 		{rule_any	=	{class	= float_app		},	properties = {floating = true}},
