@@ -46,6 +46,11 @@ function initTheme()
 	beautiful.notification_fg = "#ffffff"
 	beautiful.notification_border_color = "#aaaaaa"
 
+	-- tooltips
+	--beautiful.tooltip_bg = beautiful.bg_normal
+	beautiful.tooltip_border_color = beautiful.fg_focus
+	beautiful.tooltip_border_width = 0.8
+
 	-- disable default wallpaper
 	beautiful.wallpaper = nil
 	--gears.wallpaper.set("#1e231f")

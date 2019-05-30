@@ -37,8 +37,21 @@ end
 local vol_widget_t = nil
 function setVolTimer(timer) vol_widget_t = timer end
 
+local battery_t = nil
+function setBatteryT(tooltip, command)
+	battery_t = {
+		["tooltip"] = tooltip,
+		["command"] = command
+	}
+end
+
 function setTooltip(widget, command)
-	local tooltip = awful.tooltip({objects = {widget}})
+	local tooltip = awful.tooltip({
+		preferred_alignments = "middle",
+		objects = {widget},
+		mode = "outside",
+		margins = 8,
+	})
 
 	widget:connect_signal("mouse::enter", function()
 		awful.spawn.easy_async_with_shell(command, function(stdout)
@@ -54,10 +67,18 @@ end
 
 function backlight(action)
 	if action == "inc" then
-		awful.spawn.with_shell("light -A 2")
+		command = "light -A 2"
 	elseif action == "dec" then
-		awful.spawn.with_shell("light -U 2")
+		command = "light -U 2"
 	end
+
+	awful.spawn.easy_async_with_shell(command, function()
+		if battery_t then 
+			awful.spawn.easy_async_with_shell(battery_t.command, function(stdout)
+				battery_t.tooltip.text = stdout:gsub("\n$", "")
+			end)
+		end
+	end)
 end
 
 function volume(action)
@@ -116,5 +137,6 @@ return {
 	promptRun	=	promptRun,
 	nonEmptyTag	=	nonEmptyTag,
 	setVolTimer	=	setVolTimer,
-	setTooltip	=	setTooltip
+	setTooltip	=	setTooltip,
+	setBatteryT	=	setBatteryT,
 }

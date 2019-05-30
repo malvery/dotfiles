@@ -65,6 +65,12 @@ cpu_widget =  awful.widget.watch('bash -c "echo $[100-$(vmstat 1 2|tail -1|awk \
 		))
 	end)
 
+-- tooltip
+--local cpu_t = helpers.setTooltip(
+--    cpu_widget,
+--    "ps -eo pcpu,comm, --sort=-%cpu | head -5 | tail -n +2"
+--)
+
 -- ############################################################################################
 -- mem
 mem_widget =  awful.widget.watch('bash -c "free | grep Mem | awk \'{print $3/$2 * 100.0}\'"', 5,
@@ -82,6 +88,12 @@ mem_widget =  awful.widget.watch('bash -c "free | grep Mem | awk \'{print $3/$2 
 			'<span color="%s">MEM: %.0f%%</span>' .. w_sep, color, val
 		))
 	end)
+
+-- tooltip
+--local mem_t = helpers.setTooltip(
+--    mem_widget,
+--    "ps -eo pmem,comm, --sort=-%mem | head -5 | tail -n +2"
+--)
 
 -- ############################################################################################
 -- thermal
@@ -136,7 +148,7 @@ wifi_widget =  awful.widget.watch(
 local wifi_t = helpers.setTooltip(
 	wifi_widget,
 	string.format(
-		'echo "$(iwgetid | sed -e \"s/:/:\\t/\")\\n'
+		'echo "$(iwgetid | sed -e \"s/:/:\\t/\" -e \"s/\\"//g\")\\n'
 			.. '$(iwgetid -f)\\n'
 			.. '$(iwgetid -c)" | '
 			.. 'sed -e "s/%s//" -e "s/^ *//" -e "s/:/:\\t/"',
@@ -202,6 +214,10 @@ power_widget =	awful.widget.watch(
 			'<span color="%s">PC: %.1fW</span>' .. w_sep, color, val
 		))
 	end)
+local power_t = helpers.setTooltip(
+	power_widget,
+	string.format('echo "Status: $(cat %s/status)"', power_supply)
+)
 
 -- capacity
 bat_widget =  awful.widget.watch(
@@ -222,7 +238,9 @@ bat_widget =  awful.widget.watch(
 	end)
 
 -- tooltip
-local bat_t = helpers.setTooltip(bat_widget, 'echo "Brightness: ${$(light)%.*}%"')
+local bat_t_command = 'echo "Brightness: ${$(light)%.*}%"'
+local bat_t = helpers.setTooltip(bat_widget, bat_t_command)
+helpers.setBatteryT(bat_t, bat_t_command)
 
 -- buttons
 bat_widget:buttons(gears.table.join(
