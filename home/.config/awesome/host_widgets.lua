@@ -133,7 +133,16 @@ wifi_widget =  awful.widget.watch(
 	end)
 
 -- tooltip
-local wifi_t = helpers.setTooltip(wifi_widget, "iwgetid")
+local wifi_t = helpers.setTooltip(
+	wifi_widget,
+	string.format(
+		'echo "$(iwgetid | sed -e \"s/:/:\\t/\")\\n'
+			.. '$(iwgetid -f)\\n'
+			.. '$(iwgetid -c)" | '
+			.. 'sed -e "s/%s//" -e "s/^ *//" -e "s/:/:\\t/"',
+		conf.wifi	
+	)
+)
 
 -- ############################################################################################
 -- volume

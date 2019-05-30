@@ -42,7 +42,7 @@ function setTooltip(widget, command)
 
 	widget:connect_signal("mouse::enter", function()
 		awful.spawn.easy_async_with_shell(command, function(stdout)
-			tooltip.text = stdout
+			tooltip.text = stdout:gsub("\n$", "")
 		end)
 	end)
 
