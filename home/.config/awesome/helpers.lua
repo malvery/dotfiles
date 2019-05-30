@@ -37,6 +37,19 @@ end
 local vol_widget_t = nil
 function setVolTimer(timer) vol_widget_t = timer end
 
+function setTooltip(widget, command)
+	local tooltip = awful.tooltip({objects = {widget}})
+
+	widget:connect_signal("mouse::enter", function()
+		awful.spawn.easy_async_with_shell(command, function(stdout)
+			tooltip.text = stdout
+		end)
+	end)
+
+	return tooltip
+end
+
+
 -- ############################################################################################
 
 function backlight(action)
@@ -103,4 +116,5 @@ return {
 	promptRun	=	promptRun,
 	nonEmptyTag	=	nonEmptyTag,
 	setVolTimer	=	setVolTimer,
+	setTooltip	=	setTooltip
 }
