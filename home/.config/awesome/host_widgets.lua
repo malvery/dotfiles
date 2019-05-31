@@ -35,11 +35,14 @@ elseif helpers.hostname == "NB-ZAVYALOV2" then
 	}
 end
 
-local color_n	=	beautiful.fg_normal
+--local color_n	=	beautiful.fg_normal
 --local color_n	=	"#86AD85"
-local color_g	=	'#AFAF02'
+local color_n	=	"#A8A8A8"
+--local color_g	=	'#AFAF02'
+local color_g	=	"#86AD85"
 local color_m	=	'#FFAE00'
 local color_h	=	'#FF5500'
+local color_i	=	'#888888'
 
 local w_sep = '  '
 
@@ -49,21 +52,18 @@ time_widget = wibox.widget.textclock(w_sep .. "%a %b %d, %H:%M:%S" .. w_sep, 1)
 
 -- ############################################################################################
 -- cpu
-cpu_widget =  awful.widget.watch('bash -c "echo $[100-$(vmstat 1 2|tail -1|awk \'{print $15}\')]"', 5,
+cpu_widget =  awful.widget.watch(
+	'bash -c "echo $[100-$(vmstat 1 2|tail -1|awk \'{print $15}\')]"', 5,
 	function(widget, stdout)
 		val = tonumber(stdout)
-		if val > 80 then
-			color = color_h
-		elseif val > 30 then
-			color = color_m
-		else
-			color = color_n
-		end
+		if		val > 80 then color = color_h
+		elseif	val > 30 then color = color_m
+		else	color = color_n end
 
 		widget:set_markup(string.format(
 			w_sep .. '<span color="%s">CPU: %.0f%%</span>' .. w_sep, color, val
 		))
-	end)
+end)
 
 -- tooltip
 --local cpu_t = helpers.setTooltip(
@@ -73,27 +73,18 @@ cpu_widget =  awful.widget.watch('bash -c "echo $[100-$(vmstat 1 2|tail -1|awk \
 
 -- ############################################################################################
 -- mem
-mem_widget =  awful.widget.watch('bash -c "free | grep Mem | awk \'{print $3/$2 * 100.0}\'"', 5,
+mem_widget =  awful.widget.watch(
+	'bash -c "free | grep Mem | awk \'{print $3/$2 * 100.0}\'"', 5,
 	function(widget, stdout)
 		val = tonumber(stdout)
-		if val > 90 then
-			color = color_h
-		elseif val > 60 then
-			color = color_m
-		else
-			color = color_n
-		end
+		if		val > 90 then color = color_h
+		elseif	val > 60 then color = color_m
+		else	color = color_n end
 
 		widget:set_markup(string.format(
 			'<span color="%s">MEM: %.0f%%</span>' .. w_sep, color, val
 		))
-	end)
-
--- tooltip
---local mem_t = helpers.setTooltip(
---    mem_widget,
---    "ps -eo pmem,comm, --sort=-%mem | head -5 | tail -n +2"
---)
+end)
 
 -- ############################################################################################
 -- thermal
@@ -102,18 +93,14 @@ thermal_widget =  awful.widget.watch(
 	function(widget, stdout)
 		val = tonumber(stdout)
 
-		if val > conf.thermal.t_hight then
-			color = color_h 
-		elseif val > conf.thermal.t_medium then
-			color = color_m 
-		else
-			color = color_n
-		end
+		if		val > conf.thermal.t_hight then color = color_h 
+		elseif	val > conf.thermal.t_medium then color = color_m 
+		else	color = color_n end
 
 		widget:set_markup(string.format(
 			'<span color="%s">TH: %.0f°C</span>' .. w_sep, color, val
 		))
-	end)
+end)
 
 -- tooltip
 local thermal_t = helpers.setTooltip(thermal_widget, "sensors | grep -i 'RPM'")
@@ -122,27 +109,32 @@ local thermal_t = helpers.setTooltip(thermal_widget, "sensors | grep -i 'RPM'")
 -- wifi
 wifi_widget =  awful.widget.watch(
 	string.format('bash -c "cat /proc/net/wireless | grep %s | awk \'{ print int($3 * 100 / 70) }\'"', conf.wifi), 5,
-	function(widget, stdout)
-		val = tonumber(stdout)
-		if not val then
+	function(widget, stdout_w)
+		awful.spawn.easy_async_with_shell("ip tuntap show | wc -l", function(stdout_ip)
+			val = tonumber(stdout_w)
+			if not val then
+				widget:set_markup(string.format(
+					'<span color="%s">WIFI: [Down]</span>' .. w_sep, color_h
+				))
+				return
+			end
+
+			if		val < 40 then color = color_h
+			elseif	val < 80 then color = color_m
+			else	color = color_g end
+
+			vpn_prefix = ''
+			vpn_count = stdout_ip:gsub("\n$", "")
+			
+			if vpn_count ~= "0" then
+				vpn_prefix = ' [VPN]'
+			end
+
 			widget:set_markup(string.format(
-				'<span color="%s">WIFI: Down</span>' .. w_sep, color_h
+				'<span color="%s">WIFI: %.0f%%%s</span>' .. w_sep, color, val, vpn_prefix
 			))
-			return
-		end
-
-		if val < 40 then
-			color = color_h
-		elseif val < 80 then
-			color = color_m
-		else
-			color = color_g
-		end
-
-		widget:set_markup(string.format(
-			'<span color="%s">WIFI: %.0f%%</span>' .. w_sep, color, val
-		))
-	end)
+		end)
+end)
 
 -- tooltip
 local wifi_t = helpers.setTooltip(
@@ -166,17 +158,13 @@ vol_widget, vol_widget_t =	awful.widget.watch(
 		if values[1] then vol_v = tonumber(values[1]) else vol_v = 0 end
 		vol_s = values[2]
 
-		if vol_v < 35 then
-			color = color_n
-		elseif vol_v < 70 then
-			color = color_m
-		else
-			color = color_h
-		end
+		if		vol_v < 35 then color = color_n
+		elseif	vol_v < 70 then color = color_m
+		else	color = color_h end
 
 		if vol_s:match("off") then
 			widget:set_markup(string.format(
-				'<span color="%s">VOL: Mute</span>' .. w_sep, color_h
+				'<span color="%s">VOL: Mute</span>' .. w_sep, color_i
 			))
 			return
 		end
@@ -184,7 +172,7 @@ vol_widget, vol_widget_t =	awful.widget.watch(
 		widget:set_markup(string.format(
 			'<span color="%s">VOL: %.0f%%</span>' .. w_sep, color, vol_v
 		))
-	end)
+end)
 
 -- buttons
 helpers.setVolTimer(vol_widget_t)
@@ -198,44 +186,25 @@ vol_widget:buttons(gears.table.join(
 -- ############################################################################################
 -- batt
 local power_supply = '/sys/class/power_supply/' .. conf.power.device
-
--- power
-power_widget =	awful.widget.watch(
-	string.format('cat %s/current_now', power_supply), 5,
-	function(widget, stdout)
-		val = tonumber(stdout) / 100000
-		if val > conf.power.c_hight then
-			color = color_h
-		else
-			color = color_n
-		end
-
-		widget:set_markup(string.format(
-			'<span color="%s">PC: %.1fW</span>' .. w_sep, color, val
-		))
-	end)
-local power_t = helpers.setTooltip(
-	power_widget,
-	string.format('echo "Status: $(cat %s/status)"', power_supply)
-)
-
--- capacity
 bat_widget =  awful.widget.watch(
-	string.format('cat %s/capacity', power_supply), 15,
+	string.format('cat %s/capacity %s/current_now', power_supply, power_supply), 5,
 	function(widget, stdout)
-		val = tonumber(stdout)
-		if val < 35 then
-			color = color_h
-		elseif val < 70 then
-			color = color_m
-		else
-			color = color_g
+		val = {}
+		for str in stdout:gmatch("([^\n]+)") do
+			table.insert(val, str) 
 		end
+		val_c = tonumber(val[1])
+		val_p = tonumber(val[2]) / 100000
+		
+		if		val_c < 35 then color = color_h
+		elseif	val_c < 70 then color = color_m
+		else	color = color_g end
 
 		widget:set_markup(string.format(
-			'<span color="%s">BAT: %.0f%%</span>'.. w_sep, color, val
+			'<span color="%s">BAT: %.0f%% [%.1fW]</span>' .. w_sep,
+			color, val_c, val_p
 		))
-	end)
+end)
 
 -- tooltip
 local bat_t_command = 'echo "Brightness: ${$(light)%.*}%"'
@@ -276,6 +245,5 @@ return {
 	wifi_widget		=	wifi_widget,
 	vol_widget		=	vol_widget,
 	bat_widget		=	bat_widget,
-	power_widget	=	power_widget,
 	keyboard_widget	=	keyboard_widget
 }
