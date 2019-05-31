@@ -35,20 +35,23 @@ elseif helpers.hostname == "NB-ZAVYALOV2" then
 	}
 end
 
---local color_n	=	beautiful.fg_normal
+local color_n	=	beautiful.fg_normal
 --local color_n	=	"#86AD85"
-local color_n	=	"#A8A8A8"
+--local color_n	=	"#A8A8A8"
 --local color_g	=	'#AFAF02'
 local color_g	=	"#86AD85"
 local color_m	=	'#FFAE00'
 local color_h	=	'#FF5500'
 local color_i	=	'#888888'
 
+--local w_sep = '<span color="#888888"> | </span>'
 local w_sep = '  '
 
 -- ############################################################################################
 -- clock
 time_widget = wibox.widget.textclock(w_sep .. "%a %b %d, %H:%M:%S" .. w_sep, 1)
+--local month_calendar = awful.widget.calendar_popup.month()
+--month_calendar:attach(time_widget, "tr")
 
 -- ############################################################################################
 -- cpu
@@ -64,12 +67,6 @@ cpu_widget =  awful.widget.watch(
 			w_sep .. '<span color="%s">CPU: %.0f%%</span>' .. w_sep, color, val
 		))
 end)
-
--- tooltip
---local cpu_t = helpers.setTooltip(
---    cpu_widget,
---    "ps -eo pcpu,comm, --sort=-%cpu | head -5 | tail -n +2"
---)
 
 -- ############################################################################################
 -- mem
@@ -114,7 +111,7 @@ wifi_widget =  awful.widget.watch(
 			val = tonumber(stdout_w)
 			if not val then
 				widget:set_markup(string.format(
-					'<span color="%s">WIFI: [Down]</span>' .. w_sep, color_h
+					'<span color="%s">WIFI: Down</span>' .. w_sep, color_h
 				))
 				return
 			end
@@ -127,7 +124,7 @@ wifi_widget =  awful.widget.watch(
 			vpn_count = stdout_ip:gsub("\n$", "")
 			
 			if vpn_count ~= "0" then
-				vpn_prefix = ' [VPN]'
+				vpn_prefix = ' ^VPN'
 			end
 
 			widget:set_markup(string.format(
@@ -201,7 +198,7 @@ bat_widget =  awful.widget.watch(
 		else	color = color_g end
 
 		widget:set_markup(string.format(
-			'<span color="%s">BAT: %.0f%% [%.1fW]</span>' .. w_sep,
+			'<span color="%s">BAT: %.0f%% ^%.1fW</span>' .. w_sep,
 			color, val_c, val_p
 		))
 end)
