@@ -15,6 +15,7 @@ local APPS = {
 	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
+	["calculator"]		=	"galculator",
 }
 
 local TITLEBAR_SIZE = 22
@@ -86,8 +87,8 @@ function getMenu()
 
 	exit_menu = {
 		{"Suspend",		"systemctl suspend"},
-		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff"	) end},
-		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot"		) end},
+		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff") end},
+		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot"	) end},
 	}
 
 	main_menu = awful.menu({
@@ -95,7 +96,7 @@ function getMenu()
 			{"Awesome",			awesome_menu, beautiful.awesome_icon},
 			{"Applications",	xdgmenu},
 			{"File Manager",	APPS.file_manager},
-			{"Calculator",		"galculator"},
+			{"Calculator",		APPS.calculator},
 			{"System",			exit_menu},
 			{"Lock",			APPS.lock_manager}
 		}
@@ -167,75 +168,61 @@ end
 -- ############################################################################################
 -- Client rules
 function getClientRules(client_rules)
+	-- float apps list
 	float_app = {
 		"Nm-connection-editor",
 		"Vpnui",
 		"Google Play Music Desktop Player",
-		"MellowPlayer",
-		"Chromium-browser",
-		"Chromium",
 		"Pavucontrol",
 		"Nitrogen",
-		"Gcolor3",
 		"Transmission-gtk",
+		"Blueman-manager",
 		"mpv"
 	}
 	float_app_top = {
-		"Gcolor3",
+		"Gcolor2",
 		"Galculator",
 		"flameshot"
 	}
 
-	-- titlebar for floating
-	--client.connect_signal("property::floating", function(c)
-	--    exclude = {
-	--        ["Chromium"] = true,
-	--        ["Chromium-browser"] = true,
-	--        ["Firefox"] = true,
-	--    }
-	--    if exclude[c.class] then
-	--        return
-	--    end
-    --
-	--    if c.floating then
-	--        awful.titlebar.show(c)
-	--    else
-	--        awful.titlebar.hide(c)
-	--    end
-	--end)
+	-- host additional settings
+	if HOSTNAME == "xps9570" then
+		client_rules = gears.table.join(client_rules, {
+			{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
+		})
+	elseif HOSTNAME == "NB-ZAVYALOV2" then
+		float_app = gears.table.join(float_app, {"TelegramDesktop"})
+		client_rules = gears.table.join(client_rules, {
+			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "8"}},
+			{rule = {class = "Slack"},				properties = {screen = 1, tag = "9"}},
+		})
+	end
 
+	
+	-- set window rules
 	client_rules = gears.table.join(client_rules, {
-		{rule_any	=	{class	= float_app		},	properties = {floating = true}},
-		{rule_any	=	{class	= float_app_top	},	properties = {floating = true, ontop = true}},
-		{rule_any	=	{type	= {"normal"}	},	properties = {titlebars_enabled = false}},
+		-- disable titlebars
+		{rule_any = {type = {"normal"}}, properties = {titlebars_enabled = false}},
 
-		{rule	= {class = "Thunderbird"},	properties = {screen = 1, tag = "9",
+		-- set floating
+		{rule_any = {class = gears.table.join(float_app, float_app_top)},
+		properties = {floating = true, titlebars_enabled = true}},
+		
+		-- set on-top
+		{rule_any =	{class = float_app_top},properties = {ontop = true}},
+
+		-- fix for chromium
+		{rule = {class = "Chromium"}, properties = {floating = true}},
+		{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
+		
+		-- fix for thunderbird
+		{rule = {class = "Thunderbird"}, properties = {screen = 1, tag = "9",
 				callback=function(c)
 					awful.client.setslave(c)
 					awful.tag.incmwfact(0.05, c.first_tag)
 				end,
 		}},
 	})
-
-	if HOSTNAME == "xps9570" then
-		client_rules = gears.table.join(client_rules, {
-			{
-				rule = {class = "TelegramDesktop"},
-				properties = {screen = 1, tag = "9"}
-			},
-		})
-	elseif HOSTNAME == "NB-ZAVYALOV2" then
-		client_rules = gears.table.join(client_rules, {
-			{
-				rule = {class = "TelegramDesktop"},
-				properties = {screen = 1, tag = "8", floating = true}
-			},
-			{
-				rule = {class = "Slack"},
-				properties = {screen = 1, tag = "9"}
-			},
-		})
-	end
 
 	return client_rules
 end
@@ -252,7 +239,6 @@ function initAutostart()
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
 		--'blueman-applet',
-		--'pasystray',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
@@ -271,7 +257,6 @@ function initAutostart()
 		})
 	end
 
-	--awful.spawn.with_shell('nitrogen --restore')
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 	awful.spawn.with_shell('( killall kbdd || true ) && kbdd')
 end
