@@ -214,7 +214,9 @@ function getClientRules(client_rules)
 		-- fix for chromium
 		{rule = {class = "Chromium"}, properties = {floating = true}},
 		{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
-	})
+		
+		-- thunderbird
+		{rule = {class = "Thunderbird"},	properties = {screen = 1, tag = "9"}}})
 
 	return client_rules
 end
@@ -251,10 +253,10 @@ function initAutostart()
 	
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
-	awful.spawn.with_shell('( killall kbdd || true ) && kbdd')
+	awful.spawn.with_shell('sleep 4 && (killall kbdd || true) && kbdd')
 
 	-- setup tags
-	awful.tag.incmwfact(0.05, awful.tag.find_by_name(awful.screen.focused(), "9"))
+	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))
 
 end
 
