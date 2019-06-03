@@ -138,10 +138,10 @@ function getHotkeys()
 
 	if HOSTNAME == "xps9570" then
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
-		--hotkets = gears.table.join(hotkeys,
-		--    awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
-		--    awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
-		--)
+		hotkeys = gears.table.join(hotkeys,
+			awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
+			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
+		)
 	end
 
 	return hotkeys
