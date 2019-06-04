@@ -216,7 +216,14 @@ function getClientRules(client_rules)
 		{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
 		
 		-- thunderbird
-		{rule = {class = "Thunderbird"},	properties = {screen = 1, tag = "9"}}})
+		{rule = {class = "Thunderbird"},	properties = {screen = 1, tag = "9"}},
+
+		-- firefox
+		{rule = {class = "Firefox", role = "Organizer"}, properties = {
+			floating = true,
+			titlebars_enabled = true
+		}}
+	})
 
 	return client_rules
 end
