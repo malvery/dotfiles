@@ -9,7 +9,6 @@ local capi = {awesome = awesome}
 
 if helpers.hostname == "xps9570" then
 	conf = {
-		["wifi"] = "wlp59s0",
 		["thermal"] = {
 			["device"] = 'coretemp-isa-0000',
 			["t_hight"] = 75,
@@ -22,7 +21,6 @@ if helpers.hostname == "xps9570" then
 	}
 elseif helpers.hostname == "NB-ZAVYALOV2" then
 	conf = {
-		["wifi"] = "wlp3s0",
 		["thermal"] = {
 			["device"] = 'coretemp-isa-0000',
 			["t_hight"] = 85,
@@ -105,11 +103,12 @@ local thermal_t = helpers.setTooltip(thermal_widget, "sensors | grep -i 'RPM'")
 -- ############################################################################################
 -- wifi
 wifi_widget =  awful.widget.watch(
-	string.format('bash -c "cat /proc/net/wireless | grep %s | awk \'{ print int($3 * 100 / 70) }\'"', conf.wifi), 5,
+	'bash -c "cat /proc/net/wireless | tail -n 1 | awk \'{ print int($3 * 100 / 70) }\'"', 5,
 	function(widget, stdout_w)
 		awful.spawn.easy_async_with_shell("ip tuntap show | wc -l", function(stdout_ip)
 			val = tonumber(stdout_w)
-			if not val then
+			--if not val then
+			if val == 0 then
 				widget:set_markup(string.format(
 					'<span color="%s">WIFI: Down</span>' .. w_sep, color_h
 				))
@@ -136,13 +135,11 @@ end)
 -- tooltip
 local wifi_t = helpers.setTooltip(
 	wifi_widget,
-	string.format(
-		'echo "$(iwgetid | sed -e \"s/:/:\\t/\" -e \"s/\\"//g\")\\n'
-			.. '$(iwgetid -f)\\n'
-			.. '$(iwgetid -c)" | '
-			.. 'sed -e "s/%s//" -e "s/^ *//" -e "s/:/:\\t/"',
-		conf.wifi	
-	)
+	'echo "$(iwgetid | sed -e \"s/:/:\\t/\" -e \"s/\\"//g\")\\n'
+		.. '$(iwgetid -f)\\n'
+		.. '$(iwgetid -c)" | '
+		.. 'cut -f 1 -d " " --complement | '
+		.. 'sed -e "s/^ *//" -e "s/:/:\\t/"'
 )
 
 -- ############################################################################################
