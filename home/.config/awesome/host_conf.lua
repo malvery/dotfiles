@@ -238,7 +238,6 @@ function initAutostart()
 		'redshift-gtk',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-		--'blueman-applet',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
@@ -253,7 +252,8 @@ function initAutostart()
 			'thunderbird',
 			'slack',
 			'flameshot',
-			'nm-applet',
+			'blueman-applet',
+			--'nm-applet',
 			'light -N 5'
 		})
 	end
