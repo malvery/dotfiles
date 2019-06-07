@@ -15,7 +15,7 @@ local APPS = {
 	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
-	["calculator"]		=	"galculator",
+	["calculator"]		=	"kcalc",
 }
 
 local TITLEBAR_SIZE = 22
@@ -180,8 +180,8 @@ function getClientRules(client_rules)
 		"mpv"
 	}
 	float_app_top = {
-		"Gcolor2",
-		"Galculator",
+		"kcolorchooser",
+		"kcalc",
 		"flameshot"
 	}
 
