@@ -15,7 +15,7 @@ local APPS = {
 	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
-	["calculator"]		=	"kcalc",
+	["calculator"]		=	"galculator",
 }
 
 local TITLEBAR_SIZE = 22
@@ -180,9 +180,12 @@ function getClientRules(client_rules)
 		"mpv"
 	}
 	float_app_top = {
-		"kcolorchooser",
-		"kcalc",
+		"Galculator",
 		"flameshot"
+	}
+
+	float_no_title = {
+		"Gcolor3"
 	}
 
 	-- host additional settings
@@ -207,6 +210,10 @@ function getClientRules(client_rules)
 		-- set floating
 		{rule_any = {class = gears.table.join(float_app, float_app_top)},
 		properties = {floating = true, titlebars_enabled = true}},
+
+		-- set floating without titlebar
+		{rule_any = {class = float_no_title},
+		properties = {floating = true, titlebars_enabled = false}},
 		
 		-- set on-top
 		{rule_any =	{class = float_app_top},properties = {ontop = true}},
