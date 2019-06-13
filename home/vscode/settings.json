@@ -2,7 +2,7 @@
     "workbench.sideBar.location": "right",
     "python.jediEnabled": false,
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Hack'",
     "workbench.iconTheme": "vs-minimal",
     "editor.minimap.enabled": false,
     "vim.handleKeys": {

@@ -1,0 +1,70 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "shift+left",
+        "command": "vim.remap",
+        "args": {"after": ["b"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+right",
+        "command": "vim.remap",
+        "args": {"after": ["w"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+up",
+        "command": "vim.remap",
+        "args": {"after": ["k"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+down",
+        "command": "vim.remap",
+        "args": {"after": ["j"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+pagedown",
+        "command": "vim.remap",
+        "args": {"after": ["<Ctrl+f>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+pageup",
+        "command": "vim.remap",
+        "args": {"after": ["<Ctrl+b>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "pageup",
+        "command": "vim.remap",
+        "args": {"after": ["<Ctrl+u>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "pagedown",
+        "command": "vim.remap",
+        "args": {"after": ["<Ctrl+d>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+home",
+        "command": "vim.remap",
+        "args": {"after": ["^"]},
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "shift+end",
+        "command": "vim.remap",
+        "args": {"after": ["$","h"]
+        },
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "home",
+        "command": "vim.remap",
+        "args": {"after": ["^"]},
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+]
