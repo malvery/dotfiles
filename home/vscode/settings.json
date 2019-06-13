@@ -20,7 +20,9 @@
             ]
         },
         {
-            "before": ["<C-r>"],
+            "before": [
+                "<C-r>"
+            ],
             "commands": [
                 "redo"
             ]
@@ -56,6 +58,14 @@
             ]
         }
     ],
-    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#aa4926",
+        "statusBar.foreground": "#BBBBBB",
+        "statusBar.noFolderForeground": "#BBBBBB",
+        "statusBar.debuggingForeground": "#BBBBBB",
+        "statusBar.background": "#212122",
+        "statusBar.noFolderBackground": "#212122",
+        "statusBar.debuggingBackground": "#212122",
+    },
     "breadcrumbs.enabled": false
 }
