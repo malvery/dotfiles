@@ -253,7 +253,7 @@ function initAutostart()
 			'slack',
 			'flameshot',
 			'blueman-applet',
-			--'nm-applet',
+			'nm-applet',
 			'light -N 5'
 		})
 	end
