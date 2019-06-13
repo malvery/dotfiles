@@ -1,16 +1,30 @@
 {
-    // "python.linting.pylintUseMinimalCheckers": false,
-    "python.formatting.autopep8Args": [
-        "--max-line-length",
-        "120",
-        "--experimental"
-    ],
+    "workbench.sideBar.location": "right",
+    "python.jediEnabled": false,
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "workbench.iconTheme": "vs-minimal",
+    "editor.minimap.enabled": false,
     "vim.handleKeys": {
         "<C-k>": false,
         "<C-w>": true,
-        "<C-n>": true
+        "<C-n>": true,
     },
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "u",
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": [
+                "redo"
+            ]
+        },
         {
             "before": [
                 "<leader>",
@@ -41,5 +55,6 @@
                 "workbench.action.files.newUntitledFile"
             ]
         }
-    ]
+    ],
+    "workbench.colorTheme": "Darcula Pycharm Theme (dimmed)"
 }
