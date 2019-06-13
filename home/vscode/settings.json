@@ -56,5 +56,6 @@
             ]
         }
     ],
-    "workbench.colorTheme": "Darcula Pycharm Theme (dimmed)"
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "breadcrumbs.enabled": false
 }
