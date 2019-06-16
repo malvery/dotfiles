@@ -1,18 +1,15 @@
 #!/bin/bash
 
-BR_STEP=2
+BR_STEP=1
+SLEEP=0.03
 if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
-  #brightnessctl set +${BR_STEP}% >> /dev/null
 	light -A ${BR_STEP}
+	sleep ${SLEEP}
 
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
-	#brightnessctl -n set ${BR_STEP}%- >> /dev/null
 	light -U ${BR_STEP}
+	sleep ${SLEEP}
 fi
-
-#VALUE=$(echo "scale=0;$(xbacklight -get)" | bc -l)
-#VALUE=${VALUE%.*}
-#VALUE=$(brightnessctl | grep "Current" | grep -Po '(?<=\().*?(?=\%)')
 
 VALUE=$(light)
 VALUE=${VALUE%.*}
