@@ -1,4 +1,4 @@
-rofi.font:          ubuntu medium 14
-rofi.modi:          run,drun,windowcd,window
-rofi.terminal:			lxterminal
-rofi.theme: /home/malvery/.config/rofi/themes/materia.rasi
+rofi.font:		ubuntu medium 14
+rofi.modi:		run,drun,windowcd,window
+rofi.terminal:	lxterminal
+rofi.kb-cancel:	Escape,Control+g,Control+bracketleft,MouseMiddle
