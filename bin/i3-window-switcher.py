@@ -1,7 +1,22 @@
 #!/usr/bin/python3
 import setproctitle
+import subprocess
 import signal
 import i3ipc
+
+PROCESS_NAME = "i3-window-switcher"
+
+################################################################################
+
+# SIGNTERM another processes
+pid_list = subprocess.check_output([
+    '/bin/bash', '-c' ,'pidof %s || true' % PROCESS_NAME
+]).decode('utf-8')
+pid_list = pid_list.replace('\n', '').split(' ')
+
+for pid in pid_list:
+    if pid:
+        subprocess.call(['kill', pid])
 
 ################################################################################
 
@@ -15,7 +30,7 @@ class RecentClients(object):
         self.workspace = workspace
 
 
-setproctitle.setproctitle('i3-window-switcher')
+setproctitle.setproctitle(PROCESS_NAME)
 switcher_containers = dict()
 
 ################################################################################
