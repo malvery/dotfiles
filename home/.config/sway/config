@@ -95,15 +95,23 @@ bar {
 		status_command \
 			COLOR_H="#FF5500" \
 			COLOR_M="#FFAE00" \
-			COLOR_G="#A8FF00" \
+			COLOR_G="#86AD85" \
 			i3blocks -c ~/.config/sway/i3blocks.conf
 
 		position top
-		font pango:			Ubuntu Mono Bold 14
-		height 22
+
+		#font pango:	Ubuntu Mono Bold 14
+		font pango:	Ubuntu Condensed Bold 12
+		#font pango:	Hack Bold 12
+		#font pango:	xos4 Terminus Bold 13
+
+		height 20
 		colors {
-				statusline #aaaaaa 
-				background #222222
+			#statusline #aaaaaa 
+			background #222222
+			statusline #C3C3C3
+			#statusline #B0B0B0
+			#background #2a2a2a
 		}
 }
 

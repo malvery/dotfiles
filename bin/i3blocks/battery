@@ -14,8 +14,8 @@ elif [[ "${B_STATUS}" == 'Charging' ]]; then
   B_STATUS='CHR'
 fi
 
-echo "${B_LEVEL}% ${B_STATUS} (${B_VOLTAGE}W)"
-echo "${B_LEVEL}% ${B_STATUS} (${B_VOLTAGE}W)"
+echo "${B_LEVEL}% ${B_VOLTAGE}W ${B_STATUS}"
+echo "${B_LEVEL}% ${B_VOLTAGE}W ${B_STATUS}"
 
 
 if [[ ${B_LEVEL} -lt 5 ]]; then
