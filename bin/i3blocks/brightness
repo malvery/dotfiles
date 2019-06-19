@@ -9,6 +9,9 @@ if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
 	light -U ${BR_STEP}
 	sleep ${SLEEP}
+
+elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
+	pkill -USR1 '^redshift$'
 fi
 
 VALUE=$(light)

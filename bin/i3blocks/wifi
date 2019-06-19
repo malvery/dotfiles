@@ -1,6 +1,11 @@
 #!/bin/bash
 VALUE=$(cat /proc/net/wireless | tail -n 1 | awk '{print int($3 * 100 / 70)}')
 
+VPN_STATUS=''
+if [[ $(ip tuntap show | wc -l) -gt 0 ]]; then
+	VPN_STATUS='^VPN '
+fi
+
 if [[ ${VALUE} -eq 0 ]]; then
 	echo "down"
 	echo "down"
@@ -8,7 +13,7 @@ if [[ ${VALUE} -eq 0 ]]; then
 
 else
 	SSID=$(iwgetid -r)
-	echo "${VALUE}% ${SSID}"
+	echo "${VALUE}% ${VPN_STATUS}[${SSID}]"
 	#echo ${VALUE}%
 	echo ${VALUE}%
 
