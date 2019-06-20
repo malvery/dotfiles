@@ -13,7 +13,7 @@ if [[ ${VALUE} -eq 0 ]]; then
 
 else
 	SSID=$(iwgetid -r)
-	echo "${VALUE}% ${VPN_STATUS}[${SSID}]"
+	echo "${VALUE}% ${VPN_STATUS}${SSID}"
 	#echo ${VALUE}%
 	echo ${VALUE}%
 
