@@ -86,9 +86,9 @@ function getMenu()
 	}
 
 	exit_menu = {
-		{"Suspend",		"systemctl suspend"},
-		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff") end},
-		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot"	) end},
+		{"Suspend",		"systemctl suspend -i"},
+		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff -i"	) end},
+		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot -i"	) end},
 	}
 
 	main_menu = awful.menu({
