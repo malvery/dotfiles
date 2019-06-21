@@ -251,7 +251,6 @@ function initAutostart()
 	apps_list = {
 		'xsettingsd',
 		'compton',
-		'clipmenud',
 		'redshift-gtk',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
@@ -277,6 +276,7 @@ function initAutostart()
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 	awful.spawn.with_shell('sleep 4 && (killall kbdd || true) && kbdd')
+	awful.spawn.with_shell('~/src/dotfiles/bin/run_clipd.sh')
 
 	-- setup tags
 	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))
