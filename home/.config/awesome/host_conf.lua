@@ -133,10 +133,12 @@ function getHotkeys()
 			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
-			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications)
+			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- clipboard
-			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('CM_LAUNCHER=rofi clipmenu')	end)
+			awful.key({ 'Ctrl',			}, "grave",	function ()
+				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
+			end)
 	)
 
 	if HOSTNAME == "xps9570" then
@@ -146,7 +148,9 @@ function getHotkeys()
 			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end),
 			
 			-- clipboard
-			awful.key({ 'Ctrl',			}, "less",	function () awful.spawn.with_shell('CM_LAUNCHER=rofi clipmenu')	end)
+			awful.key({ 'Ctrl',			}, "less",	function ()
+				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
+			end)
 		)
 	end
 
