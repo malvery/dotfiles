@@ -18,11 +18,9 @@ else
 endif
 
 
-call plug#begin('~/.vim/plugged')
-
-	" themes
+call plug#begin('~/.config/nvim/plugged')
+	" theme
 	Plug 'morhetz/gruvbox'
-	"Plug 'joshdick/onedark.vim'
 
 	" syntax highlighting
 	Plug 'sheerun/vim-polyglot'
@@ -31,14 +29,14 @@ call plug#begin('~/.vim/plugged')
 	" buffers explorer
 	Plug 'jlanzarotta/bufexplorer'
 
-	" session
+	" sessions
 	Plug 'xolox/vim-misc'
 	Plug 'xolox/vim-session'
 
 	" file navigator
 	Plug 'scrooloose/nerdtree'
 
-	" comments
+	" commenter
 	Plug 'scrooloose/nerdcommenter'
 
 	" git integration
@@ -87,6 +85,11 @@ set laststatus=2
 
 set mouse=a
 
+filetype plugin on
+if &filetype==""
+	setfiletype conf
+endif
+
 "===========================================================================
 " GUI options
 "===========================================================================
@@ -101,18 +104,15 @@ if has("gui_running")
 	menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 	menu Encoding.koi8-r :e ++enc=koi8-r<CR>
 	menu Encoding.cp866 :e ++enc=cp866<CR>
-
-	"nnoremap yy yy"+yy
-	"vnoremap y ygv"+y
 endif
 
 nnoremap yy yy"+yy
 vnoremap y ygv"+y
 
-
 "===========================================================================
-" Functions
+" Sessions
 "===========================================================================
+let g:session_directory='~/.config/nvim/sessions'
 
 "===========================================================================
 " Alias
@@ -157,8 +157,6 @@ imap <F1>  <esc>:NERDTreeToggle<CR>
 "===========================================================================
 " Comments
 "===========================================================================
-filetype plugin on
-
 let g:NERDCommentEmptyLines=1
 let g:NERDDefaultAlign = 'left'
 
