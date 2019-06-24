@@ -25,4 +25,4 @@ echo $SHOT_PATH
 if [ "$2" == "-u" ]; then
 	imgur $SHOT_PATH | head -1 | wl-copy -n -f
 fi
-
+notify-send "screenshot: ${SHOT_PATH}"
