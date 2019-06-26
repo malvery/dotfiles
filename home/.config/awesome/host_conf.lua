@@ -62,7 +62,7 @@ function initTheme()
 		beautiful.xresources.set_dpi(128)
 		beautiful.font			= "Ubuntu Bold 9"
 		beautiful.border_width	= 3
-		beautiful.wibar_height	= 22
+		beautiful.wibar_height	= 20
 
 		beautiful.notification_width = 300
 		beautiful.systray_icon_spacing = 2
@@ -133,24 +133,14 @@ function getHotkeys()
 			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
-			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
-
-			-- clipboard
-			awful.key({ 'Ctrl',			}, "grave",	function ()
-				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
-			end)
+			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications)
 	)
 
 	if HOSTNAME == "xps9570" then
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		hotkeys = gears.table.join(hotkeys,
 			awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
-			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end),
-			
-			-- clipboard
-			awful.key({ 'Ctrl',			}, "less",	function ()
-				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
-			end)
+			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end)
 		)
 	end
 
@@ -254,6 +244,8 @@ function initAutostart()
 		'redshift-gtk',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
+		'blueman-applet',
+		'parcellite',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
@@ -267,7 +259,6 @@ function initAutostart()
 		apps_list = gears.table.join(apps_list, {
 			'thunderbird',
 			'slack',
-			'blueman-applet',
 			'nm-applet',
 			'light -N 5'
 		})
@@ -276,7 +267,6 @@ function initAutostart()
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 	awful.spawn.with_shell('kbdd & sleep 2 && (killall kbdd || true) && kbdd')
-	awful.spawn.with_shell('~/src/dotfiles/bin/run_clipd.sh')
 
 	-- setup tags
 	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))
