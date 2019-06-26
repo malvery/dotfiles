@@ -4,19 +4,22 @@ import subprocess
 import signal
 import i3ipc
 
-PROCESS_NAME = "i3-window-switcher"
+PROCESS_NAME = "i3ipc-recent-window"
 
 ################################################################################
 
 # SIGNTERM another processes
-pid_list = subprocess.check_output([
-    '/bin/bash', '-c' ,'pidof %s || true' % PROCESS_NAME
-]).decode('utf-8')
-pid_list = pid_list.replace('\n', '').split(' ')
+def kill_process():
+    pid_list = subprocess.check_output([
+        '/bin/bash', '-c' ,'pidof %s || true' % PROCESS_NAME
+    ]).decode('utf-8')
+    pid_list = pid_list.replace('\n', '').split(' ')
 
-for pid in pid_list:
-    if pid:
-        subprocess.call(['kill', pid])
+    for pid in pid_list:
+        if pid:
+            subprocess.call(['kill', pid])
+
+kill_process()
 
 ################################################################################
 
@@ -72,8 +75,11 @@ i3_conn_commands = i3ipc.Connection()
 def receiveSignal(signalNumber, frame):
     switch_to_recent(i3=i3_conn_commands)
 
+def receiveExit(signalNumber, frame):
+    kill_process()
 
 signal.signal(signal.SIGUSR1, receiveSignal)
+signal.signal(signal.SIGINT, receiveExit)
 
 ################################################################################
 
@@ -99,11 +105,14 @@ def on_window_focus(i3, e):
 for i in range(1, 10):
     switcher_containers[i] = RecentClients(workspace=i)
 
-# subscribe "window::focus"
-i3_conn_events = i3ipc.Connection()
-i3_conn_events.on("window::focus", on_window_focus)
+while True:
+    # subscribe "window::focus"
+    i3_conn_events = i3ipc.Connection()
+    i3_conn_events.on("window::focus", on_window_focus)
 
-try:
     i3_conn_events.main()
-except KeyboardInterrupt:
-    exit()
+
+    print('!! event loop is over. try to reconnect ...')
+    i3_conn_commands.command('focus right')
+
+print('exit')

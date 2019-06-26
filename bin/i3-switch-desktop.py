@@ -4,7 +4,7 @@ import subprocess
 import signal
 import i3ipc
 
-PROCESS_NAME = 'i3-switch-desktop' 
+PROCESS_NAME = 'i3ipc-switch-desktop'
 
 # SIGNTERM another processes
 pid_list = subprocess.check_output([

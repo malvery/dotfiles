@@ -275,7 +275,7 @@ function initAutostart()
 	
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
-	awful.spawn.with_shell('sleep 4 && (killall kbdd || true) && kbdd')
+	awful.spawn.with_shell('kbdd & sleep 2 && (killall kbdd || true) && kbdd')
 	awful.spawn.with_shell('~/src/dotfiles/bin/run_clipd.sh')
 
 	-- setup tags
