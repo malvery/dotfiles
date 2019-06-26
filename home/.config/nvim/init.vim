@@ -106,8 +106,8 @@ if has("gui_running")
 	menu Encoding.cp866 :e ++enc=cp866<CR>
 endif
 
-nnoremap yy yy"+yy
-vnoremap y ygv"+y
+"nnoremap yy yy"+yy
+"vnoremap y ygv"+y
 
 "===========================================================================
 " Sessions
