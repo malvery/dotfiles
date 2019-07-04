@@ -1,34 +1,13 @@
-#
-# These things are run when an Openbox X Session is started.
-# You may place a similar script in $HOME/.config/openbox/autostart
-# to run user-specific things.
-#
-
 # input settings
 setxkbmap -layout "us,ru" -option grp:caps_toggle &
-~/src/touchpad_settings.sh &
-syndaemon -t -R -i 0.1 &
 
 # DE settings
 xsettingsd &
-dunst &
 nitrogen --restore &
-orcsome &
 
 # exit if NVIDIA_SESSION
 if [[ -v NVIDIA_SESSION ]]; then
 	kbdd &
 	exit
 fi
-compton --backend glx --vsync opengl -f -D 2 &
 
-# apps
-xfce4-panel -d &
-clipit &
-redshift-gtk &
-#nm-applet &
-#blueman-applet &
-lxterminal -e tmux &
-light-locker &
-thunderbird &
-telegram-desktop &

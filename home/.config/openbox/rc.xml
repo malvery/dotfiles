@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>materia</name>
+    <name>Syscrash</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -59,7 +59,7 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Ubuntu</name>
-      <size>9</size>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -68,7 +68,7 @@
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu</name>
-      <size>9</size>
+      <size>10</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -469,19 +469,19 @@
         <command>rofi -show run</command>
       </action>
     </keybind>
-		<keybind key="W-S-d">
-			<action name="Execute">
+    <keybind key="W-S-d">
+      <action name="Execute">
         <command>rofi -show drun</command>
       </action>
-		</keybind>
+    </keybind>
     <keybind key="W-S-l">
       <action name="Execute">
-        <command>light-locker-command -l</command>
+        <command>slock</command>
       </action>
     </keybind>
     <keybind key="W-S-p">
       <action name="Execute">
-        <command>thunar</command>
+        <command>pcmanfm</command>
       </action>
     </keybind>
     <keybind key="W-S-t">

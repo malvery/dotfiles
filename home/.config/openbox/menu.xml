@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
-
-	<menu execute="obm-xdg /etc/xdg/menus/arch-applications.menu" id="xdg-menu" label="Apps"/>
-	<menu execute="obm-nav ~/downloads	thunar urxvt" id="nav-downloads"	label="Downloads"/>
-	<menu execute="obm-nav ~/doc				thunar urxvt" id="nav-doc"				label="Documents"/>
-	<menu execute="obm-nav ~/video			thunar urxvt" id="nav-video"			label="Video"/>
-	<menu execute="obm-nav ~/music			thunar urxvt" id="nav-music"			label="Music"/>
-	<menu execute="obm-nav ~/pictures		thunar urxvt" id="nav-pictures"		label="Pictures"/>
-	<menu execute="obm-nav ~/tmp				thunar urxvt" id="nav-tmp"				label="Temp"/>
-
-	<menu id="places-menu" label="Places">
-		<menu id="nav-downloads"/>
-		<menu id="nav-doc"/>
-		<menu id="nav-video"/>
-		<menu id="nav-music"/>
-		<menu id="nav-pictures"/>
-		<menu id="nav-tmp"/>
-	</menu>
-
 	<menu id="system-menu" label="System">
 		<item label="Openbox Configuration Manager">
 			<action name="Execute">
@@ -27,24 +9,6 @@
 				</startupnotify>
 			</action>
 		</item>
-		<item label="Customize Look and Feel">
-			<action name="Execute">
-				<command>lxappearance</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
-			</action>
-		</item>
-		<item label="Manage Cups Printers">
-			<action name="Execute">
-				<command>xdg-open http://localhost:631/</command>
-				<startupnotify>
-					<enabled>no</enabled>
-					<icon>cups</icon>
-				</startupnotify>
-			</action>
-		</item>
-		<separator/>
 		<item label="Reconfigure Openbox">
 			<action name="Reconfigure"/>
 		</item>
@@ -86,15 +50,7 @@
 		</item>
 		<item label="File">
 			<action name="Execute">
-				<command>thunar</command>
-				<startupnotify>
-					<enabled>yes</enabled>
-				</startupnotify>
-			</action>
-		</item>
-		<item label="Video">
-			<action name="Execute">
-				<command>smplayer</command>
+				<command>pcmanfm</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
@@ -102,8 +58,6 @@
 		</item>
 
 		<separator/>
-		<menu id="xdg-menu"/>
-		<menu id="places-menu"/>
 		<menu id="system-menu"/>
 
 		<separator/>
@@ -111,7 +65,7 @@
 		
 		<item label="Lock">
 			<action name="Execute">
-				<command>light-locker-command -l</command>
+				<command>slock</command>
 			</action>
 		</item>
 
