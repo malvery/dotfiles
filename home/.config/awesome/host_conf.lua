@@ -96,6 +96,7 @@ function getMenu()
 			{"Awesome",			awesome_menu, beautiful.awesome_icon},
 			{"Applications",	xdgmenu},
 			{"File Manager",	APPS.file_manager},
+			{"Audio Mixer",		"pavucontrol"},
 			{"Calculator",		APPS.calculator},
 			{"System",			exit_menu},
 			{"Lock",			APPS.lock_manager}
