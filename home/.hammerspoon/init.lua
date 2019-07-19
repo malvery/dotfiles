@@ -8,9 +8,9 @@ hs.window.animationDuration = 0
 ----------------------------------------------------
 -- apps runner
 ----------------------------------------------------
-hs.hotkey.bind({"alt", "shift"}, "t", function()
-	hs.application.launchOrFocus("iTerm")
-end)
+--hs.hotkey.bind({"alt", "shift"}, "t", function()
+--    hs.application.launchOrFocus("iTerm")
+--end)
 
 hs.hotkey.bind({"alt", "shift"}, "p", function()
 	hs.application.launchOrFocus("Finder")
@@ -80,63 +80,63 @@ hs.grid.ui.highlightStrokeWidth = 1
 hs.grid.ui.showExtraKeys = false
 
 -- show grid selector
-hs.hotkey.bind({"alt", "shift"}, "g", function()
+hs.hotkey.bind({"alt", "shift"}, "r", function()
 	hs.grid.toggleShow()
 end)
 
 -- resize
-hs.hotkey.bind({"alt", "shift"}, "h", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.resizeWindowThinner(win)
-end)
-hs.hotkey.bind({"alt", "shift"}, "j", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.resizeWindowTaller(win)
-end)
-hs.hotkey.bind({"alt", "shift"}, "k", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.resizeWindowShorter(win)
-end)
-hs.hotkey.bind({"alt", "shift"}, "l", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.resizeWindowWider(win)
-end)
+--hs.hotkey.bind({"alt", "shift"}, "h", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.resizeWindowThinner(win)
+--end)
+--hs.hotkey.bind({"alt", "shift"}, "j", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.resizeWindowTaller(win)
+--end)
+--hs.hotkey.bind({"alt", "shift"}, "k", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.resizeWindowShorter(win)
+--end)
+--hs.hotkey.bind({"alt", "shift"}, "l", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.resizeWindowWider(win)
+--end)
 
 -- move
-hs.hotkey.bind({"alt", "ctrl"}, "h", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.pushWindowLeft(win)
-end)
-hs.hotkey.bind({"alt", "ctrl"}, "j", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.pushWindowUp(win)
-end)
-hs.hotkey.bind({"alt", "ctrl"}, "k", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.pushWindowDown(win)
-end)
-hs.hotkey.bind({"alt", "ctrl"}, "l", function()
-	local win = hs.window.focusedWindow()
-	hs.grid.pushWindowRight(win)
-end)
+--hs.hotkey.bind({"alt", "ctrl"}, "h", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.pushWindowLeft(win)
+--end)
+--hs.hotkey.bind({"alt", "ctrl"}, "j", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.pushWindowUp(win)
+--end)
+--hs.hotkey.bind({"alt", "ctrl"}, "k", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.pushWindowDown(win)
+--end)
+--hs.hotkey.bind({"alt", "ctrl"}, "l", function()
+--    local win = hs.window.focusedWindow()
+--    hs.grid.pushWindowRight(win)
+--end)
 
 
 ----------------------------------------------------
 -- windows switcher
 ----------------------------------------------------
--- hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
--- hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
---
--- hs.window.switcher.ui.showThumbnails = false
--- hs.window.switcher.ui.showSelectedThumbnail = false
--- hs.window.switcher.ui.showSelectedTitle = false
--- hs.window.switcher.ui.showTitles = false
--- hs.window.switcher.ui.thumbnailSize = 128
---
--- switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
--- hs.hotkey.bind({'alt'}, 'tab', function()
--- 	switcher:next()
--- end)
+ hs.window.switcher.ui.highlightColor = {0.4,0.4,0.8,0.8}
+ hs.window.switcher.ui.backgroundColor = {0.3,0.3,0.3,0.0}
+
+ hs.window.switcher.ui.showThumbnails = false
+ hs.window.switcher.ui.showSelectedThumbnail = false
+ hs.window.switcher.ui.showSelectedTitle = false
+ hs.window.switcher.ui.showTitles = false
+ hs.window.switcher.ui.thumbnailSize = 128
+
+ switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
+ hs.hotkey.bind({'alt', 'shift'}, 'd', function()
+	 switcher:next()
+ end)
 
 ----------------------------------------------------
 -- choosers for minimized to dock windows
@@ -182,48 +182,48 @@ end)
 -- workspaces - dynamic
 ----------------------------------------------------
 -- local spaces = require("hs._asm.undocumented.spaces")
---
+-- 
 -- function get_key_for_value(t, value)
--- 	for k,v in pairs(t) do
--- 		if v==value then
--- 			return k
--- 		end
--- 	end
--- 	return nil
+--     for k,v in pairs(t) do
+--         if v==value then
+--             return k
+--         end
+--     end
+--     return nil
 -- end
---
+-- 
 -- function get_current_layout()
--- 	local win = hs.window.focusedWindow()
--- 	local uuid = win:screen():spacesUUID()
--- 	local layout = spaces.layout()[uuid]
---
--- 	-- local layout_parsed = {}
--- 	-- for k,v in pairs(layout) do
--- 	-- 	layout_parsed[v] = k
--- 	-- end
---
--- 	return layout
+--     local win = hs.window.focusedWindow()
+--     local uuid = win:screen():spacesUUID()
+--     local layout = spaces.layout()[uuid]
+-- 
+--     -- local layout_parsed = {}
+--     -- for k,v in pairs(layout) do
+--     -- 	layout_parsed[v] = k
+--     -- end
+-- 
+--     return layout
 -- end
---
+-- 
 -- last_space_id = 1
 -- curr_space_id = 1
---
+-- 
 -- space_watcher = hs.spaces.watcher.new(function(space_id)
--- 	last_space_id = curr_space_id
--- 	curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
+--     last_space_id = curr_space_id
+--     curr_space_id = get_key_for_value(get_current_layout(), spaces.activeSpace())
 -- end)
 -- space_watcher:start()
---
+-- 
 -- hs.hotkey.bind({"alt"}, "ESCAPE", function()
--- 	hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
+--     hs.eventtap.keyStroke({'alt'}, tostring(last_space_id))
 -- end)
---
+-- 
 -- hs.hotkey.bind({"alt"}, "g", function()
--- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
+--     hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout() - 1))
 -- end)
---
+-- 
 -- hs.hotkey.bind({"alt"}, "s", function()
--- 	hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
+--     hs.eventtap.keyStroke({'alt'}, tostring(#get_current_layout()))
 -- end)
 
 ----------------------------------------------------
