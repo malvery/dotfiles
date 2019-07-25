@@ -1,0 +1,17 @@
+#!/bin/bash
+
+VALUE=$[100-$(vmstat 1 2|tail -1|awk '{print $15}')]
+
+echo ${VALUE}%
+echo ${VALUE}%
+
+if [[ ${VALUE} -gt 90 ]]; then
+	exit 33
+
+elif [[ ${VALUE} -gt 60 ]]; then
+	echo ${COLOR_H}
+	
+elif [[ ${VALUE} -gt 20 ]]; then
+	echo ${COLOR_M}
+
+fi

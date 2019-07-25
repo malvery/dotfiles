@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SENSOR_CHIP="${SENSOR_CHIP:-coretemp-isa-0000}"
+VALUE=$(sensors -u ${SENSOR_CHIP} | grep temp1_input | awk '{print $2}')
+VALUE=${VALUE%.*}
+
+echo ${VALUE}°C
+echo ${VALUE}°C
+
+if [[ ${VALUE} -gt 90 ]]; then
+	exit 33
+
+elif [[ ${VALUE} -gt 75 ]]; then
+	echo ${COLOR_H}
+
+elif [[ ${VALUE} -gt 50 ]]; then
+	echo ${COLOR_M}
+
+fi

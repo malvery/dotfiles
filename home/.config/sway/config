@@ -3,7 +3,7 @@ font pango:hack 0
 floating_modifier $mod
 default_border normal
 
-set $terminal		"lxterminal"
+set $terminal		"termite"
 set $file-manager	"pcmanfm"
 set $lock-manager	"swaylock -f -c 222f42"
 

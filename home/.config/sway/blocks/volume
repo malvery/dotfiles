@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
+  amixer -D pulse set Master toggle >> /dev/null
+
+elif [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
+  amixer -D pulse set Master 2%+ unmute >> /dev/null
+
+elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
+	amixer -D pulse set Master 2%- unmute >> /dev/null
+fi
+
+STATUS_RAW=$(amixer -D pulse get Master \
+	| grep 'Left:'  | awk -F '[][]' '{print $2 $4}')
+
+VALUE=$(echo ${STATUS_RAW} | awk -F '%' '{print $1}')
+STATUS=$(echo ${STATUS_RAW} | awk -F '%' '{print $2}')
+
+
+
+if [[ "${STATUS}" == 'off' ]]; then
+	echo "MUTE"
+	echo "MUTE"
+	echo ${COLOR_H}
+else
+	echo ${VALUE}%
+	echo ${VALUE}%
+
+	if [[ ${VALUE} -gt 90 ]]; then
+		exit 33
+
+	elif [[ ${VALUE} -gt 75 ]]; then
+		echo ${COLOR_H}
+
+	elif [[ ${VALUE} -gt 35 ]]; then
+		echo ${COLOR_M}
+	fi
+fi
+
+#echo ${STATUS}%

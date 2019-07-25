@@ -4,11 +4,11 @@ Xft/Antialias 1
 Xft/HintStyle "hintslight"
 Xft/RGBA "rgb"
 
-Net/IconThemeName "Papirus-Dark"
-Net/ThemeName "Arc-Dark"
+Net/IconThemeName "gnome"
+Net/ThemeName "oomox-arc-night"
 
-Gtk/CursorThemeName "DMZ-Black"
-Gtk/CursorThemeSize 40
+#Gtk/CursorThemeName "DMZ-Black"
+#Gtk/CursorThemeSize 40
 
 Gtk/FontName "Ubuntu 10"
 Gtk/MonospaceFontName "Hack 10"

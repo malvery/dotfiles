@@ -1,13 +1,9 @@
 #!/bin/sh
 case $1/$2 in
   pre/*)
-		#rmmod bbswitch
-		systemctl stop i8kmon.service NetworkManager.service
+		true
     ;;
   post/*)
-		#modprobe bbswitch
-		systemctl start i8kmon.service NetworkManager.service
-		
 		# fix nvidia card power
 		tee /sys/bus/pci/rescan <<<1
 		sleep 1

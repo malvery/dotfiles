@@ -1,0 +1,10 @@
+[Unit]
+Description=fix to prevent system from waking immediately after suspend
+
+[Service]
+ExecStart=/bin/sh -c '/bin/echo XHC1 > /proc/acpi/wakeup'
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
