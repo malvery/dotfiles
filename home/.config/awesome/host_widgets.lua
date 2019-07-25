@@ -181,7 +181,7 @@ vol_widget:buttons(gears.table.join(
 -- batt
 local power_supply = '/sys/class/power_supply/' .. conf.power.device
 bat_widget =  awful.widget.watch(
-	string.format('cat %s/capacity %s/current_now', power_supply, power_supply), 5,
+	string.gsub('cat $p/capacity $p/current_now $p/charge_full $p/charge_now', '$p', power_supply), 5,
 	function(widget, stdout)
 		val = {}
 		for str in stdout:gmatch("([^\n]+)") do
@@ -189,6 +189,10 @@ bat_widget =  awful.widget.watch(
 		end
 		val_c = tonumber(val[1])
 		val_p = tonumber(val[2]) / 100000
+
+		charge_full = tonumber(val[3])
+		charge_now = tonumber(val[4])
+		val_c = charge_now / (charge_full / 100)
 		
 		if		val_c < 35 then color = color_h
 		elseif	val_c < 70 then color = color_m
