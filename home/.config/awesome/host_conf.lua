@@ -251,7 +251,7 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		'compton',
+		--'compton',
 		'redshift-gtk',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
