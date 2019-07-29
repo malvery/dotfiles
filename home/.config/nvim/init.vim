@@ -42,6 +42,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" git integration
 	Plug 'mhinz/vim-signify'
 
+	" lsp
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 "===========================================================================
@@ -169,15 +172,29 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "===========================================================================
 
 "===========================================================================
-" Linter Fixing
+" coc.vim
 "===========================================================================
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lr <Plug>(coc-references)
 
+nmap <silent> <leader>l[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>l] <Plug>(coc-diagnostic-next)
+
+nmap <leader>lr <Plug>(coc-rename)
+
+xmap <leader>lf  <Plug>(coc-format-selected)
+nmap <leader>lf  <Plug>(coc-format-selected)
+
+xmap <leader>la  <Plug>(coc-codeaction-selected)
+nmap <leader>la  <Plug>(coc-codeaction-selected)
 "===========================================================================
 " Completion
 "===========================================================================
 set completeopt=menu,menuone,preview,noselect,noinsert
 
 inoremap <expr> <Tab>		pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <S-Tab>		pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
 

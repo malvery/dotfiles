@@ -184,6 +184,7 @@ function getClientRules(client_rules)
 		"Nm-connection-editor",
 		"Vpnui",
 		"Google Play Music Desktop Player",
+		"MellowPlayer",
 		"Pavucontrol",
 		"Nitrogen",
 		"Transmission-gtk",
