@@ -11,7 +11,7 @@ local xdg_menu = require("archmenu")
 local HOSTNAME = helpers.hostname
 
 local APPS = {
-	["terminal"]		=	"termite",
+	["terminal"]		=	"kitty",
 	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
