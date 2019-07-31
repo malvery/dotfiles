@@ -1,60 +1,34 @@
 !******************************************************
-Xft.hinting: true
-Xft.hintstyle: hintslight
-!Xft.hintstyle: hintfull
-Xft.rgba: rgb
-Xft.antialias: true
-Xft.lcdfilter:  lcddefault
-!Xft.dpi: 144
-Xft.dpi: 128
-!Xft.dpi: 118
-!Xcursor.theme:	Vanilla-DMZ
-!Xcursor.size:		26
+Xft.hinting:	true
+Xft.hintstyle:	hintslight
+Xft.rgba:		rgb
+Xft.antialias:	true
+Xft.lcdfilter:	lcddefault
+Xft.dpi:		195
+Xcursor.theme:	Vanilla-DMZ-AA
+Xcursor.size:	32
 
 !******************************************************
-URxvt.termName:	rxvt-unicode-256color
-URxvt.font:			xft:Hack:size=9:regular:pixelsize=15
-!URxvt.font:			xft:Hack:size=10
-URxvt.perl-ext-common: clipboard
-URxvt.keysym.M-C-c:   perl:clipboard:copy
-URxvt.keysym.M-C-v:   perl:clipboard:paste
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-URxvt.fading:	10
-URxvt.depth:	32
-URxvt.background:	#1e262a
-URxvt.foreground:	#babdb6
-URxvt.urlLauncher:      chromium
-URxvt.matcher.button:   1 
-URxvt.scrollBar:	false
-URxvt.saveLines:	32767
-URxvt.urgentOnBell:	False
+*color0:	#1b1918
+*color1:	#f22c40
+*color2:	#5ab738
+*color3:	#d5911a
+*color4:	#407ee7
+*color5:	#6666ea
+*color6:	#00ad9c
+*color7:	#a8a19f
+*color8:	#766e6b
+*color9:	#f22c40
+*color10:	#5ab738
+*color11:	#d5911a
+*color12:	#407ee7
+*color13:	#6666ea
+*color14:	#00ad9c
+*color15:	#f1efee
 
-!******************************************************
-*fading:                40
-*fadeColor:             #002b36
-*cursorColor:           #586e75
-!! black dark/light
-*color0:                #073642
-*color8:                #002b36
-!! red dark/light
-*color1:                #dc322f
-*color9:                #cb4b16
-!! green dark/light
-*color2:                #859900
-*color10:               #586e75
-!! yellow dark/light
-*color3:                #b58900
-*color11:               #657b83
-!! blue dark/light
-*color4:                #268bd2
-*color12:               #839496
-!! magenta dark/light
-*color5:                #d33682
-*color13:               #6c71c4
-!! cyan dark/light
-*color6:                #2aa198
-*color14:               #93a1a1
-!! white dark/light
-*color7:                #93a1a1
-*color15:               #fdf6e3
+*color16:	#df5320
+*color17:	#c33ff3
+*color18:	#2c2421
+*color19:	#68615e
+*color20:	#9c9491
+*color21:	#e6e2e0

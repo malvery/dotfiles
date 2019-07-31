@@ -7,8 +7,8 @@ Xft/RGBA "rgb"
 Net/IconThemeName "gnome"
 Net/ThemeName "oomox-arc-night"
 
-#Gtk/CursorThemeName "DMZ-Black"
-#Gtk/CursorThemeSize 40
+Gtk/CursorThemeName "Vanilla-DMZ-AA"
+Gtk/CursorThemeSize 32
 
 Gtk/FontName "Ubuntu 10"
 Gtk/MonospaceFontName "Hack 10"
