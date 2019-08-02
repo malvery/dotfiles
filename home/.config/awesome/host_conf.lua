@@ -11,7 +11,7 @@ local xdg_menu = require("archmenu")
 local HOSTNAME = helpers.hostname
 
 local APPS = {
-	["terminal"]		=	"kitty",
+	["terminal"]		=	"termite",
 	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
@@ -137,9 +137,7 @@ function getHotkeys()
 			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- clipboard
-			awful.key({ 'Ctrl',			}, "grave",	function ()
-				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
-			end)
+			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
 	)
 
 	if HOSTNAME == "xps9570" then
@@ -149,9 +147,7 @@ function getHotkeys()
 			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end),
 
 			-- clipboard
-			awful.key({ 'Ctrl',			}, "less",	function ()
-				awful.spawn.with_shell('CM_HISTLENGTH=20 CM_LAUNCHER=rofi clipmenu')
-			end)
+			awful.key({ 'Ctrl',			}, "less",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
 		)
 	end
 
@@ -278,7 +274,6 @@ function initAutostart()
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 	awful.spawn.with_shell('kbdd & sleep 2 && (killall kbdd || true) && kbdd')
-	awful.spawn.with_shell('~/src/dotfiles/bin/run-clipd.sh')
 
 	-- setup tags
 	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))

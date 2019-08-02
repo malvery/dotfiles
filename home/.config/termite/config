@@ -6,7 +6,7 @@ allow_bold = true
 #cell_width_scale = 1.0
 #clickable_url = true
 dynamic_title = true
-font = Hack 9
+font = Hack 10
 #fullscreen = true
 icon_name = terminal
 #mouse_autohide = false
@@ -47,7 +47,6 @@ scrollback_lines = 10000
 #cursor_foreground = #dcdccc
 
 foreground = #D3D7CF
-#foreground = #EEEEEE
 #foreground_bold = #ffffff
 background = #1D2021
 
@@ -59,29 +58,23 @@ background = #1D2021
 
 # Colors from color0 to color254 can be set
 # base16-atelierforest-dark
-color0=#1b1918
-color1=#f22c40
-color2=#5ab738
-color3=#d5911a
-color4=#407ee7
-color5=#6666ea
-color6=#00ad9c
-color7=#a8a19f
-color8=#766e6b
-color9=#f22c40
-color10=#5ab738
-color11=#d5911a
-color12=#407ee7
-color13=#6666ea
-color14=#00ad9c
-color15=#f1efee
+color0 = #1b1918
+color1 = #DC322F
+color2 = #299C00
+color3 = #d5911a
+color4 = #407ee7
+color5 = #6666ea
+color6 = #00ad9c
+color7 = #D3D7CF
 
-color16=#df5320
-color17=#c33ff3
-color18=#2c2421
-color19=#68615e
-color20=#9c9491
-color21=#e6e2e0
+color8 = #766e6b
+color9 = #CD0000
+color10 = #299C00
+color11 = #d5911a
+color12 = #407ee7
+color13 = #6666ea
+color14 = #00ad9c
+color15 = #f1efee
 
 [hints]
 #font = Monospace 12

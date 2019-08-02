@@ -48,7 +48,7 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 "===========================================================================
-" Theme
+" theme
 "===========================================================================
 if &t_Co == 256 || has("gui_running")
 	set t_Co=256
@@ -61,7 +61,7 @@ else
 endif
 
 "===========================================================================
-" VIM options
+" options
 "===========================================================================
 set nocompatible
 set autoindent
@@ -94,37 +94,18 @@ if &filetype==""
 endif
 
 "===========================================================================
-" GUI options
-"===========================================================================
-if has("gui_running")
-	set guioptions-=T
-	set guifont=Hack\ 10
-	set linespace=1
-	set wildmenu
-	set wcm=<Tab>
-
-	menu Encoding.utf-8 :e ++enc=utf8 <CR>
-	menu Encoding.windows-1251 :e ++enc=cp1251<CR>
-	menu Encoding.koi8-r :e ++enc=koi8-r<CR>
-	menu Encoding.cp866 :e ++enc=cp866<CR>
-endif
-
-"nnoremap yy yy"+yy
-"vnoremap y ygv"+y
-
-"===========================================================================
-" Sessions
+" sessions
 "===========================================================================
 let g:session_directory='~/.config/nvim/sessions'
 
 "===========================================================================
-" Alias
+" aliases
 "===========================================================================
 
 "===========================================================================
-" Hotkeys
+" hotkeys
 "===========================================================================
-nnoremap <A-Left>		:tabprevious<CR>
+nnoremap <A-Left>	:tabprevious<CR>
 nnoremap <A-Right>	:tabnext<CR>
 
 nnoremap <Esc>[1;3C	:tabnext<CR>
@@ -133,7 +114,7 @@ nnoremap <Esc>[1;3D	:tabprevious<CR>
 nnoremap <leader>tt :tabnew<CR>
 
 "===========================================================================
-" Syntax highlighting
+" syntax highlighting
 "===========================================================================
 syntax enable
 autocmd BufRead,BufNewFile *.log set syntax=log
@@ -142,14 +123,14 @@ let g:session_autoload = 'no'
 let g:session_autosave = 'yes'
 
 "===========================================================================
-" Buffer explorer
+" buffer explorer
 "===========================================================================
 nmap <F2> <esc>:BufExplorer<cr>
 vmap <F2> <esc>:BufExplorer<cr>
 imap <F2> <esc>:BufExplorer<cr>
 
 "===========================================================================
-" File navigator
+" file navigator
 "===========================================================================
 let NERDTreeQuitOnOpen=1
 
@@ -158,7 +139,7 @@ vmap <F1>  <esc>:NERDTreeToggle<CR>
 imap <F1>  <esc>:NERDTreeToggle<CR>
 
 "===========================================================================
-" Comments
+" commenter
 "===========================================================================
 let g:NERDCommentEmptyLines=1
 let g:NERDDefaultAlign = 'left'
@@ -167,8 +148,14 @@ nmap <C-_>	<Plug>NERDCommenterToggle<CR>
 vmap <C-_>	<Plug>NERDCommenterToggle<CR>
 imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 
+if match($TERM, "linux")!=-1
+	nmap <BS>	<Plug>NERDCommenterToggle<CR>
+	vmap <BS>	<Plug>NERDCommenterToggle<CR>
+	imap <BS>	<esc><Plug>NERDCommenterToggle<CR>
+endif
+
 "===========================================================================
-" Debbuger Hotkeys
+" debbuger
 "===========================================================================
 
 "===========================================================================
@@ -182,19 +169,20 @@ nmap <silent> <leader>lr <Plug>(coc-references)
 nmap <silent> <leader>l[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>l] <Plug>(coc-diagnostic-next)
 
-nmap <leader>lr <Plug>(coc-rename)
+nmap <leader>lr	<Plug>(coc-rename)
 
-xmap <leader>lf  <Plug>(coc-format-selected)
-nmap <leader>lf  <Plug>(coc-format-selected)
+xmap <leader>lf	<Plug>(coc-format-selected)
+nmap <leader>lf	<Plug>(coc-format-selected)
 
-xmap <leader>la  <Plug>(coc-codeaction-selected)
-nmap <leader>la  <Plug>(coc-codeaction-selected)
+xmap <leader>la	<Plug>(coc-codeaction-selected)
+nmap <leader>la	<Plug>(coc-codeaction-selected)
+
 "===========================================================================
-" Completion
+" completion
 "===========================================================================
 set completeopt=menu,menuone,preview,noselect,noinsert
 
-inoremap <expr> <Tab>		pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab>		pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>		pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <Tab>	pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab>	pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>	pumvisible() ? "\<C-y>" : "\<cr>"
 
