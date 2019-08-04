@@ -248,15 +248,16 @@ end
 function initAutostart()
 	apps_list = {
 		'xsettingsd',
-		--'compton',
 		'redshift-gtk',
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
 		'blueman-applet',
+		'/usr/lib/gpaste/gpaste-daemon',
 	}
 	if HOSTNAME == "xps9570" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
+			'compton',
 			'thunderbird',
 			'light -N 1'
 		})

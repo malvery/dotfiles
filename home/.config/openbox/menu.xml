@@ -42,7 +42,7 @@
 
 		<item label="Term">
 			<action name="Execute">
-				<command>kitty</command>
+				<command>termite</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
