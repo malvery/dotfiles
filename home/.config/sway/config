@@ -5,7 +5,7 @@ default_border normal
 
 set $terminal		"termite"
 set $file-manager	"pcmanfm"
-set $lock-manager	"swaylock -f -c 222f42"
+set $lock-manager	"loginctl lock-session"
 
 ###############################################################################
 # hotkeys
