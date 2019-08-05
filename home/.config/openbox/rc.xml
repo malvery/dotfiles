@@ -486,7 +486,7 @@
     </keybind>
     <keybind key="W-S-t">
       <action name="Execute">
-        <command>termite</command>
+        <command>lxterminal</command>
       </action>
     </keybind>
   </keyboard>

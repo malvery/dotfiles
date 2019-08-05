@@ -3,7 +3,7 @@ font pango:hack 0
 floating_modifier $mod
 default_border normal
 
-set $terminal		"termite"
+set $terminal		"lxterminal"
 set $file-manager	"pcmanfm"
 set $lock-manager	"loginctl lock-session"
 

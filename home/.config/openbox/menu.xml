@@ -42,7 +42,7 @@
 
 		<item label="Term">
 			<action name="Execute">
-				<command>termite</command>
+				<command>lxterminal</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
