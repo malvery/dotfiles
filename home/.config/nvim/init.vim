@@ -148,11 +148,11 @@ nmap <C-_>	<Plug>NERDCommenterToggle<CR>
 vmap <C-_>	<Plug>NERDCommenterToggle<CR>
 imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 
-if match($TERM, "linux")!=-1
-	nmap <BS>	<Plug>NERDCommenterToggle<CR>
-	vmap <BS>	<Plug>NERDCommenterToggle<CR>
-	imap <BS>	<esc><Plug>NERDCommenterToggle<CR>
-endif
+"if match($TERM, "linux")!=-1
+"    nmap <BS>	<Plug>NERDCommenterToggle<CR>
+"    vmap <BS>	<Plug>NERDCommenterToggle<CR>
+"    imap <BS>	<esc><Plug>NERDCommenterToggle<CR>
+"endif
 
 "===========================================================================
 " debbuger
