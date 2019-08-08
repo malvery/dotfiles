@@ -1,0 +1,4 @@
+if [ "$reason" = "REBOOT" ]; then
+	killall -HUP openconnect $> /dev/null | true 
+	exit 0
+fi
