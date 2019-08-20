@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+	sensors=$(sensors -j)
+	fan1=$(echo ${sensors} | jq '..|objects|select(has("fan1_input")).fan1_input')
+	fan2=$(echo ${sensors} | jq '..|objects|select(has("fan2_input")).fan2_input')
+
+	echo "L-${fan1} R-${fan2} RPM"
+	exit 0
+fi
+
 SENSOR_CHIP="${SENSOR_CHIP:-coretemp-isa-0000}"
 VALUE=$(sensors -u ${SENSOR_CHIP} | grep temp1_input | awk '{print $2}')
 VALUE=${VALUE%.*}
