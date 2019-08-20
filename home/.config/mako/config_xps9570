@@ -1,5 +1,6 @@
-#font=Ubuntu 14
-font=Ubuntu Mono 16
+font=Ubuntu 13
+#font=Ubuntu Mono 14
 border-size=2
 border-color=#aaaaaa
 default-timeout=10000
+width=400

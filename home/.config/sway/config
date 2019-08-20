@@ -3,9 +3,10 @@ font pango:hack 0
 floating_modifier $mod
 default_border normal
 
-set $terminal		"lxterminal"
-set $file-manager	"pcmanfm"
-set $lock-manager	"loginctl lock-session"
+set $terminal		'lxterminal'
+set $file-manager	'pcmanfm'
+set $lock-manager	'loginctl lock-session'
+set $config			'~/.config/sway'
 
 ###############################################################################
 # hotkeys
@@ -103,6 +104,6 @@ for_window [app_id="^.*"]	inhibit_idle fullscreen
 
 ###############################################################################
 # configs
-include ~/.config/sway/conf.d/*
-include ~/.config/sway/local.d/*
+include $config/conf.d/*
+include $config/local.d/*
 
