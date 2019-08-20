@@ -1,6 +1,15 @@
 #!/bin/bash
 VALUE=$(cat /proc/net/wireless | tail -n 1 | awk '{print int($3 * 100 / 70)}')
 
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+	freq=$(iwgetid -f -r | rev | cut -c 5- | rev)
+	ssid=$(iwgetid -r)
+	ch=$(iwgetid -c -r)
+
+	echo "${ssid} ${freq}GHz ${ch}Ch"
+	exit 0
+fi
+
 VPN_STATUS=''
 if [[ $(ip tuntap show | wc -l) -gt 0 ]]; then
 	VPN_STATUS='^VPN '
@@ -12,8 +21,7 @@ if [[ ${VALUE} -eq 0 ]]; then
 	echo ${COLOR_H}
 
 else
-	SSID=$(iwgetid -r)
-	echo "${VALUE}% ${VPN_STATUS}${SSID}"
+	echo "${VALUE}% ${VPN_STATUS}"
 	#echo ${VALUE}%
 	echo ${VALUE}%
 

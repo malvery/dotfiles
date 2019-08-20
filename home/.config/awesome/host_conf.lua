@@ -267,7 +267,7 @@ function initAutostart()
 		apps_list = gears.table.join(apps_list, {
 			'thunderbird',
 			'slack',
-			--'nm-applet',
+			'nm-applet',
 			'light -N 5'
 		})
 	end
