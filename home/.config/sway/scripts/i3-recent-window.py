@@ -6,12 +6,13 @@ import i3ipc
 
 PROCESS_NAME = "i3ipc-recent-window"
 
+
 ################################################################################
 
-# SIGNTERM another processes
+# send SIGNTERM for another processes
 def kill_process():
     pid_list = subprocess.check_output([
-        '/bin/bash', '-c' ,'pidof %s || true' % PROCESS_NAME
+        '/bin/bash', '-c', 'pidof %s || true' % PROCESS_NAME
     ]).decode('utf-8')
     pid_list = pid_list.replace('\n', '').split(' ')
 
@@ -19,7 +20,9 @@ def kill_process():
         if pid:
             subprocess.call(['kill', pid])
 
+
 kill_process()
+
 
 ################################################################################
 
@@ -35,6 +38,7 @@ class RecentClients(object):
 
 setproctitle.setproctitle(PROCESS_NAME)
 switcher_containers = dict()
+
 
 ################################################################################
 
@@ -55,16 +59,13 @@ def switch_to_recent(i3):
     s_container, focused, w_tree = get_switcher_item(i3=i3)
 
     if s_container.prev is not None:
-        result = i3.command(
-            '[con_id="%s"] focus' % s_container.prev
-        )
-        # force switch
-        if result[0].get('success') is not True:
-            i3.command('focus right')
+        result = i3.command('[con_id="%s"] focus' % s_container.prev)
+        if isinstance(result, list) and result:
+            if isinstance(result[0], i3ipc.CommandReply) and getattr(result[0], 'success') is True:
+                return True
 
-    else:
-        # empty history
-        i3.command('focus right')
+    # empty history
+    i3.command('focus right')
 
 
 ################################################################################
@@ -72,14 +73,18 @@ def switch_to_recent(i3):
 i3_conn_commands = i3ipc.Connection()
 
 
-def receiveSignal(signalNumber, frame):
-    switch_to_recent(i3=i3_conn_commands)
+# noinspection PyPep8Naming
+def on_signal(signalNumber, frame):
+    if signalNumber == 10:
+        switch_to_recent(i3=i3_conn_commands)
 
-def receiveExit(signalNumber, frame):
-    kill_process()
+    elif signalNumber == 2:
+        exit()
 
-signal.signal(signal.SIGUSR1, receiveSignal)
-signal.signal(signal.SIGINT, receiveExit)
+
+signal.signal(signal.SIGUSR1, on_signal)
+signal.signal(signal.SIGINT, on_signal)
+
 
 ################################################################################
 
@@ -105,14 +110,6 @@ def on_window_focus(i3, e):
 for i in range(1, 10):
     switcher_containers[i] = RecentClients(workspace=i)
 
-while True:
-    # subscribe "window::focus"
-    i3_conn_events = i3ipc.Connection()
-    i3_conn_events.on("window::focus", on_window_focus)
-
-    i3_conn_events.main()
-
-    print('!! event loop is over. try to reconnect ...')
-    i3_conn_commands.command('focus right')
-
-print('exit')
+i3_conn_events = i3ipc.Connection()
+i3_conn_events.on(i3ipc.Event.WINDOW_FOCUS, on_window_focus)
+i3_conn_events.main()

@@ -1,2 +1,0 @@
-#!/bin/bash
-swaymsg -t subscribe -m '[ "input" ]' | jq -r --unbuffered '.input.xkb_active_layout_name'
