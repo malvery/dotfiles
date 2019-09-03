@@ -19,7 +19,10 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- *****************
-local host_conf     = require("host_conf")
+local host_conf	=	require("host_conf")
+
+local awpwkb	=	require("awpwkb")
+kb = awpwkb.init()
 -- *****************
 
 -- {{{ Error handling

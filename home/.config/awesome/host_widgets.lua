@@ -4,6 +4,7 @@ local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local capi = {awesome = awesome}
+local awpwkb = require("awpwkb")
 
 -- ############################################################################################
 
@@ -218,20 +219,28 @@ bat_widget:buttons(gears.table.join(
 -- ############################################################################################
 -- keyboard layout
 keyboard_widget = wibox.widget.textbox()
-
-local dbus_cmd = 'dbus-send --print-reply=literal'
-	.. ' --dest=ru.gentoo.KbddService /ru/gentoo/KbddService'
-	.. ' ru.gentoo.kbdd.getCurrentLayout'
-
 local kbdd_locales = {[0] = 'EN', [1] = 'RU'}
-capi.awesome.connect_signal("xkb::group_changed", function ()
-	awful.spawn.easy_async(dbus_cmd, function(stdout, stderr, reason, exit_code)
-		kbdd_value = tonumber(string.match(stdout, ' %d+'))
-		keyboard_widget.markup = string.format(
-			'<span color="%s">%s</span>' .. w_sep, color_m, kbdd_locales[kbdd_value]
-		)
-	end)
-end)
+
+kb = awpwkb.get()
+kb.on_layout_change = function (layout)
+	keyboard_widget.markup = string.format(
+		'<span color="%s">%s</span>' .. w_sep, color_m, kbdd_locales[layout.idx]
+	)
+end
+
+--local dbus_cmd = 'dbus-send --print-reply=literal'
+--    .. ' --dest=ru.gentoo.KbddService /ru/gentoo/KbddService'
+--    .. ' ru.gentoo.kbdd.getCurrentLayout'
+--
+--local kbdd_locales = {[0] = 'EN', [1] = 'RU'}
+--capi.awesome.connect_signal("xkb::group_changed", function ()
+--    awful.spawn.easy_async(dbus_cmd, function(stdout, stderr, reason, exit_code)
+--        kbdd_value = tonumber(string.match(stdout, ' %d+'))
+--        keyboard_widget.markup = string.format(
+--            '<span color="%s">%s</span>' .. w_sep, color_m, kbdd_locales[kbdd_value]
+--        )
+--    end)
+--end)
 
 -- ############################################################################################
 
