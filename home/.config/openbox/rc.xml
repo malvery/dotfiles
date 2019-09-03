@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Syscrash</name>
+    <name>arc-night</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -59,7 +59,7 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -68,7 +68,7 @@
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -76,26 +76,26 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Ubuntu Semi-Bold</name>
-      <size>10</size>
+      <name>Ubuntu</name>
+      <size>18</size>
       <!-- font size in points -->
-      <weight>Normal</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Ubuntu Semi-Bold</name>
-      <size>10</size>
+      <name>Ubuntu</name>
+      <size>18</size>
       <!-- font size in points -->
-      <weight>Normal</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -104,7 +104,7 @@
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>10</size>
+      <size>16</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -121,7 +121,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>6</number>
+    <number>8</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
@@ -212,19 +212,6 @@
           <x>100</x>
           <y>100</y>
         </pointer>
-      </action>
-    </keybind>
-    <!-- desktop switching by direction -->
-    <keybind key="C-A-Left">
-      <action name="GoToDesktop">
-        <to>left</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Right">
-      <action name="GoToDesktop">
-        <to>right</to>
-        <wrap>no</wrap>
       </action>
     </keybind>
     <!-- send window to desktop -->
@@ -322,12 +309,12 @@
     <!-- desktop switching extra hotkeys -->
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>6</to>
+        <to>8</to>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="GoToDesktop">
-        <to>5</to>
+        <to>7</to>
       </action>
     </keybind>
     <keybind key="W-Escape">
@@ -369,6 +356,7 @@
     <!-- windows switching -->
     <keybind key="W-Tab">
       <action name="NextWindow">
+        <interactive>no</interactive>
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
@@ -376,7 +364,16 @@
         </finalactions>
       </action>
     </keybind>
-    <keybind key="W-S-Tab">
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
+      </action>
+    </keybind>
+    <keybind key="A-S-Tab">
       <action name="PreviousWindow">
         <finalactions>
           <action name="Focus"/>
@@ -455,12 +452,12 @@
     <!-- multimedia keys -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight -inc 2</command>
+        <command>light -A 2</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -dec 2</command>
+        <command>light -U 2</command>
       </action>
     </keybind>
     <!-- run applications keys -->
@@ -474,7 +471,7 @@
         <command>rofi -show drun</command>
       </action>
     </keybind>
-    <keybind key="W-S-l">
+    <keybind key="W-S-F12">
       <action name="Execute">
         <command>slock</command>
       </action>
@@ -487,6 +484,11 @@
     <keybind key="W-S-t">
       <action name="Execute">
         <command>lxterminal</command>
+      </action>
+    </keybind>
+    <keybind key="C-less">
+      <action name="Execute">
+        <command>~/src/dotfiles/bin/gpaste-menu</command>
       </action>
     </keybind>
   </keyboard>
@@ -512,7 +514,7 @@
       </mousebind>
       <mousebind button="W-Left" action="Drag">
         <action name="Unmaximize"/>
-        <action name="Decorate"/>
+        <!--<action name="Decorate"/>-->
         <action name="Move"/>
       </mousebind>
       <mousebind button="W-S-Left" action="Drag">
@@ -524,7 +526,7 @@
         <action name="Unshade"/>
       </mousebind>
       <mousebind button="W-Right" action="Drag">
-        <action name="Decorate"/>
+        <!--<action name="Decorate"/>-->
         <action name="Resize"/>
       </mousebind>
       <mousebind button="W-Middle" action="Press">
@@ -765,6 +767,9 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
+    <application class="*">
+      <decor>no</decor>
+    </application>
     <application role="app">
       <decor>yes</decor>
       <maximized>false</maximized>
@@ -774,14 +779,18 @@
       <decor>yes</decor>
       <maximized>false</maximized>
     </application>
+    <application role="pop-up">
+      <decor>yes</decor>
+      <maximized>false</maximized>
+    </application>
     <application class="TelegramDesktop">
-      <desktop>6</desktop>
+      <desktop>7</desktop>
     </application>
     <application class="Slack">
-      <desktop>6</desktop>
+      <desktop>8</desktop>
     </application>
     <application class="Thunderbird">
-      <desktop>6</desktop>
+      <desktop>8</desktop>
     </application>
   </applications>
 </openbox_config>
