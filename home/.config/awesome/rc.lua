@@ -146,15 +146,15 @@ local taglist_buttons = gears.table.join(
 
 local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
+                                              --if c == client.focus then
+                                              --    c.minimized = true
+                                              --else
                                                   c:emit_signal(
                                                       "request::activate",
                                                       "tasklist",
                                                       {raise = true}
                                                   )
-                                              end
+                                              --end
                                           end),
                      awful.button({ }, 3, function()
                                               awful.menu.client_list({ theme = { width = 250 } })
