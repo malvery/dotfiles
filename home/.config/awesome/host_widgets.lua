@@ -8,30 +8,35 @@ local awpwkb = require("awpwkb")
 
 -- ############################################################################################
 
-if helpers.hostname == "xps9570" then
-	conf = {
-		["thermal"] = {
-			["device"] = 'coretemp-isa-0000',
-			["t_hight"] = 75,
-			["t_medium"] = 50
-		},
-		["power"] = {
-			["device"] = 'BAT0',
-			["c_hight"] = 10
-		}
+conf = {
+	["thermal"] = {
+		["device"]	= 'coretemp-isa-0000',
+		["hight"]	= 75,
+		["medium"]	= 50
+	},
+	["power"] = {
+		["device"] = 'BAT0',
+		["critical"] = 10
+	},
+	["batt"] = {
+		["capacity"]	= 'capacity',
+		["power_now"]	= 'current_now',
+		["charge_now"]	= 'charge_now',
+		["charge_full"]	= 'charge_full',
+		["multiplier"]	= 100000
 	}
-elseif helpers.hostname == "NB-ZAVYALOV2" then
-	conf = {
-		["thermal"] = {
-			["device"] = 'coretemp-isa-0000',
-			["t_hight"] = 85,
-			["t_medium"] = 60
-		},
-		["power"] = {
-			["device"] = 'BAT0',
-			["c_hight"] = 25
-		}
-	}
+}
+
+if helpers.hostname == "NB-ZAVYALOV2" then
+	conf.thermal.hight	= 85
+	conf.thermal.medium	= 60
+	conf.power.critical	= 25
+
+elseif helpers.hostname == "ux533f" then
+	conf.batt.power_now		= "power_now"
+	conf.batt.charge_now	= "energy_now"
+	conf.batt.charge_full	= "energy_full"
+	conf.batt.multiplier	= 1000000
 end
 
 local color_n	=	beautiful.fg_normal
@@ -49,8 +54,6 @@ local w_sep = '  '
 -- ############################################################################################
 -- clock
 time_widget = wibox.widget.textclock(w_sep .. "%a %b %d, %H:%M:%S" .. w_sep, 1)
---local month_calendar = awful.widget.calendar_popup.month()
---month_calendar:attach(time_widget, "tr")
 
 -- ############################################################################################
 -- cpu
@@ -89,8 +92,8 @@ thermal_widget =  awful.widget.watch(
 	function(widget, stdout)
 		val = tonumber(stdout)
 
-		if		val > conf.thermal.t_hight then color = color_h 
-		elseif	val > conf.thermal.t_medium then color = color_m 
+		if		val > conf.thermal.hight then color = color_h 
+		elseif	val > conf.thermal.medium then color = color_m 
 		else	color = color_n end
 
 		widget:set_markup(string.format(
@@ -172,7 +175,6 @@ end)
 -- buttons
 helpers.setVolTimer(vol_widget_t)
 vol_widget:buttons(gears.table.join(
-	--awful.button({ }, 2, function() awful.spawn.with_shell("pavucontrol") end),
 	awful.button({ }, 3, function()	helpers.volume("toggle")	end),
 	awful.button({ }, 4, function()	helpers.volume("+")			end),
 	awful.button({ }, 5, function()	helpers.volume("-")			end)
@@ -182,14 +184,22 @@ vol_widget:buttons(gears.table.join(
 -- batt
 local power_supply = '/sys/class/power_supply/' .. conf.power.device
 bat_widget =  awful.widget.watch(
-	string.gsub('cat $p/capacity $p/current_now $p/charge_full $p/charge_now', '$p', power_supply), 5,
-	function(widget, stdout)
+	string.gsub(
+		string.format(
+			'cat $p/%s $p/%s $p/%s $p/%s',
+			conf.batt.capacity,
+			conf.batt.power_now,
+			conf.batt.charge_full,
+			conf.batt.charge_now
+		),
+		'$p', power_supply), 5, function(widget, stdout)
+
 		val = {}
 		for str in stdout:gmatch("([^\n]+)") do
 			table.insert(val, str) 
 		end
 		val_c = tonumber(val[1])
-		val_p = tonumber(val[2]) / 100000
+		val_p = tonumber(val[2]) / conf.batt.multiplier
 
 		charge_full = tonumber(val[3])
 		charge_now = tonumber(val[4])
@@ -227,20 +237,6 @@ kb.on_layout_change = function (layout)
 		'<span color="%s">%s</span>' .. w_sep, color_m, kbdd_locales[layout.idx]
 	)
 end
-
---local dbus_cmd = 'dbus-send --print-reply=literal'
---    .. ' --dest=ru.gentoo.KbddService /ru/gentoo/KbddService'
---    .. ' ru.gentoo.kbdd.getCurrentLayout'
---
---local kbdd_locales = {[0] = 'EN', [1] = 'RU'}
---capi.awesome.connect_signal("xkb::group_changed", function ()
---    awful.spawn.easy_async(dbus_cmd, function(stdout, stderr, reason, exit_code)
---        kbdd_value = tonumber(string.match(stdout, ' %d+'))
---        keyboard_widget.markup = string.format(
---            '<span color="%s">%s</span>' .. w_sep, color_m, kbdd_locales[kbdd_value]
---        )
---    end)
---end)
 
 -- ############################################################################################
 

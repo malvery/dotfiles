@@ -54,18 +54,18 @@ function initTheme()
 
 	-- disable default wallpaper
 	beautiful.wallpaper = nil
-	--gears.wallpaper.set("#1e231f")
-	--gears.wallpaper.set("#222f42")
 	gears.wallpaper.set("#1F1F1F")
 
-	if HOSTNAME == "xps9570" then
-		beautiful.xresources.set_dpi(128)
-		beautiful.font			= "Ubuntu Bold 9"
-		beautiful.border_width	= 3
-		beautiful.wibar_height	= 20
+	-- env
+	beautiful.xresources.set_dpi(128)
+	beautiful.font			= "Ubuntu Bold 9"
+	beautiful.border_width	= 3
+	beautiful.wibar_height	= 20
+	beautiful.notification_width = 300
+	beautiful.systray_icon_spacing = 2
 
-		beautiful.notification_width = 300
-		beautiful.systray_icon_spacing = 2
+	if HOSTNAME == "ux533f" then
+		beautiful.xresources.set_dpi(130)
 
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
@@ -197,15 +197,15 @@ function getClientRules(client_rules)
 	}
 
 	-- host additional settings
-	if HOSTNAME == "xps9570" then
-		client_rules = gears.table.join(client_rules, {
-			{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
-		})
-	elseif HOSTNAME == "NB-ZAVYALOV2" then
+	if HOSTNAME == "NB-ZAVYALOV2" then
 		float_app = gears.table.join(float_app, {"TelegramDesktop"})
 		client_rules = gears.table.join(client_rules, {
 			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "8"}},
 			{rule = {class = "Slack"},				properties = {screen = 1, tag = "9"}},
+		})
+	else
+		client_rules = gears.table.join(client_rules, {
+			{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
 		})
 	end
 
@@ -254,15 +254,8 @@ function initAutostart()
 		'blueman-applet',
 		'/usr/lib/gpaste/gpaste-daemon',
 	}
-	if HOSTNAME == "xps9570" then
-		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
-		apps_list = gears.table.join(apps_list, {
-			'compton',
-			'thunderbird',
-			'light -N 1'
-		})
-		awful.spawn.with_shell('sleep 5 && telegram-desktop')
-	elseif HOSTNAME == "NB-ZAVYALOV2" then
+		
+	if HOSTNAME == "NB-ZAVYALOV2" then
 		awful.spawn.with_shell('setxkbmap -layout "us,ru(mac)" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
 			'thunderbird',
@@ -270,11 +263,23 @@ function initAutostart()
 			'nm-applet',
 			'light -N 5'
 		})
+	else
+		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
+		apps_list = gears.table.join(apps_list, {
+			'compton',
+			'thunderbird',
+			'light -N 1'
+		})
+
+		if HOSTNAME == 'ux533f' then
+			apps_list = gears.table.join(apps_list, {'nm-applet'})
+		end
+
+		awful.spawn.with_shell('sleep 5 && telegram-desktop')
 	end
 	
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
-	--awful.spawn.with_shell('kbdd & sleep 2 && (killall kbdd || true) && kbdd')
 
 	-- setup tags
 	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))
