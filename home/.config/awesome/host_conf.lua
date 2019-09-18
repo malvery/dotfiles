@@ -73,7 +73,7 @@ function initTheme()
 		beautiful.border_width	= 3
 		beautiful.wibar_height	= 32
 
-		beautiful.notification_max_width = 600
+		beautiful.notification_width = 450
 	end
 end
 
