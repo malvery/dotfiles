@@ -1,0 +1,104 @@
+@define-color bg_normal		#222222;
+@define-color bg_widget		#363636;
+
+@define-color fg_normal		#dcdccc;
+@define-color fg_good		#86AD85;
+@define-color fg_medium		#FFAE00;
+@define-color fg_urgent		#FF5500;
+@define-color fg_inactive	#888888;
+
+* {
+    border: none;
+	border-radius: 0;
+    font-family: "Ubuntu";
+	font-weight: 600;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+	background-color: @bg_normal;
+	color: @fg_normal;
+	border: none;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    background-color: transparent;
+	color: @fg_normal;
+	border: 1px solid #333333;
+	border-radius: 0;
+}
+
+#workspaces button.focused {
+    background-color: #285577;
+	border: 1px solid #4c7899;
+}
+
+#workspaces button.urgent {
+	color: @fg_urgent;
+	border: 1px solid #2f343a;
+}
+
+#mode {
+	background-color: transparent;
+	border: 1px solid #2f343a;
+	border-bottom: none;
+}
+
+#custom-xkb,
+#custom-disk,
+#custom-power,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor {
+    padding: 0 6px;
+    margin: 0 2px;
+	background-color: @bg_widget;
+	color: @fg_normal;
+}
+
+#battery.charging{
+	color: @fg_medium;
+}
+
+#battery.full {
+	color: @fg_good;
+}
+
+#battery.critical:not(.charging) {
+	color: @fg_urgent;
+}
+
+#network.disconnected {
+    background-color: @fg_urgent;
+}
+
+#pulseaudio.bluetooth {
+	color: @fg_good;
+}
+
+#pulseaudio.muted {
+	color: @fg_medium;
+}
+
+#temperature.critical {
+    background-color: @fg_urgent;
+}
+
+#idle_inhibitor.activated {
+	color: @fg_medium;
+}
+
+#idle_inhibitor.deactivated {
+	color: @fg_inactive;
+}
+

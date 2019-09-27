@@ -23,6 +23,11 @@ echo $SHOT_PATH
 
 # upload to imgur
 if [ "$2" == "-u" ]; then
-	imgur $SHOT_PATH | head -1 | wl-copy -n -f
+	URL=$(imgur $SHOT_PATH | head -1)
+	echo $URL | wl-copy -n
+	notify-send "screenshot" "${URL}"
+else
+	echo ${SHOT_PATH} | wl-copy -n
+	notify-send "screenshot" "${SHOT_PATH}"
 fi
-notify-send "screenshot: ${SHOT_PATH}"
+

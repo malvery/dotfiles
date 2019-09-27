@@ -1,0 +1,142 @@
+{
+    "layer": "top",
+    "height": 21,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": [
+		"custom/xkb", "cpu", "memory", "custom/disk",
+		"network", "temperature", "idle_inhibitor", "backlight",
+		"custom/power", "pulseaudio", "battery", "clock", "tray"
+	],
+	
+	// left
+    "sway/workspaces": {
+        "disable-scroll":	true,
+        "all-outputs":		true
+    },
+
+	"sway/window": {
+		"format":	"  {}",
+		"tooltip":	false
+	},
+	
+	// center
+
+	// right
+	"cpu": {
+        "format":	"{usage}% ",
+		"interval":	5,
+        "tooltip":	false
+    },
+
+    "memory": {
+        "format":	"{}% ",
+		"tooltip":	false
+    },
+
+    "network": {
+        "format-wifi":			"{essid} {signalStrength}% ",
+        "format-ethernet":		"{ifname}: {ipaddr}/{cidr} ",
+        "format-linked":		"{ifname} (No IP) ",
+        "format-disconnected":	"Disconnected ⚠",
+        "format-alt":			"{bandwidthDownBits} {frequency}Hz",
+		"tooltip": false
+    },
+
+    "temperature": {
+        "format":		"{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+		"thermal-zone":	3,
+
+        "critical-threshold": 80,
+		"tooltip": false
+    },
+
+    "idle_inhibitor": {
+        "format":	"{icon}",
+        "format-icons":	{
+            "activated":	"",
+            "deactivated":	""
+        },
+		"tooltip": false
+    },
+
+    "backlight": {
+        "format":			"{percent}% {icon}",
+        "format-icons":		["", ""],
+		"on-scroll-up":		"light -A 2",
+		"on-scroll-down":	"light -U 2",
+
+		"smooth-scrolling-threshold": 3.0,
+		"tooltip": false
+    },
+
+    "pulseaudio": {
+        "format":					"{volume}% {icon} {format_source}",
+        "format-bluetooth":			"{volume}% {icon} {format_source}",
+        "format-bluetooth-muted":	" {icon} {format_source}",
+        "format-muted":				" {format_source}",
+        "format-source":			"{volume}% ",
+		"format-source-muted":		"",
+        "format-icons": {
+            "headphones":	"",
+            "handsfree":	"",
+            "headset":		"",
+            "phone":		"",
+            "portable":		"",
+            "car":			"",
+
+            "default": ["", "", ""]
+        },
+        "on-click":			"pavucontrol",
+		"on-click-right":	"pulsemixer --toggle-mute",
+		"on-scroll-up":		"pulsemixer --change-volume +2",
+		"on-scroll-down":	"pulsemixer --change-volume -2",
+
+		"smooth-scrolling-threshold": 3.0,
+		"tooltip": false
+    },
+
+    "battery": {
+        "states": {
+			"good":		90,
+            "warning":	50,
+            "critical":	20
+        },
+        "format":			"{capacity}% {icon}",
+        "format-charging":	"{capacity}% ",
+        "format-plugged":	"{capacity}% ",
+        "format-alt":		"{time} {icon}",
+
+        "format-icons": ["", "", "", "", ""],
+		"tooltip": false
+    },
+
+    "clock": {
+        "format":	"{:%Y-%m-%d %H:%M:%S}",
+		"interval":	1,
+		"tooltip":	false
+    },
+
+    "tray": {
+		"icon-size": 20,
+        "spacing": 5
+    },
+
+	"custom/xkb": {
+		"format": "{}",
+		"exec": "swaymsg -t subscribe -m '[ \"input\" ]' | jq -r --unbuffered '.input.xkb_active_layout_name'"
+	},
+
+	"custom/disk": {
+		"format": "{} ",
+		"interval": 30,
+		"exec": "df -h /home | tail -n 1 | awk '{print $4}'"
+	},
+
+	"custom/power": {
+		"format": "{}W ",
+		"interval": 5,
+		"exec": "echo \"scale=1;$(cat /sys/class/power_supply/BAT0/current_now)/100000\" | bc -l"
+	}
+}
