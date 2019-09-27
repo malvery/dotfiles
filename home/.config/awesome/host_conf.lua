@@ -39,8 +39,8 @@ function initTheme()
 	beautiful.fg_urgent = color_u
 
 	-- borders
-	beautiful.border_focus = color_f
-	beautiful.border_normal = color_n
+	--beautiful.border_focus = color_f
+	--beautiful.border_normal = color_n
 
 	-- notifications
 	beautiful.notification_bg = color_f
@@ -70,7 +70,7 @@ function initTheme()
 	elseif HOSTNAME == "NB-ZAVYALOV2" then
 		beautiful.xresources.set_dpi(170)
 		beautiful.font			= "Ubuntu Bold 9"
-		beautiful.border_width	= 3
+		beautiful.border_width	= 4
 		beautiful.wibar_height	= 32
 
 		beautiful.notification_width = 450
