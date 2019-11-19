@@ -79,7 +79,7 @@ window#waybar {
 }
 
 #network.disconnected {
-    background-color: @fg_urgent;
+    color: @fg_urgent;
 }
 
 #pulseaudio.bluetooth {
@@ -91,7 +91,7 @@ window#waybar {
 }
 
 #temperature.critical {
-    background-color: @fg_urgent;
+    color: @fg_urgent;
 }
 
 #idle_inhibitor.activated {

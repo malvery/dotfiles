@@ -124,17 +124,20 @@
     },
 
 	"custom/xkb": {
+		"tooltip":	false,
 		"format": "{}",
 		"exec": "swaymsg -t subscribe -m '[ \"input\" ]' | jq -r --unbuffered '.input.xkb_active_layout_name'"
 	},
 
 	"custom/disk": {
+		"tooltip":	false,
 		"format": "{} ",
 		"interval": 30,
 		"exec": "df -h /home | tail -n 1 | awk '{print $4}'"
 	},
 
 	"custom/power": {
+		"tooltip":	false,
 		"format": "{}W ",
 		"interval": 5,
 		"exec": "echo \"scale=1;$(cat /sys/class/power_supply/BAT0/current_now)/100000\" | bc -l"

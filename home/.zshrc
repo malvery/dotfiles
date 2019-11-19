@@ -101,3 +101,7 @@ unsetopt share_history
 
 # disable bracketed paste mode
 unset zle_bracketed_paste
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/malvery/.sdkman"
+[[ -s "/home/malvery/.sdkman/bin/sdkman-init.sh" ]] && source "/home/malvery/.sdkman/bin/sdkman-init.sh"
