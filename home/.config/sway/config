@@ -90,8 +90,8 @@ bindsym --to-code {
 }
 
 ###############################################################################
-# colors
-client.focused          #000000 #285577 #ffffff #2e9ef4   #285577
+# class                 border  bground text    indicator child_border
+client.focused          #000000 #475F86 #ffffff #2e9ef4   #475F86
 client.focused_inactive #000000 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000

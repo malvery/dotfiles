@@ -1,28 +1,40 @@
 // Place your key bindings in this file to override the defaults
 [
     {
+        "key": "ctrl+left",
+        "command": "vim.remap",
+        "args": {"after": ["B"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+right",
+        "command": "vim.remap",
+        "args": {"after": ["W"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
+    },
+    {
         "key": "shift+left",
         "command": "vim.remap",
         "args": {"after": ["b"]},
-        "when": "editorTextFocus && vim.mode == 'Visual'"
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
     },
     {
         "key": "shift+right",
         "command": "vim.remap",
         "args": {"after": ["w"]},
-        "when": "editorTextFocus && vim.mode == 'Visual'"
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
     },
     {
         "key": "shift+up",
         "command": "vim.remap",
-        "args": {"after": ["k"]},
-        "when": "editorTextFocus && vim.mode == 'Visual'"
+        "args": {"after": ["<Ctrl+b>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
     },
     {
         "key": "shift+down",
         "command": "vim.remap",
-        "args": {"after": ["j"]},
-        "when": "editorTextFocus && vim.mode == 'Visual'"
+        "args": {"after": ["<Ctrl+f>"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
     },
     {
         "key": "shift+pagedown",
