@@ -24,13 +24,20 @@ for item in result:
         current_desktop = int(item[0])
 
 # get desktops list with clients
-result = subprocess.check_output(['wmctrl', '-l']).decode('utf-8')
+# result = subprocess.check_output(['wmctrl', '-l']).decode('utf-8')
+result = subprocess.check_output([
+    'bash', '-c',
+    "wmctrl -l | awk '{print $2}' | grep -v '\-'"
+]).decode('utf-8')
 result = result.split('\n')[:-1]
 
 desktop_list = list()
 for item in result:
-    item = item.split(' ')
-    desktop_list.append(int(item[2]))
+    # item = item.split(' ')
+    # desktop_list.append(int(item[1]))
+
+    print(item)
+    desktop_list.append(int(item))
 
 # choose next / prev desktop
 desktop_list.sort()

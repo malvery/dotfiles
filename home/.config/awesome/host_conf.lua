@@ -185,6 +185,7 @@ function getClientRules(client_rules)
 		"Nitrogen",
 		"Transmission-gtk",
 		"Blueman-manager",
+		"Spotify",
 		"mpv"
 	}
 	float_app_top = {
@@ -266,8 +267,9 @@ function initAutostart()
 	else
 		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 		apps_list = gears.table.join(apps_list, {
-			'compton',
+			'picom',
 			'thunderbird',
+			'nm-applet',
 			'light -N 1'
 		})
 
