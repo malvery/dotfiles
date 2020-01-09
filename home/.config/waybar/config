@@ -47,6 +47,8 @@
         "format":		"{temperatureC}°C {icon}",
         "format-icons": ["", "", ""],
 		"thermal-zone":	3,
+		"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+		"interval": 3,
 
         "critical-threshold": 80,
 		"tooltip": false
@@ -72,12 +74,11 @@
     },
 
     "pulseaudio": {
-        "format":					"{volume}% {icon} {format_source}",
-        "format-bluetooth":			"{volume}% {icon} {format_source}",
-        "format-bluetooth-muted":	" {icon} {format_source}",
-        "format-muted":				" {format_source}",
-        "format-source":			"{volume}% ",
-		"format-source-muted":		"",
+        "format":					"{volume}% {icon}",
+        "format-bluetooth":			"{volume}% {icon} ",
+        "format-bluetooth-muted":	"{volume}%  {icon} ",
+        "format-muted":				"{volume}% ",
+
         "format-icons": {
             "headphones":	"",
             "handsfree":	"",
@@ -88,10 +89,8 @@
 
             "default": ["", "", ""]
         },
-        "on-click":			"pavucontrol",
-		"on-click-right":	"pulsemixer --toggle-mute",
-		"on-scroll-up":		"pulsemixer --change-volume +2",
-		"on-scroll-down":	"pulsemixer --change-volume -2",
+		"on-click":			"pulsemixer --toggle-mute",
+        "on-click-right":	"pavucontrol",
 
 		"smooth-scrolling-threshold": 3.0,
 		"tooltip": false
@@ -139,7 +138,7 @@
 	"custom/power": {
 		"tooltip":	false,
 		"format": "{}W ",
-		"interval": 5,
+		"interval": 3,
 		"exec": "echo \"scale=1;$(cat /sys/class/power_supply/BAT0/current_now)/100000\" | bc -l"
 	}
 }
