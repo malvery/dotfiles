@@ -1,10 +1,13 @@
 #!/bin/bash
 
 if [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
-  amixer -D pulse set Master toggle >> /dev/null
+	amixer -D pulse set Master toggle >> /dev/null
+
+elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
+	swaymsg 'exec pavucontrol' >> /dev/null
 
 elif [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
-  amixer -D pulse set Master 2%+ unmute >> /dev/null
+	amixer -D pulse set Master 2%+ unmute >> /dev/null
 
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
 	amixer -D pulse set Master 2%- unmute >> /dev/null

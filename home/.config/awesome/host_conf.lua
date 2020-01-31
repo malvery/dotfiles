@@ -61,19 +61,13 @@ function initTheme()
 	beautiful.font			= "Ubuntu Bold 9"
 	beautiful.border_width	= 3
 	beautiful.wibar_height	= 20
-	beautiful.notification_width = 300
+	--beautiful.notification_width = 350
+	beautiful.notification_max_width=350
+	beautiful.notification_max_height = 100
 	beautiful.systray_icon_spacing = 2
 
 	if HOSTNAME == "ux533f" then
 		beautiful.xresources.set_dpi(130)
-
-	elseif HOSTNAME == "NB-ZAVYALOV2" then
-		beautiful.xresources.set_dpi(170)
-		beautiful.font			= "Ubuntu Bold 9"
-		beautiful.border_width	= 4
-		beautiful.wibar_height	= 32
-
-		beautiful.notification_width = 450
 	end
 end
 
@@ -140,17 +134,6 @@ function getHotkeys()
 			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
 	)
 
-	if HOSTNAME == "xps9570" then
-	elseif HOSTNAME == "NB-ZAVYALOV2" then
-		hotkeys = gears.table.join(hotkeys,
-			awful.key({ }, "XF86KbdBrightnessUp",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -A 50')	end),
-			awful.key({ }, "XF86KbdBrightnessDown",	function () awful.spawn('light -s sysfs/leds/smc::kbd_backlight -U 50')	end),
-
-			-- clipboard
-			awful.key({ 'Ctrl',			}, "less",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
-		)
-	end
-
 	return hotkeys
 end
 
@@ -180,12 +163,12 @@ function getClientRules(client_rules)
 		"Nm-connection-editor",
 		"Vpnui",
 		"Google Play Music Desktop Player",
-		"MellowPlayer",
 		"Pavucontrol",
 		"Nitrogen",
 		"Transmission-gtk",
 		"Blueman-manager",
 		"Spotify",
+		"qBittorrent",
 		"mpv"
 	}
 	float_app_top = {
@@ -198,18 +181,10 @@ function getClientRules(client_rules)
 	}
 
 	-- host additional settings
-	if HOSTNAME == "NB-ZAVYALOV2" then
-		float_app = gears.table.join(float_app, {"TelegramDesktop"})
-		client_rules = gears.table.join(client_rules, {
-			{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "8"}},
-			{rule = {class = "Slack"},				properties = {screen = 1, tag = "9"}},
-		})
-	else
-		client_rules = gears.table.join(client_rules, {
-			{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
-		})
-	end
-
+	--float_app = gears.table.join(float_app, {"TelegramDesktop"})
+	client_rules = gears.table.join(client_rules, {
+		{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
+	})
 	
 	-- set window rules
 	client_rules = gears.table.join(client_rules, {
@@ -256,30 +231,15 @@ function initAutostart()
 		'/usr/lib/gpaste/gpaste-daemon',
 	}
 		
-	if HOSTNAME == "NB-ZAVYALOV2" then
-		awful.spawn.with_shell('setxkbmap -layout "us,ru(mac)" -option grp:caps_toggle')
-		apps_list = gears.table.join(apps_list, {
-			'thunderbird',
-			'slack',
-			'nm-applet',
-			'light -N 5'
-		})
-	else
-		awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
-		apps_list = gears.table.join(apps_list, {
-			'picom',
-			'thunderbird',
-			'nm-applet',
-			'light -N 1'
-		})
+	awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
+	apps_list = gears.table.join(apps_list, {
+		'picom',
+		'thunderbird',
+		'nm-applet',
+		'light -N 1'
+	})
+	awful.spawn.with_shell('sleep 5 && telegram-desktop')
 
-		if HOSTNAME == 'ux533f' then
-			apps_list = gears.table.join(apps_list, {'nm-applet'})
-		end
-
-		awful.spawn.with_shell('sleep 5 && telegram-desktop')
-	end
-	
 	-- run
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 

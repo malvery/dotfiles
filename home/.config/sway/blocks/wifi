@@ -13,13 +13,14 @@ if [[ ${VALUE} -eq 0 ]]; then
 
 else
 	if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+		ssid=$(iwgetid -r)
 		freq=$(iwgetid -f -r | cut -c1-4)
 		ch=$(iwgetid -c -r)
 
-		echo "${freq}GHz ${ch}CH"
-		echo "${freq}GHz ${ch}CH"
+		echo "${freq}GHz ${ch}CH ${ssid}" 
+		echo "${freq}GHz ${ch}CH ${ssid}"
 	else
-		echo ${VALUE}% ${VPN_STATUS}$(iwgetid -r)
+		echo ${VALUE}% ${VPN_STATUS}
 		echo ${VALUE}%
 	fi
 
