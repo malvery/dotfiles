@@ -41,6 +41,11 @@ function initTheme()
 	-- borders
 	--beautiful.border_focus = color_f
 	--beautiful.border_normal = color_n
+	
+	-- titlebar
+	beautiful.titlebar_minimize_button_normal = beautiful.titlebar_sticky_button_normal_inactive
+	beautiful.titlebar_minimize_button_focus  = beautiful.titlebar_sticky_button_focus_active
+
 
 	-- notifications
 	beautiful.notification_bg = color_f

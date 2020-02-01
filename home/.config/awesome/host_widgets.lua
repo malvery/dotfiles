@@ -192,7 +192,7 @@ bat_widget =  awful.widget.watch(
 			conf.batt.charge_full,
 			conf.batt.charge_now
 		),
-		'$p', power_supply), 5, function(widget, stdout)
+		'$p', power_supply), 3, function(widget, stdout)
 
 		val = {}
 		for str in stdout:gmatch("([^\n]+)") do
