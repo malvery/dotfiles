@@ -208,7 +208,7 @@ function getClientRules(client_rules)
 		{rule_any =	{class = float_app_top},properties = {ontop = true}},
 
 		-- fix for chromium
-		{rule = {class = "Chromium"}, properties = {floating = true}},
+		--{rule = {class = "Chromium"}, properties = {floating = true}},
 		{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
 		
 		-- thunderbird
@@ -238,7 +238,7 @@ function initAutostart()
 		
 	awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 	apps_list = gears.table.join(apps_list, {
-		'picom',
+		--'picom',
 		'thunderbird',
 		'nm-applet',
 		'light -N 1'

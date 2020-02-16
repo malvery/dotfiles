@@ -203,16 +203,18 @@ bat_widget =  awful.widget.watch(
 
 		charge_full = tonumber(val[3])
 		charge_now = tonumber(val[4])
-		val_c = charge_now / (charge_full / 100)
-		
-		if		val_c < 35 then color = color_h
-		elseif	val_c < 70 then color = color_m
-		else	color = color_g end
+		if charge_now and charge_full then 
+			val_c = charge_now / (charge_full / 100)
 
-		widget:set_markup(string.format(
-			'<span color="%s">BAT: %.0f%% ^%.1fW</span>' .. w_sep,
-			color, val_c, val_p
-		))
+			if		val_c < 35 then color = color_h
+			elseif	val_c < 70 then color = color_m
+			else	color = color_g end
+
+			widget:set_markup(string.format(
+				'<span color="%s">BAT: %.0f%% ^%.1fW</span>' .. w_sep,
+				color, val_c, val_p
+			))
+		end
 end)
 
 -- tooltip
