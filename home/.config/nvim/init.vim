@@ -45,6 +45,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" lsp
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+	" debbuger
+	"Plug 'puremourning/vimspector'
+
 call plug#end()
 
 "===========================================================================
@@ -157,6 +160,8 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "===========================================================================
 " debbuger
 "===========================================================================
+"let g:vimspector_enable_mappings = 'HUMAN'
+"packadd! vimspector
 
 "===========================================================================
 " coc.vim

@@ -35,8 +35,8 @@ class XKBWatcher:
             xkb_layout_index = e.input.xkb_active_layout_index
             if self.curr_xkb_layout != xkb_layout_index:
                 xkb_layout_name = e.input.xkb_active_layout_name
-                with open(self.xkb_log_file, 'a') as f:
-                    f.write(xkb_layout_name + '\n')
+                # with open(self.xkb_log_file, 'a') as f:
+                #     f.write(xkb_layout_name[:2].upper() + '\n')
 
                 if xkb_layout_index is not None:
                     self.xkb_per_app[self.curr_window_id] = xkb_layout_index

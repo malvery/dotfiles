@@ -79,4 +79,40 @@
         "args": {"after": ["^"]},
         "when": "editorTextFocus && vim.mode == 'Normal'"
     },
+    {
+        "key": "alt+left",
+        "command": "vim.remap",
+        "args": {"after": ["gt"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
+    },
+    {
+        "key": "alt+right",
+        "command": "vim.remap",
+        "args": {"after": ["gT"]},
+        "when": "editorTextFocus && vim.mode == 'Visual' || vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeWindow",
+        "when": ""
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "macros.commentDown",
+        "when": "editorTextFocus && !editorReadonly"
+    }
+
 ]

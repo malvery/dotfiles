@@ -14,13 +14,17 @@
         "disable-scroll":	true,
         "all-outputs":		true
     },
+	
+	"sway/mode": {
+		"tooltip":	false
+	},
 
 	"sway/window": {
-		"format":	"  {}",
 		"tooltip":	false
 	},
 	
 	// center
+
 
 	// right
 	"cpu": {
@@ -118,8 +122,8 @@
     },
 
     "tray": {
-		"icon-size": 20,
-        "spacing": 5
+		"icon-size": 18,
+        "spacing": 3
     },
 
 	"custom/xkb": {
@@ -132,7 +136,7 @@
 		"tooltip":	false,
 		"format": "{} ",
 		"interval": 30,
-		"exec": "df -h /home | tail -n 1 | awk '{print $4}'"
+		"exec": "df -h / | tail -n 1 | awk '{print $4}'"
 	},
 
 	"custom/power": {

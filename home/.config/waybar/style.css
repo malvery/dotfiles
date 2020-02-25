@@ -1,5 +1,6 @@
 @define-color bg_normal		#222222;
-@define-color bg_widget		#363636;
+@define-color bg_border		#363636;
+@define-color bg_widget		#303030;
 
 @define-color fg_normal		#dcdccc;
 @define-color fg_good		#86AD85;
@@ -10,28 +11,26 @@
 * {
     border: none;
 	border-radius: 0;
+	min-height: 0;
     font-family: "Ubuntu";
 	font-weight: 600;
     font-size: 16px;
-    min-height: 0;
+	color: @fg_normal;
 }
 
-window#waybar {
-	background-color: @bg_normal;
-	color: @fg_normal;
-	border: none;
+#waybar {
+	background: @bg_normal;
+	border-bottom: 1px solid @bg_widget;
 }
 
 #workspaces button {
-    padding: 0 1px;
-    background-color: transparent;
+	padding: 1 1px;
 	color: @fg_normal;
-	border: 1px solid #333333;
-	border-radius: 0;
+	border: 1px solid @bg_border;
 }
 
 #workspaces button.focused {
-    background-color: #475F86;
+    background: #475F86;
 	border: 1px solid #2f343a;
 }
 
@@ -40,11 +39,6 @@ window#waybar {
 	border: 1px solid #2f343a;
 }
 
-#mode {
-	background-color: transparent;
-	border: 1px solid #2f343a;
-	border-bottom: none;
-}
 
 #custom-xkb,
 #custom-disk,
@@ -59,11 +53,20 @@ window#waybar {
 #pulseaudio,
 #tray,
 #mode,
+#window,
 #idle_inhibitor {
-    padding: 0 6px;
-    margin: 0 2px;
-	background-color: @bg_widget;
-	color: @fg_normal;
+	padding: 0 2px;
+	margin: 0 2px;
+	background: @bg_widget;
+}
+
+#mode {
+	color: @fg_urgent;
+}
+
+#window {
+	background: transparent;
+	border: none;
 }
 
 #battery.charging{
@@ -101,4 +104,3 @@ window#waybar {
 #idle_inhibitor.deactivated {
 	color: @fg_inactive;
 }
-
