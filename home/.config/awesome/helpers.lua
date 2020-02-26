@@ -82,10 +82,12 @@ function backlight(action)
 end
 
 function volume(action)
-	if action == "+" or action == "-" then
-		command = "pulsemixer --change-volume " .. action .. "2"
+	if action == "+" then
+		command = "pamixer -i 2"
+	if action == "-" then
+		command = "pamixer -d 2"
 	elseif action == "toggle" then
-		command = "pulsemixer --toggle-mute"
+		command = "pamixer -m"
 	end
 
 	awful.spawn.easy_async_with_shell(command, function()
