@@ -84,7 +84,7 @@ end
 function volume(action)
 	if action == "+" then
 		command = "pamixer -i 2"
-	if action == "-" then
+	elseif action == "-" then
 		command = "pamixer -d 2"
 	elseif action == "toggle" then
 		command = "pamixer -m"
