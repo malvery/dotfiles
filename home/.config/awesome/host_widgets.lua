@@ -149,18 +149,18 @@ local wifi_t = helpers.setTooltip(
 -- ############################################################################################
 -- volume
 vol_widget, vol_widget_t =	awful.widget.watch(
-	'bash -c "amixer -D pulse get Master | grep \'Left:\'  | awk -F \'[][]\' \'{print $2 $4}\'"', 2,
+	'pamixer --get-mute --get-volume', 2,
 	function(widget, stdout)
 		values = {}
-		for str in string.gmatch(stdout, "([^%%]+)") do table.insert(values, str) end
-		if values[1] then vol_v = tonumber(values[1]) else vol_v = 0 end
-		vol_s = values[2]
+		for str in string.gmatch(stdout, "([^  ]+)") do table.insert(values, str) end
+		if values[2] then vol_v = tonumber(values[2]) else vol_v = 0 end
+		vol_s = values[1]
 
 		if		vol_v < 35 then color = color_n
 		elseif	vol_v < 70 then color = color_m
 		else	color = color_h end
 
-		if vol_s:match("off") then
+		if vol_s:match("true") then
 			widget:set_markup(string.format(
 				'<span color="%s">VOL: Mute</span>' .. w_sep, color_i
 			))
@@ -176,8 +176,8 @@ end)
 helpers.setVolTimer(vol_widget_t)
 vol_widget:buttons(gears.table.join(
 	awful.button({ }, 3, function()	helpers.volume("toggle")	end),
-	awful.button({ }, 4, function()	helpers.volume("+")			end),
-	awful.button({ }, 5, function()	helpers.volume("-")			end)
+	awful.button({ }, 4, function()	helpers.volume("inc")		end),
+	awful.button({ }, 5, function()	helpers.volume("dec")		end)
 ))
 
 -- ############################################################################################

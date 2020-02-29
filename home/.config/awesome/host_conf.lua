@@ -114,8 +114,8 @@ function getHotkeys()
 			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager)	end),
 			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager)	end),
 
-			awful.key({	}, "XF86AudioRaiseVolume",	function () helpers.volume("+")			end),
-			awful.key({	}, "XF86AudioLowerVolume",	function () helpers.volume("-")			end),
+			awful.key({	}, "XF86AudioRaiseVolume",	function () helpers.volume("inc")		end),
+			awful.key({	}, "XF86AudioLowerVolume",	function () helpers.volume("dec")		end),
 			awful.key({	}, "XF86AudioMute",			function () helpers.volume("toggle")	end),
 			awful.key({	}, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
 			awful.key({	}, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
@@ -149,13 +149,7 @@ function getLayouts()
 	for i = 1, 9 do layouts[i] = awful.layout.suit.tile end
 
 	layouts[2] = awful.layout.suit.max
-
-	if HOSTNAME == "NB-ZAVYALOV2" then
-		layouts[3] = awful.layout.suit.max
-		layouts[4] = awful.layout.suit.max
-		layouts[5] = awful.layout.suit.max
-		layouts[8] = awful.layout.suit.max
-	end
+	layouts[3] = awful.layout.suit.max
 
 	return layouts
 end
@@ -174,7 +168,8 @@ function getClientRules(client_rules)
 		"Blueman-manager",
 		"Spotify",
 		"qBittorrent",
-		"mpv"
+		"mpv",
+		"Skype"
 	}
 	float_app_top = {
 		"Galculator",
