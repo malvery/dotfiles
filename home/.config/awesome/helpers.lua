@@ -118,17 +118,17 @@ end
 
 local function nonEmptyTag (direction)
 	local s	= awful.screen.focused()
-	local function hasMinimizedClients(clients)
+	local function onlyMinimizedClients(clients)
 		for k, c in pairs(clients) do
-			if c.minimized then return true end
+			if not c.minimized then return false end
 		end
-		return false
+		return true
 	end
 	
 	if direction == 1 then last = #s.tags else last = 1 end
 	for i = s.selected_tag.index + direction, last, direction do
 		local clients = s.tags[i]:clients()
-		if #clients > 0 and not hasMinimizedClients(clients) then
+		if #clients > 0 and not onlyMinimizedClients(clients) then
 			s.tags[i]:view_only()
 			return
 		end
