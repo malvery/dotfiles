@@ -12,7 +12,7 @@ local HOSTNAME = helpers.hostname
 
 local APPS = {
 	["terminal"]		=	"lxterminal",
-	["lock_manager"]	=	"i3lock -c 222F42",
+	["lock_manager"]	=	"slock",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
 	["calculator"]		=	"galculator",
