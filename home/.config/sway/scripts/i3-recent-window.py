@@ -3,25 +3,26 @@ import setproctitle
 import subprocess
 import signal
 import i3ipc
+import os
 
 PROCESS_NAME = "i3ipc-recent-window"
-
+PID_CURR = os.getpid()
+PID_PATH = '%s/%s.pid' % (os.getenv("XDG_RUNTIME_DIR", '/tmp'), PROCESS_NAME)
 
 ################################################################################
 
 # send SIGNTERM for another processes
-def kill_process():
-    pid_list = subprocess.check_output([
-        '/bin/bash', '-c', 'pidof %s || true' % PROCESS_NAME
-    ]).decode('utf-8')
-    pid_list = pid_list.replace('\n', '').split(' ')
+pid_list = subprocess.check_output([
+    '/bin/bash', '-c', 'pidof %s || true' % PROCESS_NAME
+]).decode('utf-8')
+pid_list = pid_list.replace('\n', '').split(' ')
 
-    for pid in pid_list:
-        if pid:
-            subprocess.call(['kill', pid])
+for pid in pid_list:
+    if pid:
+        subprocess.call(['kill', pid])
 
-
-kill_process()
+with open(PID_PATH, 'w') as pid_file:
+    pid_file.write(str(PID_CURR))
 
 
 ################################################################################
@@ -79,6 +80,7 @@ def on_signal(signalNumber, frame):
         switch_to_recent(i3=i3_conn_commands)
 
     elif signalNumber == 2:
+        os.remove(PID_PATH)
         exit()
 
 
