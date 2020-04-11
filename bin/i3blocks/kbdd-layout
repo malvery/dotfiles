@@ -34,8 +34,9 @@ while [[ -z "$N" ]]; do
         sed -un 's/^.*uint32 //p' )
 done
 echo $( dbus-send --print-reply=literal --dest=ru.gentoo.KbddService \
-	/ru/gentoo/KbddService ru.gentoo.kbdd.getLayoutName uint32:$N )
+	/ru/gentoo/KbddService ru.gentoo.kbdd.getLayoutName uint32:$N ) | colrm 3
 
 # Parse dbus output
 dbus-monitor "interface='ru.gentoo.kbdd',member='layoutNameChanged'" |\
-	sed -un '0~2p' | sed -un 's:.*string "\(.*\)".*:\1:p'  | sed -u '/:/d'
+	sed -un '0~2p' | sed -un 's:.*string "\(.*\)".*:\1:p'  | sed -u '/:/d' |\
+	sed -u 's/^\(.\{2\}\).*/\1/'

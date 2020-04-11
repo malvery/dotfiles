@@ -103,3 +103,5 @@ unsetopt share_history
 # disable bracketed paste mode
 unset zle_bracketed_paste
 
+# GoLang
+export GOPATH=~/src/go
