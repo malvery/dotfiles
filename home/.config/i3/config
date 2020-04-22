@@ -121,7 +121,8 @@ bindsym $mod+Shift+"braceright" move workspace to output right
 ###############################################################################
 
 set $file-manager "pcmanfm"
-set $lock-manager "i3lock -c 222f42"
+#set $lock-manager "i3lock -c 222f42"
+set $lock-manager "/usr/local/bin/xsecurelock.sh"
 
 # run apps
 bindsym $mod+Shift+p	exec --no-startup-id $file-manager

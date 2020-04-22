@@ -12,7 +12,7 @@ local HOSTNAME = helpers.hostname
 
 local APPS = {
 	["terminal"]		=	"alacritty",
-	["lock_manager"]	=	"slock",
+	["lock_manager"]	=	"xsecurelock.sh",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
 	["calculator"]		=	"galculator",
@@ -244,7 +244,7 @@ function initAutostart()
 	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
 
 	-- setup tags
-	awful.tag.incmwfact(0.10, awful.tag.find_by_name(awful.screen.focused(), "9"))
+	awful.tag.incmwfact(0.05, awful.tag.find_by_name(awful.screen.focused(), "9"))
 
 end
 

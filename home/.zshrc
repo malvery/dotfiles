@@ -105,3 +105,10 @@ unset zle_bracketed_paste
 
 # GoLang
 export GOPATH=~/src/go
+
+# send visual bells
+export SUDO_PROMPT=$'\a[sudo] password for %p: '
+
+precmd () {
+  echo -n -e "\a"
+}
