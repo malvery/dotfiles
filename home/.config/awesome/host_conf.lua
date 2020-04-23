@@ -32,7 +32,6 @@ function initTheme()
 	local color_f = "#285577"
 	local color_n = "#5f676a"
 	local color_u = "#FF5500"
-	--local color_u = "#FE8600"
 
 	-- urgent
 	beautiful.bg_urgent = beautiful.bg_normal
@@ -42,18 +41,19 @@ function initTheme()
 	--beautiful.border_focus = color_f
 	--beautiful.border_normal = color_n
 	
-	-- titlebar
-	beautiful.titlebar_minimize_button_normal = beautiful.titlebar_sticky_button_normal_inactive
-	beautiful.titlebar_minimize_button_focus  = beautiful.titlebar_sticky_button_focus_active
-
-
 	-- notifications
 	beautiful.notification_bg = color_f
 	beautiful.notification_fg = "#ffffff"
 	beautiful.notification_border_color = "#aaaaaa"
 
+	-- menu
+	beautiful.menu_border_width	= 3
+	beautiful.menu_submenu_icon	= nil
+	beautiful.menu_submenu		= ">"
+	beautiful.menu_height		= 25
+	beautiful.menu_width		= 160
+
 	-- tooltips
-	--beautiful.tooltip_bg = beautiful.bg_normal
 	beautiful.tooltip_border_color = beautiful.fg_focus
 	beautiful.tooltip_border_width = 0.8
 
@@ -62,11 +62,9 @@ function initTheme()
 	gears.wallpaper.set("#1F1F1F")
 
 	-- env
-	beautiful.xresources.set_dpi(128)
-	beautiful.font			= "Ubuntu Bold 9"
+	beautiful.font			= "Ubuntu Bold 10"
 	beautiful.border_width	= 3
 	beautiful.wibar_height	= 20
-	--beautiful.notification_width = 350
 	beautiful.notification_max_width=350
 	beautiful.notification_max_height = 100
 	beautiful.systray_icon_spacing = 2
@@ -109,10 +107,10 @@ end
 -- Hotkeys
 function getHotkeys()
 		hotkeys = gears.table.join(
-			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')		end),
-			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show windowcd')	end),
-			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager)	end),
-			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager)	end),
+			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')			end),
+			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show windowcd')		end),
+			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager,	false)	end),
+			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager,	false)	end),
 
 			awful.key({	}, "XF86AudioRaiseVolume",	function () helpers.volume("inc")		end),
 			awful.key({	}, "XF86AudioLowerVolume",	function () helpers.volume("dec")		end),
@@ -120,9 +118,9 @@ function getHotkeys()
 			awful.key({	}, "XF86MonBrightnessUp",	function () helpers.backlight("inc")	end),
 			awful.key({	}, "XF86MonBrightnessDown",	function () helpers.backlight("dec")	end),
 
-			awful.key({ }, "XF86AudioPlay",	function () awful.spawn('playerctl play-pause')	end),
-			awful.key({ }, "XF86AudioPrev",	function () awful.spawn('playerctl previous')	end),
-			awful.key({ }, "XF86AudioNext",	function () awful.spawn('playerctl next')		end),
+			awful.key({ }, "XF86AudioPlay",	function () awful.spawn('playerctl play-pause',	false)	end),
+			awful.key({ }, "XF86AudioPrev",	function () awful.spawn('playerctl previous',	false)	end),
+			awful.key({ }, "XF86AudioNext",	function () awful.spawn('playerctl next',		false)	end),
 
 			awful.key({ modkey,			}, "Up",	function () awful.client.focus.bydirection("up")	end),
 			awful.key({ modkey,			}, "Down",	function () awful.client.focus.bydirection("down")	end),
@@ -189,11 +187,11 @@ function getClientRules(client_rules)
 	-- set window rules
 	client_rules = gears.table.join(client_rules, {
 		-- disable titlebars
-		{rule_any = {type = {"normal"}}, properties = {titlebars_enabled = false}},
+		{rule_any = {type = {"normal", "dialog"}}, properties = {titlebars_enabled = false}},
 
 		-- set floating
 		{rule_any = {class = gears.table.join(float_app, float_app_top)},
-		properties = {floating = true, titlebars_enabled = true}},
+		properties = {floating = true}},
 
 		-- set floating without titlebar
 		{rule_any = {class = float_no_title},
@@ -204,16 +202,11 @@ function getClientRules(client_rules)
 
 		-- fix for chromium
 		--{rule = {class = "Chromium"}, properties = {floating = true}},
-		{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
+		--{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
 		
 		-- thunderbird
 		{rule = {class = "Thunderbird"},	properties = {screen = 1, tag = "9"}},
 
-		-- firefox
-		{rule = {class = "Firefox", role = "Organizer"}, properties = {
-			floating = true,
-			titlebars_enabled = true
-		}}
 	})
 
 	return client_rules
@@ -233,7 +226,6 @@ function initAutostart()
 		
 	awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
 	apps_list = gears.table.join(apps_list, {
-		--'picom',
 		'thunderbird',
 		'nm-applet',
 		'light -N 1'

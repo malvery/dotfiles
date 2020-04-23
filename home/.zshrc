@@ -70,7 +70,8 @@ alias venv-activate='source ./.venv/bin/activate || source ./venv/bin/activate'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git tmux kubectl)
+#plugins=(git tmux kubectl)
+plugins=(git tmux)
 
 test -e ~/.zsh_comp && fpath=(~/.zsh_comp $fpath)
 source $ZSH/oh-my-zsh.sh
