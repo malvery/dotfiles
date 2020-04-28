@@ -5,6 +5,14 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 local theme_assets = require("beautiful.theme_assets")
+
+-- generate and load applications menu
+local os = require("os")
+os.execute(
+	"xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >" 
+	.. awful.util.getdir("config") 
+	.. "/archmenu.lua"
+)
 local xdg_menu = require("archmenu")
 
 -- ############################################################################################
@@ -44,17 +52,18 @@ function initTheme()
 	-- notifications
 	beautiful.notification_bg = color_f
 	beautiful.notification_fg = "#ffffff"
-	beautiful.notification_border_color = "#aaaaaa"
+	beautiful.notification_border_color = beautiful.fg_normal
 
 	-- menu
-	beautiful.menu_border_width	= 3
+	beautiful.menu_border_width	= 1
 	beautiful.menu_submenu_icon	= nil
-	beautiful.menu_submenu		= ">"
+	beautiful.menu_submenu		= "> "
 	beautiful.menu_height		= 25
 	beautiful.menu_width		= 160
+	beautiful.menu_border_color	= beautiful.fg_normal
 
 	-- tooltips
-	beautiful.tooltip_border_color = beautiful.fg_focus
+	beautiful.tooltip_border_color = beautiful.fg_normal
 	beautiful.tooltip_border_width = 0.8
 
 	-- disable default wallpaper
@@ -156,10 +165,9 @@ end
 -- Client rules
 function getClientRules(client_rules)
 	-- float apps list
-	float_app = {
+	float_apps = {
 		"Nm-connection-editor",
 		"Vpnui",
-		"Google Play Music Desktop Player",
 		"Pavucontrol",
 		"Nitrogen",
 		"Transmission-gtk",
@@ -169,17 +177,13 @@ function getClientRules(client_rules)
 		"mpv",
 		"Skype"
 	}
-	float_app_top = {
+	float_apps_top = {
 		"Galculator",
-		"flameshot"
-	}
-
-	float_no_title = {
+		"flameshot",
 		"Gcolor3"
 	}
 
 	-- host additional settings
-	--float_app = gears.table.join(float_app, {"TelegramDesktop"})
 	client_rules = gears.table.join(client_rules, {
 		{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
 	})
@@ -190,22 +194,18 @@ function getClientRules(client_rules)
 		{rule_any = {type = {"normal", "dialog"}}, properties = {titlebars_enabled = false}},
 
 		-- set floating
-		{rule_any = {class = gears.table.join(float_app, float_app_top)},
+		{rule_any = {class = gears.table.join(float_apps, float_apps_top)},
 		properties = {floating = true}},
 
-		-- set floating without titlebar
-		{rule_any = {class = float_no_title},
-		properties = {floating = true, titlebars_enabled = false}},
-		
 		-- set on-top
-		{rule_any =	{class = float_app_top},properties = {ontop = true}},
+		{rule_any =	{class = float_apps_top}, properties = {ontop = true}},
 
 		-- fix for chromium
 		--{rule = {class = "Chromium"}, properties = {floating = true}},
 		--{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
 		
 		-- thunderbird
-		{rule = {class = "Thunderbird"},	properties = {screen = 1, tag = "9"}},
+		{rule = {class = "Thunderbird"}, properties = {screen = 1, tag = "9"}},
 
 	})
 
@@ -215,25 +215,32 @@ end
 -- ############################################################################################
 -- Autostart
 function initAutostart()
-	apps_list = {
-		'xsettingsd',
-		'redshift-gtk',
+	run_list = {
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-		'blueman-applet',
 		'/usr/lib/gpaste/gpaste-daemon',
-	}
-		
-	awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
-	apps_list = gears.table.join(apps_list, {
-		'thunderbird',
-		'nm-applet',
-		'light -N 1'
-	})
-	awful.spawn.with_shell('sleep 5 && telegram-desktop')
+		'light -N 1',
 
-	-- run
-	for i, app_name in ipairs(apps_list) do helpers.runOnce(app_name) end
+		'redshift-gtk',
+		'nm-applet',
+		'blueman-applet',
+		'thunderbird',
+		APPS.terminal .. ' -e tmux-s-main.sh',
+	}
+	
+	run_list_with_sleep = {
+		"telegram-desktop",
+	}
+
+    -- run always
+	awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
+	awful.spawn.with_shell('xsettingsd')
+
+	-- run once
+	for i, app_name in ipairs(run_list) do helpers.runOnce(app_name) end
+	
+	-- run once with sleep
+	for i, app_name in ipairs(run_list_with_sleep) do helpers.runOnce(app_name, 5) end
 
 	-- setup tags
 	awful.tag.incmwfact(0.05, awful.tag.find_by_name(awful.screen.focused(), "9"))
