@@ -42,7 +42,7 @@
 
 		<item label="Term">
 			<action name="Execute">
-				<command>lxterminal</command>
+				<command>alacritty</command>
 				<startupnotify>
 					<enabled>yes</enabled>
 				</startupnotify>
@@ -62,10 +62,16 @@
 
 		<separator/>
 		<menu id="exit"/>
+
+		<item label="Sleep">
+			<action name="Execute">
+				<command>systemctl suspend</command>
+			</action>
+		</item>
 		
 		<item label="Lock">
 			<action name="Execute">
-				<command>slock</command>
+				<command>xsecurelock.sh</command>
 			</action>
 		</item>
 

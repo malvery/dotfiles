@@ -1,4 +1,4 @@
-local naughty = require("naughty")
+--local naughty = require("naughty")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
@@ -23,7 +23,6 @@ local APPS = {
 	["lock_manager"]	=	"xsecurelock.sh",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
-	["calculator"]		=	"galculator",
 }
 
 local TITLEBAR_SIZE = 22
@@ -39,11 +38,12 @@ function initTheme()
 
 	local color_f = "#285577"
 	local color_n = "#5f676a"
-	local color_u = "#FF5500"
+	--local color_u = "#FF5500"
+	local color_u = "#DC510C"
 
-	-- urgent
-	beautiful.bg_urgent = beautiful.bg_normal
-	beautiful.fg_urgent = color_u
+	-- urgency
+	beautiful.fg_urgent  = beautiful.bg_focus
+	beautiful.bg_urgent  = color_u
 
 	-- borders
 	--beautiful.border_focus = color_f
@@ -92,7 +92,7 @@ function getMenu()
 	}
 
 	exit_menu = {
-		{"Suspend",		"systemctl suspend -i"},
+		{"Suspend",			"systemctl suspend -i"},
 		{"Shutdown",	function() helpers.promptRun("shutdown ?",	"systemctl poweroff -i"	) end},
 		{"Reboot",		function() helpers.promptRun("reboot ?",	"systemctl reboot -i"	) end},
 	}
@@ -102,10 +102,8 @@ function getMenu()
 			{"Awesome",			awesome_menu, beautiful.awesome_icon},
 			{"Applications",	xdgmenu},
 			{"File Manager",	APPS.file_manager},
-			{"Audio Mixer",		"pavucontrol"},
-			{"Calculator",		APPS.calculator},
 			{"System",			exit_menu},
-			{"Lock",			APPS.lock_manager}
+			{"Lock Screen",		APPS.lock_manager}
 		}
 	})
 
@@ -140,7 +138,7 @@ function getHotkeys()
 			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
-			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
+			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- clipboard
 			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
@@ -220,12 +218,11 @@ function initAutostart()
 		'libinput-gestures-setup start',
 		'/usr/lib/gpaste/gpaste-daemon',
 		'light -N 1',
-
-		'redshift-gtk',
 		'nm-applet',
+		'dunst',
 		'blueman-applet',
 		'thunderbird',
-		APPS.terminal .. ' -e tmux-s-main.sh',
+		APPS.terminal .. ' -e ~/src/dotfiles/bin/tmux-s-main.sh',
 	}
 	
 	run_list_with_sleep = {

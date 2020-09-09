@@ -4,10 +4,23 @@ setxkbmap -layout "us,ru" -option grp:caps_toggle &
 # DE settings
 xsettingsd &
 nitrogen --restore &
+light -N 1 &
+dunst &
 
 # exit if NVIDIA_SESSION
 if [[ -v NVIDIA_SESSION ]]; then
-	kbdd &
 	exit
 fi
+
+xss-lock -- xsecurelock.sh &
+libinput-gestures-setup start &
+/usr/lib/gpaste/gpaste-daemon &
+
+xfce4-panel -d &
+gammastep-indicator &
+orcsome &
+
+alacritty -e ~/src/dotfiles/bin/tmux-s-main.sh &
+telegram-desktop &
+thunderbird &
 

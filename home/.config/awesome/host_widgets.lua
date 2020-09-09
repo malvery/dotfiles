@@ -175,6 +175,7 @@ end)
 -- buttons
 helpers.setVolTimer(vol_widget_t)
 vol_widget:buttons(gears.table.join(
+	awful.button({ }, 2, function()	awful.spawn('pavucontrol')	end),
 	awful.button({ }, 3, function()	helpers.volume("toggle")	end),
 	awful.button({ }, 4, function()	helpers.volume("inc")		end),
 	awful.button({ }, 5, function()	helpers.volume("dec")		end)

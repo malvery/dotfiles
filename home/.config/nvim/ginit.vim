@@ -1,2 +1,2 @@
-Guifont Hack:h10
+Guifont Hack:h11
 GuiTabline 0

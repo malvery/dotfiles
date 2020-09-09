@@ -1,11 +1,11 @@
 local awful = require("awful")
-local naughty = require("naughty")
+--local naughty = require("naughty")
 
 -- ############################################################################################
 
-function printNotify(text)
-	naughty.notify({text = text})
-end
+--function printNotify(text)
+--    naughty.notify({text = text})
+--end
 
 function getHostName()
 	local f = io.popen("/bin/hostname")

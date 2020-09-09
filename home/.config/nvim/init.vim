@@ -43,7 +43,12 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mhinz/vim-signify'
 
 	" lsp
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'mattn/vim-lsp-settings'
+
+	" autocomplete
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 	" debbuger
 	"Plug 'puremourning/vimspector'
@@ -111,10 +116,33 @@ let g:session_directory='~/.config/nvim/sessions'
 nnoremap <A-Left>	:tabprevious<CR>
 nnoremap <A-Right>	:tabnext<CR>
 
+inoremap <A-Left>	<esc>:tabprevious<CR>
+inoremap <A-Right>	<esc>:tabnext<CR>
+
 nnoremap <Esc>[1;3C	:tabnext<CR>
 nnoremap <Esc>[1;3D	:tabprevious<CR>
 
 nnoremap <leader>tt :tabnew<CR>
+
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+
+inoremap <A-1> <esc>1gt
+inoremap <A-2> <esc>2gt
+inoremap <A-3> <esc>3gt
+inoremap <A-4> <esc>4gt
+inoremap <A-5> <esc>5gt
+inoremap <A-6> <esc>6gt
+inoremap <A-7> <esc>7gt
+inoremap <A-8> <esc>8gt
+inoremap <A-9> <esc>9gt
 
 "===========================================================================
 " syntax highlighting
@@ -164,30 +192,39 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "packadd! vimspector
 
 "===========================================================================
-" coc.vim
+" vim-lsp
 "===========================================================================
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-nmap <silent> <leader>li <Plug>(coc-implementation)
-nmap <silent> <leader>lr <Plug>(coc-references)
+"let g:lsp_highlights_enabled	= 0
+let g:lsp_virtual_text_enabled	= 0
+highlight link LspWarningText	GruvboxYellowSign
+highlight link LspErrorText		GruvboxRedSign
 
-nmap <silent> <leader>l[ <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>l] <Plug>(coc-diagnostic-next)
+highlight link LspWarningHighlight	GruvboxYellowSign
+highlight link LspErrorHighlight	GruvboxRedSign
 
-nmap <leader>lr	<Plug>(coc-rename)
+nmap <silent> <leader>lot :LspPeekTypeDefinition<CR>
+nmap <silent> <leader>loi :LspPeekImplementation<CR>
+nmap <silent> <leader>lor :LspReferences<CR>
 
-xmap <leader>lf	<Plug>(coc-format-selected)
-nmap <leader>lf	<Plug>(coc-format-selected)
+nmap <silent> <leader>l[ :LspPreviousDiagnostic<CR>
+nmap <silent> <leader>l] :LspNextDiagnostic<CR>
 
-xmap <leader>la	<Plug>(coc-codeaction-selected)
-nmap <leader>la	<Plug>(coc-codeaction-selected)
+nmap <silent> <leader>ld :LspDefinition<CR>
+
+nmap <leader>lr	:LspRename<CR>
+nmap <leader>lh	:LspHover<CR>
+
+xmap <leader>lf	:LspDocumentRangeFormat<CR>
+nmap <leader>lf	:LspDocumentFormat<CR>
+
+nmap <leader>la	:LspCodeAction<CR>
+nmap <leader>li	:LspDocumentDiagnostics<CR>
 
 "===========================================================================
 " completion
 "===========================================================================
 set completeopt=menu,menuone,preview,noselect,noinsert
 
-inoremap <expr> <Tab>	pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab>	pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>	pumvisible() ? "\<C-y>" : "\<cr>"
-
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"

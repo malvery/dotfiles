@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>arc-night</name>
+    <name>Mint</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -59,7 +59,7 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Ubuntu</name>
-      <size>16</size>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -68,7 +68,7 @@
     </font>
     <font place="InactiveWindow">
       <name>Ubuntu</name>
-      <size>16</size>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -77,7 +77,7 @@
     </font>
     <font place="MenuHeader">
       <name>Ubuntu</name>
-      <size>18</size>
+      <size>14</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -86,7 +86,7 @@
     </font>
     <font place="MenuItem">
       <name>Ubuntu</name>
-      <size>18</size>
+      <size>14</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -95,7 +95,7 @@
     </font>
     <font place="ActiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>16</size>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -104,7 +104,7 @@
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Ubuntu</name>
-      <size>16</size>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -121,7 +121,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>8</number>
+    <number>6</number>
     <greedy>True</greedy>
     <firstdesk>1</firstdesk>
     <names>
@@ -135,7 +135,7 @@
       <name>Desktop 8</name>
       <name>Desktop 9</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -309,12 +309,12 @@
     <!-- desktop switching extra hotkeys -->
     <keybind key="W-s">
       <action name="GoToDesktop">
-        <to>8</to>
+        <to>6</to>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="GoToDesktop">
-        <to>7</to>
+        <to>5</to>
       </action>
     </keybind>
     <keybind key="W-Escape">
@@ -440,7 +440,7 @@
         <height>50%</height>
       </action>
     </keybind>
-    <keybind key="W-S-Return">
+    <!--<keybind key="W-S-Return">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
         <x>center</x>
@@ -448,7 +448,7 @@
         <width>60%</width>
         <height>80%</height>
       </action>
-    </keybind>
+    </keybind>-->
     <!-- multimedia keys -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
@@ -461,6 +461,11 @@
       </action>
     </keybind>
     <!-- run applications keys -->
+    <keybind key="C-grave">
+      <action name="Execute">
+        <command>~/src/dotfiles/bin/gpaste-menu</command>
+      </action>
+    </keybind>
     <keybind key="W-r">
       <action name="Execute">
         <command>rofi -show run</command>
@@ -473,7 +478,7 @@
     </keybind>
     <keybind key="W-S-F12">
       <action name="Execute">
-        <command>slock</command>
+        <command>xsecurelock.sh</command>
       </action>
     </keybind>
     <keybind key="W-S-p">
@@ -481,9 +486,9 @@
         <command>pcmanfm</command>
       </action>
     </keybind>
-    <keybind key="W-S-t">
+    <keybind key="W-S-Return">
       <action name="Execute">
-        <command>lxterminal</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="C-less">
@@ -497,7 +502,7 @@
     <!-- number of pixels the mouse must move before a drag begins -->
     <doubleClickTime>200</doubleClickTime>
     <!-- in milliseconds (1000 = 1 second) -->
-    <screenEdgeWarpTime>400</screenEdgeWarpTime>
+    <screenEdgeWarpTime>0</screenEdgeWarpTime>
     <!-- Time before changing desktops when the pointer touches the edge of the
        screen while moving a window, in milliseconds (1000 = 1 second).
        Set this to 0 to disable warping -->
@@ -540,7 +545,7 @@
         <action name="Move"/>
       </mousebind>
       <mousebind button="Left" action="DoubleClick">
-        <action name="ToggleMaximize"/>
+        <action name="ToggleMaximizeFull"/>
       </mousebind>
       <mousebind button="Up" action="Click">
         <action name="if">
@@ -767,30 +772,14 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
-    <application class="*">
-      <decor>no</decor>
-    </application>
-    <application role="app">
-      <decor>yes</decor>
-      <maximized>false</maximized>
-      <desktop>all</desktop>
-    </application>
-    <application type="dialog">
-      <decor>yes</decor>
-      <maximized>false</maximized>
-    </application>
-    <application role="pop-up">
-      <decor>yes</decor>
-      <maximized>false</maximized>
-    </application>
     <application class="TelegramDesktop">
-      <desktop>7</desktop>
+      <desktop>6</desktop>
     </application>
     <application class="Slack">
-      <desktop>8</desktop>
+      <desktop>6</desktop>
     </application>
     <application class="Thunderbird">
-      <desktop>8</desktop>
+      <desktop>6</desktop>
     </application>
   </applications>
 </openbox_config>

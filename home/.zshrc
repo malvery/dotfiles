@@ -14,6 +14,7 @@ alias c="clear"
 alias q="exit"
 alias ..='cd ..'
 alias bc='bc -ql'
+alias xo='xdg-open'
 
 alias mc='mc -d'
 alias mnt='cd /media'
