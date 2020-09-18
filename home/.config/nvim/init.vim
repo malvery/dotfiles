@@ -51,7 +51,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 	" debbuger
-	"Plug 'puremourning/vimspector'
+	Plug 'puremourning/vimspector'
 
 call plug#end()
 
@@ -188,7 +188,7 @@ imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
 "===========================================================================
 " debbuger
 "===========================================================================
-"let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 "packadd! vimspector
 
 "===========================================================================

@@ -222,7 +222,7 @@ function initAutostart()
 		'dunst',
 		'blueman-applet',
 		'thunderbird',
-		APPS.terminal .. ' -e ~/src/dotfiles/bin/tmux-s-main.sh',
+		APPS.terminal .. ' -e tmux-session-main.sh',
 	}
 	
 	run_list_with_sleep = {
