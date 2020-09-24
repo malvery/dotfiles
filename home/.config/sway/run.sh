@@ -9,7 +9,6 @@ export XDG_CURRENT_DESKTOP=sway
 set -E
 sway 
 
-#killall redshift 
 killall clipman 
 libinput-gestures-setup stop
 

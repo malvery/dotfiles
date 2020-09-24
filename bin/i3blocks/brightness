@@ -13,7 +13,7 @@ elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
 	sleep ${SLEEP}
 
 elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-	pkill -USR1 '^redshift$'
+	pkill -USR1 '^gammastep$'
 
 elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
 	if test -f ${IDLE_BLOCK}; then
