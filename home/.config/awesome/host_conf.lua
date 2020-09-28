@@ -5,6 +5,7 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 local theme_assets = require("beautiful.theme_assets")
+local cyclefocus = require('cyclefocus')
 
 -- generate and load applications menu
 local os = require("os")
@@ -140,6 +141,14 @@ function getHotkeys()
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
 			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
+			-- alt-tab switcher
+			cyclefocus.key({ "Mod1", }, "Tab", {
+				cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag },
+				focus_clients = false,
+				show_clients = false,
+				keys = {'Tab', 'ISO_Left_Tab'}
+			}),
+
 			-- clipboard
 			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
 	)
@@ -209,6 +218,16 @@ function getClientRules(client_rules)
 
 	return client_rules
 end
+
+-- ############################################################################################
+-- Fixes
+client.connect_signal("request::geometry", function(c)
+	if client.focus then
+		if not client.focus.fullscreen then
+			client.focus.border_width = beautiful.border_width
+		end
+	end
+end)
 
 -- ############################################################################################
 -- Autostart
