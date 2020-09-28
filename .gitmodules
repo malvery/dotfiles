@@ -1,6 +1,3 @@
-[submodule "home/.config/awesome/home/.config/awesome/cyclefocus"]
-	path = home/.config/awesome/home/.config/awesome/cyclefocus
-	url = https://github.com/blueyed/awesome-cyclefocus
 [submodule "home/.config/awesome/cyclefocus"]
 	path = home/.config/awesome/cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
