@@ -116,7 +116,7 @@ end
 function getHotkeys()
 		hotkeys = gears.table.join(
 			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')			end),
-			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show windowcd')		end),
+			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show window')		end),
 			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager,	false)	end),
 			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager,	false)	end),
 
