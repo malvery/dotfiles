@@ -5,7 +5,6 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
 local theme_assets = require("beautiful.theme_assets")
-local cyclefocus = require('cyclefocus')
 
 -- generate and load applications menu
 local os = require("os")
@@ -142,12 +141,7 @@ function getHotkeys()
 			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- alt-tab switcher
-			cyclefocus.key({ "Mod1", }, "Tab", {
-				cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag },
-				focus_clients = false,
-				show_clients = false,
-				keys = {'Tab', 'ISO_Left_Tab'}
-			}),
+			awful.key({ "Mod1",			},	"Tab",	function () awful.spawn.with_shell('~/src/dotfiles/bin/rofi-windows-switcher.sh')	end),
 
 			-- clipboard
 			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
