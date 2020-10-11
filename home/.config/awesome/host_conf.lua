@@ -144,7 +144,8 @@ function getHotkeys()
 			awful.key({ "Mod1",			},	"Tab",	function () awful.spawn.with_shell('~/src/dotfiles/bin/rofi-windows-switcher.sh')	end),
 
 			-- clipboard
-			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
+			--awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
+			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('clipmenu') end)
 	)
 
 	return hotkeys
@@ -176,7 +177,8 @@ function getClientRules(client_rules)
 		"Spotify",
 		"qBittorrent",
 		"mpv",
-		"Skype"
+		"Skype",
+		"explorer.exe"
 	}
 	float_apps_top = {
 		"Galculator",
@@ -229,7 +231,8 @@ function initAutostart()
 	run_list = {
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-		'/usr/lib/gpaste/gpaste-daemon',
+		--'/usr/lib/gpaste/gpaste-daemon',
+		'clipmenud',
 		'light -N 1',
 		'nm-applet',
 		'dunst',
