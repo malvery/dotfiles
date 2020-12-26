@@ -3,7 +3,8 @@ setxkbmap -layout "us,ru" -option grp:caps_toggle &
 
 # DE settings
 xsettingsd &
-nitrogen --restore &
+#nitrogen --restore &
+hsetroot -solid "#1C1C1C" &
 light -N 1 &
 dunst &
 
@@ -14,13 +15,13 @@ fi
 
 xss-lock -- xsecurelock.sh &
 libinput-gestures-setup start &
-/usr/lib/gpaste/gpaste-daemon &
+clipmenud &
 
-xfce4-panel -d &
-gammastep-indicator &
+#xfce4-panel &
+#gammastep-indicator &
 orcsome &
 
-alacritty -e ~/src/dotfiles/bin/tmux-s-main.sh &
+alacritty -e tmux-session-main.sh &
 telegram-desktop &
 thunderbird &
 

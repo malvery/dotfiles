@@ -32,7 +32,7 @@ alias bc='bc -ql'
 alias xo='xdg-open'
 
 alias mc='mc -d'
-alias mnt='cd /media'
+alias mnt='cd /run/media/${USER}/'
 
 alias scat='sudo cat'
 alias svim='sudo vim'

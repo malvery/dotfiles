@@ -124,7 +124,6 @@ bindsym $mod+Shift+"braceright" move workspace to output right
 ###############################################################################
 
 set $file-manager "pcmanfm"
-#set $lock-manager "i3lock -c 222f42"
 set $lock-manager "xsecurelock.sh"
 
 # run apps
@@ -146,7 +145,7 @@ bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 
 # clipboard
-bindsym Ctrl+grave exec --no-startup-id "~/src/dotfiles/bin/gpaste-menu"
+bindsym Ctrl+grave exec --no-startup-id "clipmenu"
 
 ###############################################################################
 
@@ -224,7 +223,8 @@ bar {
 		XKB_MODULE="i3block kbdd" \
 		py3status -c ~/.config/sway/py3status.conf
 
-	font pango:	Ubuntu Condensed Bold 9.5
+	font pango:	Ubuntu Condensed Bold 10
+	height	23
 	position	top
 	colors {
 		background #222222

@@ -1,4 +1,0 @@
-rofi.font:		ubuntu medium 14
-rofi.modi:		run,drun,windowcd,window
-rofi.terminal:	termite
-rofi.kb-cancel:	Escape,Control+g,Control+bracketleft,MouseMiddle

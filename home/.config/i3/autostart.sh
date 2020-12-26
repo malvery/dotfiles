@@ -1,18 +1,18 @@
 #!/bin/bash
 light -N 1 &
 xsettingsd &
-nitrogen --restore &
+hsetroot -solid "#1C1C1C" &
 dunst &
 
 xss-lock -- xsecurelock.sh & 
 libinput-gestures-setup start &
-/usr/lib/gpaste/gpaste-daemon &
+clipmenud &
+alttab &
 
 blueman-applet &
-nm-applet &
-redshift-gtk &
+#nm-applet &
 
-alacritty -e tmux-s-main.sh &
+alacritty -e tmux-session-main.sh &
 thunderbird &
 telegram-desktop &
 

@@ -141,7 +141,7 @@ function getHotkeys()
 			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- alt-tab switcher
-			awful.key({ "Mod1",			},	"Tab",	function () awful.spawn.with_shell('~/src/dotfiles/bin/rofi-windows-switcher.sh')	end),
+			--awful.key({ "Mod1",			},	"Tab",	function () awful.spawn.with_shell('~/src/dotfiles/bin/rofi-windows-switcher.sh')	end),
 
 			-- clipboard
 			--awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
@@ -231,18 +231,19 @@ function initAutostart()
 	run_list = {
 		'xss-lock -- ' .. APPS.lock_manager,
 		'libinput-gestures-setup start',
-		--'/usr/lib/gpaste/gpaste-daemon',
 		'clipmenud',
 		'light -N 1',
-		'nm-applet',
+		--'nm-applet',
 		'dunst',
 		'blueman-applet',
 		'thunderbird',
+		'firefox',
 		APPS.terminal .. ' -e tmux-session-main.sh',
 	}
 	
 	run_list_with_sleep = {
-		"telegram-desktop",
+		'telegram-desktop',
+		'alttab',
 	}
 
     -- run always
