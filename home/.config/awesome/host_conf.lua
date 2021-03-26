@@ -140,9 +140,6 @@ function getHotkeys()
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
 			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
-			-- alt-tab switcher
-			--awful.key({ "Mod1",			},	"Tab",	function () awful.spawn.with_shell('~/src/dotfiles/bin/rofi-windows-switcher.sh')	end),
-
 			-- clipboard
 			--awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
 			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('clipmenu') end)
@@ -233,7 +230,6 @@ function initAutostart()
 		'libinput-gestures-setup start',
 		'clipmenud',
 		'light -N 1',
-		--'nm-applet',
 		'dunst',
 		'blueman-applet',
 		'thunderbird',

@@ -1,7 +1,13 @@
 #!/bin/bash
+hsetroot -solid "#1C1C1C" &
+
+# exit if NVIDIA_SESSION
+if [[ -v NVIDIA_SESSION ]]; then
+	exit
+fi
+
 light -N 1 &
 xsettingsd &
-hsetroot -solid "#1C1C1C" &
 dunst &
 
 xss-lock -- xsecurelock.sh & 

@@ -145,7 +145,7 @@ end
 
 return {
 	hostname	=	getHostName(),
-	printNotify	=	printNotify,
+	--printNotify	=	printNotify,
 	runOnce		=	runOnce,
 	backlight	=	backlight,
 	volume		=	volume,
