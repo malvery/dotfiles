@@ -33,7 +33,7 @@ end
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+	beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 	beautiful.useless_gap	= 1
 
 	local color_f = "#285577"
@@ -42,7 +42,7 @@ function initTheme()
 	local color_u = "#DC510C"
 
 	-- urgency
-	beautiful.fg_urgent  = beautiful.bg_focus
+	--beautiful.fg_urgent  = beautiful.bg_focus
 	beautiful.bg_urgent  = color_u
 
 	-- borders
@@ -156,6 +156,7 @@ function getLayouts()
 
 	layouts[2] = awful.layout.suit.max
 	layouts[3] = awful.layout.suit.max
+	layouts[8] = awful.layout.suit.floating
 
 	return layouts
 end
