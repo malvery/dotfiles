@@ -4,4 +4,5 @@ export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
 export XSECURELOCK_PASSWORD_PROMPT=asterisks
 export XSECURELOCK_FONT="Hack:style=Regular:size=12"
 
+xset dpms force off
 /usr/bin/xsecurelock

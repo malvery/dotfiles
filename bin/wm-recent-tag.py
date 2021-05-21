@@ -16,7 +16,7 @@ class RecentSpace:
 
 
 RECENT_SPACE = RecentSpace()
-PROCESS_NAME = "wm-recent-tag-switcher"
+PROCESS_NAME = "wm-recent-tag"
 ewmh = EWMH()
 
 

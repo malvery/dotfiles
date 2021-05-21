@@ -235,7 +235,7 @@ function initAutostart()
 		'blueman-applet',
 		'thunderbird',
 		'firefox',
-		APPS.terminal .. ' -e tmux-session-main.sh',
+		APPS.terminal .. ' -e tmux-workspace.sh',
 	}
 	
 	run_list_with_sleep = {

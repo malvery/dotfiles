@@ -13,5 +13,8 @@ export CM_LAUNCHER=rofi
 
 picom &
 x11-fix-clipboard.sh &
+
+T=600; xset s $T $T dpms $T $T $T
 exec awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
+
 pkill clipmenud

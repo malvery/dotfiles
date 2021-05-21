@@ -169,6 +169,8 @@ nmap <F1>  <esc>:NERDTreeToggle<CR>
 vmap <F1>  <esc>:NERDTreeToggle<CR>
 imap <F1>  <esc>:NERDTreeToggle<CR>
 
+let NERDTreeShowHidden=1
+
 "===========================================================================
 " commenter
 "===========================================================================
@@ -194,8 +196,9 @@ let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 "===========================================================================
 " vim-lsp
 "===========================================================================
-"let g:lsp_highlights_enabled	= 0
-let g:lsp_virtual_text_enabled	= 0
+let g:lsp_diagnostics_highlights_enabled	= 0
+let g:lsp_diagnostics_virtual_text_enabled	= 0
+
 highlight link LspWarningText	GruvboxYellowSign
 highlight link LspErrorText		GruvboxRedSign
 
