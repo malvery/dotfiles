@@ -11,6 +11,11 @@ export CM_MAX_CLIPS=100
 export CM_HISTLENGTH=15
 export CM_LAUNCHER=rofi
 
+export XSECURELOCK_NO_COMPOSITE=1
+export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
+export XSECURELOCK_PASSWORD_PROMPT=asterisks
+export XSECURELOCK_FONT="Hack:style=Regular:size=12"
+
 picom &
 x11-fix-clipboard.sh &
 

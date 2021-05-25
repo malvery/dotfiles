@@ -20,7 +20,8 @@ local HOSTNAME = helpers.hostname
 
 local APPS = {
 	["terminal"]		=	"alacritty",
-	["lock_manager"]	=	"xsecurelock.sh",
+	["lock_manager"]	=	"xsecurelock",
+	["lock_command"]	=	"loginctl lock-session",
 	["file_manager"]	=	"pcmanfm",
 	["browser"]			=	"firefox",
 }
@@ -103,7 +104,7 @@ function getMenu()
 			{"Applications",	xdgmenu},
 			{"File Manager",	APPS.file_manager},
 			{"System",			exit_menu},
-			{"Lock Screen",		APPS.lock_manager}
+			{"Lock Screen",		APPS.lock_command}
 		}
 	})
 
@@ -117,7 +118,7 @@ function getHotkeys()
 			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')			end),
 			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show window')		end),
 			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager,	false)	end),
-			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_manager,	false)	end),
+			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_command,	false)	end),
 
 			awful.key({	}, "XF86AudioRaiseVolume",	function () helpers.volume("inc")		end),
 			awful.key({	}, "XF86AudioLowerVolume",	function () helpers.volume("dec")		end),
