@@ -10,7 +10,7 @@ light -N 1 &
 xsettingsd &
 dunst &
 
-xss-lock -- xsecurelock.sh & 
+xss-lock -- xsecurelock & 
 libinput-gestures-setup start &
 clipmenud &
 alttab &
@@ -18,7 +18,7 @@ alttab &
 blueman-applet &
 #nm-applet &
 
-alacritty -e tmux-session-main.sh &
+alacritty -e tmux-workspace.sh &
 thunderbird &
 telegram-desktop &
 

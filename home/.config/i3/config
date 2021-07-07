@@ -124,7 +124,7 @@ bindsym $mod+Shift+"braceright" move workspace to output right
 ###############################################################################
 
 set $file-manager "pcmanfm"
-set $lock-manager "xsecurelock.sh"
+set $lock-manager "loginctl lock-session"
 
 # run apps
 bindsym $mod+Shift+p	exec --no-startup-id $file-manager
