@@ -1,10 +1,9 @@
---local naughty = require("naughty")
+local naughty = require("naughty")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers = require("helpers")
-local theme_assets = require("beautiful.theme_assets")
 
 -- generate and load applications menu
 local os = require("os")
@@ -116,7 +115,7 @@ end
 function getHotkeys()
 		hotkeys = gears.table.join(
 			awful.key({ modkey,			},	"r",	function () awful.spawn('rofi -show run')			end),
-			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show window')		end),
+			awful.key({ modkey,	"Shift"	},	"d",	function () awful.spawn('rofi -show drun')			end),
 			awful.key({ modkey,	"Shift"	},	"p",	function () awful.spawn(APPS.file_manager,	false)	end),
 			awful.key({ modkey,	"Shift"	},	"F12",	function () awful.spawn(APPS.lock_command,	false)	end),
 
@@ -139,11 +138,10 @@ function getHotkeys()
 			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),
 
 			awful.key({ modkey,	"Shift"	}, "/",		hotkeys_popup.show_help),
-			--awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
+			awful.key({ 'Ctrl',			}, "space",	naughty.destroy_all_notifications),
 
 			-- clipboard
-			--awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('~/src/dotfiles/bin/gpaste-menu') end)
-			awful.key({ 'Ctrl',			}, "grave",	function () awful.spawn.with_shell('clipmenu') end)
+			awful.key({ modkey,			}, "grave",	function () awful.spawn.with_shell('clipmenu') end)
 	)
 
 	return hotkeys
@@ -158,6 +156,7 @@ function getLayouts()
 	layouts[2] = awful.layout.suit.max
 	layouts[3] = awful.layout.suit.max
 	layouts[8] = awful.layout.suit.floating
+	layouts[9] = awful.layout.suit.floating
 
 	return layouts
 end
@@ -170,24 +169,22 @@ function getClientRules(client_rules)
 		"Nm-connection-editor",
 		"Vpnui",
 		"Pavucontrol",
-		"Nitrogen",
 		"Transmission-gtk",
 		"Blueman-manager",
 		"Spotify",
 		"qBittorrent",
 		"mpv",
-		"Skype",
 		"explorer.exe"
 	}
 	float_apps_top = {
-		"Galculator",
-		"flameshot",
+		"Shutter",
 		"Gcolor3"
 	}
 
 	-- host additional settings
 	client_rules = gears.table.join(client_rules, {
-		{rule = {class = "TelegramDesktop"}, properties = {screen = 1, tag = "9"}}
+		{rule = {class = "TelegramDesktop"},	properties = {screen = 1, tag = "9"}},
+		{rule = {class = "Thunderbird"},		properties = {screen = 1, tag = "9"}}
 	})
 	
 	-- set window rules
@@ -201,14 +198,6 @@ function getClientRules(client_rules)
 
 		-- set on-top
 		{rule_any =	{class = float_apps_top}, properties = {ontop = true}},
-
-		-- fix for chromium
-		--{rule = {class = "Chromium"}, properties = {floating = true}},
-		--{rule = {class = "Chromium", role = "pop-up"}, properties = {titlebars_enabled = true}},
-		
-		-- thunderbird
-		{rule = {class = "Thunderbird"}, properties = {screen = 1, tag = "9"}},
-
 	})
 
 	return client_rules
@@ -232,8 +221,9 @@ function initAutostart()
 		'libinput-gestures-setup start',
 		'clipmenud',
 		'light -N 1',
-		'dunst',
+		--'dunst',
 		'blueman-applet',
+		'pasystray',
 		'thunderbird',
 		'firefox',
 		APPS.terminal .. ' -e tmux-workspace.sh',
