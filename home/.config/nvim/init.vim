@@ -123,6 +123,10 @@ nnoremap <Esc>[1;3C	:tabnext<CR>
 nnoremap <Esc>[1;3D	:tabprevious<CR>
 
 nnoremap <leader>tt :tabnew<CR>
+nmap <leader>p "0p
+vmap <leader>p "0p
+nmap <leader>P "0P
+vmap <leader>P "0P
 
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt

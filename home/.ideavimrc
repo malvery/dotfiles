@@ -2,3 +2,12 @@ nnoremap yy yy"+yy
 vnoremap y ygv"+y
 
 map <Home> ^
+
+map <leader>ef :action Find<CR>
+map <leader>er :action Replace<CR>
+
+nmap <leader>p "0p
+vmap <leader>p "0p
+nmap <leader>P "0P
+vmap <leader>P "0P
+
