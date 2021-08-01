@@ -16,6 +16,7 @@ clipmenud &
 alttab &
 
 blueman-applet &
+pasystray &
 #nm-applet &
 
 alacritty -e tmux-workspace.sh &

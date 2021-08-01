@@ -18,7 +18,7 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+r			exec --no-startup-id rofi -show run 
-bindsym $mod+Shift+d	exec --no-startup-id rofi -show windowcd
+bindsym $mod+Shift+d	exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h	focus left
@@ -145,22 +145,20 @@ bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 
 # clipboard
-bindsym Ctrl+grave exec --no-startup-id "clipmenu"
+bindsym $mod+grave exec --no-startup-id "clipmenu"
 
 ###############################################################################
 
 # set apps workspace
-assign [class="Slack"] 9
+#assign [class="Slack"] 9
 assign [class="Thunderbird"] 9
 assign [class="TelegramDesktop"] 9
 
 # set floating apps
 for_window [class="Qiv"]					floating enable
 for_window [class="Gcolor3"]				floating enable
-for_window [class="Nitrogen"]				floating enable
 for_window [class="Pavucontrol"]			floating enable
 for_window [class="Blueman-manager"]		floating enable
-for_window [class="Galculator"]				floating enable
 for_window [class="Nm-connection-editor"]	floating enable
 
 ###############################################################################

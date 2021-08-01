@@ -4,10 +4,9 @@ Xft.hintstyle:	hintslight
 Xft.rgba:		rgb
 Xft.antialias:	true
 Xft.lcdfilter:	lcddefault
-Xft.dpi:		116
-!Xft.dpi:		142
-!Xcursor.theme:	Vanilla-DMZ-AA
-!Xcursor.size:	16
+Xft.dpi:		112
+Xcursor.theme:	Vanilla-DMZ-AA
+Xcursor.size:	16
 
 !******************************************************
 alttab.tile.geometry:	128x86

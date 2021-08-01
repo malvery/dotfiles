@@ -1,11 +1,12 @@
-Xft/DPI 120832
+Xft/DPI 114688
 Xft/Hinting 1
 Xft/Antialias 1
 Xft/HintStyle "hintslight"
 Xft/RGBA "rgb"
 
 Net/IconThemeName "gnome"
-Net/ThemeName "Yaru-dark"
+Net/ThemeName "Mint-Y-Dark-Red"
+#Net/ThemeName "Arc-Dark"
 
 Gtk/FontName "Ubuntu 11"
 Gtk/MonospaceFontName "Hack 11"

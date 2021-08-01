@@ -75,7 +75,7 @@ function initTheme()
 	beautiful.border_width	= 3
 	beautiful.wibar_height	= 20
 	beautiful.notification_max_width=350
-	beautiful.notification_max_height = 100
+	--beautiful.notification_max_height = 100
 	beautiful.systray_icon_spacing = 2
 
 	if HOSTNAME == "ux533f" then
