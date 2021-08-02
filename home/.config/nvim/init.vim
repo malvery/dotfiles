@@ -1,76 +1,51 @@
-"===========================================================================
-" vim-plug
-"===========================================================================
-
-if has('nvim')
-	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
-
-else
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	endif
+" vim-plug =================================================================
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
 call plug#begin('~/.config/nvim/plugged')
-	" theme
-	Plug 'morhetz/gruvbox'
+	" Plug 'morhetz/gruvbox'
+	Plug 'navarasu/onedark.nvim'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'rmagatti/auto-session'
 
-	" syntax highlighting
-	Plug 'sheerun/vim-polyglot'
-	Plug 'mtdl9/vim-log-highlighting'
+	Plug 'nvim-lua/popup.nvim'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
 
-	" buffers explorer
-	Plug 'jlanzarotta/bufexplorer'
-
-	" sessions
-	Plug 'xolox/vim-misc'
-	Plug 'xolox/vim-session'
-
-	" file navigator
-	Plug 'scrooloose/nerdtree'
-
-	" commenter
-	Plug 'scrooloose/nerdcommenter'
-
-	" git integration
+	Plug 'phaazon/hop.nvim'
+	Plug 'b3nj5m1n/kommentary'
 	Plug 'mhinz/vim-signify'
 
-	" lsp
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'mattn/vim-lsp-settings'
-
-	" autocomplete
-	Plug 'prabirshrestha/asyncomplete.vim'
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-	" debbuger
-	"Plug 'puremourning/vimspector'
-
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
-"===========================================================================
-" theme
-"===========================================================================
+" theme ====================================================================
 if &t_Co == 256 || has("gui_running")
-	set t_Co=256
-	set background=dark
-	let g:gruvbox_contrast_dark='hard'
-	colorscheme gruvbox
-
+	if has('termguicolors')
+		set termguicolors
+	endif
+	
+	" gruvbox
+	"set t_Co=256
+	"set background=dark
+	"let g:gruvbox_contrast_dark='hard'
+	"let g:gruvbox_improved_warnings=1
+	"let g:gruvbox_bold=0
+	"colorscheme gruvbox
+	
+	" onedark
+	let g:onedark_italic_comment = 0
+	let g:onedark_transparent_background = 1
+	colorscheme onedark
 else
 	colorscheme default
 endif
 
-"===========================================================================
-" options
-"===========================================================================
+" built-in options =========================================================
 set nocompatible
 set autoindent
 set smartindent
@@ -101,28 +76,15 @@ if &filetype==""
 	setfiletype conf
 endif
 
-"===========================================================================
-" sessions
-"===========================================================================
-let g:session_directory='~/.config/nvim/sessions'
-
-"===========================================================================
-" aliases
-"===========================================================================
-
-"===========================================================================
-" hotkeys
-"===========================================================================
+" hotkeys ==================================================================
 nnoremap <A-Left>	:tabprevious<CR>
 nnoremap <A-Right>	:tabnext<CR>
-
 inoremap <A-Left>	<esc>:tabprevious<CR>
 inoremap <A-Right>	<esc>:tabnext<CR>
-
 nnoremap <Esc>[1;3C	:tabnext<CR>
 nnoremap <Esc>[1;3D	:tabprevious<CR>
-
 nnoremap <leader>tt :tabnew<CR>
+
 nmap <leader>p "0p
 vmap <leader>p "0p
 nmap <leader>P "0P
@@ -148,88 +110,16 @@ inoremap <A-7> <esc>7gt
 inoremap <A-8> <esc>8gt
 inoremap <A-9> <esc>9gt
 
-"===========================================================================
-" syntax highlighting
-"===========================================================================
-syntax enable
-autocmd BufRead,BufNewFile *.log set syntax=log
+nmap <F1> <esc>:Telescope file_browser<CR>
+vmap <F1> <esc>:Telescope file_browser<CR>
+imap <F1> <esc>:Telescope file_browser<CR>
 
-let g:session_autoload = 'no'
-let g:session_autosave = 'yes'
+nmap <F2> <esc>:Telescope buffers<cr>
+vmap <F2> <esc>:Telescope buffers<cr>
+imap <F2> <esc>:Telescope buffers<cr>
 
-"===========================================================================
-" buffer explorer
-"===========================================================================
-nmap <F2> <esc>:BufExplorer<cr>
-vmap <F2> <esc>:BufExplorer<cr>
-imap <F2> <esc>:BufExplorer<cr>
+nnoremap <leader>ss :HopWord<CR>
+nnoremap <leader>sc :HopChar2<CR>
 
-"===========================================================================
-" file navigator
-"===========================================================================
-let NERDTreeQuitOnOpen=1
-
-nmap <F1>  <esc>:NERDTreeToggle<CR>
-vmap <F1>  <esc>:NERDTreeToggle<CR>
-imap <F1>  <esc>:NERDTreeToggle<CR>
-
-let NERDTreeShowHidden=1
-
-"===========================================================================
-" commenter
-"===========================================================================
-let g:NERDCommentEmptyLines=1
-let g:NERDDefaultAlign = 'left'
-
-nmap <C-_>	<Plug>NERDCommenterToggle<CR>
-vmap <C-_>	<Plug>NERDCommenterToggle<CR>
-imap <C-_>	<esc><Plug>NERDCommenterToggle<CR>
-
-"if match($TERM, "linux")!=-1
-"    nmap <BS>	<Plug>NERDCommenterToggle<CR>
-"    vmap <BS>	<Plug>NERDCommenterToggle<CR>
-"    imap <BS>	<esc><Plug>NERDCommenterToggle<CR>
-"endif
-
-"===========================================================================
-" debbuger
-"===========================================================================
-"let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-"packadd! vimspector
-
-"===========================================================================
-" vim-lsp
-"===========================================================================
-let g:lsp_diagnostics_highlights_enabled	= 0
-let g:lsp_diagnostics_virtual_text_enabled	= 0
-
-highlight link LspWarningText	GruvboxYellowSign
-highlight link LspErrorText		GruvboxRedSign
-
-highlight link LspWarningHighlight	GruvboxYellowSign
-highlight link LspErrorHighlight	GruvboxRedSign
-
-nmap <silent> <leader>lot :LspPeekTypeDefinition<CR>
-nmap <silent> <leader>loi :LspPeekImplementation<CR>
-nmap <silent> <leader>lor :LspReferences<CR>
-
-nmap <silent> <leader>l[ :LspPreviousDiagnostic<CR>
-nmap <silent> <leader>l] :LspNextDiagnostic<CR>
-
-nmap <silent> <leader>ld :LspDefinition<CR>
-
-nmap <leader>lr	:LspRename<CR>
-nmap <leader>lh	:LspHover<CR>
-
-xmap <leader>lf	:LspDocumentRangeFormat<CR>
-nmap <leader>lf	:LspDocumentFormat<CR>
-
-nmap <leader>la	:LspCodeAction<CR>
-nmap <leader>li	:LspDocumentDiagnostics<CR>
-
-"===========================================================================
-" completion
-"===========================================================================
-set completeopt=menu,menuone,preview,noselect,noinsert
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
+" lua config ===============================================================
+lua require('init')
