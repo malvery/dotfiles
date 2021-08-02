@@ -11,3 +11,9 @@ vmap <leader>p "0p
 nmap <leader>P "0P
 vmap <leader>P "0P
 
+set easymotion
+map <leader>sc <Plug>(easymotion-f)
+map <leader>sC <Plug>(easymotion-F)
+
+map <leader>ss <Plug>(easymotion-w)
+map <leader>sS <Plug>(easymotion-b)
