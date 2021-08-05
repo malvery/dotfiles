@@ -33,26 +33,8 @@ end
 -- ############################################################################################
 -- Theme
 function initTheme()
-	beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+	beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 	beautiful.useless_gap	= 1
-
-	local color_f = "#285577"
-	local color_n = "#5f676a"
-	--local color_u = "#FF5500"
-	local color_u = "#DC510C"
-
-	-- urgency
-	beautiful.fg_urgent  = beautiful.bg_focus
-	beautiful.bg_urgent  = color_u
-
-	-- borders
-	--beautiful.border_focus = color_f
-	--beautiful.border_normal = color_n
-	
-	-- notifications
-	beautiful.notification_bg = color_f
-	beautiful.notification_fg = "#ffffff"
-	beautiful.notification_border_color = beautiful.fg_normal
 
 	-- menu
 	beautiful.menu_border_width	= 1
@@ -75,12 +57,7 @@ function initTheme()
 	beautiful.border_width	= 3
 	beautiful.wibar_height	= 20
 	beautiful.notification_max_width=350
-	--beautiful.notification_max_height = 100
 	beautiful.systray_icon_spacing = 2
-
-	if HOSTNAME == "ux533f" then
-		beautiful.xresources.set_dpi(130)
-	end
 end
 
 -- ############################################################################################

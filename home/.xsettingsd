@@ -5,8 +5,7 @@ Xft/HintStyle "hintslight"
 Xft/RGBA "rgb"
 
 Net/IconThemeName "gnome"
-Net/ThemeName "Mint-Y-Dark-Red"
-#Net/ThemeName "Arc-Dark"
+Net/ThemeName "Qogir-dark"
 
 Gtk/FontName "Ubuntu 11"
 Gtk/MonospaceFontName "Hack 11"
