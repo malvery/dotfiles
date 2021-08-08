@@ -1,0 +1,30 @@
+version: 2
+root-markers:
+  - .git/
+lint-debounce: 1s
+# log-file: /home/malvery/output.log
+# log-level: 1
+
+tools:
+  json-jq: &json-jq
+    format-command: 'jq .'
+    lint-command: 'jq .'
+
+  sh-shfmt: &sh-shfmt
+    format-command: 'shfmt -ci -s -bn'
+    format-stdin: true
+
+  yaml-yamllint: &yaml-yamllint
+    lint-command: 'yamllint -f parsable -'
+    lint-stdin: true
+
+languages:
+  json:
+    - <<: *json-jq
+
+  sh:
+    - <<: *sh-shfmt
+
+  yaml:
+    - <<: *yaml-yamllint
+
