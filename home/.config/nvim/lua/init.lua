@@ -21,6 +21,13 @@ local opts = {
 require('auto-session').setup(opts)
 
 -- LSP =====================================================================
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+})
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -50,18 +57,20 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>lf",		'<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 local nvim_lsp = require('lspconfig')
 local servers = { "pylsp" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+    flags = { debounce_text_changes = 150 }
   }
 end
+
+nvim_lsp['efm'].setup{
+	filetypes = { 'sh', 'json', "yaml" },
+    on_attach = on_attach,
+    flags = { debounce_text_changes = 150 }
+}
 
 -- LSP completion ==========================================================
 require'compe'.setup {
@@ -79,8 +88,10 @@ require'compe'.setup {
 	documentation = true;
 
 	source = {
-		path = true;
 		nvim_lsp = true;
+		path = true;
+		buffer = true;
+		tags = true;
 	};
 }
 

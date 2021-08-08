@@ -6,7 +6,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	" Plug 'morhetz/gruvbox'
 	Plug 'navarasu/onedark.nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'rmagatti/auto-session'
@@ -21,6 +20,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/nvim-compe'
+
+	Plug 'mfussenegger/nvim-dap'
+	Plug 'rcarriga/nvim-dap-ui'
 call plug#end()
 
 " theme ====================================================================
@@ -29,15 +31,6 @@ if &t_Co == 256 || has("gui_running")
 		set termguicolors
 	endif
 	
-	" gruvbox
-	"set t_Co=256
-	"set background=dark
-	"let g:gruvbox_contrast_dark='hard'
-	"let g:gruvbox_improved_warnings=1
-	"let g:gruvbox_bold=0
-	"colorscheme gruvbox
-	
-	" onedark
 	let g:onedark_italic_comment = 0
 	let g:onedark_transparent_background = 1
 	colorscheme onedark
@@ -46,6 +39,7 @@ else
 endif
 
 " built-in options =========================================================
+set exrc
 set nocompatible
 set autoindent
 set smartindent
@@ -117,6 +111,10 @@ imap <F1> <esc>:Telescope file_browser<CR>
 nmap <F2> <esc>:Telescope buffers<cr>
 vmap <F2> <esc>:Telescope buffers<cr>
 imap <F2> <esc>:Telescope buffers<cr>
+
+nnoremap <leader>li	:Telescope lsp_workspace_diagnostics<CR>
+nnoremap <leader>gs	:Telescope git_status<CR>
+nnoremap <leader>gb	:Telescope git_branches<CR>
 
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>
