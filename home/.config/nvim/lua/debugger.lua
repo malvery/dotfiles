@@ -25,3 +25,14 @@ dap.adapters.python = {
 -- UI ======================================================================
 require("dapui").setup()
 
+-- configurations ==========================================================
+dap.configurations.python = {
+	{
+		type = 'python';
+		request = 'launch';
+		name = "Launch file";
+		program = "${file}";
+		justMyCode = false;
+	}
+}
+

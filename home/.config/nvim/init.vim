@@ -121,3 +121,4 @@ nnoremap <leader>sc :HopChar2<CR>
 
 " lua config ===============================================================
 lua require('init')
+lua require('debugger')
