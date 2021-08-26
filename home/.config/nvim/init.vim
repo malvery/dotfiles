@@ -6,7 +6,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'navarasu/onedark.nvim'
+	Plug 'morhetz/gruvbox'
+	" Plug 'lifepillar/vim-solarized8'
+
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'rmagatti/auto-session'
 
@@ -27,15 +29,19 @@ call plug#end()
 
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
-	if has('termguicolors')
-		set termguicolors
-	endif
+	" if has('termguicolors')
+	" 	set termguicolors
+	" endif
 	
-	let g:onedark_italic_comment = 0
-	let g:onedark_transparent_background = 1
-	colorscheme onedark
+	" let g:solarized_termtrans = 1
+	" colorscheme solarized8
+	
+	let g:gruvbox_transparent_bg = 1
+	" let g:gruvbox_bold = 0
+	let g:gruvbox_contrast_dark = "hard"
+	colorscheme gruvbox
 else
-	colorscheme default
+	colorscheme desert
 endif
 
 " built-in options =========================================================
