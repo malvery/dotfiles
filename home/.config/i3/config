@@ -228,11 +228,11 @@ bar {
 		background #222222
 		statusline #DCDCCC
 
-		focused_workspace  #4c7899 #475F86 #ffffff
+		# focused_workspace  #4c7899 #475F86 #ffffff
 	}
 }
 
-client.focused	#4c7899	#475F86	#ffffff	#2e9ef4	#475F86
+# client.focused	#4c7899	#475F86	#ffffff	#2e9ef4	#475F86
 
 ###############################################################################
 # autostart
