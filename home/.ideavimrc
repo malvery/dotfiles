@@ -1,5 +1,5 @@
-nnoremap yy yy"+yy
-vnoremap y ygv"+y
+" nnoremap yy yy"+yy
+" vnoremap y ygv"+y
 
 map <Home> ^
 
