@@ -6,9 +6,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'morhetz/gruvbox'
-	" Plug 'lifepillar/vim-solarized8'
-
+	Plug 'sainnhe/sonokai'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'rmagatti/auto-session'
 
@@ -32,14 +30,10 @@ if &t_Co == 256 || has("gui_running")
 	" if has('termguicolors')
 	" 	set termguicolors
 	" endif
-	
-	" let g:solarized_termtrans = 1
-	" colorscheme solarized8
-	
-	let g:gruvbox_transparent_bg = 1
-	" let g:gruvbox_bold = 0
-	let g:gruvbox_contrast_dark = "hard"
-	colorscheme gruvbox
+
+	let g:sonokai_transparent_background = 1
+	colorscheme sonokai
+	hi TabLineSel ctermbg=103
 else
 	colorscheme desert
 endif
