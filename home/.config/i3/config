@@ -72,7 +72,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -156,6 +156,7 @@ assign [class="TelegramDesktop"] 9
 
 # set floating apps
 for_window [class="Qiv"]					floating enable
+for_window [class="zoom"]					floating enable
 for_window [class="Gcolor3"]				floating enable
 for_window [class="Pavucontrol"]			floating enable
 for_window [class="Blueman-manager"]		floating enable
