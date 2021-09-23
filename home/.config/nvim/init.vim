@@ -47,7 +47,6 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set autoread
-set autochdir
 set nu
 set showcmd
 
@@ -72,12 +71,16 @@ endif
 
 " hotkeys ==================================================================
 nnoremap <A-Left>	:tabprevious<CR>
-nnoremap <A-Right>	:tabnext<CR>
 inoremap <A-Left>	<esc>:tabprevious<CR>
+nnoremap <A-Right>	:tabnext<CR>
 inoremap <A-Right>	<esc>:tabnext<CR>
+nnoremap <leader>tt :tabnew<CR>
+
+nnoremap <A-S-Left>		:tabm -1<CR>
+nnoremap <A-S-Right>	:tabm +1<CR>
+
 nnoremap <Esc>[1;3C	:tabnext<CR>
 nnoremap <Esc>[1;3D	:tabprevious<CR>
-nnoremap <leader>tt :tabnew<CR>
 
 nmap <leader>p "0p
 vmap <leader>p "0p
@@ -111,6 +114,11 @@ imap <F1> <esc>:Telescope file_browser<CR>
 nmap <F2> <esc>:Telescope buffers<cr>
 vmap <F2> <esc>:Telescope buffers<cr>
 imap <F2> <esc>:Telescope buffers<cr>
+
+nmap <F3> <esc>:Telescope find_files<CR>
+vmap <F3> <esc>:Telescope find_filesr<CR>
+imap <F3> <esc>:Telescope find_files<CR>
+
 
 nnoremap <leader>li	:Telescope lsp_workspace_diagnostics<CR>
 nnoremap <leader>gs	:Telescope git_status<CR>
