@@ -58,7 +58,7 @@ local on_attach = function(client, bufnr)
 end
 
 local nvim_lsp = require('lspconfig')
-local servers = { "pylsp", "terraformls" }
+local servers = { "pylsp", "terraformls", "yamlls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -67,7 +67,7 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp['efm'].setup{
-	filetypes = { 'sh', 'json', "yaml" },
+	filetypes = { 'sh', 'json' },
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 }
 }
