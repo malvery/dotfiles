@@ -108,8 +108,10 @@ function getHotkeys()
 
 			awful.key({ modkey,			}, "Up",	function () awful.client.focus.bydirection("up")	end),
 			awful.key({ modkey,			}, "Down",	function () awful.client.focus.bydirection("down")	end),
-			awful.key({ modkey,			}, "Left",	function () awful.client.focus.bydirection("left")	end),
-			awful.key({ modkey,			}, "Right",	function () awful.client.focus.bydirection("right")	end),
+			-- awful.key({ modkey,			}, "Left",	function () awful.client.focus.bydirection("left")	end),
+			-- awful.key({ modkey,			}, "Right",	function () awful.client.focus.bydirection("right")	end),
+			awful.key({ modkey,			}, "Left",	function () awful.client.focus.byidx( -1)	end),
+			awful.key({ modkey,			}, "Right",	function () awful.client.focus.byidx(  1)	end),
 
 			awful.key({ modkey,			}, "s",	function () awful.screen.focused().tags[9]:view_only()	end),
 			awful.key({ modkey,			}, "g",	function () awful.screen.focused().tags[8]:view_only()	end),

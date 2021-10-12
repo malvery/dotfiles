@@ -17,8 +17,8 @@ alttab &
 
 blueman-applet &
 pasystray &
-#nm-applet &
-redshift-gtk &
+# nm-applet &
+# redshift-gtk &
 
 alacritty -e tmux-workspace.sh &
 thunderbird &
