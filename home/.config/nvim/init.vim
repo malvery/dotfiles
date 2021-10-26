@@ -6,17 +6,17 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+	Plug 'sheerun/vim-polyglot'
 	Plug 'sainnhe/sonokai'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'rmagatti/auto-session'
-
-	Plug 'nvim-lua/popup.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-
+	
 	Plug 'phaazon/hop.nvim'
+	Plug 'rmagatti/auto-session'
 	Plug 'b3nj5m1n/kommentary'
-	Plug 'mhinz/vim-signify'
+
+	Plug 'preservim/nerdtree'
+	Plug 'junegunn/fzf.vim'
+	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/nvim-compe'
@@ -28,7 +28,7 @@ call plug#end()
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
 	" if has('termguicolors')
-	" 	set termguicolors
+	"		set termguicolors
 	" endif
 
 	let g:sonokai_transparent_background = 1
@@ -43,9 +43,9 @@ set exrc
 set nocompatible
 set autoindent
 set smartindent
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set autoread
 set nu
 set showcmd
@@ -69,10 +69,13 @@ if &filetype==""
 	setfiletype conf
 endif
 
+" plugins settings =========================================================
+let NERDTreeShowHidden = 1
+
 " hotkeys ==================================================================
-nnoremap <A-Left>	:tabprevious<CR>
-inoremap <A-Left>	<esc>:tabprevious<CR>
+nnoremap <A-Left>		:tabprevious<CR>
 nnoremap <A-Right>	:tabnext<CR>
+inoremap <A-Left>		<esc>:tabprevious<CR>
 inoremap <A-Right>	<esc>:tabnext<CR>
 nnoremap <leader>tt :tabnew<CR>
 
@@ -107,22 +110,18 @@ inoremap <A-7> <esc>7gt
 inoremap <A-8> <esc>8gt
 inoremap <A-9> <esc>9gt
 
-nmap <F1> <esc>:Telescope file_browser<CR>
-vmap <F1> <esc>:Telescope file_browser<CR>
-imap <F1> <esc>:Telescope file_browser<CR>
+nmap <F1> <esc>:NERDTreeToggle<CR>
+vmap <F1> <esc>:NERDTreeToggle<CR>
+imap <F1> <esc>:NERDTreeToggle<CR>
 
-nmap <F2> <esc>:Telescope buffers<cr>
-vmap <F2> <esc>:Telescope buffers<cr>
-imap <F2> <esc>:Telescope buffers<cr>
+nnoremap <leader>ff :NERDTreeFocus<CR>
+nnoremap <leader>fl :NERDTreeFind<CR>
+nnoremap <leader>fv :NERDTreeVCS<CR>
+nnoremap <leader>fs :Files<CR>
 
-nmap <F3> <esc>:Telescope find_files<CR>
-vmap <F3> <esc>:Telescope find_filesr<CR>
-imap <F3> <esc>:Telescope find_files<CR>
-
-
-nnoremap <leader>li	:Telescope lsp_workspace_diagnostics<CR>
-nnoremap <leader>gs	:Telescope git_status<CR>
-nnoremap <leader>gb	:Telescope git_branches<CR>
+nmap <F2> <esc>:Buffers<cr>
+vmap <F2> <esc>:Buffers<cr>
+imap <F2> <esc>:Buffers<cr>
 
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>
