@@ -1,3 +1,14 @@
+-- gitsigns ================================================================
+require('gitsigns').setup {
+  signs = {
+      add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+      change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+      delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      topdelete    = {hl = 'GitSignsDelete', text = '!', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      changedelete = {hl = 'GitSignsChange', text = '~_', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    }
+}
+
 -- commenter ===============================================================
 vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>kommentary_line_default<CR>", {})
 vim.api.nvim_set_keymap("v", "<C-_>", "<Plug>kommentary_visual_default<C-c>", {})

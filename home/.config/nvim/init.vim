@@ -9,15 +9,15 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'sheerun/vim-polyglot'
 	Plug 'sainnhe/sonokai'
 	
+	Plug 'preservim/nerdtree'
 	Plug 'phaazon/hop.nvim'
 	Plug 'rmagatti/auto-session'
 	Plug 'b3nj5m1n/kommentary'
 
-	Plug 'preservim/nerdtree'
-	Plug 'junegunn/fzf.vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'lewis6991/gitsigns.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
+	
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/nvim-compe'
 
@@ -46,6 +46,8 @@ set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+set expandtab
+set list
 set autoread
 set nu
 set showcmd
@@ -110,18 +112,18 @@ inoremap <A-7> <esc>7gt
 inoremap <A-8> <esc>8gt
 inoremap <A-9> <esc>9gt
 
-nmap <F1> <esc>:NERDTreeToggle<CR>
-vmap <F1> <esc>:NERDTreeToggle<CR>
-imap <F1> <esc>:NERDTreeToggle<CR>
+nmap <F1> <esc>:NERDTreeFocus<CR>
+vmap <F1> <esc>:NERDTreeFocus<CR>
+imap <F1> <esc>:NERDTreeFocus<CR>
 
-nnoremap <leader>ff :NERDTreeFocus<CR>
 nnoremap <leader>fl :NERDTreeFind<CR>
 nnoremap <leader>fv :NERDTreeVCS<CR>
-nnoremap <leader>fs :Files<CR>
+nnoremap <leader>fs :Telescope find_files<CR>
+nnoremap <leader>fb :Telescope file_browser<CR>
 
-nmap <F2> <esc>:Buffers<cr>
-vmap <F2> <esc>:Buffers<cr>
-imap <F2> <esc>:Buffers<cr>
+nmap <F2> <esc>:Telescope buffers<cr>
+vmap <F2> <esc>:Telescope buffers<cr>
+imap <F2> <esc>:Telescope buffers<cr>
 
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>
