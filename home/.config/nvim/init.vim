@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'sheerun/vim-polyglot'
 	Plug 'sainnhe/sonokai'
 	
-	Plug 'preservim/nerdtree'
 	Plug 'phaazon/hop.nvim'
 	Plug 'rmagatti/auto-session'
 	Plug 'b3nj5m1n/kommentary'
@@ -19,7 +18,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'nvim-telescope/telescope.nvim'
 	
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'hrsh7th/nvim-compe'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/nvim-cmp'
 
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'rcarriga/nvim-dap-ui'
@@ -111,19 +112,6 @@ inoremap <A-6> <esc>6gt
 inoremap <A-7> <esc>7gt
 inoremap <A-8> <esc>8gt
 inoremap <A-9> <esc>9gt
-
-nmap <F1> <esc>:NERDTreeFocus<CR>
-vmap <F1> <esc>:NERDTreeFocus<CR>
-imap <F1> <esc>:NERDTreeFocus<CR>
-
-nnoremap <leader>fl :NERDTreeFind<CR>
-nnoremap <leader>fv :NERDTreeVCS<CR>
-nnoremap <leader>fs :Telescope find_files<CR>
-nnoremap <leader>fb :Telescope file_browser<CR>
-
-nmap <F2> <esc>:Telescope buffers<cr>
-vmap <F2> <esc>:Telescope buffers<cr>
-imap <F2> <esc>:Telescope buffers<cr>
 
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>

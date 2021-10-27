@@ -1,4 +1,4 @@
--- gitsigns ================================================================
+-- gitsigns ===================================================================
 require('gitsigns').setup {
   signs = {
       add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -9,11 +9,11 @@ require('gitsigns').setup {
     }
 }
 
--- commenter ===============================================================
+-- commenter ==================================================================
 vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>kommentary_line_default<CR>", {})
 vim.api.nvim_set_keymap("v", "<C-_>", "<Plug>kommentary_visual_default<C-c>", {})
 
--- auto-sessions ===========================================================
+-- auto-sessions ==============================================================
 local opts = {
   auto_session_enable_last_session = false,
   auto_session_enabled = true,
@@ -23,26 +23,80 @@ local opts = {
 
 require('auto-session').setup(opts)
 
--- LSP =====================================================================
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
+-- telescope ==================================================================
+local sorters = require'telescope.sorters'
+require('telescope').setup {
+  pickers = {
+    file_browser = {
+      hidden = true,
+    }
+  }
+}
+
+local t_cmd = '<ESC>:lua require("telescope.builtin")' 
+  .. '.file_browser{cwd = require("telescope.utils").buffer_dir()}<CR>'
+
+vim.api.nvim_set_keymap("n", "<F1>", t_cmd, {})
+vim.api.nvim_set_keymap("v", "<F1>", t_cmd, {})
+vim.api.nvim_set_keymap("i", "<F1>", t_cmd, {})
+
+vim.api.nvim_set_keymap("n", "<F2>", '<ESC>:Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap("v", "<F2>", '<ESC>:Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap("i", "<F2>", '<ESC>:Telescope buffers<CR>', {})
+
+vim.api.nvim_set_keymap("n", "<F3>", '<ESC>:Telescope find_files<CR>', {})
+vim.api.nvim_set_keymap("v", "<F3>", '<ESC>:Telescope find_files<CR>', {})
+vim.api.nvim_set_keymap("i", "<F3>", '<ESC>:Telescope find_files<CR>', {})
+
+vim.api.nvim_set_keymap("n", "<leader>li", ':Telescope lsp_workspace_diagnostics<CR>', {})
+vim.api.nvim_set_keymap("n", "<leader>gs", ':Telescope git_status<CR>', {})
+vim.api.nvim_set_keymap("n", "<leader>gb", ':Telescope git_branches<CR>', {})
+
+-- nvim-cmp ===================================================================
+local cmp = require'cmp'
+
+cmp.setup({
+  sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      {
+        name = 'buffer',
+        opts = {
+          get_bufnrs = function()
+            return vim.api.nvim_list_bufs()
+          end
+        }
+      }
+  }),
+  documentation = false,
+  -- experimental = { native_menu = true }
 })
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
+-- LSP config =================================================================
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text      = false,
+    signs             = true,
+    underline         = true,
+    update_in_insert  = false,
+  }
+)
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local opts = { noremap=true, silent=true }
 
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- Enable completion triggered by <c-x><c-o>
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K',  '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -64,40 +118,15 @@ local nvim_lsp = require('lspconfig')
 local servers = { "pylsp", "terraformls", "yamlls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 }
+    on_attach     = on_attach,
+    flags         = { debounce_text_changes = 150 },
+    capabilities  = capabilities
   }
 end
 
 nvim_lsp['efm'].setup{
   filetypes = { 'sh', 'json' },
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 }
+    on_attach     = on_attach,
+    flags         = { debounce_text_changes = 150 },
+    capabilities  = capabilities
 }
-
--- LSP completion ==========================================================
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    nvim_lsp = true;
-    path = true;
-    buffer = true;
-    tags = true;
-  };
-}
-
-vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
-vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
-

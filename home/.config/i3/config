@@ -17,7 +17,7 @@ bindsym $mod+Shift+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r			exec --no-startup-id rofi -show run 
+bindsym $mod+r				exec --no-startup-id rofi -show run 
 bindsym $mod+Shift+d	exec --no-startup-id rofi -show drun
 
 # change focus
@@ -28,9 +28,9 @@ bindsym $mod+l	focus right
 
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left	focus left
-bindsym $mod+Down	focus down
-bindsym $mod+Up		focus up
+bindsym $mod+Left		focus left
+bindsym $mod+Down		focus down
+bindsym $mod+Up			focus up
 bindsym $mod+Right	focus right
 
 # move focused window
@@ -43,7 +43,7 @@ bindsym $mod+Shift+l	move right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left		move left
 bindsym $mod+Shift+Down		move down
-bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Up			move up
 bindsym $mod+Shift+Right	move right
 
 # split in horizontal orientation
@@ -137,7 +137,7 @@ bindsym XF86MonBrightnessDown	exec --no-startup-id "light -U 2 && pkill -USR1 py
 # volume ctl
 bindsym XF86AudioRaiseVolume	exec --no-startup-id "pamixer -i 2 && pkill -USR1 py3status"
 bindsym XF86AudioLowerVolume	exec --no-startup-id "pamixer -d 2 && pkill -USR1 py3status"
-bindsym XF86AudioMute			exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
+bindsym XF86AudioMute					exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
  
 # MRIS2 ctl
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause" 
@@ -147,6 +147,9 @@ bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 # clipboard
 bindsym $mod+grave exec --no-startup-id "clipmenu"
 
+# notifications
+bindsym Control+space exec --no-startup-id "dunstctl close-all"
+
 ###############################################################################
 
 # set apps workspace
@@ -155,19 +158,18 @@ assign [class="Thunderbird"] 9
 assign [class="TelegramDesktop"] 9
 
 # set floating apps
-for_window [class="Qiv"]					floating enable
-for_window [class="zoom"]					floating enable
-for_window [class="Gcolor3"]				floating enable
-for_window [class="Pavucontrol"]			floating enable
-for_window [class="Blueman-manager"]		floating enable
+for_window [class="zoom"]									floating enable
+for_window [class="Gcolor3"]							floating enable
+for_window [class="Pavucontrol"]					floating enable
+for_window [class="Blueman-manager"]			floating enable
 for_window [class="Nm-connection-editor"]	floating enable
 
 ###############################################################################
 # logout dialog
 set $mode_exit Exit: <Shift-E> logout, <Shift-R> reboot, <Shift+P> shutdown
 mode "$mode_exit" {
-	bindsym	Shift+e exec	i3-msg exit,			mode "default"
-	bindsym	Shift+r exec	systemctl reboot -i,	mode "default"
+	bindsym	Shift+e exec	i3-msg exit,						mode "default"
+	bindsym	Shift+r exec	systemctl reboot -i,		mode "default"
 	bindsym	Shift+p exec	systemctl poweroff -i,	mode "default"
 
 	bindsym	Return mode "default"
@@ -180,8 +182,8 @@ mode "$config_i3" {
 	bindsym r	restart	
 	bindsym c	reload
 
-	bindsym l		exec --no-startup-id	$lock-manager,			mode "default"
-	bindsym	Shift+s exec --no-startup-id	systemctl suspend -i,	mode "default"  
+	bindsym l		exec --no-startup-id	$lock-manager,						mode "default"
+	bindsym	Shift+s exec --no-startup-id	systemctl suspend -i,	mode "default"
 
 	bindsym	Shift+e	mode "$mode_exit"
 	bindsym	Return	mode "default"
@@ -193,21 +195,21 @@ bindsym $mod+Shift+i mode "$config_i3"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-	bindsym h resize shrink width	25 px
-	bindsym j resize grow	height	25 px
+	bindsym h resize shrink width		25 px
+	bindsym j resize grow	height		25 px
 	bindsym k resize shrink height	25 px
-	bindsym l resize grow	width	25 px
+	bindsym l resize grow	width			25 px
 
 	# same bindings, but for the arrow keys
-	bindsym Left	resize shrink	width	25 px
+	bindsym Left	resize shrink	width		25 px
 	bindsym Down	resize grow		height	25 px
 	bindsym Up		resize shrink	height	25 px
-	bindsym Right	resize grow		width	25 px
+	bindsym Right	resize grow		width		25 px
 
-	bindsym Shift+Left	resize shrink	width	100 px
+	bindsym Shift+Left	resize shrink	width		100 px
 	bindsym Shift+Down	resize grow		height	100 px
-	bindsym Shift+Up	resize shrink	height	100 px
-	bindsym Shift+Right resize grow		width	100 px
+	bindsym Shift+Up	resize shrink		height	100 px
+	bindsym Shift+Right resize grow		width		100 px
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -223,17 +225,13 @@ bar {
 		py3status -c ~/.config/sway/py3status.conf
 
 	font pango:	Ubuntu Condensed Bold 10
-	height	23
+	height		23
 	position	top
 	colors {
 		background #222222
 		statusline #DCDCCC
-
-		# focused_workspace  #4c7899 #475F86 #ffffff
 	}
 }
-
-# client.focused	#4c7899	#475F86	#ffffff	#2e9ef4	#475F86
 
 ###############################################################################
 # autostart
