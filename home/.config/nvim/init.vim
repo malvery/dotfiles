@@ -7,7 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'sheerun/vim-polyglot'
-	Plug 'sainnhe/sonokai'
+	" Plug 'Rigellute/rigel'
+	Plug 'KeitaNakamura/neodark.vim'
 	
 	Plug 'phaazon/hop.nvim'
 	Plug 'rmagatti/auto-session'
@@ -29,12 +30,12 @@ call plug#end()
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
 	" if has('termguicolors')
-	"		set termguicolors
+	" 	set termguicolors
 	" endif
-
-	let g:sonokai_transparent_background = 1
-	colorscheme sonokai
-	hi TabLineSel ctermbg=103
+	
+	let g:neodark#use_256color = 1
+	let g:neodark#terminal_transparent = 1
+	colorscheme neodark
 else
 	colorscheme desert
 endif
