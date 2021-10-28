@@ -13,8 +13,9 @@ font:
 
 colors:
   primary:
-    # background: '#1D2021'
-    background: '#1c1c1c'
+    # foreground: '#dadada'
+    # background: '#002635'
+    background: '#1A1A1A'
 
   cursor:
     cursor: '#B5B4B4'

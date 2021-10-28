@@ -7,7 +7,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'sheerun/vim-polyglot'
-	" Plug 'Rigellute/rigel'
+	Plug 'Rigellute/rigel'
 	Plug 'KeitaNakamura/neodark.vim'
 	
 	Plug 'phaazon/hop.nvim'
@@ -32,6 +32,7 @@ if &t_Co == 256 || has("gui_running")
 	" if has('termguicolors')
 	" 	set termguicolors
 	" endif
+	" colorscheme rigel
 	
 	let g:neodark#use_256color = 1
 	let g:neodark#terminal_transparent = 1
