@@ -36,13 +36,13 @@ require('telescope').setup {
 local t_cmd = '<ESC>:lua require("telescope.builtin")' 
   .. '.file_browser{cwd = require("telescope.utils").buffer_dir()}<CR>'
 
-vim.api.nvim_set_keymap("n", "<F1>", t_cmd, {})
-vim.api.nvim_set_keymap("v", "<F1>", t_cmd, {})
-vim.api.nvim_set_keymap("i", "<F1>", t_cmd, {})
+vim.api.nvim_set_keymap("n", "<F1>", '<ESC>:Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap("v", "<F1>", '<ESC>:Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap("i", "<F1>", '<ESC>:Telescope buffers<CR>', {})
 
-vim.api.nvim_set_keymap("n", "<F2>", '<ESC>:Telescope buffers<CR>', {})
-vim.api.nvim_set_keymap("v", "<F2>", '<ESC>:Telescope buffers<CR>', {})
-vim.api.nvim_set_keymap("i", "<F2>", '<ESC>:Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap("n", "<F2>", t_cmd, {})
+vim.api.nvim_set_keymap("v", "<F2>", t_cmd, {})
+vim.api.nvim_set_keymap("i", "<F2>", t_cmd, {})
 
 vim.api.nvim_set_keymap("n", "<F3>", '<ESC>:Telescope find_files<CR>', {})
 vim.api.nvim_set_keymap("v", "<F3>", '<ESC>:Telescope find_files<CR>', {})
@@ -68,7 +68,7 @@ cmp.setup({
       }
   }),
   documentation = false,
-  -- experimental = { native_menu = true }
+  experimental = { native_menu = true }
 })
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
