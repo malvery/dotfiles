@@ -29,13 +29,13 @@ call plug#end()
 
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
-	" if has('termguicolors')
-	" 	set termguicolors
-	" endif
+	if has('termguicolors')
+		" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+		set termguicolors
+	endif
+
 	" colorscheme rigel
-	
-	let g:neodark#use_256color = 1
-	let g:neodark#terminal_transparent = 1
+	let g:neodark#background = '#171721'
 	colorscheme neodark
 else
 	colorscheme desert

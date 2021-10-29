@@ -15,7 +15,9 @@ colors:
   primary:
     # foreground: '#dadada'
     # background: '#002635'
-    background: '#1A1A1A'
+    # background: '#1A1A1A'
+    background: '#171721'
+
 
   cursor:
     cursor: '#B5B4B4'
@@ -45,6 +47,6 @@ colors:
     white:   '#f1efee'
 
 key_bindings:
-- { key: V,        mods: Control|Alt, action: Paste            }
-- { key: C,        mods: Control|Alt, action: Copy             }
+- { key: V, mods: Control|Alt, action: Paste  }
+- { key: C, mods: Control|Alt, action: Copy   }
 
