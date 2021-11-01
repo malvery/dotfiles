@@ -226,10 +226,10 @@ bar {
 
 	font pango:	Ubuntu Condensed Bold 10
 	height		23
-	position	bottom
+	position	top
 	colors {
-		background #101010
-		statusline #BCBCBC
+		background #222222
+		statusline #DCDCCC
 	}
 }
 
