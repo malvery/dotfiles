@@ -6,7 +6,8 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'sheerun/vim-polyglot'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	" Plug 'sheerun/vim-polyglot'
 	Plug 'Rigellute/rigel'
 	Plug 'KeitaNakamura/neodark.vim'
 	

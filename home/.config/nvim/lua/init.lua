@@ -1,3 +1,15 @@
+-- treesitter =================================================================
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
+  }
+}
+
 -- gitsigns ===================================================================
 require('gitsigns').setup {
   signs = {
@@ -10,8 +22,16 @@ require('gitsigns').setup {
 }
 
 -- commenter ==================================================================
+require'hop'.setup()
+
+-- commenter ==================================================================
 vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>kommentary_line_default<CR>", {})
 vim.api.nvim_set_keymap("v", "<C-_>", "<Plug>kommentary_visual_default<C-c>", {})
+
+require('kommentary.config').configure_language("terraform", {
+    single_line_comment_string = "#",
+    prefer_single_line_comments = true,
+})
 
 -- auto-sessions ==============================================================
 local opts = {
