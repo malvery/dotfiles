@@ -1,45 +1,46 @@
 " vim-plug =================================================================
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	" Plug 'sheerun/vim-polyglot'
-	Plug 'Rigellute/rigel'
-	Plug 'KeitaNakamura/neodark.vim'
-	
-	Plug 'phaazon/hop.nvim'
-	Plug 'rmagatti/auto-session'
-	Plug 'b3nj5m1n/kommentary'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'sheerun/vim-polyglot'
+  Plug 'Rigellute/rigel'
+  Plug 'KeitaNakamura/neodark.vim'
 
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'lewis6991/gitsigns.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-	
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/nvim-cmp'
+  Plug 'phaazon/hop.nvim'
+  Plug 'rmagatti/auto-session'
+  Plug 'b3nj5m1n/kommentary'
+  Plug 'lambdalisue/suda.vim'
 
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'rcarriga/nvim-dap-ui'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
 call plug#end()
 
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
-	if has('termguicolors')
-		" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-		set termguicolors
-	endif
+  if has('termguicolors')
+    " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set termguicolors
+  endif
 
-	" colorscheme rigel
-	let g:neodark#background = '#171721'
-	colorscheme neodark
+  " colorscheme rigel
+  let g:neodark#background = '#171721'
+  colorscheme neodark
 else
-	colorscheme desert
+  colorscheme desert
 endif
 
 " built-in options =========================================================
@@ -72,24 +73,24 @@ set mouse=a
 
 filetype plugin on
 if &filetype==""
-	setfiletype conf
+  setfiletype conf
 endif
 
 " plugins settings =========================================================
 let NERDTreeShowHidden = 1
 
 " hotkeys ==================================================================
-nnoremap <A-Left>		:tabprevious<CR>
-nnoremap <A-Right>	:tabnext<CR>
-inoremap <A-Left>		<esc>:tabprevious<CR>
-inoremap <A-Right>	<esc>:tabnext<CR>
+nnoremap <A-Left>   :tabprevious<CR>
+nnoremap <A-Right>  :tabnext<CR>
+inoremap <A-Left>   <esc>:tabprevious<CR>
+inoremap <A-Right>  <esc>:tabnext<CR>
 nnoremap <leader>tt :tabnew<CR>
 
-nnoremap <A-S-Left>		:tabm -1<CR>
-nnoremap <A-S-Right>	:tabm +1<CR>
+nnoremap <A-S-Left>   :tabm -1<CR>
+nnoremap <A-S-Right>  :tabm +1<CR>
 
-nnoremap <Esc>[1;3C	:tabnext<CR>
-nnoremap <Esc>[1;3D	:tabprevious<CR>
+nnoremap <Esc>[1;3C :tabnext<CR>
+nnoremap <Esc>[1;3D :tabprevious<CR>
 
 nmap <leader>p "0p
 vmap <leader>p "0p
