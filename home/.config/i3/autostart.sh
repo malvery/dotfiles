@@ -10,7 +10,7 @@ light -N 1 &
 xsettingsd &
 dunst &
 
-xss-lock -- xsecurelock & 
+xss-lock -- xsecurelock &
 libinput-gestures-setup start &
 clipmenud &
 alttab &

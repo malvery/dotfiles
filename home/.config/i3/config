@@ -5,7 +5,7 @@ set $mod Mod4
 font pango:hack 0
 
 # borders
-default_floating_border	pixel 4
+default_floating_border pixel 4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,34 +17,34 @@ bindsym $mod+Shift+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r				exec --no-startup-id rofi -show run 
-bindsym $mod+Shift+d	exec --no-startup-id rofi -show drun
+bindsym $mod+r        exec --no-startup-id rofi -show run 
+bindsym $mod+Shift+d  exec --no-startup-id rofi -show drun
 
 # change focus
-bindsym $mod+h	focus left
-bindsym $mod+j	focus down
-bindsym $mod+k	focus up
-bindsym $mod+l	focus right
+bindsym $mod+h  focus left
+bindsym $mod+j  focus down
+bindsym $mod+k  focus up
+bindsym $mod+l  focus right
 
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left		focus left
-bindsym $mod+Down		focus down
-bindsym $mod+Up			focus up
-bindsym $mod+Right	focus right
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
 
 # move focused window
-bindsym $mod+Shift+h	move left
-bindsym $mod+Shift+j	move down
-bindsym $mod+Shift+k	move up
-bindsym $mod+Shift+l	move right
+bindsym $mod+Shift+h  move left
+bindsym $mod+Shift+j  move down
+bindsym $mod+Shift+k  move up
+bindsym $mod+Shift+l  move right
 
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left		move left
-bindsym $mod+Shift+Down		move down
-bindsym $mod+Shift+Up			move up
-bindsym $mod+Shift+Right	move right
+bindsym $mod+Shift+Left   move left
+bindsym $mod+Shift+Down   move down
+bindsym $mod+Shift+Up     move up
+bindsym $mod+Shift+Right  move right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -114,12 +114,18 @@ bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -F /run/user/1000/i3ipc-rec
 bindsym $mod+Escape workspace back_and_forth
 
 # focus the output
-bindsym $mod+"bracketleft"	focus output left
+bindsym $mod+"bracketleft"  focus output left
 bindsym $mod+"bracketright" focus output right
 
 # move the whole container to the output
-bindsym $mod+Shift+"braceleft"	move workspace to output left
+bindsym $mod+Shift+"braceleft"  move workspace to output left
 bindsym $mod+Shift+"braceright" move workspace to output right
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 ###############################################################################
 
@@ -127,17 +133,17 @@ set $file-manager "pcmanfm"
 set $lock-manager "loginctl lock-session"
 
 # run apps
-bindsym $mod+Shift+p	exec --no-startup-id $file-manager
-bindsym $mod+Shift+F12	exec --no-startup-id $lock-manager
+bindsym $mod+Shift+p  exec --no-startup-id $file-manager
+bindsym $mod+Shift+F12  exec --no-startup-id $lock-manager
 
 # brightnessctl
-bindsym XF86MonBrightnessUp		exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
-bindsym XF86MonBrightnessDown	exec --no-startup-id "light -U 2 && pkill -USR1 py3status"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 2 && pkill -USR1 py3status"
 
 # volume ctl
-bindsym XF86AudioRaiseVolume	exec --no-startup-id "pamixer -i 2 && pkill -USR1 py3status"
-bindsym XF86AudioLowerVolume	exec --no-startup-id "pamixer -d 2 && pkill -USR1 py3status"
-bindsym XF86AudioMute					exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
+bindsym XF86AudioRaiseVolume  exec --no-startup-id "pamixer -i 2 && pkill -USR1 py3status"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "pamixer -d 2 && pkill -USR1 py3status"
+bindsym XF86AudioMute         exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
  
 # MRIS2 ctl
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause" 
@@ -158,36 +164,36 @@ assign [class="Thunderbird"] 9
 assign [class="TelegramDesktop"] 9
 
 # set floating apps
-for_window [class="zoom"]									floating enable
-for_window [class="Gcolor3"]							floating enable
-for_window [class="Pavucontrol"]					floating enable
-for_window [class="Blueman-manager"]			floating enable
-for_window [class="Nm-connection-editor"]	floating enable
+for_window [class="zoom"]                 floating enable
+for_window [class="Gcolor3"]              floating enable
+for_window [class="Pavucontrol"]          floating enable
+for_window [class="Blueman-manager"]      floating enable
+for_window [class="Nm-connection-editor"] floating enable
 
 ###############################################################################
 # logout dialog
 set $mode_exit Exit: <Shift-E> logout, <Shift-R> reboot, <Shift+P> shutdown
 mode "$mode_exit" {
-	bindsym	Shift+e exec	i3-msg exit,						mode "default"
-	bindsym	Shift+r exec	systemctl reboot -i,		mode "default"
-	bindsym	Shift+p exec	systemctl poweroff -i,	mode "default"
+  bindsym Shift+e exec  i3-msg exit,            mode "default"
+  bindsym Shift+r exec  systemctl reboot -i,    mode "default"
+  bindsym Shift+p exec  systemctl poweroff -i,  mode "default"
 
-	bindsym	Return mode "default"
-	bindsym	Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 # i3 dialog
 set $config_i3 i3: <C> Reload, <L> Lock, <Shift-E> Exit, <Shift-S> Suspend
 mode "$config_i3" {
-	bindsym r	restart	
-	bindsym c	reload
+  bindsym r restart 
+  bindsym c reload
 
-	bindsym l		exec --no-startup-id	$lock-manager,						mode "default"
-	bindsym	Shift+s exec --no-startup-id	systemctl suspend -i,	mode "default"
+  bindsym l   exec --no-startup-id  $lock-manager,            mode "default"
+  bindsym Shift+s exec --no-startup-id  systemctl suspend -i, mode "default"
 
-	bindsym	Shift+e	mode "$mode_exit"
-	bindsym	Return	mode "default"
-	bindsym	Escape	mode "default"
+  bindsym Shift+e mode "$mode_exit"
+  bindsym Return  mode "default"
+  bindsym Escape  mode "default"
 }
 bindsym $mod+Shift+i mode "$config_i3"
 
@@ -195,42 +201,42 @@ bindsym $mod+Shift+i mode "$config_i3"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-	bindsym h resize shrink width		25 px
-	bindsym j resize grow	height		25 px
-	bindsym k resize shrink height	25 px
-	bindsym l resize grow	width			25 px
+  bindsym h resize shrink width   25 px
+  bindsym j resize grow height    25 px
+  bindsym k resize shrink height  25 px
+  bindsym l resize grow width     25 px
 
-	# same bindings, but for the arrow keys
-	bindsym Left	resize shrink	width		25 px
-	bindsym Down	resize grow		height	25 px
-	bindsym Up		resize shrink	height	25 px
-	bindsym Right	resize grow		width		25 px
+  # same bindings, but for the arrow keys
+  bindsym Left  resize shrink width   25 px
+  bindsym Down  resize grow   height  25 px
+  bindsym Up    resize shrink height  25 px
+  bindsym Right resize grow   width   25 px
 
-	bindsym Shift+Left	resize shrink	width		100 px
-	bindsym Shift+Down	resize grow		height	100 px
-	bindsym Shift+Up	resize shrink		height	100 px
-	bindsym Shift+Right resize grow		width		100 px
+  bindsym Shift+Left  resize shrink width   100 px
+  bindsym Shift+Down  resize grow   height  100 px
+  bindsym Shift+Up    resize shrink   height  100 px
+  bindsym Shift+Right resize grow   width   100 px
 
-	# back to normal: Enter or Escape
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+Shift+r mode "resize"
 
 # i3bar
 bar {
-	status_command \
-		XKB_MODULE="i3block kbdd" \
-		py3status -c ~/.config/sway/py3status.conf
+  status_command \
+    XKB_MODULE="i3block kbdd" \
+    py3status -c ~/.config/sway/py3status.conf
 
-	font pango:	Ubuntu Condensed Bold 10
-	height		23
-	position	top
-	colors {
-		background #222222
-		statusline #DCDCCC
-	}
+  font pango: Ubuntu Condensed Bold 10
+  height    23
+  position  top
+  colors {
+    background #222222
+    statusline #DCDCCC
+  }
 }
 
 ###############################################################################
