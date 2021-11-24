@@ -8,13 +8,13 @@ endif
 call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'sheerun/vim-polyglot'
-  Plug 'Rigellute/rigel'
+  " Plug 'Rigellute/rigel'
   Plug 'KeitaNakamura/neodark.vim'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
-  Plug 'lambdalisue/suda.vim'
+  " Plug 'lambdalisue/suda.vim'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
@@ -85,6 +85,7 @@ nnoremap <A-Right>  :tabnext<CR>
 inoremap <A-Left>   <esc>:tabprevious<CR>
 inoremap <A-Right>  <esc>:tabnext<CR>
 nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>tc :tabclose<CR>
 
 nnoremap <A-S-Left>   :tabm -1<CR>
 nnoremap <A-S-Right>  :tabm +1<CR>
