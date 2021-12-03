@@ -38,7 +38,7 @@ local opts = {
   auto_session_enable_last_session = false,
   auto_session_enabled = true,
   auto_save_enabled = false,
-  auto_restore_enabled = true,
+  auto_restore_enabled = false,
 }
 
 require('auto-session').setup(opts)
@@ -136,7 +136,7 @@ local on_attach = function(client, bufnr)
 end
 
 local nvim_lsp = require('lspconfig')
-local servers = { "pylsp", "terraformls", "yamlls" }
+local servers = { "pylsp", "terraformls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach     = on_attach,
@@ -145,9 +145,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+nvim_lsp['yamlls'].setup{
+  filetypes     = { 'yaml' },
+  on_attach     = on_attach,
+  flags         = { debounce_text_changes = 150 },
+  capabilities  = capabilities
+}
+
 nvim_lsp['efm'].setup{
-  filetypes = { 'sh', 'json' },
-    on_attach     = on_attach,
-    flags         = { debounce_text_changes = 150 },
-    capabilities  = capabilities
+  filetypes     = { 'sh', 'json' },
+  on_attach     = on_attach,
+  flags         = { debounce_text_changes = 150 },
+  capabilities  = capabilities
 }

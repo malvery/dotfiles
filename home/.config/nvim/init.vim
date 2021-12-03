@@ -10,11 +10,11 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'sheerun/vim-polyglot'
   " Plug 'Rigellute/rigel'
   Plug 'KeitaNakamura/neodark.vim'
+  Plug 'towolf/vim-helm'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
-  " Plug 'lambdalisue/suda.vim'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
@@ -32,7 +32,7 @@ call plug#end()
 " theme ====================================================================
 if &t_Co == 256 || has("gui_running")
   if has('termguicolors')
-    " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     set termguicolors
   endif
 
@@ -75,9 +75,6 @@ filetype plugin on
 if &filetype==""
   setfiletype conf
 endif
-
-" plugins settings =========================================================
-let NERDTreeShowHidden = 1
 
 " hotkeys ==================================================================
 nnoremap <A-Left>   :tabprevious<CR>
