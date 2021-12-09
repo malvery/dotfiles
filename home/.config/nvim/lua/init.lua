@@ -21,7 +21,7 @@ require('gitsigns').setup {
     }
 }
 
--- commenter ==================================================================
+-- HOP ========================================================================
 require'hop'.setup()
 
 -- commenter ==================================================================
@@ -42,36 +42,6 @@ local opts = {
 }
 
 require('auto-session').setup(opts)
-
--- telescope ==================================================================
-local sorters = require'telescope.sorters'
-require('telescope').setup {
-  defaults = {
-    sorting_strategy = "ascending",
-  },
-  pickers = {
-    file_browser = {
-      dir_icon = "🗀 ",
-      hidden = true,
-    }
-  }
-}
-
-local t_cmd = '<ESC>:lua require("telescope.builtin")' 
-  .. '.file_browser{cwd = require("telescope.utils").buffer_dir()}<CR>'
-
-vim.api.nvim_set_keymap("n", "<F1>", '<ESC>:Telescope buffers<CR>', {})
-vim.api.nvim_set_keymap("v", "<F1>", '<ESC>:Telescope buffers<CR>', {})
-vim.api.nvim_set_keymap("i", "<F1>", '<ESC>:Telescope buffers<CR>', {})
-
-vim.api.nvim_set_keymap("n", "<F2>", t_cmd, {})
-vim.api.nvim_set_keymap("v", "<F2>", t_cmd, {})
-vim.api.nvim_set_keymap("i", "<F2>", t_cmd, {})
-
-vim.api.nvim_set_keymap("n", "<leader>ff", ':Telescope find_files<CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>li", ':Telescope lsp_workspace_diagnostics<CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>gs", ':Telescope git_status<CR>', {})
-vim.api.nvim_set_keymap("n", "<leader>gb", ':Telescope git_branches<CR>', {})
 
 -- nvim-cmp ===================================================================
 local cmp = require'cmp'

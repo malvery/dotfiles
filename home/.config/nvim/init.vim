@@ -7,7 +7,6 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'sheerun/vim-polyglot'
   " Plug 'Rigellute/rigel'
   Plug 'KeitaNakamura/neodark.vim'
   Plug 'towolf/vim-helm'
@@ -15,10 +14,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
-
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
 
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -117,6 +114,10 @@ inoremap <A-9> <esc>9gt
 
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>
+
+nnoremap <leader>ee :Explore<CR>
+nnoremap <leader>es :Hexplore<CR>
+nnoremap <leader>ev :Vexplore<CR>
 
 " lua config ===============================================================
 lua require('init')
