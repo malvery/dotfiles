@@ -1,5 +1,5 @@
 -- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
--- 	hs.alert.show('test alert')
+--  hs.alert.show('test alert')
 -- end)
 
 -- setup animations params
@@ -13,7 +13,7 @@ hs.window.animationDuration = 0
 --end)
 
 hs.hotkey.bind({"alt", "shift"}, "p", function()
-	hs.application.launchOrFocus("Finder")
+  hs.application.launchOrFocus("Finder")
 end)
 
 ----------------------------------------------------
@@ -21,48 +21,48 @@ end)
 ----------------------------------------------------
 -- close
 hs.hotkey.bind({"alt", "shift"}, "c", function()
-	local win = hs.window.focusedWindow()
-	win:close()
+  local win = hs.window.focusedWindow()
+  win:close()
 end)
 
 -- maximize
 hs.hotkey.bind({"alt", "shift"}, "m", function()
-	local win = hs.window.focusedWindow()
-	local frame = win:screen():frame()
-	local win_size = win:size()
-	local win_frame = win:frame()
+  local win = hs.window.focusedWindow()
+  local frame = win:screen():frame()
+  local win_size = win:size()
+  local win_frame = win:frame()
 
-	if (frame.w == win_size.w and frame.h == win_size.h) then
-		if (frame.x ~= win_frame.x or frame.y ~= win_frame.y) then
-			hs.grid.maximizeWindow(win)
-		else
-			w_frame = win:frame()
-			w_frame.w = frame.w / 1.3
-			w_frame.h = frame.h / 1.3
-			win:setFrame(w_frame)
-		end
-	else
-		hs.grid.maximizeWindow(win)
-		--win:maximize()
-	end
+  if (frame.w == win_size.w and frame.h == win_size.h) then
+    if (frame.x ~= win_frame.x or frame.y ~= win_frame.y) then
+      hs.grid.maximizeWindow(win)
+    else
+      w_frame = win:frame()
+      w_frame.w = frame.w / 1.3
+      w_frame.h = frame.h / 1.3
+      win:setFrame(w_frame)
+    end
+  else
+    hs.grid.maximizeWindow(win)
+    --win:maximize()
+  end
 end)
 
 -- toggle fullscreen
 hs.hotkey.bind({"alt", "shift"}, "f", function()
-	local win = hs.window.focusedWindow()
-	--win:toggleZoom()
-	win:toggleFullScreen()
+  local win = hs.window.focusedWindow()
+  --win:toggleZoom()
+  win:toggleFullScreen()
 end)
 
 -- center
 hs.hotkey.bind({"alt", "shift"}, "return", function()
-	local win = hs.window.focusedWindow()
-	local frame = win:screen():frame()
-	local win_size = win:size()
+  local win = hs.window.focusedWindow()
+  local frame = win:screen():frame()
+  local win_size = win:size()
 
-	if not (frame.w == win_size.w and frame.h == win_size.h) then
-		win:centerOnScreen()
-	end
+  if not (frame.w == win_size.w and frame.h == win_size.h) then
+    win:centerOnScreen()
+  end
 end)
 
 ----------------------------------------------------
@@ -81,7 +81,7 @@ hs.grid.ui.showExtraKeys = false
 
 -- show grid selector
 hs.hotkey.bind({"alt", "shift"}, "r", function()
-	hs.grid.toggleShow()
+  hs.grid.toggleShow()
 end)
 
 -- resize
@@ -135,7 +135,7 @@ end)
 
  switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{})
  hs.hotkey.bind({'alt', 'shift'}, 'd', function()
-	 switcher:next()
+   switcher:next()
  end)
 
 ----------------------------------------------------
@@ -143,12 +143,12 @@ end)
 ----------------------------------------------------
 -- callback func for selected window
 local windows_chooser = hs.chooser.new(function(windows_choices)
-	if not (windows_choices == nil) then
-		local window = hs.window.find(windows_choices['id'])
+  if not (windows_choices == nil) then
+    local window = hs.window.find(windows_choices['id'])
 
-		window:unminimize()
-		window:focus()
-	end
+    window:unminimize()
+    window:focus()
+  end
 end)
 
 -- chooser params
@@ -160,22 +160,22 @@ curr_space_wf = hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{}
 
 -- bind hotkey
 hs.hotkey.bind({"alt", "shift"}, "i", function()
-	local windows_choices = {}
+  local windows_choices = {}
 
-	-- windows from filter -> chooser
-	for k,window in pairs(curr_space_wf:getWindows()) do
-		if window:isMinimized() then
-			table.insert(windows_choices, {
-				["text"] = window:application():name(),
-				["subText"] = window:title(),
-				["id"] = window:id(),
-			})
-		end
-	end
+  -- windows from filter -> chooser
+  for k,window in pairs(curr_space_wf:getWindows()) do
+    if window:isMinimized() then
+      table.insert(windows_choices, {
+        ["text"] = window:application():name(),
+        ["subText"] = window:title(),
+        ["id"] = window:id(),
+      })
+    end
+  end
 
-	-- show chooser
-	windows_chooser:choices(windows_choices)
-	windows_chooser:show()
+  -- show chooser
+  windows_chooser:choices(windows_choices)
+  windows_chooser:show()
 end)
 
 ----------------------------------------------------
@@ -199,7 +199,7 @@ end)
 -- 
 --     -- local layout_parsed = {}
 --     -- for k,v in pairs(layout) do
---     -- 	layout_parsed[v] = k
+--     --   layout_parsed[v] = k
 --     -- end
 -- 
 --     return layout
@@ -235,37 +235,37 @@ end)
 -- CURR_SPACE_ID = 1
 --
 -- function get_current_screen_layout()
--- 	local uuid = hs.screen.mainScreen():spacesUUID()
--- 	local layout = spaces.layout()[uuid]
+--  local uuid = hs.screen.mainScreen():spacesUUID()
+--  local layout = spaces.layout()[uuid]
 --
--- 	local layout_parsed = {}
--- 	for k,v in pairs(layout) do
--- 		layout_parsed[v] = k
--- 	end
+--  local layout_parsed = {}
+--  for k,v in pairs(layout) do
+--    layout_parsed[v] = k
+--  end
 --
--- 	return layout_parsed
+--  return layout_parsed
 -- end
 --
 -- SCREEN_LAYOUT = get_current_screen_layout()
 -- space_watcher = hs.spaces.watcher.new(function(space_id)
--- 	LAST_SPACE_ID = CURR_SPACE_ID
--- 	CURR_SPACE_ID = SCREEN_LAYOUT[spaces.activeSpace()]
--- 	-- SCREEN_LAYOUT = get_current_screen_layout()
+--  LAST_SPACE_ID = CURR_SPACE_ID
+--  CURR_SPACE_ID = SCREEN_LAYOUT[spaces.activeSpace()]
+--  -- SCREEN_LAYOUT = get_current_screen_layout()
 -- end)
 -- space_watcher:start()
 --
 -- hs.hotkey.bind({"alt"}, "ESCAPE", function()
--- 	hs.eventtap.keyStroke({'alt'}, tostring(LAST_SPACE_ID))
+--  hs.eventtap.keyStroke({'alt'}, tostring(LAST_SPACE_ID))
 -- end)
 --
 -- DESKTOP_G = tostring(#SCREEN_LAYOUT - 2)
 -- hs.hotkey.bind({"alt"}, "g", function()
--- 	hs.eventtap.keyStroke({'alt'}, DESKTOP_G)
+--  hs.eventtap.keyStroke({'alt'}, DESKTOP_G)
 -- end)
 --
 -- DESKTOP_S = tostring(#SCREEN_LAYOUT - 1)
 -- hs.hotkey.bind({"alt"}, "s", function()
--- 	hs.eventtap.keyStroke({'alt'}, DESKTOP_S)
+--  hs.eventtap.keyStroke({'alt'}, DESKTOP_S)
 -- end)
 
 ----------------------------------------------------
@@ -273,18 +273,18 @@ end)
 ----------------------------------------------------
 -- -- dec size
 -- hs.hotkey.bind({"alt", "shift"}, ",", function()
--- 	local win = hs.window.focusedWindow()
+--  local win = hs.window.focusedWindow()
 --
--- 	hs.grid.resizeWindowThinner(win)
--- 	hs.grid.resizeWindowShorter(win)
+--  hs.grid.resizeWindowThinner(win)
+--  hs.grid.resizeWindowShorter(win)
 -- end)
 --
 -- -- inc size
 -- hs.hotkey.bind({"alt", "shift"}, ".", function()
--- 	local win = hs.window.focusedWindow()
+--  local win = hs.window.focusedWindow()
 --
--- 	hs.grid.resizeWindowTaller(win)
--- 	hs.grid.resizeWindowWider(win)
+--  hs.grid.resizeWindowTaller(win)
+--  hs.grid.resizeWindowWider(win)
 -- end)
 
 ----------------------------------------------------

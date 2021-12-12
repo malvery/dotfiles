@@ -4,7 +4,7 @@
 XKB_LOG_PATH='/tmp/sway-xkb'
 while [ ! -f ${XKB_LOG_PATH} ]
 do
-	sleep 1
+  sleep 1
 done
 tail -n 1 -f ${XKB_LOG_PATH} | stdbuf -o0 awk '{print $1"\n"$1}'
 

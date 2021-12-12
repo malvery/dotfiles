@@ -1,28 +1,28 @@
 #!/bin/bash
 
 if [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
-	bluetooth toggle >> /dev/null
+  bluetooth toggle >> /dev/null
 
 elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-	#bluetooth on >> /dev/null
-	swaymsg 'exec blueman-manager' >> /dev/null
+  #bluetooth on >> /dev/null
+  swaymsg 'exec blueman-manager' >> /dev/null
 fi
 
 STATUS=$(bluetooth | awk '{print $3}')
 
 if [[ "${STATUS}" = "on" ]]; then
-	if [[ $(bluetoothctl info | grep -woi "Audio Sink") ]]; then
-		echo "a2dp"
-		echo "a2dp"
-		echo ${COLOR_G}
-	else
-		echo "idle"
-		echo "idle"
-		echo ${COLOR_M}
-	fi
+  if [[ $(bluetoothctl info | grep -woi "Audio Sink") ]]; then
+    echo "a2dp"
+    echo "a2dp"
+    echo ${COLOR_G}
+  else
+    echo "idle"
+    echo "idle"
+    echo ${COLOR_M}
+  fi
 
 else
-	echo "down"
-	echo "down"
-	echo ${COLOR_M}
+  echo "down"
+  echo "down"
+  echo ${COLOR_M}
 fi

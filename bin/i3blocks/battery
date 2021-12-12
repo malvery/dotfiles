@@ -19,16 +19,15 @@ echo "${B_LEVEL}% ${B_VOLTAGE}W ${B_STATUS}"
 
 
 if [[ ${B_LEVEL} -lt 5 ]]; then
-	exit 33
+  exit 33
 
 elif [[ ${B_LEVEL} -lt 30 ]]; then
-	echo ${COLOR_H}
+  echo ${COLOR_H}
 
 elif [[ ${B_LEVEL} -lt 60 ]]; then
-	echo ${COLOR_M}
+  echo ${COLOR_M}
 
 elif [[ ${B_LEVEL} -gt 90 ]]; then
-	echo ${COLOR_G}
+  echo ${COLOR_G}
 
 fi
-

@@ -3,35 +3,35 @@ VALUE=$(cat /proc/net/wireless | tail -n 1 | awk '{print int($3 * 100 / 70)}')
 
 VPN_STATUS=''
 if [[ $(ip tuntap show | wc -l) -gt 0 ]]; then
-	VPN_STATUS='^VPN '
+  VPN_STATUS='^VPN '
 fi
 
 if [[ ${VALUE} -eq 0 ]]; then
-	echo "down"
-	echo "down"
-	echo ${COLOR_H}
+  echo "down"
+  echo "down"
+  echo ${COLOR_H}
 
 else
-	if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
-		ssid=$(iwgetid -r)
-		freq=$(iwgetid -f -r | cut -c1-4)
-		ch=$(iwgetid -c -r)
+  if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+    ssid=$(iwgetid -r)
+    freq=$(iwgetid -f -r | cut -c1-4)
+    ch=$(iwgetid -c -r)
 
-		echo "${freq}GHz ${ch}CH ${ssid}" 
-		echo "${freq}GHz ${ch}CH ${ssid}"
-	else
-		echo ${VALUE}% ${VPN_STATUS}
-		echo ${VALUE}%
-	fi
+    echo "${freq}GHz ${ch}CH ${ssid}"
+    echo "${freq}GHz ${ch}CH ${ssid}"
+  else
+    echo ${VALUE}% ${VPN_STATUS}
+    echo ${VALUE}%
+  fi
 
-	if [[ ${VALUE} -lt 30 ]]; then
-		echo ${COLOR_H}
+  if [[ ${VALUE} -lt 30 ]]; then
+    echo ${COLOR_H}
 
-	elif [[ ${VALUE} -lt 70 ]]; then
-		echo ${COLOR_M}
-	
-	else
-		echo ${COLOR_G}
+  elif [[ ${VALUE} -lt 70 ]]; then
+    echo ${COLOR_M}
 
-	fi
+  else
+    echo ${COLOR_G}
+
+  fi
 fi

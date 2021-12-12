@@ -1,42 +1,42 @@
-@define-color bg_normal		#222222;
-@define-color bg_border		#363636;
-@define-color bg_widget		#303030;
+@define-color bg_normal   #222222;
+@define-color bg_border   #363636;
+@define-color bg_widget   #303030;
 
-@define-color fg_normal		#dcdccc;
-@define-color fg_good		#86AD85;
-@define-color fg_medium		#FFAE00;
-@define-color fg_urgent		#FF5500;
-@define-color fg_inactive	#888888;
+@define-color fg_normal   #dcdccc;
+@define-color fg_good     #86AD85;
+@define-color fg_medium   #FFAE00;
+@define-color fg_urgent   #FF5500;
+@define-color fg_inactive #888888;
 
 * {
-    border: none;
-	border-radius: 0;
-	min-height: 0;
-    font-family: "Ubuntu";
-	font-weight: 600;
-    font-size: 16px;
-	color: @fg_normal;
+  border:         none;
+  border-radius:  0;
+  min-height:     0;
+  font-family:    "Ubuntu";
+  font-weight:    600;
+  font-size:      16px;
+  color:          @fg_normal;
 }
 
 #waybar {
-	background: @bg_normal;
-	border-bottom: 1px solid @bg_widget;
+  background:     @bg_normal;
+  border-bottom:  1px solid @bg_widget;
 }
 
 #workspaces button {
-	padding: 1 1px;
-	color: @fg_normal;
-	border: 1px solid @bg_border;
+  padding:  1 1px;
+  color:    @fg_normal;
+  border:   1px solid @bg_border;
 }
 
 #workspaces button.focused {
-    background: #475F86;
-	border: 1px solid #2f343a;
+  background: #475F86;
+  border:     1px solid #2f343a;
 }
 
 #workspaces button.urgent {
-	color: @fg_urgent;
-	border: 1px solid #2f343a;
+  color:  @fg_urgent;
+  border: 1px solid #2f343a;
 }
 
 
@@ -55,30 +55,30 @@
 #mode,
 #window,
 #idle_inhibitor {
-	padding: 0 2px;
-	margin: 0 2px;
-	background: @bg_widget;
+  padding:    0 2px;
+  margin:     0 2px;
+  background: @bg_widget;
 }
 
 #mode {
-	color: @fg_urgent;
+  color: @fg_urgent;
 }
 
 #window {
-	background: transparent;
-	border: none;
+  background: transparent;
+  border:     none;
 }
 
 #battery.charging{
-	color: @fg_medium;
+  color: @fg_medium;
 }
 
 #battery.full {
-	color: @fg_good;
+  color: @fg_good;
 }
 
 #battery.critical:not(.charging) {
-	color: @fg_urgent;
+  color: @fg_urgent;
 }
 
 #network.disconnected {
@@ -86,11 +86,11 @@
 }
 
 #pulseaudio.bluetooth {
-	color: @fg_good;
+  color: @fg_good;
 }
 
 #pulseaudio.muted {
-	color: @fg_medium;
+  color: @fg_medium;
 }
 
 #temperature.critical {
@@ -98,9 +98,9 @@
 }
 
 #idle_inhibitor.activated {
-	color: @fg_medium;
+  color: @fg_medium;
 }
 
 #idle_inhibitor.deactivated {
-	color: @fg_inactive;
+  color: @fg_inactive;
 }

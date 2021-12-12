@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import setproctitle
 import subprocess
 import signal
 import i3ipc
@@ -9,7 +8,7 @@ PROCESS_NAME = "i3ipc-switch-workspace"
 PID_CURR = os.getpid()
 PID_PATH = '%s/%s.pid' % (os.getenv("XDG_RUNTIME_DIR", '/tmp'), PROCESS_NAME)
 
-################################################################################
+###############################################################################
 
 # send SIGNTERM for another processes
 pid_list = subprocess.check_output([
@@ -25,7 +24,7 @@ with open(PID_PATH, 'w') as pid_file:
     pid_file.write(str(PID_CURR))
 
 
-################################################################################
+###############################################################################
 
 i3 = i3ipc.Connection()
 
@@ -56,4 +55,3 @@ signal.signal(signal.SIGUSR2, on_signal)
 signal.signal(signal.SIGINT, on_signal)
 
 i3.main()
-

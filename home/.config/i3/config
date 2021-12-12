@@ -17,8 +17,9 @@ bindsym $mod+Shift+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r        exec --no-startup-id rofi -show run 
-bindsym $mod+Shift+d  exec --no-startup-id rofi -show drun
+bindsym $mod+r        exec --no-startup-id rofi -show run
+bindsym $mod+F2       exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d  exec --no-startup-id rofi -show window
 
 # change focus
 bindsym $mod+h  focus left
@@ -26,25 +27,11 @@ bindsym $mod+j  focus down
 bindsym $mod+k  focus up
 bindsym $mod+l  focus right
 
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left   focus left
-bindsym $mod+Down   focus down
-bindsym $mod+Up     focus up
-bindsym $mod+Right  focus right
-
 # move focused window
 bindsym $mod+Shift+h  move left
 bindsym $mod+Shift+j  move down
 bindsym $mod+Shift+k  move up
 bindsym $mod+Shift+l  move right
-
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left   move left
-bindsym $mod+Shift+Down   move down
-bindsym $mod+Shift+Up     move up
-bindsym $mod+Shift+Right  move right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -59,8 +46,8 @@ bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout toggle tabbed split
-bindsym $mod+Shift+e layout toggle split
+bindsym $mod+Shift+w layout toggle    tabbed split
+bindsym $mod+Shift+e layout toggle    split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -108,7 +95,7 @@ bindsym $mod+s workspace 9
 bindsym $mod+u [urgent=latest] focus
 
 # focus switch
-bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -F /run/user/1000/i3ipc-recent-window.pid
+bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -F ${XDG_RUNTIME_DIR}/i3ipc-recent-window.pid
 
 # switch between the current and the previously focused one
 bindsym $mod+Escape workspace back_and_forth
@@ -133,7 +120,7 @@ set $file-manager "pcmanfm"
 set $lock-manager "loginctl lock-session"
 
 # run apps
-bindsym $mod+Shift+p  exec --no-startup-id $file-manager
+bindsym $mod+Shift+p    exec --no-startup-id $file-manager
 bindsym $mod+Shift+F12  exec --no-startup-id $lock-manager
 
 # brightnessctl
@@ -146,7 +133,7 @@ bindsym XF86AudioLowerVolume  exec --no-startup-id "pamixer -d 2 && pkill -USR1 
 bindsym XF86AudioMute         exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
  
 # MRIS2 ctl
-bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause" 
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 
@@ -156,12 +143,10 @@ bindsym $mod+grave exec --no-startup-id "clipmenu"
 # notifications
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
 
-###############################################################################
+# border mouse clicks
+bindsym button1 nop
 
-# set apps workspace
-#assign [class="Slack"] 9
-assign [class="Thunderbird"] 9
-assign [class="TelegramDesktop"] 9
+###############################################################################
 
 # set floating apps
 for_window [class="zoom"]                 floating enable
@@ -185,10 +170,10 @@ mode "$mode_exit" {
 # i3 dialog
 set $config_i3 i3: <C> Reload, <L> Lock, <Shift-E> Exit, <Shift-S> Suspend
 mode "$config_i3" {
-  bindsym r restart 
+  bindsym r restart
   bindsym c reload
 
-  bindsym l   exec --no-startup-id  $lock-manager,            mode "default"
+  bindsym l       exec --no-startup-id  $lock-manager,        mode "default"
   bindsym Shift+s exec --no-startup-id  systemctl suspend -i, mode "default"
 
   bindsym Shift+e mode "$mode_exit"
@@ -214,7 +199,7 @@ mode "resize" {
 
   bindsym Shift+Left  resize shrink width   100 px
   bindsym Shift+Down  resize grow   height  100 px
-  bindsym Shift+Up    resize shrink   height  100 px
+  bindsym Shift+Up    resize shrink height  100 px
   bindsym Shift+Right resize grow   width   100 px
 
   # back to normal: Enter or Escape
@@ -224,28 +209,9 @@ mode "resize" {
 
 bindsym $mod+Shift+r mode "resize"
 
-# i3bar
-bar {
-  status_command \
-    XKB_MODULE="i3block kbdd" \
-    py3status -c ~/.config/sway/py3status.conf
-
-  font pango: Ubuntu Condensed Bold 10
-  height    23
-  position  top
-  colors {
-    background #222222
-    statusline #DCDCCC
-  }
-}
-
 ###############################################################################
-# autostart
-exec --no-startup-id ~/.config/i3/autostart.sh
+
+include ~/.config/i3/`hostnamectl hostname`.conf
+
 exec --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
-
-# after each restart
 exec_always --no-startup-id ( killall kbdd || true ) && kbdd
-exec_always --no-startup-id ~/.config/sway/scripts/i3-recent-window.py
-exec_always --no-startup-id ~/.config/sway/scripts/i3-switch-workspace.py
-

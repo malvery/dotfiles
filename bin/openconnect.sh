@@ -7,6 +7,6 @@ cookie=$(${conn_command} ${conn_args} --cookieonly)
 
 while [ $? = 0 ]
 do
-	${conn_command} ${conn_args} --cookie=${cookie}
+  ${conn_command} ${conn_args} --cookie=${cookie}
 done
 

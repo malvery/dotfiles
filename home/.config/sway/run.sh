@@ -9,9 +9,9 @@ export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 
 set -E
-sway 
+sway
 
-killall clipman 
+killall clipman
 libinput-gestures-setup stop
 
 echo "Logout after 120 sec."

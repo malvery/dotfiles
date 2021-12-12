@@ -7,12 +7,12 @@ echo ${VALUE}%
 echo ${VALUE}%
 
 if [[ ${VALUE} -gt 90 ]]; then
-	exit 33
+  exit 33
 
 elif [[ ${VALUE} -gt 80 ]]; then
-	echo ${COLOR_H}
+  echo ${COLOR_H}
 
 elif [[ ${VALUE} -gt 40 ]]; then
-	echo ${COLOR_M}
+  echo ${COLOR_M}
 
 fi

@@ -5,22 +5,22 @@ SLEEP=0.03
 IDLE_BLOCK='/tmp/swayidle-block'
 
 if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
-	light -A ${BR_STEP}
-	sleep ${SLEEP}
+  light -A ${BR_STEP}
+  sleep ${SLEEP}
 
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
-	light -U ${BR_STEP}
-	sleep ${SLEEP}
+  light -U ${BR_STEP}
+  sleep ${SLEEP}
 
 elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-	pkill -USR1 '^gammastep$'
+  pkill -USR1 '^gammastep$'
 
 elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
-	if test -f ${IDLE_BLOCK}; then
-		rm ${IDLE_BLOCK}
-	else
-		touch ${IDLE_BLOCK}
-	fi
+  if test -f ${IDLE_BLOCK}; then
+    rm ${IDLE_BLOCK}
+  else
+    touch ${IDLE_BLOCK}
+  fi
 fi
 
 VALUE=$(light)
@@ -30,12 +30,12 @@ echo "${VALUE}%"
 echo "${VALUE}%"
 
 if [[ -f ${IDLE_BLOCK} ]]; then
-	exit 33
+  exit 33
 
 elif [[ ${VALUE} -gt 75 ]]; then
-	echo ${COLOR_H}
+  echo ${COLOR_H}
 
 elif [[ ${VALUE} -gt 40 ]]; then
-	echo ${COLOR_M}
+  echo ${COLOR_M}
 
 fi

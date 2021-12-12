@@ -54,8 +54,8 @@ set autoread
 set nu
 set showcmd
 
-set hlsearch
-set incsearch
+" set hlsearch
+" set incsearch
 set ignorecase
 
 set nobackup
@@ -74,18 +74,12 @@ if &filetype==""
 endif
 
 " hotkeys ==================================================================
-nnoremap <A-Left>   :tabprevious<CR>
-nnoremap <A-Right>  :tabnext<CR>
-inoremap <A-Left>   <esc>:tabprevious<CR>
-inoremap <A-Right>  <esc>:tabnext<CR>
+nnoremap <A-h>      :tabprevious<CR>
+nnoremap <A-l>      :tabnext<CR>
+nnoremap <A-S-h>    :tabm -1<CR>
+nnoremap <A-S-l>    :tabm +1<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
-
-nnoremap <A-S-Left>   :tabm -1<CR>
-nnoremap <A-S-Right>  :tabm +1<CR>
-
-nnoremap <Esc>[1;3C :tabnext<CR>
-nnoremap <Esc>[1;3D :tabprevious<CR>
 
 nmap <leader>p "0p
 vmap <leader>p "0p
@@ -102,22 +96,17 @@ nnoremap <A-7> 7gt
 nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 
-inoremap <A-1> <esc>1gt
-inoremap <A-2> <esc>2gt
-inoremap <A-3> <esc>3gt
-inoremap <A-4> <esc>4gt
-inoremap <A-5> <esc>5gt
-inoremap <A-6> <esc>6gt
-inoremap <A-7> <esc>7gt
-inoremap <A-8> <esc>8gt
-inoremap <A-9> <esc>9gt
-
 nnoremap <leader>ss :HopWord<CR>
 nnoremap <leader>sc :HopChar2<CR>
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore<CR>
+
+" nnoremap <Left>   :echoe "Use h"<CR>
+" nnoremap <Right>  :echoe "Use l"<CR>
+" nnoremap <Up>     :echoe "Use k"<CR>
+" nnoremap <Down>   :echoe "Use j"<CR>
 
 " lua config ===============================================================
 lua require('init')

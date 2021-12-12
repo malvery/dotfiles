@@ -1,28 +1,28 @@
 #!/bin/bash
 
 if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
-	sensors=$(sensors -j)
-	fan1=$(echo ${sensors} | jq '..|objects|select(has("fan1_input")).fan1_input')
-	fan2=$(echo ${sensors} | jq '..|objects|select(has("fan2_input")).fan2_input')
+  sensors=$(sensors -j)
+  fan1=$(echo ${sensors} | jq '..|objects|select(has("fan1_input")).fan1_input')
+  fan2=$(echo ${sensors} | jq '..|objects|select(has("fan2_input")).fan2_input')
 
-	echo "F ${fan1}:${fan2} RPM"
-	echo "F ${fan1}:${fan2} RPM"
+  echo "F ${fan1}:${fan2} RPM"
+  echo "F ${fan1}:${fan2} RPM"
 else
-	SENSOR_CHIP="${SENSOR_CHIP:-coretemp-isa-0000}"
-	VALUE=$(sensors -u ${SENSOR_CHIP} | grep temp1_input | awk '{print $2}')
-	VALUE=${VALUE%.*}
+  SENSOR_CHIP="${SENSOR_CHIP:-coretemp-isa-0000}"
+  VALUE=$(sensors -u ${SENSOR_CHIP} | grep temp1_input | awk '{print $2}')
+  VALUE=${VALUE%.*}
 
-	echo T ${VALUE}°C
-	echo T ${VALUE}°C
+  echo T ${VALUE}°C
+  echo T ${VALUE}°C
 fi
 
 if [[ ${VALUE} -gt 90 ]]; then
-	exit 33
+  exit 33
 
 elif [[ ${VALUE} -gt 75 ]]; then
-	echo ${COLOR_H}
+  echo ${COLOR_H}
 
 elif [[ ${VALUE} -gt 50 ]]; then
-	echo ${COLOR_M}
+  echo ${COLOR_M}
 
 fi
