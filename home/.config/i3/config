@@ -86,7 +86,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 ###############################################################################
-
 # workspace hotkeys
 bindsym $mod+g workspace 8
 bindsym $mod+s workspace 9
@@ -115,23 +114,13 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ###############################################################################
-
-set $file-manager "pcmanfm"
-set $lock-manager "loginctl lock-session"
-
 # run apps
-bindsym $mod+Shift+p    exec --no-startup-id $file-manager
-bindsym $mod+Shift+F12  exec --no-startup-id $lock-manager
+bindsym $mod+Shift+F12  exec --no-startup-id "loginctl lock-session"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
 bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 2 && pkill -USR1 py3status"
 
-# volume ctl
-bindsym XF86AudioRaiseVolume  exec --no-startup-id "pamixer -i 2 && pkill -USR1 py3status"
-bindsym XF86AudioLowerVolume  exec --no-startup-id "pamixer -d 2 && pkill -USR1 py3status"
-bindsym XF86AudioMute         exec --no-startup-id "pamixer -t && pkill -USR1 py3status"
- 
 # MRIS2 ctl
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
@@ -147,13 +136,13 @@ bindsym Control+space exec --no-startup-id "dunstctl close-all"
 bindsym button1 nop
 
 ###############################################################################
-
 # set floating apps
-for_window [class="zoom"]                 floating enable
-for_window [class="Gcolor3"]              floating enable
-for_window [class="Pavucontrol"]          floating enable
-for_window [class="Blueman-manager"]      floating enable
-for_window [class="Nm-connection-editor"] floating enable
+for_window [class="zoom"]                   floating enable
+for_window [class="Gcolor3"]                floating enable
+for_window [class="Pavucontrol"]            floating enable
+for_window [class="Blueman-manager"]        floating enable
+for_window [class="Nm-connection-editor"]   floating enable
+for_window [class="Evolution-alarm-notify"] floating enable
 
 ###############################################################################
 # logout dialog
@@ -183,7 +172,6 @@ mode "$config_i3" {
 bindsym $mod+Shift+i mode "$config_i3"
 
 ###############################################################################
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
   bindsym h resize shrink width   25 px
@@ -211,7 +199,9 @@ bindsym $mod+Shift+r mode "resize"
 
 ###############################################################################
 
-include ~/.config/i3/`hostnamectl hostname`.conf
+include ~/.config/i3/`hostnamectl hostname || hostname`.conf
 
-exec --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
+exec        --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
 exec_always --no-startup-id ( killall kbdd || true ) && kbdd
+exec_always --no-startup-id ~/.config/sway/scripts/i3-recent-window.py
+exec_always --no-startup-id ~/.config/sway/scripts/i3-switch-workspace.py
