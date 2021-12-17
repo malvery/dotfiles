@@ -53,19 +53,16 @@ set list
 set autoread
 set nu
 set showcmd
-
-" set hlsearch
-" set incsearch
+set hlsearch
+set incsearch
 set ignorecase
-
+" set spell spelllang=en_us
 set nobackup
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
-
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
-
 set mouse=a
 
 filetype plugin on

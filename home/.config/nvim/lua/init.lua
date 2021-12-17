@@ -33,6 +33,11 @@ require('kommentary.config').configure_language("terraform", {
     prefer_single_line_comments = true,
 })
 
+require('kommentary.config').configure_language("helm", {
+    single_line_comment_string = "#",
+    prefer_single_line_comments = true,
+})
+
 -- auto-sessions ==============================================================
 local opts = {
   auto_session_enable_last_session = false,
