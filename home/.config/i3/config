@@ -126,6 +126,9 @@ bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 
+# displays
+bindsym XF86Display exec --no-startup-id "xrandr-toggle.sh"
+
 # clipboard
 bindsym $mod+grave exec --no-startup-id "clipmenu"
 
@@ -137,6 +140,8 @@ bindsym button1 nop
 
 ###############################################################################
 # set floating apps
+for_window [window_role="ECompEditorEvent-*"] floating enable
+
 for_window [class="zoom"]                   floating enable
 for_window [class="Arandr"]                 floating enable
 for_window [class="Gcolor3"]                floating enable
