@@ -131,5 +131,6 @@ nvim_lsp['efm'].setup{
   filetypes     = { 'sh', 'json' },
   on_attach     = on_attach,
   flags         = { debounce_text_changes = 150 },
-  capabilities  = capabilities
+  capabilities  = capabilities,
+  root_dir      = nvim_lsp.util.root_pattern{".git/", "."}
 }
