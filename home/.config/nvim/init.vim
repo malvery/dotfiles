@@ -64,6 +64,8 @@ set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
 set mouse=a
+set foldmethod=indent
+set nofoldenable
 
 filetype plugin on
 if &filetype==""
