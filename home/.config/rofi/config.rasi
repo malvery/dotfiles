@@ -1,5 +1,5 @@
 configuration {
-  modi:       "run,drun,window";
+  modi:       "run,drun";
   font:       "ubuntu mono 15";
   terminal:   "alacritty";
   kb-cancel:  "Escape,Control+g,Control+bracketleft,MouseMiddle";

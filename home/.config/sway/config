@@ -1,11 +1,11 @@
 set $mod Mod4
 
-font                    pango:Ubuntu Medium 0
+font                    pango:Ubuntu 0
 floating_modifier       $mod
 default_border          normal
 default_floating_border pixel 4
 
-set $terminal     'alacritty'
+set $terminal     'foot'
 set $file-manager 'pcmanfm'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
@@ -89,10 +89,13 @@ bindsym --to-code {
   $mod+Shift+0 move container to workspace 10
 }
 
-# mouse clicks
-bindsym {
-  button1 nop
-}
+###############################################################################
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #101010 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #101010 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 ###############################################################################
 # inhibit idle
@@ -102,4 +105,4 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 ###############################################################################
 # configs
 include $config/conf.d/*
-include $config/`hostnamectl hostname`.d/*
+include $config/`hostname`.d/*

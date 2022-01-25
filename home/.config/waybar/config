@@ -1,13 +1,14 @@
 {
   "layer":  "top",
   "height": 21,
+  "position": "bottom",
 
   "modules-left":   ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": [],
   "modules-right":  [
-    "custom/xkb", "cpu", "memory", "custom/disk",
-    "network", "temperature", "idle_inhibitor", "backlight",
-    "custom/power", "pulseaudio", "battery", "clock", "tray"
+    "cpu", "memory", "disk", "temperature", "idle_inhibitor",
+    "network", "backlight","pulseaudio", "battery", "custom/power",
+    "clock", "sway/language", "tray"
   ],
 
   // left
@@ -28,14 +29,25 @@
 
 
   // right
+
   "cpu": {
     "format": "{usage}% ",
     "interval": 5,
+    "states": {
+      "low":    0,
+      "medium": 20,
+      "high":   60
+    },
     "tooltip":  false
   },
 
   "memory": {
     "format":   "{}% ",
+    "states": {
+      "low":    0,
+      "medium": 50,
+      "high":   90
+    },
     "tooltip":  false
   },
 
@@ -52,9 +64,9 @@
     "format":             "{temperatureC}°C {icon}",
     "format-icons":       ["", "", ""],
     "thermal-zone":       3,
-    "hwmon-path":         "/sys/class/hwmon/hwmon5/temp1_input",
+    "hwmon-path":         "/sys/class/hwmon/hwmon6/temp1_input",
     "interval":           3,
-    "critical-threshold": 80,
+    "critical-threshold": 60,
     "tooltip":            false
   },
 
@@ -64,7 +76,7 @@
       "activated":    "",
       "deactivated":  ""
     },
-  "tooltip": false
+    "tooltip": false
   },
 
   "backlight": {
@@ -72,6 +84,11 @@
     "format-icons":   ["", ""],
     "on-scroll-up":   "light -A 2",
     "on-scroll-down": "light -U 2",
+    "states": {
+      "low":    0,
+      "medium": 50,
+      "high":   80
+    },
 
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
@@ -92,17 +109,22 @@
       "car":        "",
       "default":    ["", "", ""]
     },
-    "on-click":                   "pulsemixer --toggle-mute",
-    "on-click-right":             "pavucontrol",
+    "states": {
+      "low":    0,
+      "medium": 35,
+      "high":   75
+    },
+    "on-click-right":             "pamixer -t",
+    "on-click-middle":            "pavucontrol",
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
   },
 
   "battery": {
     "states": {
-      "good":     90,
-      "warning":  50,
-      "critical": 20
+      "low":    30,
+      "medium": 70,
+      "high":   100
     },
     "format":           "{capacity}% {icon}",
     "format-charging":  "{capacity}% ",
@@ -124,17 +146,16 @@
     "spacing": 3
   },
 
-  "custom/xkb": {
-    "tooltip":  false,
-    "format":   "{}",
-    "exec":     "swaymsg -t subscribe -m '[ \"input\" ]' | jq -r --unbuffered '.input.xkb_active_layout_name'"
-  },
-
-  "custom/disk": {
-    "tooltip":  false,
-    "format":   "{} ",
+  "disk": {
     "interval": 30,
-    "exec":     "df -h / | tail -n 1 | awk '{print $4}'"
+    "format": "{percentage_used}% ",
+    "path": "/",
+    "states": {
+      "low":    0,
+      "medium": 50,
+      "high":   80
+    },
+    "tooltip": false
   },
 
   "custom/power": {
@@ -142,5 +163,10 @@
     "format":   "{}W ",
     "interval": 3,
     "exec":     "echo \"scale=1;$(cat /sys/class/power_supply/BAT0/current_now)/100000\" | bc -l"
+  },
+
+  "sway/language": {
+      "format": "{short}",
+      "tooltip": false
   }
 }
