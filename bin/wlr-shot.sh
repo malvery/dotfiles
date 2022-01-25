@@ -14,7 +14,7 @@ SHOT_PATH="$SHOT_DIR"/screenshot_${SHOT_TIME}.png
 case "$1" in
   -r)
     grim -g "$(slurp -w 3 -d)" "$SHOT_PATH"
-    ;;    
+    ;;
   *)
     grim -o "$(swaymsg --type get_outputs --raw | jq --raw-output '.[] | select(.focused) | .name')" "$SHOT_PATH"
     ;;

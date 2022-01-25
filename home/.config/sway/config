@@ -104,5 +104,7 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 
 ###############################################################################
 # configs
+# exec "systemctl --user import-environment"
+include /etc/sway/config.d/*
 include $config/conf.d/*
 include $config/`hostname`.d/*

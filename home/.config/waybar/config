@@ -111,8 +111,8 @@
     },
     "states": {
       "low":    0,
-      "medium": 35,
-      "high":   75
+      "medium": 40,
+      "high":   80
     },
     "on-click-right":             "pamixer -t",
     "on-click-middle":            "pavucontrol",
