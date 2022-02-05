@@ -6,10 +6,9 @@ env:
 
 font:
   normal:
-    family: Hack
+    family: Monospace
     style: Regular
-  # size: 13.5
-  size: 11
+  size: 11.5
 
 colors:
   primary:

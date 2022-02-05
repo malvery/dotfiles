@@ -16,22 +16,6 @@ function getHostName()
   return hostname
 end
 
-function runOnce(cmd, sleep)
-  findme = cmd
-  firstspace = cmd:find(" ")
-  if firstspace then
-    findme = cmd:sub(0, firstspace-1)
-  end
-
-  if sleep ~= nil then
-    cmd = "sleep " .. tostring(sleep) .. " && " .. cmd
-  end
-
-  awful.spawn.with_shell(
-    "pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")", false
-  )
-end
-
 function runCmdSync(cmd)
   local prog = io.popen(cmd)
   local result = prog:read('*all')
@@ -145,12 +129,12 @@ end
 -- ############################################################################
 
 return {
-  hostname  = getHostName(),
+  hostname    = getHostName(),
   printNotify = printNotify,
-  runOnce   = runOnce,
-  backlight = backlight,
-  volume    = volume,
-  promptRun = promptRun,
+  runOnce     = runOnce,
+  backlight   = backlight,
+  volume      = volume,
+  promptRun   = promptRun,
   nonEmptyTag = nonEmptyTag,
   setVolTimer = setVolTimer,
   setTooltip  = setTooltip,

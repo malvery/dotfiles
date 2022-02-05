@@ -1,9 +1,9 @@
-local naughty = require("naughty")
-local awful = require("awful")
-local beautiful = require("beautiful")
-local gears = require("gears")
+local naughty       = require("naughty")
+local awful         = require("awful")
+local beautiful     = require("beautiful")
+local gears         = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
-local helpers = require("helpers")
+local helpers       = require("helpers")
 
 -- generate and load applications menu
 local os = require("os")
@@ -53,7 +53,7 @@ function initTheme()
   gears.wallpaper.set("#151515")
 
   -- env
-  beautiful.font                    = "Ubuntu Bold 10"
+  beautiful.font                    = "Ubuntu Condensed Bold 10"
   beautiful.border_width            = 3
   beautiful.wibar_height            = 20
   beautiful.notification_max_width  = 350
@@ -92,13 +92,12 @@ end
 function getHotkeys()
     hotkeys = gears.table.join(
       awful.key({ modkey,         },  "r",    function () awful.spawn('rofi -show run')           end),
-      awful.key({ modkey,         },  "F12",  function () awful.spawn('rofi -show drun')          end),
-      awful.key({ modkey, "Shift" },  "d",    function () awful.spawn('rofi -show window')        end),
+      awful.key({ modkey, "Shift" },  "d",    function () awful.spawn('rofi -show drun')          end),
       awful.key({ modkey, "Shift" },  "p",    function () awful.spawn(APPS.file_manager,  false)  end),
       awful.key({ modkey, "Shift" },  "F12",  function () awful.spawn(APPS.lock_command,  false)  end),
 
-      awful.key({ }, "XF86AudioRaiseVolume",  function () helpers.volume("inc")   end),
-      awful.key({ }, "XF86AudioLowerVolume",  function () helpers.volume("dec")   end),
+      awful.key({ }, "XF86AudioRaiseVolume",  function () helpers.volume("inc")     end),
+      awful.key({ }, "XF86AudioLowerVolume",  function () helpers.volume("dec")     end),
       awful.key({ }, "XF86AudioMute",         function () helpers.volume("toggle")  end),
       awful.key({ }, "XF86MonBrightnessUp",   function () helpers.backlight("inc")  end),
       awful.key({ }, "XF86MonBrightnessDown", function () helpers.backlight("dec")  end),
@@ -145,7 +144,6 @@ function getClientRules(client_rules)
     "Nm-connection-editor",
     "Vpnui",
     "Pavucontrol",
-    "Transmission-gtk",
     "Blueman-manager",
     "Spotify",
     "qBittorrent",
@@ -160,7 +158,7 @@ function getClientRules(client_rules)
   -- host additional settings
   client_rules = gears.table.join(client_rules, {
     {rule = {class = "TelegramDesktop"},  properties = {screen = 1, tag = "9"}},
-    {rule = {class = "Thunderbird"},    properties = {screen = 1, tag = "9"}}
+    {rule = {class = "Thunderbird"},      properties = {screen = 1, tag = "9"}}
   })
   
   -- set window rules
@@ -192,36 +190,11 @@ end)
 -- ############################################################################################
 -- Autostart
 function initAutostart()
-  run_list = {
-    'xss-lock -- ' .. APPS.lock_manager,
-    'libinput-gestures-setup start',
-    'clipmenud',
-    'light -N 1',
-    'blueman-applet',
-    'pasystray',
-    'thunderbird',
-    'firefox',
-    APPS.terminal .. ' -e tmux-workspace.sh',
-  }
-  
-  run_list_with_sleep = {
-    'telegram-desktop',
-    'alttab',
-  }
-
-    -- run always
   awful.spawn.with_shell('setxkbmap -layout "us,ru" -option grp:caps_toggle')
-  awful.spawn.with_shell('xsettingsd')
-
-  -- run once
-  for i, app_name in ipairs(run_list) do helpers.runOnce(app_name) end
-
-  -- run once with sleep
-  for i, app_name in ipairs(run_list_with_sleep) do helpers.runOnce(app_name, 5) end
+  awful.spawn.with_shell("~/.config/awesome/autostart.sh")
 
   -- setup tags
   awful.tag.incmwfact(0.05, awful.tag.find_by_name(awful.screen.focused(), "9"))
-
 end
 
 -- ############################################################################

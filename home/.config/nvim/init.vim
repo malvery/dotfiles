@@ -37,7 +37,7 @@ if &t_Co == 256 || has("gui_running")
   let g:neodark#background = '#171721'
   colorscheme neodark
 else
-  colorscheme desert
+  colorscheme ron
 endif
 
 " built-in options =========================================================

@@ -19,9 +19,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 -- *****************
-local host_conf	=	require("host_conf")
+local host_conf = require("host_conf")
 
-local awpwkb	=	require("awpwkb")
+local awpwkb  = require("awpwkb")
 kb = awpwkb.init()
 -- *****************
 
@@ -76,7 +76,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile,
     -- awful.layout.suit.tile.top,
     awful.layout.suit.max,
-	awful.layout.suit.floating,
+  awful.layout.suit.floating,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.fair,
@@ -237,8 +237,8 @@ awful.screen.connect_for_each_screen(function(s)
             host_widgets.mem_widget,
             host_widgets.thermal_widget,
             host_widgets.wifi_widget,
-			host_widgets.bat_widget,
-			host_widgets.vol_widget,
+      host_widgets.bat_widget,
+      host_widgets.vol_widget,
             host_widgets.keyboard_widget,
             -- *****************
             -- mykeyboardlayout,
@@ -495,9 +495,9 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-					 placement = awful.placement.no_offscreen
-						+	awful.placement.centered
-						--+	awful.placement.no_overlap
+           placement = awful.placement.no_offscreen
+            + awful.placement.centered
+            --+ awful.placement.no_overlap
      }
     },
 
@@ -593,7 +593,7 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             --awful.titlebar.widget.floatingbutton (c),
-			awful.titlebar.widget.minimizebutton(c),
+      awful.titlebar.widget.minimizebutton(c),
             awful.titlebar.widget.maximizedbutton(c),
             --awful.titlebar.widget.stickybutton   (c),
             --awful.titlebar.widget.ontopbutton    (c),
