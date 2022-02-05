@@ -11,10 +11,10 @@ export $DCONF_PATH org.gnome.desktop.interface
 
 gsettings set $DCONF_PATH gtk-theme            'Arc-Dark-solid'
 gsettings set $DCONF_PATH icon-theme           'gnome'
-gsettings set $DCONF_PATH monospace-font-name  'Hack 11'
-gsettings set $DCONF_PATH document-font-name   'Ubuntu 11'
-gsettings set $DCONF_PATH font-name            'Ubuntu 11'
-gsettings set $DCONF_PATH text-scaling-factor  1.08
+gsettings set $DCONF_PATH monospace-font-name  'Hack 12'
+gsettings set $DCONF_PATH document-font-name   'Ubuntu 12'
+gsettings set $DCONF_PATH font-name            'Ubuntu 12'
+# gsettings set $DCONF_PATH text-scaling-factor  1.08
 
 run xss-lock -- xsecurelock
 run libinput-gestures-setup start

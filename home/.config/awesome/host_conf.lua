@@ -53,7 +53,7 @@ function initTheme()
   gears.wallpaper.set("#151515")
 
   -- env
-  beautiful.font                    = "Ubuntu Condensed Bold 10"
+  beautiful.font                    = "Ubuntu Condensed Bold 11"
   beautiful.border_width            = 3
   beautiful.wibar_height            = 20
   beautiful.notification_max_width  = 350
@@ -157,8 +157,17 @@ function getClientRules(client_rules)
 
   -- host additional settings
   client_rules = gears.table.join(client_rules, {
-    {rule = {class = "TelegramDesktop"},  properties = {screen = 1, tag = "9"}},
-    {rule = {class = "Thunderbird"},      properties = {screen = 1, tag = "9"}}
+    {
+      rule = {class = "TelegramDesktop"},
+      properties = {
+        screen = 1, tag = "9",
+        placement = awful.placement.no_offscreen + awful.placement.top_left
+      }
+    },
+    {
+      rule = {class = "Thunderbird"},
+      properties = {screen = 1, tag = "9", placement = awful.placement.bottom_right}
+    }
   })
   
   -- set window rules

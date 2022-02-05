@@ -6,15 +6,13 @@ env:
 
 font:
   normal:
-    family: Monospace
+    family: InputMonoNarrow
+    # family: Hack
     style: Regular
-  size: 11.5
+  size: 12
 
 colors:
   primary:
-    # foreground: '#dadada'
-    # background: '#002635'
-    # background: '#1A1A1A'
     background: '#171721'
 
 
