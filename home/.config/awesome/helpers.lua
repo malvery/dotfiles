@@ -73,15 +73,18 @@ end
 
 function volume(action)
   if action == "inc" then
-    command = "pamixer -i 2"
+    command = "pactl set-sink-volume @DEFAULT_SINK@ +2%"
   elseif action == "dec" then
-    command = "pamixer -d 2"
+    command = "pactl set-sink-volume @DEFAULT_SINK@ -2%"
   elseif action == "toggle" then
-    command = "pamixer -t"
+    command = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   end
 
   awful.spawn.easy_async_with_shell(command, function()
-    if vol_widget_t then vol_widget_t:emit_signal("timeout") end
+    if vol_widget_t then
+      vol_widget_t:emit_signal("timeout")
+      vol_widget_t:start()
+    end
   end)
 end
 
