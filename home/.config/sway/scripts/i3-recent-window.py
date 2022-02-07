@@ -43,7 +43,7 @@ class Recent:
 
 class Watcher(object):
     _workspace = 1
-    _recent = dict(tuple((x, Recent()) for x in range(10)))
+    _recent = dict(tuple((x, Recent()) for x in range(11)))
 
     @classmethod
     def workspace_focus(cls, _, e):

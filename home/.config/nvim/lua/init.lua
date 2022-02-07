@@ -1,5 +1,5 @@
 -- treesitter =================================================================
-require'nvim-treesitter.configs'.setup {
+--[[ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
-}
+} ]]
 
 -- gitsigns ===================================================================
 require('gitsigns').setup {

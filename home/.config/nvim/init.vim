@@ -6,9 +6,10 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'towolf/vim-helm'
+  Plug 'sheerun/vim-polyglot'
   Plug 'KeitaNakamura/neodark.vim'
-  Plug 'towolf/vim-helm'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
