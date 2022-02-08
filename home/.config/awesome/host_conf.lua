@@ -188,8 +188,9 @@ function getClientRules(client_rules)
 
   -- additional settings
   client_rules = gears.table.join(client_rules, {
-    { rule = {class = "zoom"},                     properties = { screen = 1, tag = "5" }},
-    { rule = {class = "Com.cisco.anyconnect.gui"}, properties = { screen = 1, tag = "8" }},
+    { rule = {class = "Firefox"},                   properties = { screen = 1, tag = "2" }},
+    { rule = {class = "zoom"},                      properties = { screen = 1, tag = "5" }},
+    { rule = {class = "Com.cisco.anyconnect.gui"},  properties = { screen = 1, tag = "8" }},
     {
       rule_any = {class = {"Thunderbird", "Evolution*"}},
       properties = {screen = 1, tag = "9", placement = awful.placement.bottom_right}
