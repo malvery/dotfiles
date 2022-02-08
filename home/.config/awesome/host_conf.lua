@@ -5,15 +5,6 @@ local gears         = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local helpers       = require("helpers")
 
--- generate and load applications menu
-local os = require("os")
-os.execute(
-  "xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >"
-  .. awful.util.getdir("config")
-  .. "/archmenu.lua"
-)
-local xdg_menu = require("archmenu")
-
 -- ############################################################################
 local HOSTNAME = helpers.hostname
 
@@ -26,8 +17,20 @@ local APPS = {
 }
 
 local TITLEBAR_SIZE = 22
-if HOSTNAME == "NB-ZAVYALOV2" then
-  TITLEBAR_SIZE = 30
+
+if HOSTNAME == "nbubnt185" then
+  APPS["file_manager"] = "nautilus -w"
+  local xdgmenu = {}
+
+else
+  -- generate and load applications menu
+  local os = require("os")
+  os.execute(
+    "xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >"
+    .. awful.util.getdir("config")
+    .. "/archmenu.lua"
+  )
+  local xdg_menu = require("archmenu")
 end
 
 -- ############################################################################
@@ -71,15 +74,15 @@ function getMenu()
   exit_menu = {
     {"Suspend",     "systemctl suspend -i"},
     {"Shutdown",  function() helpers.promptRun("shutdown ?",  "systemctl poweroff -i" ) end},
-    {"Reboot",    function() helpers.promptRun("reboot ?",  "systemctl reboot -i" ) end},
+    {"Reboot",    function() helpers.promptRun("reboot ?",    "systemctl reboot -i" ) end},
   }
 
   main_menu = awful.menu({
     items = {
-      {"Awesome",     awesome_menu, beautiful.awesome_icon},
+      {"Awesome",       awesome_menu, beautiful.awesome_icon},
       {"Applications",  xdgmenu},
       {"File Manager",  APPS.file_manager},
-      {"System",      exit_menu},
+      {"System",        exit_menu},
       {"Lock Screen",   APPS.lock_command}
     }
   })
@@ -109,8 +112,8 @@ function getHotkeys()
       awful.key({ modkey,     }, "Left",  function () awful.client.focus.byidx( -1) end),
       awful.key({ modkey,     }, "Right", function () awful.client.focus.byidx(  1) end),
 
-      awful.key({ modkey,     }, "s", function () awful.screen.focused().tags[9]:view_only()  end),
       awful.key({ modkey,     }, "g", function () awful.screen.focused().tags[8]:view_only()  end),
+      awful.key({ modkey,     }, "s", function () awful.screen.focused().tags[9]:view_only()  end),
 
       awful.key({ modkey, "Shift" }, "/",     hotkeys_popup.show_help),
       awful.key({ 'Ctrl',         }, "space", naughty.destroy_all_notifications),
@@ -128,8 +131,10 @@ function getLayouts()
   layouts = {}
   for i = 1, 9 do layouts[i] = awful.layout.suit.tile end
 
+  layouts[1] = awful.layout.suit.max
   layouts[2] = awful.layout.suit.max
   layouts[3] = awful.layout.suit.max
+  layouts[5] = awful.layout.suit.floating
   layouts[8] = awful.layout.suit.floating
   layouts[9] = awful.layout.suit.floating
 
@@ -142,34 +147,55 @@ function getClientRules(client_rules)
   -- float apps list
   float_apps = {
     "Nm-connection-editor",
-    "Vpnui",
+    "Com.cisco.anyconnect.gui",
     "Pavucontrol",
     "Blueman-manager",
     "Spotify",
     "qBittorrent",
     "mpv",
-    "explorer.exe"
+    "explorer.exe",
+    "zoom"
   }
   float_apps_top = {
-    "Shutter",
+    "flameshot",
     "Gcolor3"
   }
 
-  -- host additional settings
-  client_rules = gears.table.join(client_rules, {
-    {
-      rule = {class = "TelegramDesktop"},
-      properties = {
-        screen = 1, tag = "9",
-        placement = awful.placement.no_offscreen + awful.placement.top_left
+  if HOSTNAME == "nbubnt185" then
+    client_rules = gears.table.join(client_rules, {
+      {
+        rule = {class = "Slack"},
+        properties = {
+          screen = 1, tag = "9",
+          placement = awful.placement.no_offscreen + awful.placement.top_left
+        }
+      },
+      { rule = {class = "TelegramDesktop"}, properties = { screen = 1, tag = "8" }}
+    })
+
+  else
+    client_rules = gears.table.join(client_rules, {
+      {
+        rule = {class = "TelegramDesktop"},
+        properties = {
+          screen = 1, tag = "9",
+          placement = awful.placement.no_offscreen + awful.placement.top_left
+        }
       }
-    },
+    })
+
+  end
+
+  -- additional settings
+  client_rules = gears.table.join(client_rules, {
+    { rule = {class = "zoom"},                     properties = { screen = 1, tag = "5" }},
+    { rule = {class = "Com.cisco.anyconnect.gui"}, properties = { screen = 1, tag = "8" }},
     {
-      rule = {class = "Thunderbird"},
+      rule_any = {class = {"Thunderbird", "Evolution*"}},
       properties = {screen = 1, tag = "9", placement = awful.placement.bottom_right}
     }
   })
-  
+
   -- set window rules
   client_rules = gears.table.join(client_rules, {
     -- disable titlebars

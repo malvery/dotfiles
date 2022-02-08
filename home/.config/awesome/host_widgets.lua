@@ -148,40 +148,67 @@ local wifi_t = helpers.setTooltip(
 
 -- ############################################################################################
 -- volume
-vol_widget, vol_widget_t =  awful.widget.watch(
-  'bash -c "(pactl get-sink-volume @DEFAULT_SINK@; pactl get-sink-mute @DEFAULT_SINK@)'
-    .. ' | awk \'NR==1{a=$5}NR==3{print a,$2}\'"', 2,
-  function(widget, stdout)
-    values = {}
-    for str in string.gmatch(stdout, "([^  ]+)") do table.insert(values, str) end
+if helpers.hostname == "nbubnt185" then
+  vol_widget, vol_widget_t =  awful.widget.watch(
+    'pamixer --get-mute --get-volume', 2,
+    function(widget, stdout)
+      values = {}
+      for str in string.gmatch(stdout, "([^  ]+)") do table.insert(values, str) end
+      if values[2] then vol_v = tonumber(values[2]) else vol_v = 0 end
+      vol_s = values[1]
 
-    if values[1] then
-      vol_v = tonumber(values[1]:sub(1,-2))
-    else
-      vol_v = 0
-    end
+      if      vol_v < 35 then color = color_n
+      elseif  vol_v < 70 then color = color_m
+      else    color = color_h end
 
-    vol_s = values[2]
+      if vol_s:match("true") then
+        widget:set_markup(string.format(
+          '<span color="%s">VOL: Mute</span>' .. w_sep, color_i
+        ))
+        return
+      end
 
-    if vol_v < 35 then
-      color = color_n
-    elseif vol_v < 70 then
-      color = color_m
-    else
-      color = color_h
-    end
-
-    if vol_s:match("yes") then
       widget:set_markup(string.format(
-        '<span color="%s">VOL: Mute</span>' .. w_sep, color_i
+        '<span color="%s">VOL: %.0f%%</span>' .. w_sep, color, vol_v
       ))
-      return
-    end
+  end)
 
-    widget:set_markup(string.format(
-      '<span color="%s">VOL: %.0f%%</span>' .. w_sep, color, vol_v
-    ))
-end)
+else
+  vol_widget, vol_widget_t =  awful.widget.watch(
+    'bash -c "(pactl get-sink-volume @DEFAULT_SINK@; pactl get-sink-mute @DEFAULT_SINK@)'
+      .. ' | awk \'NR==1{a=$5}NR==3{print a,$2}\'"', 2,
+    function(widget, stdout)
+      values = {}
+      for str in string.gmatch(stdout, "([^  ]+)") do table.insert(values, str) end
+
+      if values[1] then
+        vol_v = tonumber(values[1]:sub(1,-2))
+      else
+        vol_v = 0
+      end
+
+      vol_s = values[2]
+
+      if vol_v < 35 then
+        color = color_n
+      elseif vol_v < 70 then
+        color = color_m
+      else
+        color = color_h
+      end
+
+      if vol_s:match("yes") then
+        widget:set_markup(string.format(
+          '<span color="%s">VOL: Mute</span>' .. w_sep, color_i
+        ))
+        return
+      end
+
+      widget:set_markup(string.format(
+        '<span color="%s">VOL: %.0f%%</span>' .. w_sep, color, vol_v
+      ))
+  end)
+end
 
 -- buttons
 helpers.setVolTimer(vol_widget_t)

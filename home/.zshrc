@@ -49,8 +49,8 @@ export SYSTEMD_EDITOR='vim'
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
 if [[ $TERM == "xterm" ]]
-then 
-	export TERM=xterm-256color 
+then
+	export TERM=xterm-256color
 fi
 
 ##############################################################################
@@ -126,5 +126,7 @@ export LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+if [[ -f ${HOME}/.zshrc.local ]];
+then
+	source ${HOME}/.zshrc.local
+fi

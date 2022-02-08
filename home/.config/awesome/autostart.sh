@@ -7,24 +7,24 @@ function run {
   fi
 }
 
-export $DCONF_PATH org.gnome.desktop.interface
-
-gsettings set $DCONF_PATH gtk-theme            'Arc-Dark-solid'
-gsettings set $DCONF_PATH icon-theme           'gnome'
-gsettings set $DCONF_PATH monospace-font-name  'Hack 12'
-gsettings set $DCONF_PATH document-font-name   'Ubuntu 12'
-gsettings set $DCONF_PATH font-name            'Ubuntu 12'
-# gsettings set $DCONF_PATH text-scaling-factor  1.08
-
 run xss-lock -- xsecurelock
-run libinput-gestures-setup start
+run libinput-gestures
 run clipmenud
 run light -N 1
 run blueman-applet
 run pasystray
-run thunderbird
 run firefox
 run alacritty -e tmux-workspace.sh
 
 (sleep 2 && run telegram-desktop) &
 (sleep 2 && alttab) &
+
+if [[ $(hostname) == "nbubnt185" ]]; then
+  run nm-applet
+
+  # flatpak run org.gnome.Evolution &
+  # flatpak run com.slack.Slack &
+  # flatpak run us.zoom.Zoom &
+else
+  run thunderbird
+fi
