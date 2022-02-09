@@ -166,8 +166,12 @@ function getClientRules(client_rules)
       {
         rule = {class = "Slack"},
         properties = {
-          screen = 1, tag = "9",
-          placement = awful.placement.no_offscreen + awful.placement.top_left
+          screen  = 1,
+          tag     = "9",
+          x       = 0,
+          y       = TITLEBAR_SIZE + 2,
+          height  = screen[1].geometry["height"]  * 0.97,
+          width   = screen[1].geometry["width"]   * 0.70,
         }
       },
       { rule = {class = "TelegramDesktop"}, properties = { screen = 1, tag = "8" }}
@@ -178,8 +182,12 @@ function getClientRules(client_rules)
       {
         rule = {class = "TelegramDesktop"},
         properties = {
-          screen = 1, tag = "9",
-          placement = awful.placement.no_offscreen + awful.placement.top_left
+          screen  = 1,
+          tag     = "9",
+          x       = 4,
+          y       = TITLEBAR_SIZE + 4,
+          height  = screen[1].geometry["height"]  * 0.80,
+          width   = screen[1].geometry["width"]   * 0.55,
         }
       }
     })
@@ -190,10 +198,16 @@ function getClientRules(client_rules)
   client_rules = gears.table.join(client_rules, {
     { rule = {class = "Firefox"},                   properties = { screen = 1, tag = "2" }},
     { rule = {class = "zoom"},                      properties = { screen = 1, tag = "5" }},
-    { rule = {class = "Com.cisco.anyconnect.gui"},  properties = { screen = 1, tag = "8" }},
+    { rule = {class = "Com.cisco.anyconnect.gui"},  properties = { screen = 1, tag = "7" }},
     {
       rule_any = {class = {"Thunderbird", "Evolution*"}},
-      properties = {screen = 1, tag = "9", placement = awful.placement.bottom_right}
+      properties = {
+        screen    = 1,
+        tag       = "9",
+        height    = screen[1].geometry["height"]  * 0.80,
+        width     = screen[1].geometry["width"]   * 0.60,
+        placement = awful.placement.bottom_right
+      }
     }
   })
 
