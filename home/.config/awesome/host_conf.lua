@@ -109,8 +109,8 @@ function getHotkeys()
       awful.key({ }, "XF86AudioPrev", function () awful.spawn('playerctl previous',   false)  end),
       awful.key({ }, "XF86AudioNext", function () awful.spawn('playerctl next',       false)  end),
 
-      awful.key({ modkey,     }, "Left",  function () awful.client.focus.byidx( -1) end),
-      awful.key({ modkey,     }, "Right", function () awful.client.focus.byidx(  1) end),
+      -- awful.key({ modkey,     }, "Left",  function () awful.client.focus.byidx( -1) end),
+      -- awful.key({ modkey,     }, "Right", function () awful.client.focus.byidx(  1) end),
 
       awful.key({ modkey,     }, "g", function () awful.screen.focused().tags[8]:view_only()  end),
       awful.key({ modkey,     }, "s", function () awful.screen.focused().tags[9]:view_only()  end),
@@ -199,6 +199,7 @@ function getClientRules(client_rules)
     { rule = {class = "Firefox"},                   properties = { screen = 1, tag = "2" }},
     { rule = {class = "zoom"},                      properties = { screen = 1, tag = "5" }},
     { rule = {class = "Com.cisco.anyconnect.gui"},  properties = { screen = 1, tag = "7" }},
+    { rule = {class = "Spotify"},                   properties = { screen = 1, tag = "8" }},
     {
       rule_any = {class = {"Thunderbird", "Evolution*"}},
       properties = {
