@@ -6,10 +6,9 @@ env:
 
 font:
   normal:
-    family: InputMonoNarrow
-    # family: Hack
+    family: Hack
     style: Regular
-  size: 12.5
+  size: 12
 
 colors:
   primary:

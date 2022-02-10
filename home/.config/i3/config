@@ -216,6 +216,20 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 ###############################################################################
+bar {
+  status_command \
+    XKB_MODULE="i3block kbdd" \
+    py3status -c ~/.config/i3/py3status.conf
+
+  font pango: Ubuntu Condensed Bold 10.5
+  position top
+  colors {
+    background #222222
+    statusline #BABABA
+  }
+}
+
+###############################################################################
 
 include ~/.config/i3/`hostnamectl hostname || hostname`.conf
 

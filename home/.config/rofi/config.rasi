@@ -1,6 +1,6 @@
 configuration {
-  modi:       "run,drun";
-  font:       "ubuntu mono 15";
+  modi:       "run,drun,window";
+  font:       "ubuntu mono 14";
   terminal:   "foot";
   kb-cancel:  "Escape,Control+g,Control+bracketleft,MouseMiddle";
 }
