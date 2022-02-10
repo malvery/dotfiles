@@ -134,7 +134,7 @@ function getLayouts()
   layouts[1] = awful.layout.suit.max
   layouts[2] = awful.layout.suit.max
   layouts[3] = awful.layout.suit.max
-  layouts[5] = awful.layout.suit.floating
+  -- layouts[5] = awful.layout.suit.floating
   layouts[8] = awful.layout.suit.floating
   layouts[9] = awful.layout.suit.floating
 
@@ -201,7 +201,7 @@ function getClientRules(client_rules)
     { rule = {class = "Com.cisco.anyconnect.gui"},  properties = { screen = 1, tag = "7" }},
     { rule = {class = "Spotify"},                   properties = { screen = 1, tag = "8" }},
     {
-      rule_any = {class = {"Thunderbird", "Evolution*"}},
+      rule_any = {class = {"Thunderbird"}, role = {"EShellWindow*"} },
       properties = {
         screen    = 1,
         tag       = "9",
