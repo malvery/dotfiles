@@ -8,7 +8,10 @@ lint-debounce: 1s
 tools:
   json-jq: &json-jq
     format-command: 'jq .'
+    format-stdin: true
     lint-command: 'jq .'
+    lint-stdin: true
+    lint-ignore-exit-code: true
 
   sh-shfmt: &sh-shfmt
     format-command: 'shfmt -ci -s -bn'
