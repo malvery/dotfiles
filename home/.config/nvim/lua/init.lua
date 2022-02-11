@@ -64,7 +64,9 @@ cmp.setup({
       }
   }),
   documentation = false,
-  experimental = { native_menu = true }
+  view = {
+    entries = "native"
+  }
 })
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
@@ -111,7 +113,7 @@ local on_attach = function(client, bufnr)
 end
 
 local nvim_lsp = require('lspconfig')
-local servers = { "pylsp", "terraformls" }
+local servers = { "pyright", "terraformls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach     = on_attach,

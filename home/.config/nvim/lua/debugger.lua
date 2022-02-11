@@ -17,9 +17,9 @@ vim.api.nvim_set_keymap("n", "<leader>du", ":lua require'dapui'.toggle()<CR>", o
 -- adapters ================================================================
 local dap = require('dap')
 dap.adapters.python = {
-	type = 'executable';
-	command = 'python3';
-	args = { '-m', 'debugpy.adapter' };
+  type    = 'executable';
+  command = 'python3';
+  args    = { '-m', 'debugpy.adapter' };
 }
 
 -- UI ======================================================================
@@ -27,12 +27,12 @@ require("dapui").setup()
 
 -- configurations ==========================================================
 dap.configurations.python = {
-	{
-		type = 'python';
-		request = 'launch';
-		name = "Launch file";
-		program = "${file}";
-		justMyCode = false;
-	}
+  {
+    type        = 'python';
+    request     = 'launch';
+    name        = "Launch file";
+    program     = "${file}";
+    justMyCode  = false;
+  }
 }
 
