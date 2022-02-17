@@ -25,39 +25,48 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
 
 # -----------------------------------------------
-# Completions
-# -----------------------------------------------
-source  /usr/share/git/completion/git-prompt.sh
-
-# -----------------------------------------------
 # Prompt
 # -----------------------------------------------
-C_DIR="$(tput setaf 142)"
+# C_DIR="$(tput setaf 142)"
+C_DIR="$(tput bold)$(tput setaf 142)"
 C_URG="$(tput setaf 167)"
 C_GIT="$(tput setaf 175)"
 C_JOB="$(tput setaf 104)"
 C_RST="$(tput sgr0)"
 
-__status_code() {
-  local status=$?
-  [ ${status} -gt 0 ] && echo "${C_URG} [${status}]${C_RST}"
-}
+__promt() {
+  STATUS_CODE=$?
+  if [ ${STATUS_CODE} -gt 0 ]; then
+    STATUS_CODE="${C_URG} [${STATUS_CODE}]${C_RST}"
+  else
+    STATUS_CODE=""
+  fi
 
-__jobs() {
-  local jobs=$(jobs |wc -l)
-  [ ${jobs} -gt 0 ] && echo "${C_JOB} [${jobs}]${C_RST}"
-}
+  JOBS=$(jobs |wc -l)
+  if [ ${JOBS} -gt 0 ]; then
+    JOBS="${C_JOB} [${JOBS}]${C_RST}"
+  else
+    JOBS=""
+  fi
 
-__git() {
-  __git_ps1 "${C_GIT} [%s]${C_RST}"
+  GIT_BRANCH=$(__git_ps1 "${C_GIT} [%s]${C_RST}")
 }
+PROMPT_COMMAND=__promt
+PS1=' ${C_DIR}\w${C_RST}${STATUS_CODE}${JOBS}${GIT_BRANCH}${C_RST} '
 
-PS1=' ${C_DIR}\w$(__status_code)$(__jobs)$(__git)${C_RST} '
+# -----------------------------------------------
+# Completions
+# -----------------------------------------------
+_NIX_SHARE=${HOME}/.nix-profile/share
+if [ -d ${_NIX_SHARE} ]; then
+  _NIX_COMP_BASH=${_NIX_SHARE}/bash-completion/completions/
+  for f in ${_NIX_COMP_BASH}/*; do . $f; done
+fi
 
 # -----------------------------------------------
 # Local
 # -----------------------------------------------
-if [[ -f ${HOME}/.bashrc.local ]];
+if [ -f ${HOME}/.bashrc.local ];
 then
   source ${HOME}/.bashrc.local
 fi
