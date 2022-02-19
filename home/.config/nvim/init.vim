@@ -34,7 +34,6 @@ if &t_Co == 256 || has("gui_running")
     set termguicolors
   endif
 
-  " colorscheme rigel
   let g:neodark#background = '#171721'
   colorscheme neodark
 else
@@ -57,7 +56,6 @@ set showcmd
 set hlsearch
 set incsearch
 set ignorecase
-" set spell spelllang=en_us
 set nobackup
 set encoding=utf-8
 set termencoding=utf-8
