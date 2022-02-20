@@ -1,12 +1,10 @@
-##############################################################################
+# -----------------------------------------------
 # zsh
-##############################################################################
-autoload -Uz compinit
-compinit
+# -----------------------------------------------
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 
-autoload -Uz select-word-style
-select-word-style bash
+autoload -Uz select-word-style && select-word-style bash
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -15,48 +13,29 @@ setopt appendhistory
 unsetopt share_history
 
 unset zle_bracketed_paste
-set -o emacs
 
-##############################################################################
+# -----------------------------------------------
 # aliases
-##############################################################################
+# -----------------------------------------------
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
-
-alias q="exit"
-alias ..='cd ..'
-alias ~='cd ~'
 alias bc='bc -ql'
-alias xo='xdg-open'
-
-alias mc='mc -d'
-alias mnt='cd /run/media/${USER}/'
-
 alias scat='sudo cat'
 alias svim='sudo vim'
-alias smount='sudo mount'
-alias sumount='sudo umount'
 
-alias venv-activate='source ./.venv/bin/activate || source ./venv/bin/activate'
-
-##############################################################################
+# -----------------------------------------------
 # environment
-##############################################################################
+# -----------------------------------------------
 export EDITOR='vim'
-export SYSTEMD_EDITOR='vim'
+export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
-if [[ $TERM == "xterm" ]]
-then
-	export TERM=xterm-256color
-fi
-
-##############################################################################
+# -----------------------------------------------
 # prompt
-##############################################################################
-PROMPT=' %F{167}%(?..[%?] )%f%F{142}%B%~%b%f '
+# -----------------------------------------------
+PROMPT=' %F{142}%B%~%b%f%F{167}%(?.. [%?])%f%F{104}%-1(j. [%j].)%f '
 
 precmd () {
   echo -n -e "\a"
@@ -70,9 +49,9 @@ zstyle ':vcs_info:git:*' formats '[%F{175}%b%f]'
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 
-##############################################################################
+# -----------------------------------------------
 # mappings
-##############################################################################
+# -----------------------------------------------
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -118,13 +97,22 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-##############################################################################
+# -----------------------------------------------
 # colors
-##############################################################################
+# -----------------------------------------------
+# eval $(dircolors)
 LS_COLORS="di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32";
-export LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# -----------------------------------------------
+# Completions
+# -----------------------------------------------
+# _NIX_SHARE=${HOME}/.nix-profile/share
+# if [ -d ${_NIX_SHARE} ]; then
+#   _NIX_COMP_BASH=${_NIX_SHARE}/zsh/site-functions/
+
+#   for f in ${_NIX_COMP_BASH}/*; do . $f; done
+# fi
 
 if [[ -f ${HOME}/.zshrc.local ]];
 then

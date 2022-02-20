@@ -27,32 +27,36 @@ export HISTSIZE=10000
 # -----------------------------------------------
 # Prompt
 # -----------------------------------------------
-# C_DIR="$(tput setaf 142)"
-C_DIR="$(tput bold)$(tput setaf 142)"
-C_URG="$(tput setaf 167)"
-C_GIT="$(tput setaf 175)"
-C_JOB="$(tput setaf 104)"
-C_RST="$(tput sgr0)"
+C_DIR="\[$(tput bold setaf 142)\]"
+C_URG="\[$(tput setaf 167)\]"
+C_GIT="\[$(tput setaf 175)\]"
+C_JOB="\[$(tput setaf 104)\]"
+C_RST="\[$(tput sgr0)\]"
 
 __promt() {
   STATUS_CODE=$?
   if [ ${STATUS_CODE} -gt 0 ]; then
-    STATUS_CODE="${C_URG} [${STATUS_CODE}]${C_RST}"
+    STATUS_CODE=" [${STATUS_CODE}]"
   else
     STATUS_CODE=""
   fi
 
   JOBS=$(jobs |wc -l)
   if [ ${JOBS} -gt 0 ]; then
-    JOBS="${C_JOB} [${JOBS}]${C_RST}"
+    JOBS=" [${JOBS}]"
   else
     JOBS=""
   fi
 
-  GIT_BRANCH=$(__git_ps1 "${C_GIT} [%s]${C_RST}")
+  GIT_BRANCH=$(__git_ps1 " [%s]")
 }
 PROMPT_COMMAND=__promt
-PS1=' ${C_DIR}\w${C_RST}${STATUS_CODE}${JOBS}${GIT_BRANCH}${C_RST} '
+
+PS1=" ${C_DIR}\w${C_RST}"
+PS1+="${C_URG}\${STATUS_CODE}"
+PS1+="${C_JOB}\${JOBS}"
+PS1+="${C_GIT}\${GIT_BRANCH}"
+PS1+="${C_RST} "
 
 # -----------------------------------------------
 # Completions
