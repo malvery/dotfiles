@@ -27,7 +27,7 @@ export HISTSIZE=10000
 # -----------------------------------------------
 # Prompt
 # -----------------------------------------------
-C_DIR="\[$(tput bold setaf 142)\]"
+C_DIR="\[$(tput setaf 142)\]\[$(tput bold)\]"
 C_URG="\[$(tput setaf 167)\]"
 C_GIT="\[$(tput setaf 175)\]"
 C_JOB="\[$(tput setaf 104)\]"
