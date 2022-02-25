@@ -48,7 +48,8 @@ __promt() {
     JOBS=""
   fi
 
-  GIT_BRANCH=$(__git_ps1 " [%s]")
+  # GIT_BRANCH=$(__git_ps1 " [%s]")
+  GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
 }
 PROMPT_COMMAND=__promt
 
@@ -57,14 +58,6 @@ PS1+="${C_URG}\${STATUS_CODE}"
 PS1+="${C_JOB}\${JOBS}"
 PS1+="${C_GIT}\${GIT_BRANCH}"
 PS1+="${C_RST} \[\a\]"
-# -----------------------------------------------
-# Completions
-# -----------------------------------------------
-_NIX_SHARE=${HOME}/.nix-profile/share
-if [ -d ${_NIX_SHARE} ]; then
-  _NIX_COMP_BASH=${_NIX_SHARE}/bash-completion/completions/
-  for f in ${_NIX_COMP_BASH}/*; do . $f; done
-fi
 
 # -----------------------------------------------
 # Local
