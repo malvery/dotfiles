@@ -14,7 +14,7 @@ alias scat='sudo cat'
 alias svim='sudo vim'
 
 # -----------------------------------------------
-# Env variables
+# Env settings
 # -----------------------------------------------
 export PATH=$PATH:~/.local/bin
 export EDITOR='vim'
@@ -23,6 +23,8 @@ export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
 export HISTCONTROL=ignoreboth
 export HISTSIZE=10000
+
+shopt -s histappend
 
 # -----------------------------------------------
 # Prompt
