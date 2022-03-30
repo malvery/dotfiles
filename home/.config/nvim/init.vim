@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'towolf/vim-helm'
   Plug 'sheerun/vim-polyglot'
   Plug 'KeitaNakamura/neodark.vim'
+  Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
@@ -34,8 +35,10 @@ if &t_Co == 256 || has("gui_running")
     set termguicolors
   endif
 
-  let g:neodark#background = '#171721'
-  colorscheme neodark
+  " let g:neodark#background = '#171721'
+  " colorscheme neodark
+
+  colorscheme PaperColor
 else
   colorscheme ron
 endif
