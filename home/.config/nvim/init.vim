@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'towolf/vim-helm'
   Plug 'sheerun/vim-polyglot'
-  Plug 'KeitaNakamura/neodark.vim'
   Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'phaazon/hop.nvim'
@@ -35,10 +34,18 @@ if &t_Co == 256 || has("gui_running")
     set termguicolors
   endif
 
-  " let g:neodark#background = '#171721'
-  " colorscheme neodark
+  let g:PaperColor_Theme_Options = {
+    \   'theme': {
+    \     'default.dark': {
+    \       'transparent_background': 1,
+    \     },
+    \   }
+    \ }
 
   colorscheme PaperColor
+  autocmd vimenter * hi SignColumn  guibg=NONE
+  autocmd vimenter * hi ErrorMsg    guibg=NONE guifg=#dc322f
+
 else
   colorscheme ron
 endif
