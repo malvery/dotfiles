@@ -10,7 +10,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'towolf/vim-helm'
   Plug 'sheerun/vim-polyglot'
   Plug 'joshdick/onedark.vim'
-  " Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
@@ -34,17 +33,6 @@ if &t_Co == 256 || has("gui_running")
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     set termguicolors
   endif
-
-  " let g:PaperColor_Theme_Options = {
-  " \   'theme': {
-  " \     'default.dark': {
-  " \       'transparent_background': 1,
-  " \     },
-  " \   }
-  " \ }
-  " colorscheme PaperColor
-  " autocmd vimenter * hi SignColumn  guibg=NONE
-  " autocmd vimenter * hi ErrorMsg    guibg=NONE guifg=#dc322f
 
   let g:onedark_color_overrides = {
   \ "background": {"gui": "#171721", "cterm": "235", "cterm16": "0"},
