@@ -9,7 +9,8 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'towolf/vim-helm'
   Plug 'sheerun/vim-polyglot'
-  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'joshdick/onedark.vim'
+  " Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
@@ -34,18 +35,23 @@ if &t_Co == 256 || has("gui_running")
     set termguicolors
   endif
 
-  let g:PaperColor_Theme_Options = {
-    \   'theme': {
-    \     'default.dark': {
-    \       'transparent_background': 1,
-    \     },
-    \   }
-    \ }
+  " let g:PaperColor_Theme_Options = {
+  " \   'theme': {
+  " \     'default.dark': {
+  " \       'transparent_background': 1,
+  " \     },
+  " \   }
+  " \ }
+  " colorscheme PaperColor
+  " autocmd vimenter * hi SignColumn  guibg=NONE
+  " autocmd vimenter * hi ErrorMsg    guibg=NONE guifg=#dc322f
 
-  colorscheme PaperColor
-  autocmd vimenter * hi SignColumn  guibg=NONE
-  autocmd vimenter * hi ErrorMsg    guibg=NONE guifg=#dc322f
-
+  let g:onedark_color_overrides = {
+  \ "background": {"gui": "#171721", "cterm": "235", "cterm16": "0"},
+  \ "foreground": {"gui": "#c5c8c6", "cterm": "252", "cterm16": "7"}
+  \}
+  colorscheme onedark
+  autocmd vimenter * hi TabLineSel guibg=#2C323C
 else
   colorscheme ron
 endif

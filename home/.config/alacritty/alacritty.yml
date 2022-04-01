@@ -14,7 +14,7 @@ colors:
   primary:
     background: '#171721'
     # background: '#1c1c1c'
-    foreground: '#d0d0d0'
+    # foreground: '#d0d0d0'
 
   cursor:
     cursor: '#B5B4B4'
