@@ -52,12 +52,16 @@ def on_workspace_changed(screen, previously_active_space):
 
 
 def recent_window():
-    curr_w = x11_screen.get_active_workspace().get_number()
+    current = x11_screen.get_active_workspace().get_number()
     stacked = x11_screen.get_windows_stacked()
-    windows = [x for x in stacked if x.get_workspace().get_number() == curr_w]
+
+    windows = list()
+    for w in stacked:
+        workspace = w.get_workspace()
+        if workspace and workspace.get_number() == current:
+            windows.append(w)
 
     recent_list = windows[-2:-1]
-    # print(curr_w, [x.get_name() for x in windows])
     if recent_list:
         recent_list[0].activate(int(time.time()))
 
@@ -67,7 +71,7 @@ x11_screen.connect("active-workspace-changed", on_workspace_changed)
 signal.signal(signal.SIGURG, lambda *args: recent_workspace())
 signal.signal(signal.SIGUSR1, lambda *args: next_workspace())
 signal.signal(signal.SIGUSR2, lambda *args: next_workspace(reverse=True))
-signal.signal(signal.SIGCHLD, lambda *args: recent_window())
+# signal.signal(signal.SIGCHLD, lambda *args: recent_window())
 signal.signal(signal.SIGTERM, lambda *args: exit())
 
 
