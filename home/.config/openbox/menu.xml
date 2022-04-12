@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+  <menu id="system-menu" label="System">
+    <item label="Openbox Configuration Manager">
+      <action name="Execute">
+        <command>obconf</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
+      </action>
+    </item>
+    <item label="Reconfigure Openbox">
+      <action name="Reconfigure"/>
+    </item>
+  </menu>
+
+  <menu id="exit" label="Exit">
+
+    <item label="Reboot">
+      <action name="Execute">
+        <command>systemctl reboot</command>
+        <prompt>Reboot this host?</prompt>
+      </action>
+    </item>
+
+    <item label="Halt">
+      <action name="Execute">
+        <command>systemctl poweroff</command>
+        <prompt>Shutdowm this host?</prompt>
+      </action>
+    </item>
+
+    <item label="Log Out">
+      <action name="Exit">
+        <prompt>yes</prompt>
+      </action>
+    </item>
+  </menu>
+
+  <menu id="root-menu" label="Openbox 3">
+
+    <item label="Term">
+      <action name="Execute">
+        <command>alacritty</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
+      </action>
+    </item>
+    <item label="File">
+      <action name="Execute">
+        <command>pcmanfm</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+        </startupnotify>
+      </action>
+    </item>
+
+    <separator/>
+    <menu id="system-menu"/>
+
+    <separator/>
+    <menu id="exit"/>
+
+    <item label="Sleep">
+      <action name="Execute">
+        <command>systemctl suspend</command>
+      </action>
+    </item>
+
+    <item label="Lock">
+      <action name="Execute">
+        <command>loginctl lock-session</command>
+      </action>
+    </item>
+
+  </menu>
+</openbox_menu>

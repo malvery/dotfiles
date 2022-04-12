@@ -1,0 +1,27 @@
+# input settings
+setxkbmap -layout "us,ru" -option grp:caps_toggle &
+
+# DE settings
+xsettingsd &
+hsetroot -solid "#1C1C1C" &
+light -N 1 &
+dunst &
+
+# exit if NVIDIA_SESSION
+if [[ -v NVIDIA_SESSION ]]; then
+  exit
+fi
+
+xss-lock -- xsecurelock &
+libinput-gestures-setup restart &
+clipmenud &
+
+xfce4-panel -d &
+mate-maximus &
+backlight-tray.py &
+x11-tags-helper.py &
+
+alacritty -e tmux-workspace.sh &
+telegram-desktop &
+thunderbird &
+
