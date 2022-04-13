@@ -13,6 +13,7 @@ run clipmenud
 run light -N 1
 run blueman-applet
 run pasystray
+run nm-applet --indicator
 run firefox
 run alacritty -e tmux-workspace.sh
 

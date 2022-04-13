@@ -330,6 +330,9 @@
     <keybind key="W-S-s">
       <action name="ToggleShade"/>
     </keybind>
+    <keybind key="W-S-n">
+      <action name="Iconify"/>
+    </keybind>
     <keybind key="W-S-f">
       <action name="ToggleFullscreen"/>
     </keybind>
@@ -383,26 +386,28 @@
       </action>
     </keybind>
     <!-- windows switching with the arrow keys -->
-    <keybind key="W-Right">
-      <action name="DirectionalCycleWindows">
-        <direction>right</direction>
-      </action>
-    </keybind>
-    <keybind key="W-Left">
+
+    <keybind key="W-h">
       <action name="DirectionalCycleWindows">
         <direction>left</direction>
       </action>
     </keybind>
-    <keybind key="W-Up">
-      <action name="DirectionalCycleWindows">
-        <direction>up</direction>
-      </action>
-    </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-j">
       <action name="DirectionalCycleWindows">
         <direction>down</direction>
       </action>
     </keybind>
+    <keybind key="W-k">
+      <action name="DirectionalCycleWindows">
+        <direction>up</direction>
+      </action>
+    </keybind>
+    <keybind key="W-l">
+      <action name="DirectionalCycleWindows">
+        <direction>right</direction>
+      </action>
+    </keybind>
+
     <!-- windows tiling -->
     <keybind key="W-S-Right">
       <action name="UnmaximizeFull"/>
@@ -479,6 +484,11 @@
     <keybind key="W-S-F12">
       <action name="Execute">
         <command>loginctl lock-session</command>
+      </action>
+    </keybind>
+    <keybind key="C-space">
+      <action name="Execute">
+        <command>dunstctl close-all</command>
       </action>
     </keybind>
     <keybind key="W-S-p">
@@ -767,6 +777,9 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
+    <application class="zoom">
+      <desktop>5</desktop>
+    </application>
     <application class="TelegramDesktop">
       <desktop>6</desktop>
     </application>
@@ -774,6 +787,9 @@
       <desktop>6</desktop>
     </application>
     <application class="Thunderbird">
+      <desktop>6</desktop>
+    </application>
+    <application class="Evolution*">
       <desktop>6</desktop>
     </application>
   </applications>

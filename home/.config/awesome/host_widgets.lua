@@ -139,7 +139,7 @@ end)
 -- tooltip
 local wifi_t = helpers.setTooltip(
   wifi_widget,
-  'echo "$(iwgetid | sed -e \"s/:/:\\t/\" -e \"s/\\"//g\")\\n'
+  'printf "$(iwgetid | sed -e \"s/:/:\\t/\" -e \"s/\\"//g\")\\n'
     .. '$(iwgetid -f)\\n'
     .. '$(iwgetid -c)" | '
     .. 'cut -f 1 -d " " --complement | '
@@ -257,7 +257,7 @@ bat_widget =  awful.widget.watch(
 end)
 
 -- tooltip
-local bat_t_command = 'echo "Brightness: ${$(light)%.*}%"'
+local bat_t_command = 'echo "Brightness: $(light | cut -d \'.\' -f1)%"'
 local bat_t = helpers.setTooltip(bat_widget, bat_t_command)
 helpers.setBatteryT(bat_t, bat_t_command)
 
