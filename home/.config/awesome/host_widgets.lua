@@ -73,7 +73,7 @@ end)
 -- ############################################################################################
 -- mem
 mem_widget =  awful.widget.watch(
-  'bash -c "free | grep Mem | awk \'{print $3/$2 * 100.0}\'"', 5,
+  'bash -c "free | grep Mem | awk \'{print int($3/$2 * 100.0)}\'"', 5,
   function(widget, stdout)
     val = tonumber(stdout)
     if      val > 90 then color = color_h
@@ -157,8 +157,8 @@ if helpers.hostname == "nbubnt185" then
       if values[2] then vol_v = tonumber(values[2]) else vol_v = 0 end
       vol_s = values[1]
 
-      if      vol_v < 35 then color = color_n
-      elseif  vol_v < 70 then color = color_m
+      if      vol_v < 45 then color = color_n
+      elseif  vol_v < 80 then color = color_m
       else    color = color_h end
 
       if vol_s:match("true") then
@@ -189,9 +189,9 @@ else
 
       vol_s = values[2]
 
-      if vol_v < 35 then
+      if vol_v < 45 then
         color = color_n
-      elseif vol_v < 70 then
+      elseif vol_v < 80 then
         color = color_m
       else
         color = color_h
