@@ -134,10 +134,12 @@ function getLayouts()
   layouts[1] = awful.layout.suit.max
   layouts[2] = awful.layout.suit.max
   layouts[3] = awful.layout.suit.max
-  -- layouts[5] = awful.layout.suit.floating
   layouts[8] = awful.layout.suit.floating
   layouts[9] = awful.layout.suit.floating
 
+  if HOSTNAME == "nbubnt185" then
+    layouts[9] = awful.layout.suit.tile
+  end
   return layouts
 end
 
