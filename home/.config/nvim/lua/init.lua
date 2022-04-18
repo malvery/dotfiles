@@ -63,7 +63,9 @@ cmp.setup({
         }
       }
   }),
-  documentation = false,
+  window = {
+    documentation = cmp.config.disable
+  },
   view = {
     entries = "native"
   }
@@ -128,7 +130,7 @@ nvim_lsp['yamlls'].setup{
 }
 
 nvim_lsp['efm'].setup{
-  filetypes     = { 'sh', 'json' },
+  filetypes     = { 'sh', 'python' },
   on_attach     = on_attach,
   flags         = { debounce_text_changes = 150 },
   capabilities  = capabilities,

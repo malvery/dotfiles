@@ -6,10 +6,6 @@ lint-debounce: 1s
 # log-level: 1
 
 tools:
-  json-jq: &json-jq
-    format-command: 'jq .'
-    format-stdin: true
-
   sh-shfmt: &sh-shfmt
     format-command: 'shfmt -ci -s -bn'
     format-stdin: true
@@ -18,13 +14,29 @@ tools:
     lint-command: 'yamllint -f parsable -'
     lint-stdin: true
 
-languages:
-  json:
-    - <<: *json-jq
+  python-flake8: &python-flake8
+    lint-command: 'flake8 --stdin-display-name ${INPUT} -'
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c: %m'
 
+  python-black: &python-black
+    format-command: 'black --quiet -'
+    format-stdin: true
+
+  python-autopep8: &python-autopep8
+    format-command: 'autopep8 -'
+    format-stdin: true
+
+languages:
   sh:
     - <<: *sh-shfmt
 
   yaml:
     - <<: *yaml-yamllint
+
+  python:
+    - <<: *python-flake8
+    # - <<: *python-black
+    - <<: *python-autopep8
 
