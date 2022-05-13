@@ -71,9 +71,9 @@ set foldmethod=indent
 set nofoldenable
 
 filetype plugin on
-if &filetype==""
-  setfiletype conf
-endif
+" if &filetype==""
+"   setfiletype conf
+" endif
 
 " hotkeys ==================================================================
 nnoremap <A-h>      :tabprevious<CR>
