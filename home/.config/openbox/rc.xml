@@ -43,7 +43,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arc-Dark</name>
+    <name>Nightmare-02</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -386,7 +386,6 @@
       </action>
     </keybind>
     <!-- windows switching with the arrow keys -->
-
     <keybind key="W-h">
       <action name="DirectionalCycleWindows">
         <direction>left</direction>
@@ -407,7 +406,6 @@
         <direction>right</direction>
       </action>
     </keybind>
-
     <!-- windows tiling -->
     <keybind key="W-S-Right">
       <action name="UnmaximizeFull"/>
@@ -493,7 +491,7 @@
     </keybind>
     <keybind key="W-S-p">
       <action name="Execute">
-        <command>pcmanfm</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">

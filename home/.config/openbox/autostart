@@ -1,3 +1,4 @@
+#!/bin/bash
 # input settings
 setxkbmap -layout "us,ru" -option grp:caps_toggle &
 
@@ -15,12 +16,14 @@ fi
 xss-lock -- xsecurelock &
 clipmenud &
 
-xfce4-panel -d &
+xfce4-panel -d --sm-client-disable &
 blueman-applet &
 nm-applet &
 mate-maximus &
-backlight-tray.py &
-x11-tags-helper.py &
+
+SCRIPTS=~/src/dotfiles/bin/
+${SCRIPTS}/backlight-tray.py &
+${SCRIPTS}/x11-tags-helper.py &
 
 alacritty -e tmux-workspace.sh &
 

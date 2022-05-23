@@ -49,7 +49,7 @@
     </item>
     <item label="File">
       <action name="Execute">
-        <command>pcmanfm</command>
+        <command>thunar</command>
         <startupnotify>
           <enabled>yes</enabled>
         </startupnotify>
