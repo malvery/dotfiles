@@ -8,9 +8,9 @@
 # 800 / 600: your screen resolution, at at least the moving range for the mouse pointer
 
 while :; do
-    if  [ $(xprintidle) -gt 1000 ]
+    if  [ $(xprintidle) -gt 180000 ]
     then
-        xdotool mousemove `rand -M 800` `rand -M 600`;
+        xdotool mousemove `rand -M 1920` `rand -M 1080`;
     fi
 
     sleep 30
