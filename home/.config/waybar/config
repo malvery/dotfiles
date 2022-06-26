@@ -114,7 +114,7 @@
       "medium": 40,
       "high":   80
     },
-    "on-click-right":             "pamixer -t",
+    "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-middle":            "pavucontrol",
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false

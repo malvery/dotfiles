@@ -1,5 +1,7 @@
-font=Ubuntu 13
-border-size=3
+font=Ubuntu 11
+border-size=2
 border-color=#86AD85
 background-color=#394963
 default-timeout=10000
+padding=10
+margin=15,10
