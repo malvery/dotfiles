@@ -1,6 +1,6 @@
 # clipmenud
 CM_SELECTIONS DEFAULT=clipboard
-CM_DIR        DEFAULT=/home/malvery/.local/share/clipmenud
+CM_DIR        DEFAULT=@{HOME}/.local/share/clipmenud
 CM_MAX_CLIPS  DEFAULT=100
 CM_HISTLENGTH DEFAULT=15
 CM_LAUNCHER   DEFAULT=rofi

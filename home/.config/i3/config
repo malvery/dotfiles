@@ -224,9 +224,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 ###############################################################################
 bar {
-  status_command \
-    XKB_MODULE="i3block kbdd" \
-    py3status -c ~/.config/i3/py3status.conf
+  status_command py3status -c ~/.config/i3/py3status.conf
 
   font pango: Ubuntu Condensed Bold 10.5
   position bottom
@@ -238,9 +236,8 @@ bar {
 
 ###############################################################################
 
-include ~/.config/i3/`hostnamectl hostname || hostname`.conf
+include ~/.config/i3/`hostnamectl hostname || hostname`-`id -u`.conf
 
 exec        --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
-exec_always --no-startup-id ( killall kbdd || true ) && kbdd
-exec_always --no-startup-id ~/.config/sway/scripts/i3-recent-window.py
-exec_always --no-startup-id ~/.config/sway/scripts/i3-switch-workspace.py
+exec_always --no-startup-id i3-recent-window.py
+exec_always --no-startup-id i3-switch-workspace.py
