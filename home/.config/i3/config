@@ -238,6 +238,6 @@ bar {
 
 include ~/.config/i3/`hostnamectl hostname || hostname`-`id -u`.conf
 
-exec        --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
+exec_always --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
 exec_always --no-startup-id i3-recent-window.py
 exec_always --no-startup-id i3-switch-workspace.py
