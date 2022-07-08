@@ -1,14 +1,16 @@
 -- treesitter =================================================================
---[[ require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "bash", "lua", "python", "hcl", "yaml", "vim"
+  },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = true
   }
-} ]]
+}
 
 -- gitsigns ===================================================================
 require('gitsigns').setup {
@@ -20,9 +22,6 @@ require('gitsigns').setup {
       changedelete = {hl = 'GitSignsChange', text = '~_', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     }
 }
-
--- HOP ========================================================================
-require'hop'.setup()
 
 -- commenter ==================================================================
 vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>kommentary_line_default<CR>", {})

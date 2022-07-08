@@ -6,15 +6,13 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'towolf/vim-helm'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   Plug 'joshdick/onedark.vim'
 
-  Plug 'phaazon/hop.nvim'
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kazhala/close-buffers.nvim'
 
@@ -71,9 +69,7 @@ set foldmethod=indent
 set nofoldenable
 
 filetype plugin on
-" if &filetype==""
-"   setfiletype conf
-" endif
+filetype indent off
 
 " hotkeys ==================================================================
 nnoremap <A-h>      :tabprevious<CR>
@@ -97,9 +93,6 @@ nnoremap <A-6> 6gt
 nnoremap <A-7> 7gt
 nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
-
-nnoremap <leader>ss :HopWord<CR>
-nnoremap <leader>sc :HopChar2<CR>
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>

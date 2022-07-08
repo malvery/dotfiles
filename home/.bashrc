@@ -16,7 +16,7 @@ alias svim='sudo vim'
 # -----------------------------------------------
 # Env settings
 # -----------------------------------------------
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/home/Public/dotfiles/bin:~/.local/bin
 export EDITOR='vim'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
