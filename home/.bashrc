@@ -13,6 +13,8 @@ alias bc='bc -ql'
 alias scat='sudo cat'
 alias svim='sudo vim'
 
+alias proxychains='env --unset={http,https,no}_proxy proxychains'
+
 # -----------------------------------------------
 # Env settings
 # -----------------------------------------------

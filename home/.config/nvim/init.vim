@@ -5,10 +5,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'towolf/vim-helm'
-  " Plug 'sheerun/vim-polyglot'
+call plug#begin('~/.local/share/nvim/plugged')
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'sheerun/vim-polyglot'
   Plug 'joshdick/onedark.vim'
 
   Plug 'rmagatti/auto-session'

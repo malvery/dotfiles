@@ -193,6 +193,25 @@ mode "$config_i3" {
 }
 bindsym $mod+Shift+i mode "$config_i3"
 
+# audio dialog
+set $config_audio audio: <o> Output, <i> Input
+mode "$config_audio" {
+  bindsym o exec --no-startup-id  rofi-pulseaudio.sh --output, mode "default"
+  bindsym i exec --no-startup-id  rofi-pulseaudio.sh --input,  mode "default"
+
+  bindsym Return  mode "default"
+  bindsym Escape  mode "default"
+}
+
+# tools dialog
+set $tools tools: <a> Audio
+mode "$tools" {
+  bindsym a       mode "$config_audio"
+  bindsym Return  mode "default"
+  bindsym Escape  mode "default"
+}
+bindsym $mod+Shift+o mode "$tools"
+
 ###############################################################################
 # resize window (you can also use the mouse for that)
 mode "resize" {
