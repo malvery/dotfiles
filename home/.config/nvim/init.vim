@@ -8,7 +8,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'sheerun/vim-polyglot'
-  Plug 'joshdick/onedark.vim'
 
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
@@ -25,21 +24,25 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-if &t_Co == 256 || has("gui_running")
-  if has('termguicolors')
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    set termguicolors
-  endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme pablo
 
-  let g:onedark_color_overrides = {
-  \ "background": {"gui": "#171721", "cterm": "235", "cterm16": "0"},
-  \ "foreground": {"gui": "#c5c8c6", "cterm": "252", "cterm16": "7"}
-  \}
-  colorscheme onedark
-  autocmd vimenter * hi TabLineSel guibg=#2C323C
-else
-  colorscheme ron
-endif
+autocmd vimenter * hi clear SignColumn
+autocmd vimenter * hi clear TabLineFill
+autocmd vimenter * hi clear TabLine
+autocmd vimenter * hi clear VertSplit
+autocmd vimenter * hi clear StatusLineNC
+
+autocmd vimenter * hi clear TabLineSel
+autocmd vimenter * hi clear StatusLine
+
+autocmd vimenter * hi TabLineSel    ctermfg=Yellow
+autocmd vimenter * hi TabLine       ctermfg=DarkGray
+autocmd vimenter * hi StatusLine    ctermfg=Yellow
+autocmd vimenter * hi StatusLineNC  ctermfg=DarkGray
+autocmd vimenter * hi Pmenu         ctermfg=LightGray ctermbg=Magenta
+autocmd vimenter * hi PmenuSel      ctermfg=LightGray ctermbg=Black
+autocmd vimenter * hi PmenuThumb    ctermfg=Black     ctermbg=Black
 
 " built-in options =========================================================
 set exrc
@@ -71,10 +74,10 @@ filetype plugin on
 filetype indent off
 
 " hotkeys ==================================================================
-nnoremap <A-h>      :tabprevious<CR>
-nnoremap <A-l>      :tabnext<CR>
-nnoremap <A-S-h>    :tabm -1<CR>
-nnoremap <A-S-l>    :tabm +1<CR>
+" nnoremap <A-h>      :tabprevious<CR>
+" nnoremap <A-l>      :tabnext<CR>
+" nnoremap <A-S-h>    :tabm -1<CR>
+" nnoremap <A-S-l>    :tabm +1<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
 
@@ -83,15 +86,15 @@ vmap <leader>p "0p
 nmap <leader>P "0P
 vmap <leader>P "0P
 
-nnoremap <A-1> 1gt
-nnoremap <A-2> 2gt
-nnoremap <A-3> 3gt
-nnoremap <A-4> 4gt
-nnoremap <A-5> 5gt
-nnoremap <A-6> 6gt
-nnoremap <A-7> 7gt
-nnoremap <A-8> 8gt
-nnoremap <A-9> 9gt
+" nnoremap <A-1> 1gt
+" nnoremap <A-2> 2gt
+" nnoremap <A-3> 3gt
+" nnoremap <A-4> 4gt
+" nnoremap <A-5> 5gt
+" nnoremap <A-6> 6gt
+" nnoremap <A-7> 7gt
+" nnoremap <A-8> 8gt
+" nnoremap <A-9> 9gt
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
@@ -101,3 +104,8 @@ nnoremap <leader>et :Texplore<CR>
 " lua config ===============================================================
 lua require('init')
 lua require('debugger')
+
+" plug colors ==============================================================
+autocmd vimenter * hi GitSignsAdd     guibg=NONE
+autocmd vimenter * hi GitSignsChange  guibg=NONE
+autocmd vimenter * hi GitSignsDelete  guibg=NONE
