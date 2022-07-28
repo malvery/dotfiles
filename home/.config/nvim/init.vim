@@ -36,6 +36,7 @@ autocmd vimenter * hi clear StatusLineNC
 autocmd vimenter * hi clear TabLineSel
 autocmd vimenter * hi clear StatusLine
 
+autocmd vimenter * hi Visual        ctermbg=23
 autocmd vimenter * hi TabLineSel    ctermfg=Yellow
 autocmd vimenter * hi TabLine       ctermfg=DarkGray
 autocmd vimenter * hi StatusLine    ctermfg=Yellow
@@ -74,10 +75,6 @@ filetype plugin on
 filetype indent off
 
 " hotkeys ==================================================================
-" nnoremap <A-h>      :tabprevious<CR>
-" nnoremap <A-l>      :tabnext<CR>
-" nnoremap <A-S-h>    :tabm -1<CR>
-" nnoremap <A-S-l>    :tabm +1<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
 
@@ -85,16 +82,6 @@ nmap <leader>p "0p
 vmap <leader>p "0p
 nmap <leader>P "0P
 vmap <leader>P "0P
-
-" nnoremap <A-1> 1gt
-" nnoremap <A-2> 2gt
-" nnoremap <A-3> 3gt
-" nnoremap <A-4> 4gt
-" nnoremap <A-5> 5gt
-" nnoremap <A-6> 6gt
-" nnoremap <A-7> 7gt
-" nnoremap <A-8> 8gt
-" nnoremap <A-9> 9gt
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>

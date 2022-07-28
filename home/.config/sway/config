@@ -1,16 +1,15 @@
 set $mod Mod4
 
 font                    pango:Ubuntu 0
-floating_modifier       $mod
+floating_modifier       $mod normal
 default_border          normal
 default_floating_border pixel 4
 focus_follows_mouse     no
 
-set $terminal     'foot'
+set $terminal     'alacritty'
 set $file-manager 'thunar'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
-set $utils        '~/src/dotfiles/bin'
 
 ###############################################################################
 # hotkeys

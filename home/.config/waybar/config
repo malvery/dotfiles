@@ -86,7 +86,7 @@
     "on-scroll-down": "light -U 2",
     "states": {
       "low":    0,
-      "medium": 50,
+      "medium": 60,
       "high":   80
     },
 
@@ -111,7 +111,7 @@
     },
     "states": {
       "low":    0,
-      "medium": 40,
+      "medium": 50,
       "high":   80
     },
     "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -123,8 +123,8 @@
   "battery": {
     "states": {
       "low":    30,
-      "medium": 70,
-      "high":   100
+      "medium": 50,
+      "high":   80
     },
     "format":           "{capacity}% {icon}",
     "format-charging":  "{capacity}% ",
