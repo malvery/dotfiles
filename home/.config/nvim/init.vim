@@ -7,6 +7,7 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'joshdick/onedark.vim'
   Plug 'sheerun/vim-polyglot'
 
   Plug 'rmagatti/auto-session'
@@ -24,26 +25,21 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme pablo
+if &t_Co == 256 || has("gui_running")
+  if has('termguicolors')
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set termguicolors
+  endif
 
-autocmd vimenter * hi clear SignColumn
-autocmd vimenter * hi clear TabLineFill
-autocmd vimenter * hi clear TabLine
-autocmd vimenter * hi clear VertSplit
-autocmd vimenter * hi clear StatusLineNC
-
-autocmd vimenter * hi clear TabLineSel
-autocmd vimenter * hi clear StatusLine
-
-autocmd vimenter * hi Visual        ctermbg=23
-autocmd vimenter * hi TabLineSel    ctermfg=Yellow
-autocmd vimenter * hi TabLine       ctermfg=DarkGray
-autocmd vimenter * hi StatusLine    ctermfg=Yellow
-autocmd vimenter * hi StatusLineNC  ctermfg=DarkGray
-autocmd vimenter * hi Pmenu         ctermfg=LightGray ctermbg=Magenta
-autocmd vimenter * hi PmenuSel      ctermfg=LightGray ctermbg=Black
-autocmd vimenter * hi PmenuThumb    ctermfg=Black     ctermbg=Black
+  let g:onedark_color_overrides = {
+  \ "background": {"gui": "#171721", "cterm": "235", "cterm16": "0"},
+  \ "foreground": {"gui": "#c5c8c6", "cterm": "252", "cterm16": "7"}
+  \}
+  colorscheme onedark
+  autocmd vimenter * hi TabLineSel guibg=#2C323C
+else
+  colorscheme ron
+endif
 
 " built-in options =========================================================
 set exrc

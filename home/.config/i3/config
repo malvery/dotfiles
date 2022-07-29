@@ -202,8 +202,8 @@ bindsym $mod+Shift+i mode "$config_i3"
 # audio dialog
 set $config_audio audio: <o> Output, <i> Input
 mode "$config_audio" {
-  bindsym o exec --no-startup-id  rofi-pulseaudio.sh --output, mode "default"
-  bindsym i exec --no-startup-id  rofi-pulseaudio.sh --input,  mode "default"
+  bindsym o exec --no-startup-id  rofi-audio.py,          mode "default"
+  bindsym i exec --no-startup-id  rofi-audio.py --input,  mode "default"
 
   bindsym Return  mode "default"
   bindsym Escape  mode "default"
