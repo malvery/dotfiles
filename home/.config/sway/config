@@ -4,10 +4,11 @@ font                    pango:Ubuntu 0
 floating_modifier       $mod normal
 default_border          normal
 default_floating_border pixel 4
+titlebar_padding        2
 focus_follows_mouse     no
 
 set $terminal     'alacritty'
-set $file-manager 'thunar'
+set $file-manager 'pcmanfm-qt'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
 

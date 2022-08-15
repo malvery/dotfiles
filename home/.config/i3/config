@@ -117,6 +117,7 @@ bindsym $mod+minus scratchpad show
 ###############################################################################
 # run apps
 bindsym $mod+Shift+F12  exec --no-startup-id "loginctl lock-session"
+bindsym $mod+Shift+p    exec --no-startup-id "pcmanfm-qt"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
@@ -257,7 +258,7 @@ bar {
   status_command py3status -c ~/.config/i3/py3status.conf
 
   font pango: Ubuntu Condensed Bold 10.5
-  position bottom
+  position top
   colors {
     background #222222
     statusline #BABABA

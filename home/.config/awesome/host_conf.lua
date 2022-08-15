@@ -12,7 +12,7 @@ local APPS = {
   ["terminal"]      = "alacritty",
   ["lock_manager"]  = "xsecurelock",
   ["lock_command"]  = "loginctl lock-session",
-  ["file_manager"]  = "pcmanfm",
+  ["file_manager"]  = "pcmanfm-qt",
   ["browser"]       = "firefox",
 }
 
@@ -119,7 +119,7 @@ function getHotkeys()
       awful.key({ 'Ctrl',         }, "space", naughty.destroy_all_notifications),
 
       -- clipboard
-      awful.key({ modkey,     }, "grave", function () awful.spawn.with_shell('clipmenu') end)
+      awful.key({ modkey,     }, "grave", function () awful.spawn.with_shell('gpaste-menu') end)
   )
 
   return hotkeys
@@ -157,6 +157,7 @@ function getClientRules(client_rules)
     "mpv",
     "explorer.exe",
     "zoom",
+    "Rhythmbox"
   }
   float_apps_top = {
     "flameshot",
