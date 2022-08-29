@@ -7,8 +7,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'joshdick/onedark.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'bluz71/vim-nightfly-guicolors'
+  " Plug 'tomasiser/vim-code-dark'
 
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
@@ -31,12 +32,15 @@ if &t_Co == 256 || has("gui_running")
     set termguicolors
   endif
 
-  let g:onedark_color_overrides = {
-  \ "background": {"gui": "#171721", "cterm": "235", "cterm16": "0"},
-  \ "foreground": {"gui": "#c5c8c6", "cterm": "252", "cterm16": "7"}
-  \}
-  colorscheme onedark
-  autocmd vimenter * hi TabLineSel guibg=#2C323C
+  " autocmd vimenter * hi TabLineSel guibg=#2C323C
+  " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+
+  let g:nightflyItalics = v:false
+  let g:nightflyTransparent = v:true
+  colorscheme nightfly
+
+  " let g:codedark_transparent=1
+  " colorscheme codedark
 else
   colorscheme ron
 endif

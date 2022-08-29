@@ -23,8 +23,8 @@ export EDITOR='vim'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
-export HISTCONTROL=ignoreboth
-export HISTSIZE=10000
+export HISTCONTROL=ignoreboth:erasedups
+export HISTSIZE=50000
 
 shopt -s histappend
 

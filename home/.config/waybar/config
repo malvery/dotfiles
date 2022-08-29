@@ -1,7 +1,7 @@
 {
   "layer":  "top",
   "height": 21,
-  "position": "bottom",
+  "position": "top",
 
   "modules-left":   ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": [],
@@ -22,7 +22,9 @@
   },
 
   "sway/window": {
-    "tooltip":  false
+    "tooltip":  false,
+    "on-click-right" : "swaymsg focus next",
+    "on-click-middle": "swaymsg focus prev"
   },
 
   // center
@@ -143,6 +145,7 @@
 
   "tray": {
     "icon-size": 18,
+    "show-passive-items": true,
     "spacing": 3
   },
 

@@ -24,19 +24,19 @@
 }
 
 #workspaces button {
-  padding:  1 1px;
-  color:    @fg_normal;
+  padding:  1 0px;
+  color:    #4c7899;
   border:   1px solid @bg_border;
 }
 
 #workspaces button.focused {
   background: #285577;
-  border:     1px solid #4c7899;
+  border:     1px solid @bg_normal;
 }
 
 #workspaces button.urgent {
   background: #900000;
-  border:     1px solid #2f343a;
+  border:     1px solid @bg_normal;
 }
 
 #language,
