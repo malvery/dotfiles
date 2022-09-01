@@ -90,7 +90,7 @@ nnoremap <leader>et :Texplore<CR>
 
 " lua config ===============================================================
 lua require('init')
-lua require('debugger')
+" lua require('debugger')
 
 " plug colors ==============================================================
 autocmd vimenter * hi GitSignsAdd     guibg=NONE

@@ -1,6 +1,3 @@
-# bemenu
-BEMENU_OPTS   DEFAULT="--fn 'ubuntu mono 13'"
-
 # sudo
 SUDO_ASKPASS  DEFAULT=/usr/lib/seahorse/ssh-askpass
 
