@@ -18,7 +18,6 @@ alias proxychains='env --unset={http,https,no}_proxy proxychains'
 # -----------------------------------------------
 # Env settings
 # -----------------------------------------------
-export PATH=$PATH:/home/Public/dotfiles/bin:~/.local/bin
 export EDITOR='vim'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '

@@ -17,8 +17,6 @@ bindsym $mod+Shift+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+r        exec --no-startup-id bemenu_run_history
-# bindsym $mod+Shift+d  exec --no-startup-id j4-dmenu-desktop --dmenu=bemenu
 bindsym $mod+r        exec --no-startup-id rofi -show run
 bindsym $mod+Shift+d  exec --no-startup-id rofi -show drun
 
