@@ -11,7 +11,7 @@ default_floating_border pixel 4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec --no-startup-id alacritty
+bindsym $mod+Shift+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+Shift+c kill

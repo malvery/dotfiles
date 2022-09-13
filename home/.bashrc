@@ -14,6 +14,7 @@ alias scat='sudo cat'
 alias svim='sudo vim'
 
 alias proxychains='env --unset={http,https,no}_proxy proxychains'
+alias minikube='env --unset={http,https,no}_proxy minikube'
 
 # -----------------------------------------------
 # Env settings
