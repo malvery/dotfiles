@@ -78,11 +78,6 @@ filetype indent off
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-nmap <leader>p "0p
-vmap <leader>p "0p
-nmap <leader>P "0P
-vmap <leader>P "0P
-
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore<CR>
