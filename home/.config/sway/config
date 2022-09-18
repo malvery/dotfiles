@@ -7,8 +7,8 @@ default_floating_border pixel 4
 titlebar_padding        2
 focus_follows_mouse     no
 
-set $terminal     'alacritty'
-set $file-manager 'pcmanfm-qt'
+set $terminal     'foot'
+set $file-manager 'nautilus -w'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
 
