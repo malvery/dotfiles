@@ -115,7 +115,7 @@ bindsym $mod+minus scratchpad show
 ###############################################################################
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
-bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
+bindsym $mod+Shift+p      exec --no-startup-id "nautilus -w"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
