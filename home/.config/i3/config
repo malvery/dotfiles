@@ -170,6 +170,7 @@ for_window [class="Rhythmbox"]              floating enable
 for_window [class="Pavucontrol"]            floating enable
 for_window [class="Blueman-manager"]        floating enable
 for_window [class="Nm-connection-editor"]   floating enable
+for_window [class="Iwgtk"]                  floating enable
 for_window [class="Evolution-alarm-notify"] floating enable
 
 ###############################################################################
