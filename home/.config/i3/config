@@ -85,10 +85,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 ###############################################################################
-# workspace hotkeys
-bindsym $mod+g workspace 8
-bindsym $mod+s workspace 9
-
 # jump to urgent window
 bindsym $mod+u [urgent=latest] focus
 
@@ -157,11 +153,12 @@ for_window [window_role="EMsgComposer-*"]     floating enable
 
 for_window [class="Thunderbird" window_role="EventSummaryDialog"] floating enable
 
-assign [class="(.*join\?action\=join.*|.*zoom.*)"]  8
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
-assign [class="firefox"]          2
+assign [class="(.*join\?action\=join.*|.*zoom.*)"]  4
+assign [class="firefox"]    2
+assign [class="Evolution*"] 5
 
 for_window [class="Arandr"]                 floating enable
 for_window [class="Gcolor3"]                floating enable
@@ -258,7 +255,7 @@ bar {
   status_command py3status -c ~/.config/i3/py3status.conf
 
   font pango: Ubuntu Condensed Bold 10.5
-  position top
+  position bottom
   colors {
     background #222222
     statusline #BABABA
