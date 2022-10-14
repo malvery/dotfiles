@@ -1,45 +1,54 @@
-# -----------------------------------------------
-# zsh
-# -----------------------------------------------
-autoload -Uz compinit && compinit
+# completion ------------------------------------------------------------------
+_NIX_SHARE=${HOME}/.nix-profile/share
+if [ -d ${_NIX_SHARE} ]; then
+  _NIX_COMP=${_NIX_SHARE}/zsh/site-functions/
+  fpath=($_NIX_COMP $fpath)
+fi
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-autoload -Uz select-word-style && select-word-style bash
-
+# options ---------------------------------------------------------------------
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 unsetopt share_history
-
 unset zle_bracketed_paste
 
-# -----------------------------------------------
-# aliases
-# -----------------------------------------------
+# vi-mode ---------------------------------------------------------------------
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+preexec() { echo -ne '\e[5 q' ;}
+
+# aliases ---------------------------------------------------------------------
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
-alias scat='sudo cat'
-alias svim='sudo vim'
 
-# -----------------------------------------------
-# environment
-# -----------------------------------------------
-export EDITOR='vim'
+# environment -----------------------------------------------------------------
+export EDITOR='vi'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
-# -----------------------------------------------
-# prompt
-# -----------------------------------------------
+# prompt ----------------------------------------------------------------------
 PROMPT=' %F{142}%B%~%b%f%F{167}%(?.. [%?])%f%F{104}%-1(j. [%j].)%f '
 
-precmd () {
-  echo -n -e "\a"
-}
+precmd () { echo -n -e "\a" "\e[5 q" }
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -49,9 +58,7 @@ zstyle ':vcs_info:git:*' formats '[%F{175}%b%f]'
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 
-# -----------------------------------------------
-# mappings
-# -----------------------------------------------
+# mappings --------------------------------------------------------------------
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -90,31 +97,22 @@ zle -N history-beginning-search-forward-end history-search-end
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-# -----------------------------------------------
-# colors
-# -----------------------------------------------
-# eval $(dircolors)
-LS_COLORS="di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32";
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+bindkey -M viins "^R" history-incremental-search-backward
+bindkey -M vicmd 'j'  history-beginning-search-backward-end \
+                 'k'  history-beginning-search-forward-end
 
-# -----------------------------------------------
-# Completions
-# -----------------------------------------------
-# _NIX_SHARE=${HOME}/.nix-profile/share
-# if [ -d ${_NIX_SHARE} ]; then
-#   _NIX_COMP_BASH=${_NIX_SHARE}/zsh/site-functions/
+bindkey '^n' expand-or-complete
+bindkey '^p' reverse-menu-complete
 
-#   for f in ${_NIX_COMP_BASH}/*; do . $f; done
-# fi
-
+# locals ----------------------------------------------------------------------
 if [[ -f ${HOME}/.zshrc.local ]];
 then
-	source ${HOME}/.zshrc.local
+  source ${HOME}/.zshrc.local
 fi

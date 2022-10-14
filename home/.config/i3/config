@@ -137,7 +137,7 @@ bindsym $mod+grave exec --no-startup-id "gpaste-menu"
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
 
 # border mouse clicks
-bindsym button1 nop
+# bindsym button1 nop
 bindsym button2 nop
 # bindsym button3 nop
 bindsym button4 nop
