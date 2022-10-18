@@ -17,8 +17,8 @@ bindsym $mod+Shift+Return exec --no-startup-id kitty
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r        exec --no-startup-id rofi -show run
-bindsym $mod+Shift+d  exec --no-startup-id rofi -show drun
+bindsym $mod+r        exec --no-startup-id bemenu-run-history
+bindsym $mod+Shift+d  exec --no-startup-id j4-dmenu-desktop --dmenu=bemenu --display-binary
 
 # change focus
 bindsym $mod+h  focus left
@@ -131,7 +131,7 @@ bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute @DEFAULT
 bindsym XF86Display exec --no-startup-id "autorandr -c"
 
 # clipboard
-bindsym $mod+grave exec --no-startup-id "gpaste-menu"
+bindsym $mod+grave exec --no-startup-id "gpaste-menu.py"
 
 # notifications
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
