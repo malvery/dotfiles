@@ -1,0 +1,10 @@
+[Match]
+Name=lxdbr0
+[Network]
+DNS=10.247.38.1
+DNSSEC=False
+DNSOverTLS=False
+Domains=~lxd
+IgnoreCarrierLoss=yes
+[Address]
+Address=10.247.38.1/24
