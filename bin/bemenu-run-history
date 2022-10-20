@@ -1,13 +1,10 @@
 #!/bin/sh
 
+# { tac "$HOME/.hist"; compgen -ac | sort -u; } | perl -nE '$seen{$_}++ or $ARGV[0] or print' "$HOME/.ignore" - | dmenu -i -f "$@" | tee -a "$HOME/.hist" | ${SHELL:-"/bin/sh"} -s
+
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
-if [ -d "$cachedir" ]; then
-	cache=$cachedir/bemenu_run
-	historyfile=$cachedir/bemenu_history
-else			# if no xdg dir, fall back to dotfiles in ~
-	cache=$HOME/.bemenu_cache
-	historyfile=$HOME/.bemenu_history
-fi
+cache=$cachedir/bemenu_run
+historyfile=$cachedir/bemenu_history
 
 IFS=:
 if stest -dqr -n "$cache" $PATH; then
