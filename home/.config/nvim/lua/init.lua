@@ -24,8 +24,7 @@ require('gitsigns').setup {
 }
 
 -- commenter ==================================================================
-vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>kommentary_line_default<CR>", {})
-vim.api.nvim_set_keymap("v", "<C-_>", "<Plug>kommentary_visual_default<C-c>", {})
+require('kommentary.config').use_extended_mappings()
 
 require('kommentary.config').configure_language("terraform", {
     single_line_comment_string = "#",

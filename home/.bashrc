@@ -10,13 +10,10 @@ alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
 
-alias proxychains='env --unset={http,https,no}_proxy proxychains'
-alias minikube='env --unset={http,https,no}_proxy minikube'
-
 # -----------------------------------------------
-# Env settings
+# Env and options
 # -----------------------------------------------
-export EDITOR='vim'
+export EDITOR='vi'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
@@ -26,11 +23,20 @@ export HISTSIZE=50000
 shopt -s histappend
 
 # -----------------------------------------------
-# Prompt helpers
+# Local
+# -----------------------------------------------
+if [ -f ${HOME}/.bashrc.local ];
+then
+  source ${HOME}/.bashrc.local
+fi
+
+# -----------------------------------------------
+# Prompt PS1
 # -----------------------------------------------
 C_DIR="\[$(tput setaf 142)\]\[$(tput bold)\]"
 C_URG="\[$(tput setaf 167)\]"
 C_GIT="\[$(tput setaf 175)\]"
+C_PRX="\[$(tput setaf 80)\]"
 C_JOB="\[$(tput setaf 104)\]"
 C_RST="\[$(tput sgr0)\]"
 
@@ -49,24 +55,48 @@ __promt() {
     JOBS=""
   fi
 
-  # GIT_BRANCH=$(__git_ps1 " [%s]")
+  if [[ -v http_proxy ]]; then
+    PROXY=" [P]"
+  else
+    PROXY=""
+  fi
+
   GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
 }
 PROMPT_COMMAND=__promt
 
-# -----------------------------------------------
-# Local
-# -----------------------------------------------
-if [ -f ${HOME}/.bashrc.local ];
-then
-  source ${HOME}/.bashrc.local
-fi
-
-# -----------------------------------------------
-# PS1
-# -----------------------------------------------
 PS1=" ${C_DIR}\w${C_RST}"
 PS1+="${C_URG}\${STATUS_CODE}"
 PS1+="${C_JOB}\${JOBS}"
+PS1+="${C_PRX}\${PROXY}"
 PS1+="${C_GIT}\${GIT_BRANCH}"
 PS1+="${C_RST} \[\a\]"
+
+# -----------------------------------------------
+# Proxy
+# -----------------------------------------------
+_proxy_enable () {
+  if [[ -v _proxy ]]; then
+    export no_proxy=localhost,127.0.0.1
+    export no_proxy=${no_proxy},10.96.0.0/12,192.168.59.0/24,192.168.49.0/24 # minikube
+    export {http,https}_proxy=${_proxy}
+  fi
+}
+
+_proxy_disable () {
+  unset {http,https,no}_proxy
+}
+
+_proxy_set_aliases() {
+  if [[ -v _proxy ]]; then
+    for i in "${_proxy_aliased[@]}"; do
+      alias $i="env {http,https}_proxy=${_proxy} $i"
+    done
+  fi
+}
+
+_proxy_unset_aliases () {
+  for i in "${_proxy_aliased[@]}"; do
+    unalias $i
+  done
+}

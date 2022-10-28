@@ -1,35 +1,11 @@
 # proxy ----------------------------------------------------------------------
 _proxy="<PROXY>"
-_proxy_aliased=("kubectl" "terraform" "curl")
+_proxy_aliased=("kubectl" "terraform" "curl" "aws")
 
-function _proxy_set_aliases() {
-  arr=("$@")
-  for i in "${arr[@]}"; do
-    alias $i="env {http,https}_proxy=${_proxy} $i"
-  done
+_proxy_enable-2 () {
+  _proxy_enable
+  {http,https}_proxy="<PROXY>"
 }
-
-__no_proxy () {
-  export no_proxy=localhost,127.0.0.1
-  export no_proxy=${no_proxy},10.96.0.0/12,192.168.59.0/24,192.168.49.0/24 # minikube
-}
-
-_proxy_enable () {
-  __no_proxy && export {http,https}_proxy=${_proxy}
-}
-
-_proxy_enable_2 () {
-  __no_proxy && {http,https}_proxy="<PROXY_2>"
-}
-
-_proxy_disable () {
-  unset {http,https,no}_proxy
-  for i in "${_proxy_aliased[@]}"; do
-    unalias $i
-  done
-}
-
-_proxy_set_aliases "${_proxy_aliased[@]}"
 
 # ----------------------------------------------------------------------------
 
@@ -39,6 +15,7 @@ export AWS_PROFILE="<AWS_PROFILE>"
 # terraform completion
 complete -o nospace -C terraform terraform
 
+# NIX pkgs
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 for colour in {1..225}
     do echo -en "\033[38;5;${colour}m38;5;${colour} \n"
 done | column -x
