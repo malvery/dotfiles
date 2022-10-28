@@ -9,7 +9,7 @@ _proxy_enable-2 () {
 
 # ----------------------------------------------------------------------------
 
-# AWS default profile
+# AWS
 export AWS_PROFILE="<AWS_PROFILE>"
 
 # terraform completion
@@ -23,3 +23,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# LXD
+# source /usr/share/bash-completion/completions/lxd
+
+# tools
+# werf-enable () {
+#   source "$(trdl use werf 1.2 stable)"
+#   source <(werf completion)
+# }

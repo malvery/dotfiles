@@ -23,15 +23,7 @@ export HISTSIZE=50000
 shopt -s histappend
 
 # -----------------------------------------------
-# Local
-# -----------------------------------------------
-if [ -f ${HOME}/.bashrc.local ];
-then
-  source ${HOME}/.bashrc.local
-fi
-
-# -----------------------------------------------
-# Prompt PS1
+# Prompt helpers
 # -----------------------------------------------
 C_DIR="\[$(tput setaf 142)\]\[$(tput bold)\]"
 C_URG="\[$(tput setaf 167)\]"
@@ -65,6 +57,17 @@ __promt() {
 }
 PROMPT_COMMAND=__promt
 
+# -----------------------------------------------
+# Local
+# -----------------------------------------------
+if [ -f ${HOME}/.bashrc.local ];
+then
+  source ${HOME}/.bashrc.local
+fi
+
+# -----------------------------------------------
+# PS1
+# -----------------------------------------------
 PS1=" ${C_DIR}\w${C_RST}"
 PS1+="${C_URG}\${STATUS_CODE}"
 PS1+="${C_JOB}\${JOBS}"

@@ -21,5 +21,5 @@ export QT_QPA_PLATFORMTHEME=gnome
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   sway
-  echo "Logout after 10 sec." && sleep 3 && exit
+  echo "Logout after 3 sec." && sleep 3 && exit
 fi
