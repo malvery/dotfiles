@@ -7,8 +7,8 @@
 # ENV -------------------------------------------------------------------------
 export BEMENU_OPTS="--fn 'hack 11' -B 1"
 export SUDO_ASKPASS=/usr/lib/seahorse/ssh-askpass
-export MOZ_X11_EGL=1
-export MOZ_USE_XINPUT2=1
+#export MOZ_X11_EGL=1
+#export MOZ_USE_XINPUT2=1
 export MOZ_ENABLE_WAYLAND=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=gnome
@@ -20,8 +20,6 @@ export QT_QPA_PLATFORMTHEME=gnome
 
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  exec ~/.config/sway/run.sh
-  # startx
-
+  sway
   echo "Logout after 10 sec." && sleep 3 && exit
 fi
