@@ -5,7 +5,7 @@
 [[ -d ${HOME}/.local/bin ]] &&  PATH="${HOME}/.local/bin:${PATH}"
 
 # ENV -------------------------------------------------------------------------
-export BEMENU_OPTS="--fn 'hack 11' -B 1"
+export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
 export SUDO_ASKPASS=/usr/lib/seahorse/ssh-askpass
 #export MOZ_X11_EGL=1
 #export MOZ_USE_XINPUT2=1
