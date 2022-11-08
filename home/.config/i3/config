@@ -196,17 +196,17 @@ mode "$config_i3" {
 bindsym $mod+Shift+i mode "$config_i3"
 
 # audio dialog
-set $config_audio audio: <o> Output, <i> Input
+set $config_audio Audio: <O> Output, <I> Input
 mode "$config_audio" {
-  bindsym o exec --no-startup-id  rofi-audio.py,          mode "default"
-  bindsym i exec --no-startup-id  rofi-audio.py --input,  mode "default"
+  bindsym o exec --no-startup-id  select-audio.py,          mode "default"
+  bindsym i exec --no-startup-id  select-audio.py --input,  mode "default"
 
   bindsym Return  mode "default"
   bindsym Escape  mode "default"
 }
 
 # tools dialog
-set $tools tools: <a> Audio
+set $tools Tools: <A> Audio
 mode "$tools" {
   bindsym a       mode "$config_audio"
   bindsym Return  mode "default"
