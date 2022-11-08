@@ -107,7 +107,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>lD',   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>lr',   '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>la',   '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap("n", "<leader>lf",   '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap("n", "<leader>lf",   '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 end
 
 local nvim_lsp = require('lspconfig')

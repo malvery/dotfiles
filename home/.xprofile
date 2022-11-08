@@ -1,7 +1,0 @@
-light -N 1 &
-xss-lock -- xsecurelock &
-dunst &
-libinput-gestures-setup restart &
-x11-tags-helper.py &
-clipmenud &
-

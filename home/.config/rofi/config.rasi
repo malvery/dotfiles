@@ -1,7 +1,0 @@
-configuration {
-  modi:       "run,drun";
-  font:       "ubuntu mono 14";
-  terminal:   "foot";
-  kb-cancel:  "Escape,Control+g,Control+bracketleft,MouseMiddle";
-}
-@theme "/usr/share/rofi/themes/purple.rasi"
