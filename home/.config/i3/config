@@ -134,8 +134,8 @@ bindsym $mod+grave exec --no-startup-id "gpaste-menu.py"
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
 
 # border mouse clicks
-# bindsym button1 nop
-bindsym button2 nop
+bindsym button1 nop
+# bindsym button2 nop
 # bindsym button3 nop
 bindsym button4 nop
 bindsym button5 nop
@@ -253,7 +253,7 @@ bar {
   status_command py3status -c ~/.config/i3/py3status.conf
 
   font pango: Ubuntu Condensed Bold 10.5
-  position bottom
+  position top
   colors {
     background #222222
     statusline #BABABA
