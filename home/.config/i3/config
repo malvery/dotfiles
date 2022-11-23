@@ -253,7 +253,7 @@ bar {
   status_command py3status -c ~/.config/i3/py3status.conf
 
   font pango: Ubuntu Condensed Bold 10.5
-  position top
+  position bottom
   colors {
     background #222222
     statusline #BABABA
