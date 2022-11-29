@@ -14,8 +14,7 @@ floating_modifier $mod
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r        exec --no-startup-id bemenu-run-history
-bindsym $mod+Shift+d  exec --no-startup-id j4-dmenu-desktop --dmenu=bemenu --display-binary --no-generic
+bindsym $mod+r        exec --no-startup-id bemenu-run
 
 # change focus
 bindsym $mod+h  focus left
