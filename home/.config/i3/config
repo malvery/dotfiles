@@ -152,10 +152,10 @@ for_window [class="Thunderbird" window_role="EventSummaryDialog"] floating enabl
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
-assign [class="(.*join\?action\=join.*|.*zoom.*)"]  8
+assign [class="(.*join\?action\=join.*|.*zoom.*)"]  5
 assign [class="firefox"]      2
-assign [class="Evolution*"]   9
-assign [class="thunderbird"]  9
+assign [class="Evolution*"]   4
+assign [class="thunderbird"]  4
 
 for_window [class="Arandr"]                 floating enable
 for_window [class="Gcolor3"]                floating enable
