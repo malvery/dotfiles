@@ -8,8 +8,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'sheerun/vim-polyglot'
-  Plug 'bluz71/vim-nightfly-guicolors'
-  " Plug 'tomasiser/vim-code-dark'
 
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
@@ -26,23 +24,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-if &t_Co == 256 || has("gui_running")
-  if has('termguicolors')
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    set termguicolors
-  endif
+colorscheme habamax
+autocmd vimenter * hi normal guibg=000000
 
-  " autocmd vimenter * hi TabLineSel guibg=#2C323C
-  " autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+if has('termguicolors')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set termguicolors
 
-  let g:nightflyItalics = v:false
-  let g:nightflyTransparent = v:true
-  colorscheme nightfly
-
-  " let g:codedark_transparent=1
-  " colorscheme codedark
-else
-  colorscheme ron
+  " autocmd vimenter * hi clear SignColumn
+  " autocmd vimenter * hi clear TabLineFill
+  " autocmd vimenter * hi clear TabLine
+  " autocmd vimenter * hi clear VertSplit
+  " autocmd vimenter * hi clear StatusLineNC
+  " autocmd vimenter * hi clear TabLineSel
+  " autocmd vimenter * hi clear StatusLine
 endif
 
 " built-in options =========================================================
