@@ -107,4 +107,4 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 # configs
 include /etc/sway/config.d/*
 include $config/conf.d/*
-include $config/hosts/`hostname`.conf
+include $config/hosts/`hostname`$SWAY_CONF_POSTFIX.conf
