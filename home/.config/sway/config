@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font                    ubuntu 0.1
+font                    pango: monospace 1
 floating_modifier       $mod normal
 default_border          normal
 default_floating_border pixel 4
@@ -8,7 +8,7 @@ titlebar_padding        1
 focus_follows_mouse     no
 
 set $terminal     'foot'
-set $file-manager 'nautilus -w'
+set $file-manager 'pcmanfm-qt'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
 
@@ -92,7 +92,7 @@ bindsym --to-code {
 
 ###############################################################################
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 client.focused_inactive #1a1a1a #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #1a1a1a #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
