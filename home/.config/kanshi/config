@@ -4,5 +4,10 @@ profile {
 
 profile {
   output eDP-1 disable
+  output DP-2 mode 2560x1440@75Hz position 0,0
+}
+
+profile {
+  output eDP-1 disable
   output DP-1 mode 2560x1440@75Hz position 0,0
 }
