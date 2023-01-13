@@ -24,20 +24,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-colorscheme habamax
-autocmd vimenter * hi normal guibg=000000
-
 if has('termguicolors')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set termguicolors
 
-  " autocmd vimenter * hi clear SignColumn
-  " autocmd vimenter * hi clear TabLineFill
-  " autocmd vimenter * hi clear TabLine
-  " autocmd vimenter * hi clear VertSplit
-  " autocmd vimenter * hi clear StatusLineNC
+  colorscheme desert
+  autocmd vimenter * hi normal guibg=000000
+  autocmd vimenter * hi clear NonText
+  autocmd vimenter * hi clear SignColumn
   " autocmd vimenter * hi clear TabLineSel
-  " autocmd vimenter * hi clear StatusLine
+  autocmd vimenter * hi clear TabLineFill
+  autocmd vimenter * hi clear TabLine
+  autocmd vimenter * hi clear VertSplit
+  autocmd vimenter * hi clear StatusLine
+  autocmd vimenter * hi clear StatusLineNC
 endif
 
 " built-in options =========================================================

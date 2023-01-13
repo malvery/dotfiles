@@ -1,2 +1,2 @@
 #!/bin/sh
-flatpak run com.slack.Slack --enable-features=WebRTCPipeWireCapturer
+flatpak run --socket=wayland com.slack.Slack --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer
