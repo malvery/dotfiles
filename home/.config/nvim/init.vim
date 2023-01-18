@@ -24,7 +24,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-
 colorscheme desert
 if has('termguicolors')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -33,12 +32,12 @@ if has('termguicolors')
   autocmd vimenter * hi normal guibg=000000
   autocmd vimenter * hi clear NonText
   autocmd vimenter * hi clear SignColumn
-  " autocmd vimenter * hi clear TabLineSel
-  autocmd vimenter * hi clear TabLineFill
-  autocmd vimenter * hi clear TabLine
-  autocmd vimenter * hi clear VertSplit
-  autocmd vimenter * hi clear StatusLine
-  autocmd vimenter * hi clear StatusLineNC
+  autocmd vimenter * hi TabLineSel    guibg=darkcyan  guifg=white
+  autocmd vimenter * hi TabLineFill   guibg=black
+  autocmd vimenter * hi TabLine       guibg=black     guifg=lightgray
+  autocmd vimenter * hi StatusLine    guibg=darkcyan  guifg=white
+  autocmd vimenter * hi StatusLineNC  guibg=black     guifg=lightgray
+  autocmd VimEnter * hi VertSplit     guibg=NONE      cterm=NONE
 endif
 
 " built-in options =========================================================
