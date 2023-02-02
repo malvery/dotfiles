@@ -1,4 +1,5 @@
 [ActivityManager][Global Shortcuts]
+switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
@@ -34,7 +35,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Meta+Shift+L
+Lock Session=Meta+Shift+L; Screensaver
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
 Reboot Without Confirmation=
@@ -100,11 +101,12 @@ Switch to Screen 4=
 Switch to Screen 5=
 Switch to Screen 6=
 Switch to Screen 7=
+Switch to last used desktop=Meta+Esc
 Toggle Night Color=
 Toggle Window Raise/Lower=
 Walk Through Desktop List=
 Walk Through Desktop List (Reverse)=
-Walk Through Desktops=Meta+Esc
+Walk Through Desktops=
 Walk Through Desktops (Reverse)=
 Walk Through Windows=Meta+Tab
 Walk Through Windows (Reverse)=Meta+Shift+Tab
@@ -184,7 +186,7 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -232,6 +234,7 @@ activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=
 activate widget 3=
+activate widget 4=Alt+F1
 clear-history=
 clipboard_action=
 cycle-panels=
