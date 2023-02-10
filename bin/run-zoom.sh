@@ -1,2 +1,2 @@
 #!/bin/sh
-XDG_CURRENT_DESKTOP=gnome zoom
+XDG_CURRENT_DESKTOP=gnome zoom $@
