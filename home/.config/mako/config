@@ -3,3 +3,6 @@ border-size=2
 border-color=#86AD85
 default-timeout=10000
 margin=15,10
+
+[mode=do-not-disturb]
+invisible=1

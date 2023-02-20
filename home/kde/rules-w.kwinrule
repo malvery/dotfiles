@@ -1,15 +1,13 @@
 [Settings for Slack]
 Description=Settings for Slack
-desktops=3dbabf25-7922-498c-9ddd-f96996d1c064
+desktops=8ed8a0ec-465d-4ed1-b8a5-033ada286781
 desktopsrule=3
-position=0,50
-positionrule=3
 wmclass=Slack
 wmclassmatch=1
 
 [Settings for firefox]
 Description=Settings for firefox
-desktops=e21697a2-4c36-41ba-835b-40871795e6e2
+desktops=ae57627f-565f-4ee4-bc95-d205d0e96b8c
 desktopsrule=3
 wmclass=firefox
 wmclassmatch=1
@@ -23,7 +21,7 @@ wmclassmatch=1
 
 [Settings for foot-tmux]
 Description=Settings for foot-tmux
-desktops=0ae32adf-5d03-4872-ba34-ad9f356e82a9
+desktops=c2560e66-f64f-4f47-ba53-a5487b492fc1
 desktopsrule=3
 maximizehoriz=true
 maximizehorizrule=3
@@ -34,7 +32,7 @@ wmclassmatch=1
 
 [Settings for org.telegram.desktop]
 Description=Settings for org.telegram.desktop
-desktops=24d29bc7-5d3c-488c-8f5c-2bf80bbf63a6
+desktops=00f3feb0-3d55-455c-94e8-df674299f528
 desktopsrule=3
 position=10,50
 positionrule=3
@@ -43,16 +41,14 @@ wmclassmatch=1
 
 [Settings for thunderbird]
 Description=Settings for thunderbird
-desktops=3dbabf25-7922-498c-9ddd-f96996d1c064
+desktops=8ed8a0ec-465d-4ed1-b8a5-033ada286781
 desktopsrule=3
-position=1150,300
-positionrule=3
 wmclass=thunderbird
 wmclassmatch=1
 
 [Settings for time-desktop]
 Description=Settings for time-desktop
-desktops=3dbabf25-7922-498c-9ddd-f96996d1c064
+desktops=8ed8a0ec-465d-4ed1-b8a5-033ada286781
 desktopsrule=3
 minimize=true
 minimizerule=3
@@ -61,7 +57,7 @@ wmclassmatch=1
 
 [Settings for zoom]
 Description=Settings for zoom
-desktops=24d29bc7-5d3c-488c-8f5c-2bf80bbf63a6
+desktops=00f3feb0-3d55-455c-94e8-df674299f528
 desktopsrule=3
 wmclass=zoom
 wmclassmatch=1
