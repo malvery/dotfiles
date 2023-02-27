@@ -1,10 +1,17 @@
+# C_DIR="\[$(tput setaf 2)\]\[$(tput bold)\]"
+
 # proxy ----------------------------------------------------------------------
-_proxy="<PROXY>"
-_proxy_aliased=("kubectl" "terraform" "curl" "aws")
+# _proxy="<PROXY>"
+# _proxy_aliased=("kubectl" "terraform" "curl" "aws")
 
 _proxy_enable-2 () {
   _proxy_enable
   {http,https}_proxy="<PROXY>"
+}
+
+_proxy_enable-tor () {
+  _proxy_enable
+  export {http,https}_proxy="socks5://127.0.0.1:9050"
 }
 
 # ----------------------------------------------------------------------------
@@ -16,16 +23,17 @@ export AWS_PROFILE="<AWS_PROFILE>"
 complete -o nospace -C terraform terraform
 
 # NIX pkgs
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     . /usr/share/bash-completion/bash_completion
+#   elif [ -f /etc/bash_completion ]; then
+#     . /etc/bash_completion
+#   fi
+# fi
 
 # LXD
-# source /usr/share/bash-completion/completions/lxd
+# _COMP_LXD=/usr/share/bash-completion/completions/lxd
+# [[ -f ${_COMP_LXD} ]] && source ${_COMP_LXD}
 
 # tools
 # werf-enable () {

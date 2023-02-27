@@ -30,6 +30,7 @@ C_URG="\[$(tput setaf 167)\]"
 C_GIT="\[$(tput setaf 175)\]"
 C_PRX="\[$(tput setaf 80)\]"
 C_JOB="\[$(tput setaf 104)\]"
+C_TBX="\[$(tput setaf 11)\]"
 C_RST="\[$(tput sgr0)\]"
 
 __promt() {
@@ -53,6 +54,12 @@ __promt() {
     PROXY=""
   fi
 
+  if [[ -v TOOLBOX_PATH ]]; then
+    TBX=" [T]"
+  else
+    TBX=""
+  fi
+
   GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
 }
 PROMPT_COMMAND=__promt
@@ -72,6 +79,7 @@ PS1=" ${C_DIR}\w${C_RST}"
 PS1+="${C_URG}\${STATUS_CODE}"
 PS1+="${C_JOB}\${JOBS}"
 PS1+="${C_PRX}\${PROXY}"
+PS1+="${C_TBX}\${TBX}"
 PS1+="${C_GIT}\${GIT_BRANCH}"
 PS1+="${C_RST} \[\a\]"
 

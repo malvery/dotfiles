@@ -24,7 +24,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-colorscheme default
+colorscheme desert
 if has('termguicolors')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set termguicolors
