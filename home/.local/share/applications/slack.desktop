@@ -3,7 +3,7 @@ Name=Slack
 StartupWMClass=Slack
 Comment=Slack Desktop
 GenericName=Slack Client for Linux
-Exec=/usr/bin/slack --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer -s %U
+Exec=run-slack.sh %U
 Icon=slack
 Type=Application
 StartupNotify=true
