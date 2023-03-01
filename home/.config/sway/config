@@ -8,7 +8,7 @@ titlebar_padding        1
 focus_follows_mouse     no
 
 set $terminal     'foot'
-set $file-manager 'thunar'
+set $file-manager 'pcmanfm-qt'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
 
