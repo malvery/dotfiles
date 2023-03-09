@@ -54,7 +54,7 @@ __promt() {
     PROXY=""
   fi
 
-  if [[ -v TOOLBOX_PATH ]]; then
+  if [[ -v DISTROBOX_ENTER_PATH || -v TOOLBOX_PATH ]]; then
     TBX=" [T]"
   else
     TBX=""
