@@ -55,7 +55,7 @@ __promt() {
   fi
 
   if [[ -v DISTROBOX_ENTER_PATH || -v TOOLBOX_PATH ]]; then
-    TBX=" [T]"
+    TBX=" [D]"
   else
     TBX=""
   fi
