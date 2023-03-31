@@ -1,5 +1,5 @@
 [global]
   offset      = 15x15
-  font        = Ubuntu 11
+  font        = Monospaced 11
   frame_width = 2
   frame_color = "#86AD85"

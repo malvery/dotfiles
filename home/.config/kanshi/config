@@ -1,6 +1,5 @@
 profile {
   output eDP-1 enable
-  exec powerprofilesctl set power-saver
 }
 
 profile {
@@ -11,5 +10,4 @@ profile {
 profile {
   output eDP-1 disable
   output DP-1 mode 2560x1440@75Hz position 0,0
-  exec powerprofilesctl set performance
 }
