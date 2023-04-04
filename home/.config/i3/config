@@ -108,7 +108,7 @@ bindsym $mod+minus scratchpad show
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
 bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
-bindsym $mod+Shift+Return exec --no-startup-id "alacritty"
+bindsym $mod+Shift+Return exec --no-startup-id "kitty"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
@@ -158,7 +158,7 @@ assign [class="firefox"]          2
 assign [class="Evolution*"]       5
 assign [class="thunderbird"]      5
 assign [class="TelegramDesktop"]  5
-assign [class="alacrity-tmux"]    1
+assign [class="kitty-tmux"]    1
 
 for_window [class="Yad"]                    floating enable
 for_window [class="Arandr"]                 floating enable
@@ -269,7 +269,6 @@ bar {
 include ~/.config/i3/`hostname`$SWAY_CONF_POSTFIX.conf
 
 exec --no-startup-id systemctl --user import-environment I3SOCK
-exec --no-startup-id systemctl --user restart libinput-gestures.service
 
 exec_always --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
 exec_always --no-startup-id i3-recent-window.py
@@ -278,8 +277,9 @@ exec_always --no-startup-id i3-switch-workspace.py
 ###############################################################################
 
 exec --no-startup-id autorandr -c
+exec --no-startup-id libinput-gestures
 
-exec --no-startup-id alacritty --class alacrity-tmux -e tmux-workspace.sh
+exec --no-startup-id kitty --class kitty-tmux -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#000000"
 exec --no-startup-id light -N 1
 exec --no-startup-id dunst

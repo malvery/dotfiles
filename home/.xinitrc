@@ -9,6 +9,8 @@ picom &
 xmousepasteblock &
 xsettingsd &
 
+export LIBINPUT_GESTURES_TTY=$(cat /sys/class/tty/tty0/active)
+
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 T=600; xset s $T $T dpms $T $T $T
