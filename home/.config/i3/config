@@ -107,7 +107,8 @@ bindsym $mod+minus scratchpad show
 ###############################################################################
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
-bindsym $mod+Shift+p      exec --no-startup-id "nautilus -w"
+bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
@@ -152,11 +153,12 @@ for_window [class="Thunderbird" window_role="EventSummaryDialog"] floating enabl
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
-assign [class="(.*join\?action\=join.*|.*zoom.*)"]  5
+assign [class="(.*join\?action\=join.*|.*zoom.*)"]  9
 assign [class="firefox"]      2
-assign [class="Evolution*"]   4
-assign [class="thunderbird"]  4
+assign [class="Evolution*"]   5
+assign [class="thunderbird"]  5
 
+for_window [class="Yad"]                    floating enable
 for_window [class="Arandr"]                 floating enable
 for_window [class="Gcolor3"]                floating enable
 for_window [class="ksnip"]                  floating enable
@@ -251,8 +253,9 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bar {
   status_command py3status -c ~/.config/i3/py3status.conf
 
-  font pango: Ubuntu Condensed Bold 10.5
-  position bottom
+  font      pango: Monospaced Bold 11
+  height    21
+  position  bottom
   colors {
     background #222222
     statusline #BABABA
@@ -261,7 +264,7 @@ bar {
 
 ###############################################################################
 
-include ~/.config/i3/`hostnamectl hostname || hostname`.conf
+include ~/.config/i3/`hostname`$SWAY_CONF_POSTFIX.conf
 
 exec --no-startup-id systemctl --user import-environment I3SOCK
 exec --no-startup-id systemctl --user restart libinput-gestures.service
@@ -269,3 +272,16 @@ exec --no-startup-id systemctl --user restart libinput-gestures.service
 exec_always --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
 exec_always --no-startup-id i3-recent-window.py
 exec_always --no-startup-id i3-switch-workspace.py
+
+###############################################################################
+
+exec --no-startup-id autorandr -c
+exec --no-startup-id hsetroot -solid "#000000"
+exec --no-startup-id light -N 1
+exec --no-startup-id dunst
+exec --no-startup-id xss-lock -- xsecurelock
+exec --no-startup-id /usr/lib/gpaste/gpaste-daemon
+exec --no-startup-id blueman-applet
+exec --no-startup-id iwgtk -i
+exec --no-startup-id gxkb
+exec --no-startup-id alacritty -e tmux-workspace.sh
