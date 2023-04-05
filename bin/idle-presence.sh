@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 while :; do
-    if  [[ $(xprintidle) -gt 180000 ]] && ! [[ $(pgrep xsecurelock) ]]
+    if  [[ $(xprintidle) -gt 180000 ]] && ! [[ $(pgrep -U $(whoami) xsecurelock) ]]
     then
         X=$[ $RANDOM % 1920 + 1 ]
         Y=$[ $RANDOM % 1080 + 1 ]

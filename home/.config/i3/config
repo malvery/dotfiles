@@ -154,11 +154,10 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
 assign [class="(.*join\?action\=join.*|.*zoom.*)"]  9
-assign [class="firefox"]          2
-assign [class="Evolution*"]       5
-assign [class="thunderbird"]      5
-assign [class="TelegramDesktop"]  5
-assign [class="kitty-tmux"]    1
+assign [class="firefox"]      2
+assign [class="Evolution*"]   5
+assign [class="thunderbird"]  5
+assign [class="kitty-tmux"]   1
 
 for_window [class="Yad"]                    floating enable
 for_window [class="Arandr"]                 floating enable
@@ -209,9 +208,10 @@ mode "$config_audio" {
 }
 
 # tools dialog
-set $tools Tools: <A> Audio
+set $tools Tools: <A> Audio <R> Autorandr
 mode "$tools" {
   bindsym a       mode "$config_audio"
+  bindsym r       exec "autorandr -c",  mode "default"
   bindsym Return  mode "default"
   bindsym Escape  mode "default"
 }
