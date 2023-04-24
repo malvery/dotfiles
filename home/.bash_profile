@@ -11,11 +11,6 @@ export MOZ_ENABLE_WAYLAND=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=gnome
 
-# export XSECURELOCK_NO_COMPOSITE=1
-# export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
-# export XSECURELOCK_PASSWORD_PROMPT=asterisks
-# export XSECURELOCK_FONT="Hack:style=Regular:size=12"
-
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   sway
