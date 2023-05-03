@@ -69,7 +69,7 @@ set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
-set mouse=a
+set mousemodel=extend
 set foldmethod=indent
 set nofoldenable
 
@@ -84,6 +84,10 @@ nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore<CR>
 nnoremap <leader>et :Texplore<CR>
+
+" disable primary-paste
+map   <MiddleMouse> <Nop>
+imap  <MiddleMouse> <Nop>
 
 " lua config ===============================================================
 lua require('init')
