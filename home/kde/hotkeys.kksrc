@@ -1,6 +1,7 @@
 [ActivityManager][Global Shortcuts]
 switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
+switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
@@ -17,14 +18,16 @@ Toggle Screen Reader On and Off=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
+Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle
 
 [kded5][Global Shortcuts]
 Show System Activity=
-display=Display; Meta+P
+display=Meta+P; Display
 
 [khotkeys][Global Shortcuts]
+{0dc850e4-82fb-46ca-9eca-36f8c9fb2f57}=Meta+Shift+E
 {4b4dec81-bd5f-43ff-b1c4-ce264173e9f3}=Meta+R
+{80390465-1826-4ce1-8070-34098df8ce64}=Meta+Shift+Return
 {a5874693-b34c-4225-9245-ec8771a0209d}=Meta+Shift+E
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=
 {f573b34d-3b5e-4501-92d6-a138d161777e}=Meta+Shift+Return
@@ -73,7 +76,7 @@ Switch One Desktop to the Left=
 Switch One Desktop to the Right=
 Switch Window Down=Meta+J
 Switch Window Left=Meta+H
-Switch Window Right=Meta+L
+Switch Window Right=Meta+Tab; Meta+L
 Switch Window Up=Meta+K
 Switch to Desktop 1=Meta+1
 Switch to Desktop 10=
@@ -118,8 +121,8 @@ Walk Through Desktop List=
 Walk Through Desktop List (Reverse)=
 Walk Through Desktops=
 Walk Through Desktops (Reverse)=
-Walk Through Windows=Meta+Tab
-Walk Through Windows (Reverse)=Meta+Shift+Tab
+Walk Through Windows=Alt+Tab
+Walk Through Windows (Reverse)=Alt+Shift+Backtab
 Walk Through Windows Alternative=
 Walk Through Windows Alternative (Reverse)=
 Walk Through Windows of Current Application=
@@ -154,11 +157,11 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Down; Meta+Shift+J
+Window Quick Tile Bottom=Meta+Shift+J; Meta+Down
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Right; Meta+Shift+L
+Window Quick Tile Left=Meta+Shift+H; Meta+Left
+Window Quick Tile Right=Meta+Shift+L; Meta+Right
 Window Quick Tile Top=Meta+Shift+K; Meta+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -200,7 +203,7 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -218,10 +221,19 @@ _launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Alt+F2
+_launch=Alt+F2; Meta+R
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
+
+[org.kde.spectacle.desktop][Global Shortcuts]
+ActiveWindowScreenShot=Meta+Print
+CurrentMonitorScreenShot=
+FullScreenScreenShot=Shift+Print
+OpenWithoutScreenshot=
+RectangularRegionScreenShot=Meta+Shift+Print
+WindowUnderCursorScreenShot=Meta+Ctrl+Print
+_launch=Print
 
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
@@ -247,6 +259,7 @@ activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=
+activate widget 26=
 activate widget 3=
 activate widget 4=Alt+F1
 clear-history=
