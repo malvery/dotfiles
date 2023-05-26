@@ -1,5 +1,0 @@
-[Match]
-Name=vpn0
-[Network]
-DNSSEC=False
-DNSOverTLS=False

@@ -1,0 +1,4 @@
+[Match]
+Name=vpn0 tun0
+[Network]
+KeepConfiguration=True
