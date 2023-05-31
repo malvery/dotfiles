@@ -8,6 +8,7 @@ profile {
 }
 
 profile {
-  output eDP-1 disable
-  output DP-1 mode 2560x1440@75Hz position 0,0
+  output eDP-1  mode 1920x1080@60Hz position 0,650
+  output DP-1   mode 2560x1440@75Hz position 1920,0
+  exec light -S 50
 }
