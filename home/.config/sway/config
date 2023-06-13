@@ -5,7 +5,7 @@ floating_modifier       $mod normal
 default_border          normal
 default_floating_border pixel 4
 titlebar_padding        1
-focus_follows_mouse     no
+focus_follows_mouse     yes
 
 set $terminal     'foot'
 set $file-manager 'pcmanfm-qt'

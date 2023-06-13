@@ -1,5 +1,5 @@
 # completion ------------------------------------------------------------------
-source $_NIX_COMP/aws_zsh_completer.sh
+# source $_NIX_COMP/aws_zsh_completer.sh
 complete -C vault vault
 complete -C terraform terraform
 
