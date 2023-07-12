@@ -1,0 +1,173 @@
+{
+  "layer":  "top",
+  "height": 21,
+  "position": "bottom",
+
+  "modules-left":   ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": [],
+  "modules-right":  [
+    "cpu", "memory", "disk", "temperature", "idle_inhibitor",
+    "network", "bluetooth", "backlight","pulseaudio", "battery",
+    "clock", "sway/language", "tray"
+  ],
+
+  // left
+  "sway/workspaces": {
+    "all-outputs":    true,
+    "disable-scroll": true
+  },
+
+  "sway/mode": {
+    "tooltip":  false
+  },
+
+  "sway/window": {
+    "tooltip":  false
+  },
+
+  // center
+
+
+  // right
+
+  "cpu": {
+    "format": "{usage}% ",
+    "interval": 5,
+    "states": {
+      "low":    0,
+      "medium": 20,
+      "high":   60
+    },
+    "tooltip":  false
+  },
+
+  "memory": {
+    "format":   "{}% ",
+    "states": {
+      "low":    0,
+      "medium": 50,
+      "high":   90
+    },
+    "tooltip":  false
+  },
+
+  "network": {
+    "format-wifi":          "{essid} {signalStrength}% ",
+    "format-ethernet":      "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked":        "{ifname} (No IP) ",
+    "format-disconnected":  "Disconnected ⚠",
+    "format-alt":           "{bandwidthDownBits} {frequency}Hz",
+    "tooltip":              false
+  },
+
+  "temperature": {
+    "format":             "{temperatureC}°C {icon}",
+    "format-icons":       ["", "", ""],
+    "thermal-zone":       3,
+    "hwmon-path":         "/sys/class/hwmon/hwmon6/temp1_input",
+    "interval":           3,
+    "critical-threshold": 75,
+    "tooltip":            false
+  },
+
+  "idle_inhibitor": {
+    "format":       "{icon}",
+    "format-icons": {
+      "activated":    "",
+      "deactivated":  ""
+    },
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "on-click-middle":  "blueman-manager",
+    "format": "{status} ",
+    "format-connected": "{device_alias} ",
+    "format-connected-battery": "{device_alias} {device_battery_percentage}% "
+  },
+
+  "backlight": {
+    "format":         "{percent}% {icon}",
+    "format-icons":   ["", ""],
+    "on-scroll-up":   "light -A 2",
+    "on-scroll-down": "light -U 2",
+    "states": {
+      "low":    0,
+      "medium": 51,
+      "high":   80
+    },
+
+    "smooth-scrolling-threshold": 3.0,
+    "tooltip":                    false
+  },
+
+  "pulseaudio": {
+    "format":                 "{volume}% {icon}",
+    "format-bluetooth":       "{volume}% {icon} ",
+    "format-bluetooth-muted": "MUTE  {icon} ",
+    "format-muted":           "MUTE ",
+
+    "format-icons": {
+      "headphones": "",
+      "handsfree":  "",
+      "headset":    "",
+      "phone":      "",
+      "portable":   "",
+      "car":        "",
+      "default":    ["", "", ""]
+    },
+    "states": {
+      "low":    0,
+      "medium": 80,
+      "high":   100
+    },
+    "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle":            "pavucontrol -t 3",
+    "smooth-scrolling-threshold": 3.0,
+    "tooltip":                    false
+  },
+
+  "battery": {
+    "states": {
+      "low":    30,
+      "medium": 70,
+      "high":   100
+    },
+    "interval": 3,
+    "format":           "{power:>4.1f}W {capacity}% {icon}",
+    "format-charging":  "{power:>4.1f}W {capacity}% ",
+    "format-plugged":   "{power:>4.1f}W {capacity}% ",
+    "format-alt":       "{time} {icon}",
+
+    "format-icons": ["", "", "", "", ""],
+    "tooltip":      false
+  },
+
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M:%S}",
+    "interval": 1,
+    "tooltip":  false
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 3
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}% ",
+    "path": "/",
+    "states": {
+      "low":    0,
+      "medium": 50,
+      "high":   80
+    },
+    "tooltip": false
+  },
+
+  "sway/language": {
+      "format": "{short}",
+      "tooltip": false
+  }
+}
