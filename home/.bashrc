@@ -65,12 +65,11 @@ __promt() {
 PROMPT_COMMAND=__promt
 
 # -----------------------------------------------
-# Local
+# Additional Sources
 # -----------------------------------------------
-if [ -f ${HOME}/.bashrc.local ];
-then
-  source ${HOME}/.bashrc.local
-fi
+[[ -f ${HOME}/.bashrc.local ]]              &&  source ${HOME}/.bashrc.local
+[[ -f /etc/profile.d/bash_completion.sh ]]  &&  source /etc/profile.d/bash_completion.sh
+
 
 # -----------------------------------------------
 # PS1

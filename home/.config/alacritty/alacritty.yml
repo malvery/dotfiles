@@ -8,7 +8,7 @@ font:
   normal:
     family: Hack
     style: Regular
-  size: 10
+  size: 12
 
 colors:
   primary:
@@ -42,8 +42,3 @@ colors:
     magenta: '#6666ea'
     cyan:    '#00ad9c'
     white:   '#f1efee'
-
-key_bindings:
-- { key: V, mods: Control|Alt, action: Paste  }
-- { key: C, mods: Control|Alt, action: Copy   }
-

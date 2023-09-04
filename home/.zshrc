@@ -1,9 +1,9 @@
 # completion ------------------------------------------------------------------
-_NIX_SHARE=${HOME}/.nix-profile/share
-if [ -d ${_NIX_SHARE} ]; then
-  _NIX_COMP=${_NIX_SHARE}/zsh/site-functions/
-  fpath=($_NIX_COMP $fpath)
-fi
+# _NIX_SHARE=${HOME}/.nix-profile/share
+# if [ -d ${_NIX_SHARE} ]; then
+#   _NIX_COMP=${_NIX_SHARE}/zsh/site-functions/
+#   fpath=($_NIX_COMP $fpath)
+# fi
 
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
