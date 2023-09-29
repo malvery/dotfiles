@@ -8,7 +8,7 @@ font:
   normal:
     family: Hack
     style: Regular
-  size: 12
+  size: 10
 
 colors:
   primary:

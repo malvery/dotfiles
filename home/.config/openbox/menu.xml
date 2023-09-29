@@ -41,7 +41,7 @@
 
     <item label="Term">
       <action name="Execute">
-        <command>alacritty</command>
+        <command>alacritty msg create-window</command>
         <startupnotify>
           <enabled>yes</enabled>
         </startupnotify>

@@ -3,6 +3,7 @@ switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
+switch-to-activity-fc4b0104-ea20-4473-ae62-d450f97fc916=
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
 Switch keyboard layout to English (US)=
@@ -22,9 +23,10 @@ Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle
 
 [kded5][Global Shortcuts]
 Show System Activity=
-display=Meta+P; Display
+display=Display; Meta+P
 
 [khotkeys][Global Shortcuts]
+{09282927-9bfb-47ab-a1f2-7d352cf58208}=Meta+Shift+Return
 {0dc850e4-82fb-46ca-9eca-36f8c9fb2f57}=Meta+Shift+E
 {4b4dec81-bd5f-43ff-b1c4-ce264173e9f3}=Meta+R
 {80390465-1826-4ce1-8070-34098df8ce64}=Meta+Shift+Return
@@ -37,12 +39,12 @@ decrease_microphone_volume=Microphone Volume Down
 decrease_volume=Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
-mic_mute=Microphone Mute; Meta+Volume Mute
+mic_mute=Meta+Volume Mute; Microphone Mute
 mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Meta+Shift+F12
+Lock Session=Meta+Shift+F12; Screensaver
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
 Reboot Without Confirmation=
@@ -76,7 +78,7 @@ Switch One Desktop to the Left=
 Switch One Desktop to the Right=
 Switch Window Down=Meta+J
 Switch Window Left=Meta+H
-Switch Window Right=Meta+Tab; Meta+L
+Switch Window Right=Meta+L
 Switch Window Up=Meta+K
 Switch to Desktop 1=Meta+1
 Switch to Desktop 10=
@@ -121,12 +123,12 @@ Walk Through Desktop List=
 Walk Through Desktop List (Reverse)=
 Walk Through Desktops=
 Walk Through Desktops (Reverse)=
-Walk Through Windows=Alt+Tab
-Walk Through Windows (Reverse)=Alt+Shift+Backtab
+Walk Through Windows=Meta+Tab
+Walk Through Windows (Reverse)=Meta+Shift+Tab
 Walk Through Windows Alternative=
 Walk Through Windows Alternative (Reverse)=
-Walk Through Windows of Current Application=
-Walk Through Windows of Current Application (Reverse)=
+Walk Through Windows of Current Application=Alt+`
+Walk Through Windows of Current Application (Reverse)=Alt+~
 Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
@@ -141,7 +143,7 @@ Window Maximize Horizontal=
 Window Maximize Vertical=
 Window Minimize=Meta+N
 Window Move=
-Window Move Center=
+Window Move Center=Meta+Return
 Window No Border=
 Window On All Desktops=
 Window One Desktop Down=
@@ -157,11 +159,11 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Shift+J; Meta+Down
+Window Quick Tile Bottom=Meta+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Shift+H; Meta+Left
-Window Quick Tile Right=Meta+Shift+L; Meta+Right
+Window Quick Tile Left=Meta+Left; Meta+Shift+H
+Window Quick Tile Right=Meta+Right; Meta+Shift+L
 Window Quick Tile Top=Meta+Shift+K; Meta+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -203,7 +205,7 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta+=; Meta++
+view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -217,11 +219,11 @@ previousmedia=Media Previous
 stopmedia=Media Stop
 
 [org.kde.dolphin.desktop][Global Shortcuts]
-_launch=
+_launch=Meta+E
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Alt+F2; Meta+R
+_launch=Meta+R; Alt+F2
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
@@ -260,6 +262,7 @@ activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=
 activate widget 26=
+activate widget 27=Alt+F1
 activate widget 3=
 activate widget 4=Alt+F1
 clear-history=
