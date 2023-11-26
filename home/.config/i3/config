@@ -108,7 +108,7 @@ bindsym $mod+minus scratchpad show
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
 bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
-bindsym $mod+Shift+Return exec --no-startup-id "alacritty msg create-window"
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty msg create-window || alacritty"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
@@ -140,7 +140,7 @@ bindsym button2 nop
 bindsym button4 nop
 bindsym button5 nop
 
-focus_follows_mouse no
+focus_follows_mouse yes
 
 ###############################################################################
 # set floating apps
@@ -154,10 +154,10 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
 assign [class="(.*join\?action\=join.*|.*zoom.*)"]  9
-assign [class="firefox"]      2
-assign [class="Evolution*"]   5
-assign [class="thunderbird"]  5
-assign [class="alacritty-tmux"]   1
+assign [class="firefox"]        2
+assign [class="Evolution*"]     3
+assign [class="thunderbird"]    3
+assign [class="alacritty-tmux"] 1
 
 for_window [class="Yad"]                    floating enable
 for_window [class="Arandr"]                 floating enable
@@ -277,8 +277,8 @@ exec_always --no-startup-id i3-switch-workspace.py
 ###############################################################################
 
 exec --no-startup-id autorandr -c
-exec --no-startup-id libinput-gestures
-
+# exec --no-startup-id nm-applet
+exec --no-startup-id touchegg
 exec --no-startup-id alacritty --class alacritty-tmux -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#000000"
 exec --no-startup-id light -N 1
@@ -287,3 +287,12 @@ exec --no-startup-id xss-lock -- xsecurelock
 exec --no-startup-id /usr/lib/gpaste/gpaste-daemon
 exec --no-startup-id blueman-applet
 exec --no-startup-id gxkb
+
+
+###############################################################################
+
+set $gnome-interface org.gnome.desktop.interface
+exec gsettings set $gnome-interface monospace-font-name  'Hack 11'
+exec gsettings set $gnome-interface color-scheme         'prefer-dark'
+exec gsettings set $gnome-interface gtk-theme            'adw-gtk3-dark'
+exec gsettings set $gnome-interface icon-theme           'mate'

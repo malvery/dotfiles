@@ -6,12 +6,11 @@ dbus-update-activation-environment --systemd DISPLAY
 # export SSH_AUTH_SOCK
 
 picom &
-xmousepasteblock &
 xsettingsd &
 
 export LIBINPUT_GESTURES_TTY=$(cat /sys/class/tty/tty0/active)
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-T=600; xset s $T $T dpms $T $T $T
+T=3600; xset s $T $T dpms $T $T $T
 exec i3

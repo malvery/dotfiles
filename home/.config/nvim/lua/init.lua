@@ -1,7 +1,7 @@
 -- treesitter =================================================================
 --[[ require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "bash", "lua", "python", "hcl", "yaml", "vim"
+    "bash", "lua", "python", "hcl", "yaml", "vim", "terraform"
   },
   highlight = {
     enable = true,

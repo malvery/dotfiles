@@ -1,20 +1,20 @@
 [Settings for Slack]
 Description=Settings for Slack
-desktops=3906f591-846f-4d12-b594-6da2c7243bd7
+desktops=a5a43f05-e81b-4b2e-bd56-45ea8f02232d
 desktopsrule=3
 wmclass=Slack
 wmclassmatch=1
 
-[Settings for WebCord]
-Description=Settings for WebCord
-desktops=3906f591-846f-4d12-b594-6da2c7243bd7
+[Settings for discord]
+Description=Settings for discord
+desktops=a5a43f05-e81b-4b2e-bd56-45ea8f02232d
 desktopsrule=3
-wmclass=WebCord
+wmclass=discord
 wmclassmatch=1
 
 [Settings for firefox]
 Description=Settings for firefox
-desktops=764dc5cc-1a63-43eb-a1ba-25e1f67c7ae2
+desktops=72a89373-20f0-453a-a8c1-e85963b7c550
 desktopsrule=3
 wmclass=firefox
 wmclassmatch=1
@@ -28,7 +28,7 @@ wmclassmatch=1
 
 [Settings for foot-tmux]
 Description=Settings for foot-tmux
-desktops=878efd48-d4fd-450b-8cd7-7bf286fef01b
+desktops=09865b40-5d15-42d8-916f-71115ac1f860
 desktopsrule=3
 maximizehoriz=true
 maximizehorizrule=3
@@ -39,14 +39,14 @@ wmclassmatch=1
 
 [Settings for gpclient]
 Description=Settings for gpclient
-desktops=f09b6d6a-997b-4c8f-a5c6-a1f50688780d
+desktops=2816048b-db4a-4c9e-a7dc-a00c12d0b1c5
 desktopsrule=3
 wmclass=gpclient
 wmclassmatch=1
 
 [Settings for org.telegram.desktop]
 Description=Settings for org.telegram.desktop
-desktops=f09b6d6a-997b-4c8f-a5c6-a1f50688780d
+desktops=2816048b-db4a-4c9e-a7dc-a00c12d0b1c5
 desktopsrule=3
 position=10,50
 positionrule=3
@@ -55,14 +55,14 @@ wmclassmatch=1
 
 [Settings for thunderbird]
 Description=Settings for thunderbird
-desktops=3906f591-846f-4d12-b594-6da2c7243bd7
+desktops=a5a43f05-e81b-4b2e-bd56-45ea8f02232d
 desktopsrule=3
 wmclass=thunderbird
 wmclassmatch=1
 
 [Settings for time-desktop]
 Description=Settings for time-desktop
-desktops=f09b6d6a-997b-4c8f-a5c6-a1f50688780d
+desktops=2816048b-db4a-4c9e-a7dc-a00c12d0b1c5
 desktopsrule=3
 minimize=true
 minimizerule=3
@@ -71,7 +71,14 @@ wmclassmatch=1
 
 [Settings for zoom]
 Description=Settings for zoom
-desktops=f09b6d6a-997b-4c8f-a5c6-a1f50688780d
+desktops=2816048b-db4a-4c9e-a7dc-a00c12d0b1c5
 desktopsrule=3
 wmclass=zoom
+wmclassmatch=1
+
+[xwaylandvideobridge]
+Description=xwaylandvideobridge
+skipswitcher=true
+skipswitcherrule=3
+wmclass=xwaylandvideobridge
 wmclassmatch=1

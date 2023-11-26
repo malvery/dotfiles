@@ -1,4 +1,5 @@
 !******************************************************
+Xft.dp:         96
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.rgba:       rgb

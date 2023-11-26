@@ -1,13 +1,13 @@
-# vi-mode
-set editing-mode vi
-set show-mode-in-prompt on
-$if term=linux
-  set vi-ins-mode-string \1\e[?0c\2
-  set vi-cmd-mode-string \1\e[?8c\2
-$else
-  set vi-ins-mode-string \1\e[6 q\2
-  set vi-cmd-mode-string \1\e[2 q\2
-$endif
+# # vi-mode
+# set editing-mode vi
+# set show-mode-in-prompt on
+# $if term=linux
+#   set vi-ins-mode-string \1\e[?0c\2
+#   set vi-cmd-mode-string \1\e[?8c\2
+# $else
+#   set vi-ins-mode-string \1\e[6 q\2
+#   set vi-cmd-mode-string \1\e[2 q\2
+# $endif
 
 # <Tab> behaviour
 set show-all-if-ambiguous on
