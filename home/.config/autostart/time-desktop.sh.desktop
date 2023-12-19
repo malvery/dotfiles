@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/aazavyalov/.local/bin/time-desktop.sh
+Icon=
+Name=time-desktop.sh
+Path=
+Terminal=False
+Type=Application

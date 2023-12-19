@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/aazavyalov/.local/bin/gpclient-nb.sh
+Icon=
+Name=gpclient-nb.sh
+Path=
+Terminal=False
+Type=Application

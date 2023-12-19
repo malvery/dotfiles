@@ -4,11 +4,13 @@ switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
+switch-to-activity-dffa8f64-1e51-4847-ada5-caebda1381a1=
 switch-to-activity-fc4b0104-ea20-4473-ae62-d450f97fc916=
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
 Switch keyboard layout to English (US)=
 Switch keyboard layout to Russian=
+Switch to Last-Used Keyboard Layout=
 Switch to Next Keyboard Layout=
 
 [foot.desktop][Global Shortcuts]
@@ -39,8 +41,10 @@ display=Display; Meta+P
 [kmix][Global Shortcuts]
 decrease_microphone_volume=Microphone Volume Down
 decrease_volume=Volume Down
+decrease_volume_small=Shift+Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
+increase_volume_small=Shift+Volume Up
 mic_mute=Meta+Volume Mute; Microphone Mute
 mute=Volume Mute
 
@@ -49,16 +53,21 @@ Halt Without Confirmation=
 Lock Session=Meta+Shift+F12; Screensaver
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
+Reboot=
 Reboot Without Confirmation=
+Shut Down=
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Shift+A
+Cycle Overview=
+Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=
 ExposeAll=
 ExposeClass=
 ExposeClassCurrentDesktop=
+Grid View=
 Increase Opacity=
 Invert Screen Colors=
 Kill Window=Meta+Shift+Esc
@@ -164,13 +173,13 @@ Window Pack Up=
 Window Quick Tile Bottom=Meta+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Shift+L; Meta+Right
-Window Quick Tile Top=Meta+Up; Meta+Shift+K
+Window Quick Tile Left=Meta+Shift+H; Meta+Left
+Window Quick Tile Right=Meta+Right; Meta+Shift+L
+Window Quick Tile Top=Meta+Shift+K; Meta+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
-Window Resize=Meta+Shift+R
+Window Resize=
 Window Shade=
 Window Shrink Horizontal=
 Window Shrink Vertical=
@@ -225,7 +234,7 @@ _launch=Meta+E
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Alt+F2; Meta+R
+_launch=Meta+R; Alt+F2
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
@@ -235,6 +244,9 @@ ActiveWindowScreenShot=Meta+Print
 CurrentMonitorScreenShot=
 FullScreenScreenShot=Shift+Print
 OpenWithoutScreenshot=
+RecordRegion=
+RecordScreen=
+RecordWindow=
 RectangularRegionScreenShot=Meta+Shift+Print
 WindowUnderCursorScreenShot=Meta+Ctrl+Print
 _launch=Print
@@ -242,14 +254,17 @@ _launch=Print
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
 Decrease Screen Brightness=Monitor Brightness Down
+Decrease Screen Brightness Small=Shift+Monitor Brightness Down
 Hibernate=Hibernate
 Increase Keyboard Brightness=Keyboard Brightness Up
 Increase Screen Brightness=Monitor Brightness Up
+Increase Screen Brightness Small=Shift+Monitor Brightness Up
 PowerDown=Power Down
 PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
+powerProfile=Battery; Meta+B
 
 [plasmashell][Global Shortcuts]
 activate task manager entry 1=
@@ -264,6 +279,7 @@ activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=Alt+F1
 activate widget 24=
+activate widget 25=
 activate widget 26=
 activate widget 27=Alt+F1
 activate widget 3=

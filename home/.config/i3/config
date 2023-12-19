@@ -85,7 +85,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+u [urgent=latest] focus
 
 # focus switch
-bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -F ${XDG_RUNTIME_DIR}/i3ipc-recent-window.pid
+# bindsym $mod+Tab exec --no-startup-id pkill -SIGUSR1 -F ${XDG_RUNTIME_DIR}/i3ipc-recent-window.pid
+bindsym $mod+Tab exec --no-startup-id i3gopher --focus-last
 
 # switch between the current and the previously focused one
 bindsym $mod+Escape workspace back_and_forth
@@ -271,8 +272,8 @@ include ~/.config/i3/`hostname`$SWAY_CONF_POSTFIX.conf
 exec --no-startup-id systemctl --user import-environment I3SOCK
 
 exec_always --no-startup-id setxkbmap -layout "us,ru" -option grp:caps_toggle
-exec_always --no-startup-id i3-recent-window.py
 exec_always --no-startup-id i3-switch-workspace.py
+# exec_always --no-startup-id i3-recent-window.py
 
 ###############################################################################
 
@@ -287,6 +288,7 @@ exec --no-startup-id xss-lock -- xsecurelock
 exec --no-startup-id /usr/lib/gpaste/gpaste-daemon
 exec --no-startup-id blueman-applet
 exec --no-startup-id gxkb
+exec --no-startup-id i3gopher
 
 
 ###############################################################################
