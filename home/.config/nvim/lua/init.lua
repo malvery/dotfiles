@@ -5,12 +5,21 @@
   },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   indent = {
     enable = true
   }
-} ]]
+}
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = {"*.yaml", "*.yml"},
+  callback = function ()
+    if vim.fn.search("{{.\\+}}", "nw") ~= 0 then
+      vim.diagnostic.disable(0)
+    end
+  end
+}) ]]
 
 -- gitsigns ===================================================================
 require('gitsigns').setup {

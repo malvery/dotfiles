@@ -9,6 +9,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
+# alias ssh='TERM=xterm ssh'
 
 # -----------------------------------------------
 # Env and options
@@ -49,7 +50,7 @@ __promt() {
   fi
 
   if [[ -v http_proxy ]]; then
-    PROXY=" [P]"
+    PROXY=" %"
   else
     PROXY=""
   fi
@@ -63,24 +64,6 @@ __promt() {
   GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
 }
 PROMPT_COMMAND=__promt
-
-# -----------------------------------------------
-# Additional Sources
-# -----------------------------------------------
-[[ -f ${HOME}/.bashrc.local ]]              &&  source ${HOME}/.bashrc.local
-[[ -f /etc/profile.d/bash_completion.sh ]]  &&  source /etc/profile.d/bash_completion.sh
-
-
-# -----------------------------------------------
-# PS1
-# -----------------------------------------------
-PS1=" ${C_DIR}\w${C_RST}"
-PS1+="${C_URG}\${STATUS_CODE}"
-PS1+="${C_JOB}\${JOBS}"
-PS1+="${C_PRX}\${PROXY}"
-PS1+="${C_TBX}\${TBX}"
-PS1+="${C_GIT}\${GIT_BRANCH}"
-PS1+="${C_RST} \[\a\]"
 
 # -----------------------------------------------
 # Proxy
@@ -110,3 +93,20 @@ _proxy_unset_aliases () {
     unalias $i
   done
 }
+
+# -----------------------------------------------
+# Sources
+# -----------------------------------------------
+[[ -f ${HOME}/.bashrc.local ]]              &&  source ${HOME}/.bashrc.local
+[[ -f /etc/profile.d/bash_completion.sh ]]  &&  source /etc/profile.d/bash_completion.sh
+
+# -----------------------------------------------
+# PS1
+# -----------------------------------------------
+PS1=" ${C_DIR}\w${C_RST}"
+PS1+="${C_URG}\${STATUS_CODE}"
+PS1+="${C_JOB}\${JOBS}"
+PS1+="${C_PRX}\${PROXY}"
+PS1+="${C_TBX}\${TBX}"
+PS1+="${C_GIT}\${GIT_BRANCH}"
+PS1+="${C_RST} \[\a\]"

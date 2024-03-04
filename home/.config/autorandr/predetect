@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TTY_RUN_ON=${LIBINPUT_GESTURES_TTY:-tty1}
+
+until [[ $(cat /sys/class/tty/tty0/active) == $TTY_RUN_ON ]]
+do
+  sleep 1
+  # echo "WAIT" >> /tmp/test.out
+
+done
+# echo "GO" >> /tmp/test.out

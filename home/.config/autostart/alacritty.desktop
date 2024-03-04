@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=alacritty --class alacritty-tmux -e tmux-workspace.sh
+Icon=
+Name=alacritty
+Path=
+Terminal=False
+Type=Application

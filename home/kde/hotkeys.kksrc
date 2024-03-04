@@ -4,6 +4,7 @@ switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
+switch-to-activity-cf3b9809-8fa0-40c7-a16b-0665b7eda147=
 switch-to-activity-dffa8f64-1e51-4847-ada5-caebda1381a1=
 switch-to-activity-fc4b0104-ea20-4473-ae62-d450f97fc916=
 
@@ -22,7 +23,7 @@ Toggle Screen Reader On and Off=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle
+Toggle Touchpad=Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
 
 [kded5][Global Shortcuts]
 Show System Activity=
@@ -31,6 +32,7 @@ display=Display; Meta+P
 [khotkeys][Global Shortcuts]
 {09282927-9bfb-47ab-a1f2-7d352cf58208}=Meta+Shift+Return
 {0dc850e4-82fb-46ca-9eca-36f8c9fb2f57}=Meta+Shift+E
+{15089a13-91b7-462c-8d57-5cba93f62f17}=Meta+Shift+Return
 {4b4dec81-bd5f-43ff-b1c4-ce264173e9f3}=Meta+R
 {80390465-1826-4ce1-8070-34098df8ce64}=Meta+Shift+Return
 {a5874693-b34c-4225-9245-ec8771a0209d}=Meta+Shift+E
@@ -50,7 +52,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+Shift+F12; Screensaver
+Lock Session=Screensaver; Meta+Shift+F12
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
 Reboot=
@@ -80,7 +82,7 @@ MoveZoomRight=
 MoveZoomUp=
 Overview=Meta+W
 Setup Window Shortcut=
-Show Desktop=Meta+D
+Show Desktop=
 ShowDesktopGrid=
 Suspend Compositing=
 Switch One Desktop Down=
@@ -170,12 +172,12 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Down; Meta+Shift+J
+Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Shift+H; Meta+Left
-Window Quick Tile Right=Meta+Right; Meta+Shift+L
-Window Quick Tile Top=Meta+Shift+K; Meta+Up
+Window Quick Tile Left=Meta+Shift+H; Meta+Shift+Left
+Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
+Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
@@ -215,6 +217,7 @@ Window to Screen 4=
 Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
+\x5bScript\x5d Switch to Recent Desktop=Meta+Esc
 view_actual_size=Meta+0
 view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
@@ -278,7 +281,7 @@ activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=Alt+F1
-activate widget 24=
+activate widget 24=Alt+F1
 activate widget 25=
 activate widget 26=
 activate widget 27=Alt+F1

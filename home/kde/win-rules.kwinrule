@@ -1,34 +1,55 @@
 [Settings for Slack]
 Description=Settings for Slack
-desktops=33ccb267-eac5-4516-9c4c-0a4c556412e1
+desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
 wmclass=Slack
 wmclassmatch=1
 
+[Settings for alacritty]
+Description=Settings for alacritty
+desktops=00000000-0000-0000-0000-000000000004
+size=1000,1000
+sizerule=3
+wmclass=Alacritty
+wmclassmatch=1
+
+[Settings for alacritty-tmux]
+Description=Settings for alacritty-tmux
+desktops=00000000-0000-0000-0000-000000000001
+desktopsrule=3
+maximizehoriz=true
+maximizehorizrule=3
+maximizevert=true
+maximizevertrule=3
+size=1000,1000
+wmclass=alacritty-tmux
+wmclassmatch=1
+
 [Settings for discord]
 Description=Settings for discord
-desktops=33ccb267-eac5-4516-9c4c-0a4c556412e1
+desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
 wmclass=discord
 wmclassmatch=1
 
 [Settings for firefox]
 Description=Settings for firefox
-desktops=ff52c4ce-647c-478a-87fd-1d479899dcb4
+desktops=00000000-0000-0000-0000-000000000002
 desktopsrule=3
 wmclass=firefox
 wmclassmatch=1
 
 [Settings for foot]
 Description=Settings for foot
+desktops=00000000-0000-0000-0000-000000000002
 size=1000,1000
 sizerule=3
-wmclass=foot
+wmclass=alacri
 wmclassmatch=1
 
 [Settings for foot-tmux]
 Description=Settings for foot-tmux
-desktops=69721c1e-5802-4d92-afc3-efd47256e2f1
+desktops=00000000-0000-0000-0000-000000000001
 desktopsrule=3
 maximizehoriz=true
 maximizehorizrule=3
@@ -39,14 +60,14 @@ wmclassmatch=1
 
 [Settings for gpclient]
 Description=Settings for gpclient
-desktops=82c69e79-0b7f-41ef-9345-1ac0c9a79edf
+desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
 wmclass=gpclient
 wmclassmatch=1
 
 [Settings for org.telegram.desktop]
 Description=Settings for org.telegram.desktop
-desktops=82c69e79-0b7f-41ef-9345-1ac0c9a79edf
+desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
 position=10,50
 positionrule=3
@@ -55,30 +76,28 @@ wmclassmatch=1
 
 [Settings for thunderbird]
 Description=Settings for thunderbird
-desktops=33ccb267-eac5-4516-9c4c-0a4c556412e1
+desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
 wmclass=thunderbird
 wmclassmatch=1
 
 [Settings for time-desktop]
 Description=Settings for time-desktop
-desktops=82c69e79-0b7f-41ef-9345-1ac0c9a79edf
+desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
-minimize=true
-minimizerule=3
 wmclass=time-desktop
+wmclassmatch=1
+
+[Settings for vesktop]
+Description=Settings for vesktop
+desktops=00000000-0000-0000-0000-000000000003
+desktopsrule=3
+wmclass=vesktop
 wmclassmatch=1
 
 [Settings for zoom]
 Description=Settings for zoom
-desktops=82c69e79-0b7f-41ef-9345-1ac0c9a79edf
+desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
 wmclass=zoom
-wmclassmatch=1
-
-[xwaylandvideobridge]
-Description=xwaylandvideobridge
-skipswitcher=true
-skipswitcherrule=3
-wmclass=xwaylandvideobridge
 wmclassmatch=1

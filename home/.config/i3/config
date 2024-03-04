@@ -112,8 +112,8 @@ bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
 bindsym $mod+Shift+Return exec --no-startup-id "alacritty msg create-window || alacritty"
 
 # brightnessctl
-bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 2 && pkill -USR1 py3status"
-bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 2 && pkill -USR1 py3status"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "brightnessctl set +2% && pkill -USR1 py3status"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 2%- && pkill -USR1 py3status"
 
 # MRIS2 ctl
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
@@ -278,7 +278,9 @@ exec_always --no-startup-id i3-switch-workspace.py
 ###############################################################################
 
 exec --no-startup-id autorandr -c
-# exec --no-startup-id nm-applet
+exec --no-startup-id pcmanfm-qt -d
+exec --no-startup-id nm-applet
+exec --no-startup-id firewall-applet
 exec --no-startup-id touchegg
 exec --no-startup-id alacritty --class alacritty-tmux -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#000000"

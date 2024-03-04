@@ -7,12 +7,14 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'towolf/vim-helm'
   Plug 'sheerun/vim-polyglot'
 
   Plug 'rmagatti/auto-session'
   Plug 'b3nj5m1n/kommentary'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kazhala/close-buffers.nvim'
+  Plug 'taybart/b64.nvim'
 
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -90,9 +92,15 @@ nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore<CR>
 nnoremap <leader>et :Texplore<CR>
 
+vnoremap <silent> <leader>be :<c-u>lua require("b64").encode()<cr>
+vnoremap <silent> <leader>bd :<c-u>lua require("b64").decode()<cr>
+
 " disable primary-paste
 map   <MiddleMouse> <Nop>
 imap  <MiddleMouse> <Nop>
+
+" disable help
+nmap <F1> <nop>
 
 " lua config ===============================================================
 lua require('init')
