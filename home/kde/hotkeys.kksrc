@@ -3,6 +3,7 @@ switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
+switch-to-activity-b5049bc3-06f7-47d4-8005-2e234dec2592=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
 switch-to-activity-cf3b9809-8fa0-40c7-a16b-0665b7eda147=
 switch-to-activity-dffa8f64-1e51-4847-ada5-caebda1381a1=
@@ -175,8 +176,8 @@ Window Pack Up=
 Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Shift+H; Meta+Shift+Left
-Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
+Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
+Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
 Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -237,7 +238,10 @@ _launch=Meta+E
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+R; Alt+F2
+_launch=Alt+F2; Meta+R
+
+[org.kde.kscreen.desktop][Global Shortcuts]
+ShowOSD=Display; Meta+P
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
@@ -267,7 +271,7 @@ PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
-powerProfile=Battery; Meta+B
+powerProfile=Meta+B; Battery
 
 [plasmashell][Global Shortcuts]
 activate task manager entry 1=
@@ -294,7 +298,7 @@ cycleNextAction=
 cyclePrevAction=
 edit_clipboard=
 manage activities=
-next activity=
+next activity=Meta+A
 previous activity=
 repeat_action=
 show dashboard=
@@ -309,6 +313,8 @@ toggle do not disturb=
 _launch=
 kcm-kscreen=
 kcm-lookandfeel=
+kcm-powerdevilprofilesconfig=
+kcm-screenlocker=
 kcm-users=
 powerdevilprofilesconfig=
 screenlocker=
