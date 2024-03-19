@@ -16,7 +16,7 @@ set $config       '~/.config/sway'
 # hotkeys
 bindsym --to-code {
   # kill focused window
-  $mod+Shift+c kill
+  $mod+Shift+q kill
 
   # change focus
   $mod+h  focus left
@@ -31,18 +31,18 @@ bindsym --to-code {
   $mod+Shift+l  move right
 
   # split in horizontal orientation
-  $mod+Shift+b split h
+  $mod+b split h
 
   # split in vertical orientation
-  $mod+Shift+v split v
+  $mod+v split v
 
   # enter fullscreen mode for the focused container
-  $mod+Shift+f fullscreen toggle
+  $mod+f fullscreen toggle
 
   # change container layout (stacked, tabbed, toggle split)
-  $mod+Shift+s layout stacking
-  $mod+Shift+w layout toggle tabbed split
-  $mod+Shift+e layout toggle split
+  $mod+s layout stacking
+  $mod+w layout tabbed
+  $mod+e layout toggle split
 
   # toggle tiling / floating
   $mod+Shift+space floating toggle
