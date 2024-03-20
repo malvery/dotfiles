@@ -16,7 +16,7 @@ set $config       '~/.config/sway'
 # hotkeys
 bindsym --to-code {
   # kill focused window
-  $mod+Shift+q kill
+  $mod+Shift+c kill
 
   # change focus
   $mod+h  focus left
