@@ -1,0 +1,6 @@
+[Keyboard]
+RepeatDelay=300
+RepeatRate=30
+
+[Libinput][1739][31251][SYNA2393:00 06CB:7A13 Touchpad]
+NaturalScroll=true

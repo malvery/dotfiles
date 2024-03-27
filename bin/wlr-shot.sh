@@ -6,9 +6,11 @@ if [[ -z $WAYLAND_DISPLAY ]]; then
   exit 1
 fi
 
-SHOT_DIR=$(xdg-user-dir PICTURES)
+SHOT_DIR="$(xdg-user-dir PICTURES)/Screenshots"
 SHOT_TIME=$(date "+${SWAYSHOT_DATEFMT:-%F_%H-%M-%S}")
 SHOT_PATH="$SHOT_DIR"/screenshot_${SHOT_TIME}.png
+
+[[ ! -d ${SHOT_DIR} ]] && mkdir ${SHOT_DIR}
 
 # take screenshot
 case "$1" in

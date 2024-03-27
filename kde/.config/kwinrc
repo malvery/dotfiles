@@ -10,9 +10,22 @@ Rows=1
 [ModifierOnlyShortcuts]
 Meta=
 
+[Plugins]
+highlightwindowEnabled=false
+slideEnabled=false
+
+[TabBox]
+HighlightWindows=false
+MinimizedMode=1
+
+[TabBoxAlternative]
+HighlightWindows=false
+OrderMinimizedMode=1
+
 [Tiling]
 padding=2
 
 [Windows]
 BorderlessMaximizedWindows=true
 FocusStealingPreventionLevel=2
+FocusStealingPreventionLevel=3

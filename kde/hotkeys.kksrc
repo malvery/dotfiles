@@ -2,6 +2,7 @@
 switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
+switch-to-activity-738ab12c-6e51-48a7-bc7f-65aa54592d02=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-b5049bc3-06f7-47d4-8005-2e234dec2592=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
@@ -53,7 +54,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Meta+Shift+F12
+Lock Session=Meta+Shift+F12; Screensaver
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
 Reboot=
@@ -173,12 +174,12 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
+Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
 Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
 Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
-Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
+Window Quick Tile Top=Meta+Shift+Up; Meta+Shift+K
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
@@ -220,7 +221,7 @@ Window to Screen 6=
 Window to Screen 7=
 \x5bScript\x5d Switch to Recent Desktop=Meta+Esc
 view_actual_size=Meta+0
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -238,7 +239,7 @@ _launch=Meta+E
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Alt+F2; Meta+R
+_launch=Meta+R; Alt+F2
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=Display; Meta+P
@@ -285,7 +286,7 @@ activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
 activate widget 23=Alt+F1
-activate widget 24=Alt+F1
+activate widget 24=
 activate widget 25=
 activate widget 26=
 activate widget 27=Alt+F1
