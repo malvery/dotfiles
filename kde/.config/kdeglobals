@@ -3,11 +3,11 @@ TerminalApplication=foot
 TerminalService=org.codeberg.dnkl.foot.desktop
 XftHintStyle=hintslight
 XftSubPixel=rgb
-fixed=Hack,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-font=Noto Sans,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-menuFont=Noto Sans,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-smallestReadableFont=Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-toolBarFont=Noto Sans,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+fixed=Hack,11
+font=Noto Sans,11
+menuFont=Noto Sans,11
+smallestReadableFont=Noto Sans,10
+toolBarFont=Noto Sans,11
 
 [KDE]
 AnimationDurationFactor=0.25
