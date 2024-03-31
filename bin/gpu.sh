@@ -13,6 +13,7 @@ function turn_off_gpu {
 
   echo 'Enabling powersave for the PCIe controller'
   sudo tee /sys/bus/pci/devices/${CONTROLLER_BUS_ID}/power/control <<<auto
+
   for module in "${MODULES_UNLOAD[@]}"
   do
       echo "Unloading module ${module}"
