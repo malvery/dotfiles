@@ -4,11 +4,14 @@ TerminalService=org.codeberg.dnkl.foot.desktop
 XftHintStyle=hintslight
 XftSubPixel=rgb
 fixed=Hack,11
-font=Noto Sans,11
-menuFont=Noto Sans,11
-smallestReadableFont=Noto Sans,10
-toolBarFont=Noto Sans,11
+font=Ubuntu,11
+menuFont=Ubuntu,11
+smallestReadableFont=Ubuntu,10
+toolBarFont=Ubuntu,11
 
 [KDE]
 AnimationDurationFactor=0.25
 LookAndFeelPackage=org.kde.breezedark.desktop
+
+[WM]
+activeFont=Ubuntu,11
