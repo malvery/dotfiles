@@ -9,7 +9,6 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
-# alias ssh='TERM=xterm ssh'
 
 # -----------------------------------------------
 # Env and options
