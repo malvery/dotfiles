@@ -27,6 +27,8 @@ CMD=${BASE}.desktop.peripherals.touchpad
 ${CMD} tap-to-click                 true
 ${CMD} two-finger-scrolling-enabled true
 
+CMD=${BASE}.desktop.peripherals.keyboard
+${CMD} delay  300
 
 CMD=${BASE}.settings-daemon.plugins.power
 ${CMD} power-button-action          'interactive'
@@ -68,6 +70,8 @@ ${CMD} switch-windows-backward        "['<Shift><Super>Tab']"
 ${CMD} toggle-fullscreen              "['<Shift><Super>f']"
 ${CMD} toggle-maximized               "['<Shift><Super>m']"
 
+CMD=${BASE}.desktop.wm.preferences
+${CMD} focus-mode "mouse"
 
 CMD=${BASE}.shell.keybindings
 ${CMD} switch-to-application-1  "@as []"
@@ -81,8 +85,9 @@ ${CMD} switch-to-application-8  "@as []"
 ${CMD} switch-to-application-9  "@as []"
 
 CMD=${BASE}.mutter
-${CMD} overlay-key  'Super_R'
-${CMD} experimental-features "['scale-monitor-framebuffer']"
+${CMD} overlay-key            'Super_R'
+${CMD} experimental-features  "['scale-monitor-framebuffer']"
+${CMD} center-new-windows     true
 
 
 CMD=${BASE}.settings-daemon.plugins.media-keys
