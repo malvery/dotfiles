@@ -82,6 +82,7 @@ ${CMD} switch-to-application-9  "@as []"
 
 CMD=${BASE}.mutter
 ${CMD} overlay-key  'Super_R'
+${CMD} experimental-features "['scale-monitor-framebuffer']"
 
 
 CMD=${BASE}.settings-daemon.plugins.media-keys
