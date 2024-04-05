@@ -77,6 +77,6 @@ else:
     if active_profile:
         pretty_name = PROFILE_NAME_MAP.get(active_profile, active_profile)
         print(pretty_name)
-        print(COLOR)
+        # print(COLOR)
 
     exit(0)
