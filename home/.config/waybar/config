@@ -2,16 +2,32 @@
   "layer":  "top",
   "height": 21,
   "position": "bottom",
+  "fixed-center": false,
 
-  "modules-left":   ["sway/workspaces", "sway/mode", "sway/window"],
-  "modules-center": [],
+  "modules-left":   [
+    "sway/workspaces",
+    "sway/mode"
+  ],
   "modules-right":  [
-    "cpu", "memory", "disk", "temperature", "idle_inhibitor",
-    "network", "bluetooth", "backlight","pulseaudio", "battery",
-    "clock", "sway/language", "tray"
+    "sway/window",
+    "cpu",
+    "memory",
+    "disk",
+    "temperature",
+    "idle_inhibitor",
+    "network",
+    "bluetooth",
+    "custom/bluez_profile",
+    "backlight",
+    "pulseaudio",
+    "privacy",
+    "battery",
+    "clock",
+    "sway/language",
+    "tray",
+    "custom/do_not_disturb",
   ],
 
-  // left
   "sway/workspaces": {
     "all-outputs":    true,
     "disable-scroll": true
@@ -25,29 +41,28 @@
     "tooltip":  false
   },
 
-  // center
-
-
-  // right
-
   "cpu": {
-    "format": "{usage}% ",
-    "interval": 5,
     "states": {
       "low":    0,
       "medium": 20,
       "high":   60
     },
+
+    "format":   "{usage}% ",
+
+    "interval": 5,
     "tooltip":  false
   },
 
   "memory": {
-    "format":   "{}% ",
     "states": {
       "low":    0,
       "medium": 50,
       "high":   90
     },
+
+    "format": "{}% ",
+
     "tooltip":  false
   },
 
@@ -57,51 +72,74 @@
     "format-linked":        "{ifname} (No IP) ",
     "format-disconnected":  "Disconnected ⚠",
     "format-alt":           "{bandwidthDownBits} {frequency}Hz",
-    "tooltip":              false
+
+    "tooltip":  false
   },
 
   "temperature": {
     "format":             "{temperatureC}°C {icon}",
     "format-icons":       ["", "", ""],
-    "thermal-zone":       3,
-    "hwmon-path":         "/sys/class/hwmon/hwmon6/temp1_input",
-    "interval":           3,
+    "thermal-zone":       10,
     "critical-threshold": 75,
-    "tooltip":            false
+
+    "interval": 3,
+    "tooltip":  false
   },
 
   "idle_inhibitor": {
     "format":       "{icon}",
     "format-icons": {
+
       "activated":    "",
       "deactivated":  ""
     },
+
     "tooltip": false
   },
 
   "bluetooth": {
     "on-click-middle":  "blueman-manager",
+    "on-click-right":   "~/bin/bluez-toggle.sh --reset",
+    "on-click":         "~/bin/bluez-toggle.sh --connect",
+
     "format": "{status} ",
-    "format-connected": "{device_alias} ",
+    "format-connected":         "{device_alias} ",
     "format-connected-battery": "{device_alias} {device_battery_percentage}% "
   },
 
+  "custom/bluez_profile": {
+      "exec":             "~/bin/bluez-card-profile.py",
+      "restart-interval": 1,
+
+      "on-click-right":   "~/bin/bluez-toggle.sh --reconnect",
+      "on-click-middle":  "~/bin/bluez-card-profile.py --switch",
+
+      "tooltip":  false
+  },
+
   "backlight": {
-    "format":         "{percent}% {icon}",
-    "format-icons":   ["", ""],
-    "on-scroll-up":   "light -A 2",
-    "on-scroll-down": "light -U 2",
     "states": {
       "low":    0,
       "medium": 51,
       "high":   80
     },
 
+    "format":         "{percent}% {icon}",
+    "format-icons":   [""],
+    "on-scroll-up":   "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-",
+
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
   },
 
   "pulseaudio": {
+    "states": {
+      "low":    50,
+      "medium": 70,
+      "high":   90
+    },
+
     "format":                 "{volume}% {icon}",
     "format-bluetooth":       "{volume}% {icon} ",
     "format-bluetooth-muted": "MUTE  {icon} ",
@@ -116,15 +154,32 @@
       "car":        "",
       "default":    ["", "", ""]
     },
-    "states": {
-      "low":    0,
-      "medium": 80,
-      "high":   100
-    },
+
     "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-middle":            "pavucontrol -t 3",
+
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
+  },
+
+  "privacy": {
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
   },
 
   "battery": {
@@ -133,41 +188,53 @@
       "medium": 70,
       "high":   100
     },
-    "interval": 3,
+
     "format":           "{power:>4.1f}W {capacity}% {icon}",
     "format-charging":  "{power:>4.1f}W {capacity}% ",
     "format-plugged":   "{power:>4.1f}W {capacity}% ",
     "format-alt":       "{time} {icon}",
+    "format-icons":     ["", "", "", "", ""],
 
-    "format-icons": ["", "", "", "", ""],
-    "tooltip":      false
+    "interval": 3,
+    "tooltip":  false
   },
 
   "clock": {
     "format": "{:%Y-%m-%d %H:%M:%OS}",
+
     "interval": 1,
     "tooltip":  false
   },
 
   "tray": {
-    "icon-size": 18,
-    "spacing": 3
+    "icon-size":  18,
+    "spacing":    3
   },
 
   "disk": {
-    "interval": 30,
-    "format": "{percentage_used}% ",
-    "path": "/",
     "states": {
       "low":    0,
       "medium": 50,
       "high":   80
     },
-    "tooltip": false
+
+    "format": "{percentage_used}% ",
+    "path":   "/",
+
+    "interval": 30,
+    "tooltip":  false
   },
 
   "sway/language": {
-      "format": "{short}",
-      "tooltip": false
+      "format":   "{short}",
+      "tooltip":  false
+  },
+
+  "custom/do_not_disturb": {
+      "exec":     "~/bin/dunst-dnd.sh",
+      "on-click": "dunstctl set-paused toggle",
+
+      "restart-interval": 1,
+      "tooltip":  false
   }
 }

@@ -6,7 +6,7 @@ case "$1" in
             bluetoothctl devices | awk '{print $2}' | xargs -n1 bluetoothctl connect
             sleep 3
         ;;
-    --power)
+    --reset)
             STATE=$(bluetoothctl show | grep Powered | awk '{print $2}')
 
             if [[ $STATE == 'yes' ]]; then
@@ -16,7 +16,7 @@ case "$1" in
                 sleep 0.5
 
             else
-                notify-send "Bluetooth" "Power on and reconnect devices"
+                notify-send "Bluetooth" "Reset connected devices"
 
                 bluetoothctl power on
                 sleep 0.5
@@ -24,8 +24,8 @@ case "$1" in
                 sleep 3
             fi
         ;;
-    --devices)
-            notify-send "Bluetooth" "Reconnecting devices"
+    --reconnect)
+            notify-send "Bluetooth" "Reconnect devices"
 
             DEVICES=$(bluetoothctl devices Connected | awk '{print $2}')
             echo $DEVICES | xargs -n1 bluetoothctl disconnect
