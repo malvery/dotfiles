@@ -12,6 +12,9 @@
   border:         none;
   border-radius:  0;
   min-height:     0;
+}
+
+window#waybar {
   font-family:    "Monospaced";
   font-weight:    600;
   font-size:      14px;
@@ -24,7 +27,7 @@
 }
 
 #workspaces button {
-  padding:  1 1px;
+  padding:  1px 1px;
   color:    @fg_normal;
   border:   1px solid @bg_border;
 }
@@ -41,7 +44,9 @@
 
 #language,
 #tray,
-#clock {
+#clock,
+#custom-do_not_disturb,
+#privacy {
   padding:  0 2px;
   margin:   0 2px;
 }
@@ -57,7 +62,8 @@
 #pulseaudio,
 #mode,
 #window,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-bluez_profile {
   padding:    0 2px;
   margin:     0 2px;
   background: @bg_widget;
@@ -93,12 +99,32 @@
   color: @fg_urgent;
 }
 
+#custom-bluez_profile {
+  color: @fg_medium;
+}
+
+#custom-do_not_disturb.off {
+  color: @fg_urgent;
+}
+
+#bluetooth.on {
+  color: @fg_good;
+}
+
+#bluetooth.off {
+  color: @fg_medium;
+}
+
+#bluetooth.disabled {
+  color: @fg_urgent;
+}
+
 #pulseaudio.bluetooth {
   color: @fg_good;
 }
 
 #pulseaudio.muted {
-  color: @fg_inactive;
+  color: @fg_urgent;
 }
 
 #temperature.critical {
@@ -113,9 +139,17 @@
   color: @fg_inactive;
 }
 
+#privacy {
+  color: @fg_urgent;
+}
+
+#privacy-item.audio-out {
+  color: @fg_medium;
+}
+
 #backlight.low,
 #pulseaudio.low {
-  color: @fg_good;
+  color: @fg_normal;
 }
 
 #cpu.low,
@@ -138,4 +172,9 @@
 #memory.high,
 #disk.high {
   color: @fg_urgent;
+}
+
+#tray {
+  font-family:  Ubuntu;
+  font-size:    15px;
 }

@@ -1,6 +1,6 @@
 {
   "layer":  "top",
-  "height": 21,
+  "height": 20,
   "position": "bottom",
   "fixed-center": false,
 
@@ -20,8 +20,8 @@
     "custom/bluez_profile",
     "backlight",
     "pulseaudio",
-    "privacy",
     "battery",
+    "privacy",
     "clock",
     "sway/language",
     "tray",
@@ -48,7 +48,7 @@
       "high":   60
     },
 
-    "format":   "{usage}% ",
+    "format":   " {usage}%",
 
     "interval": 5,
     "tooltip":  false
@@ -61,23 +61,23 @@
       "high":   90
     },
 
-    "format": "{}% ",
+    "format": " {}%",
 
     "tooltip":  false
   },
 
   "network": {
-    "format-wifi":          "{essid} {signalStrength}% ",
-    "format-ethernet":      "{ifname}: {ipaddr}/{cidr} ",
-    "format-linked":        "{ifname} (No IP) ",
-    "format-disconnected":  "Disconnected ⚠",
+    "format-wifi":          " {essid} {signalStrength}%",
+    "format-ethernet":      " {ifname}: {ipaddr}/{cidr}",
+    "format-linked":        " {ifname} (No IP) ",
+    "format-disconnected":  "⚠ Disconnected",
     "format-alt":           "{bandwidthDownBits} {frequency}Hz",
 
     "tooltip":  false
   },
 
   "temperature": {
-    "format":             "{temperatureC}°C {icon}",
+    "format":             "{icon} {temperatureC}°C",
     "format-icons":       ["", "", ""],
     "thermal-zone":       10,
     "critical-threshold": 75,
@@ -102,7 +102,11 @@
     "on-click-right":   "~/bin/bluez-toggle.sh --reset",
     "on-click":         "~/bin/bluez-toggle.sh --connect",
 
-    "format": "{status} ",
+    "format":           " {status}",
+    "format-on":        "",
+    "format-off":       "",
+    "format-disabled":  "",
+
     "format-connected":         "{device_alias} ",
     "format-connected-battery": "{device_alias} {device_battery_percentage}% "
   },
@@ -124,7 +128,7 @@
       "high":   80
     },
 
-    "format":         "{percent}% {icon}",
+    "format":         "{icon} {percent}%",
     "format-icons":   [""],
     "on-scroll-up":   "brightnessctl set +1%",
     "on-scroll-down": "brightnessctl set 1%-",
@@ -140,10 +144,10 @@
       "high":   90
     },
 
-    "format":                 "{volume}% {icon}",
-    "format-bluetooth":       "{volume}% {icon} ",
-    "format-bluetooth-muted": "MUTE  {icon} ",
-    "format-muted":           "MUTE ",
+    "format":                 "{icon} {volume}%",
+    "format-bluetooth":       "{icon}  {volume}% ",
+    "format-bluetooth-muted": "{icon}   MUTE ",
+    "format-muted":           " M",
 
     "format-icons": {
       "headphones": "",
@@ -162,26 +166,6 @@
     "tooltip":                    false
   },
 
-  "privacy": {
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-out",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      }
-    ]
-  },
-
   "battery": {
     "states": {
       "low":    30,
@@ -189,10 +173,10 @@
       "high":   100
     },
 
-    "format":           "{power:>4.1f}W {capacity}% {icon}",
-    "format-charging":  "{power:>4.1f}W {capacity}% ",
-    "format-plugged":   "{power:>4.1f}W {capacity}% ",
-    "format-alt":       "{time} {icon}",
+    "format":           "{icon} {capacity}% {power:>4.1f}W",
+    "format-charging":  " {capacity}% {power:>4.1f}W",
+    "format-plugged":   " {capacity}% {power:>4.1f}W",
+    "format-alt":       "{icon} {time}",
     "format-icons":     ["", "", "", "", ""],
 
     "interval": 3,
@@ -218,7 +202,7 @@
       "high":   80
     },
 
-    "format": "{percentage_used}% ",
+    "format": " {percentage_used}%",
     "path":   "/",
 
     "interval": 30,
@@ -230,11 +214,38 @@
       "tooltip":  false
   },
 
+  "privacy": {
+    "icon-size": 16,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+      }
+    ]
+  },
+
   "custom/do_not_disturb": {
       "exec":     "~/bin/dunst-dnd.sh",
       "on-click": "dunstctl set-paused toggle",
+      "return-type": "json",
+
+      "format": "{icon} {}",
+
+      "format-icons": {
+          "on":   "",
+          "off":  "",
+      },
 
       "restart-interval": 1,
       "tooltip":  false
-  }
+  },
+
 }
