@@ -43,7 +43,6 @@ window#waybar {
 }
 
 #language,
-#tray,
 #clock,
 #custom-do_not_disturb,
 #privacy {
@@ -63,6 +62,7 @@ window#waybar {
 #mode,
 #window,
 #idle_inhibitor,
+#tray,
 #custom-bluez_profile {
   padding:    0 2px;
   margin:     0 2px;
