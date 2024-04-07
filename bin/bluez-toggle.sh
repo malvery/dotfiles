@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 
 case "$1" in
+    --power)
+            if bluetoothctl show | grep 'Powered: no' -q; then
+                rfkill unblock 1
+                bluetoothctl power on
+            else
+                bluetoothctl power off
+            fi
+        ;;
     --connect)
-            notify-send "Bluetooth" "Connecting to the any available device"
-            bluetoothctl devices | awk '{print $2}' | xargs -n1 bluetoothctl connect
-            sleep 3
+            if bluetoothctl show | grep 'Powered: yes' -q; then
+                notify-send "Bluetooth" "Connecting to the any available device"
+                bluetoothctl devices | awk '{print $2}' | xargs -n1 bluetoothctl connect
+                sleep 3
+            fi
         ;;
     --reset)
             STATE=$(bluetoothctl show | grep Powered | awk '{print $2}')

@@ -22,10 +22,10 @@
     "pulseaudio",
     "battery",
     "privacy",
+    "custom/do_not_disturb",
     "clock",
     "sway/language",
     "tray",
-    "custom/do_not_disturb",
   ],
 
   "sway/workspaces": {
@@ -99,24 +99,24 @@
 
   "bluetooth": {
     "on-click-middle":  "blueman-manager",
-    "on-click-right":   "~/bin/bluez-toggle.sh --reset",
+    "on-click-right":   "~/bin/bluez-toggle.sh --power",
     "on-click":         "~/bin/bluez-toggle.sh --connect",
 
     "format":           " {status}",
-    "format-on":        "",
-    "format-off":       "",
-    "format-disabled":  "",
+    "format-on":        " ON",
+    "format-off":       " OFF",
+    "format-disabled":  " DIS",
 
     "format-connected":         "{device_alias} ",
     "format-connected-battery": "{device_alias} {device_battery_percentage}% "
   },
 
   "custom/bluez_profile": {
-      "exec":             "~/bin/bluez-card-profile.py",
-      "restart-interval": 1,
+      "exec":     "~/bin/bluez-card-profile.py",
+      "interval": 3,
 
-      "on-click-right":   "~/bin/bluez-toggle.sh --reconnect",
-      "on-click-middle":  "~/bin/bluez-card-profile.py --switch",
+      "on-click-right":   "~/bin/bluez-toggle.sh --switch",
+      "on-click-middle":  "~/bin/bluez-card-profile.py --reconnect",
 
       "tooltip":  false
   },
@@ -237,14 +237,14 @@
       "on-click": "dunstctl set-paused toggle",
       "return-type": "json",
 
-      "format": "{icon} {}",
+      "format": "{icon}{}",
 
       "format-icons": {
           "on":   "",
           "off":  "",
       },
 
-      "restart-interval": 1,
+      "interval": 3,
       "tooltip":  false
   },
 
