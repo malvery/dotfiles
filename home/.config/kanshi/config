@@ -4,6 +4,11 @@ profile default {
 
 profile {
   output eDP-1 disable
+  output DP-3 mode 3440x1440@144Hz position 0,0
+}
+
+profile {
+  output eDP-1 disable
   output DP-5 mode 3440x1440@100Hz position 0,0
 }
 
