@@ -115,8 +115,8 @@
       "exec":     "~/bin/bluez-card-profile.py",
       "interval": 3,
 
-      "on-click-right":   "~/bin/bluez-toggle.sh --switch",
-      "on-click-middle":  "~/bin/bluez-card-profile.py --reconnect",
+      "on-click-right":   "~/bin/bluez-card-profile.py --switch",
+      "on-click-middle":  "~/bin/bluez-toggle.sh --reconnect",
 
       "tooltip":  false
   },
@@ -191,7 +191,7 @@
   },
 
   "tray": {
-    "icon-size":  15,
+    "icon-size":  16,
     "spacing":    4
   },
 
