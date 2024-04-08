@@ -28,8 +28,11 @@ if [ "$2" == "-u" ]; then
   URL=$(imgur.sh $SHOT_PATH | head -1)
   echo $URL | wl-copy -n
   notify-send "screenshot" "${URL}"
+
+# edit shot
 else
   echo ${SHOT_PATH} | wl-copy -n
   notify-send "screenshot" "${SHOT_PATH}"
-fi
 
+  swappy -f ${SHOT_PATH}
+fi
