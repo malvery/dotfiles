@@ -19,13 +19,6 @@ desktopsrule=3
 wmclass=firefox
 wmclassmatch=1
 
-[Settings for foot]
-Description=Settings for foot
-size=1000,1000
-sizerule=3
-wmclass=foot
-wmclassmatch=1
-
 [Settings for foot-tmux]
 Description=Settings for foot-tmux
 desktops=00000000-0000-0000-0000-000000000001

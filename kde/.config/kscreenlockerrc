@@ -5,4 +5,4 @@ Timeout=30
 WallpaperPlugin=org.kde.color
 
 [Greeter][Wallpaper][org.kde.color][General]
-Color=16,16,16
+Color=5,5,5

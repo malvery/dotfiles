@@ -1,4 +1,5 @@
 [ActivityManager][Global Shortcuts]
+switch-to-activity-32ddafc7-b33b-4464-a6ad-590d6eb38324=
 switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
@@ -174,11 +175,11 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
+Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
+Window Quick Tile Left=Meta+Shift+H; Meta+Shift+Left
+Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
 Window Quick Tile Top=Meta+Shift+Up; Meta+Shift+K
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -242,7 +243,10 @@ RunClipboard=
 _launch=Meta+R; Alt+F2
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Display; Meta+P
+ShowOSD=Meta+P; Display
+
+[org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
+_launch=
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
