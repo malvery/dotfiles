@@ -175,12 +175,12 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
+Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
-Window Quick Tile Left=Meta+Shift+H; Meta+Shift+Left
+Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
 Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
-Window Quick Tile Top=Meta+Shift+Up; Meta+Shift+K
+Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
@@ -240,10 +240,10 @@ _launch=Meta+E
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+R; Alt+F2
+_launch=Meta+R
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Meta+P; Display
+ShowOSD=Display; Meta+P
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
 _launch=
@@ -294,6 +294,8 @@ activate widget 24=
 activate widget 25=
 activate widget 26=
 activate widget 27=Alt+F1
+activate widget 28=
+activate widget 29=Alt+F1
 activate widget 3=
 activate widget 4=Alt+F1
 clear-history=
