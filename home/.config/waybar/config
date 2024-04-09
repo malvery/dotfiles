@@ -79,8 +79,8 @@
   "temperature": {
     "format":             "{icon} {temperatureC}°C",
     "format-icons":       ["", "", ""],
-    "thermal-zone":       10,
     "critical-threshold": 75,
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
 
     "interval": 3,
     "tooltip":  false
