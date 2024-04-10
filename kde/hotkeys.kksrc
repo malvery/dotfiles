@@ -1,5 +1,6 @@
 [ActivityManager][Global Shortcuts]
 switch-to-activity-32ddafc7-b33b-4464-a6ad-590d6eb38324=
+switch-to-activity-41f673f8-8c78-4558-83bc-bcc4469678c1=
 switch-to-activity-43104775-96a5-46a0-b4b7-b5d8b3844329=
 switch-to-activity-6a2ac730-0b17-40c7-b86a-7bab59784e90=
 switch-to-activity-73483995-5c7f-40e1-a693-52c53b8c021c=
@@ -26,7 +27,7 @@ Toggle Screen Reader On and Off=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
+Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle
 
 [kded5][Global Shortcuts]
 Show System Activity=
@@ -147,7 +148,7 @@ Walk Through Windows of Current Application=Alt+`
 Walk Through Windows of Current Application (Reverse)=Alt+~
 Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
-Window Above Other Windows=
+Window Above Other Windows=Meta+V
 Window Below Other Windows=
 Window Close=Meta+Shift+C
 Window Fullscreen=Meta+F
@@ -179,7 +180,7 @@ Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
 Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
+Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
 Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -243,7 +244,7 @@ RunClipboard=
 _launch=Meta+R
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Display; Meta+P
+ShowOSD=Meta+P; Display
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
 _launch=
@@ -276,7 +277,7 @@ PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
-powerProfile=Meta+B; Battery
+powerProfile=Battery; Meta+B
 
 [plasmashell][Global Shortcuts]
 activate task manager entry 1=
