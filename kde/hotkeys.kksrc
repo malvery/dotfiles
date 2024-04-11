@@ -51,12 +51,12 @@ decrease_volume_small=Shift+Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
-mic_mute=Meta+Volume Mute; Microphone Mute
+mic_mute=Microphone Mute; Meta+Volume Mute
 mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+Shift+F12; Screensaver
+Lock Session=Screensaver; Meta+Shift+F12
 Log Out=Meta+Shift+Del
 Log Out Without Confirmation=
 Reboot=
@@ -64,7 +64,7 @@ Reboot Without Confirmation=
 Shut Down=
 
 [kwin][Global Shortcuts]
-Activate Window Demanding Attention=Meta+Shift+A
+Activate Window Demanding Attention=
 Cycle Overview=
 Cycle Overview Opposite=
 Decrease Opacity=
@@ -96,7 +96,7 @@ Switch One Desktop to the Right=
 Switch Window Down=Meta+J
 Switch Window Left=Meta+H
 Switch Window Right=Meta+L
-Switch Window Up=Meta+K
+Switch Window Up=
 Switch to Desktop 1=Meta+1
 Switch to Desktop 10=
 Switch to Desktop 11=
@@ -148,7 +148,7 @@ Walk Through Windows of Current Application=Alt+`
 Walk Through Windows of Current Application (Reverse)=Alt+~
 Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
-Window Above Other Windows=Meta+V
+Window Above Other Windows=Meta+Shift+A
 Window Below Other Windows=
 Window Close=Meta+Shift+C
 Window Fullscreen=Meta+F
@@ -180,8 +180,8 @@ Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
 Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
-Window Quick Tile Top=Meta+Shift+K; Meta+Shift+Up
+Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
+Window Quick Tile Top=Meta+Shift+Up; Meta+Shift+K
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
@@ -223,7 +223,7 @@ Window to Screen 6=
 Window to Screen 7=
 \x5bScript\x5d Switch to Recent Desktop=Meta+Esc
 view_actual_size=Meta+0
-view_zoom_in=Meta+=; Meta++
+view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -277,7 +277,7 @@ PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
-powerProfile=Battery; Meta+B
+powerProfile=Meta+B; Battery
 
 [plasmashell][Global Shortcuts]
 activate task manager entry 1=

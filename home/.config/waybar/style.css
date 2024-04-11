@@ -55,6 +55,7 @@ window#waybar {
 #cpu,
 #memory,
 #temperature,
+#custom-temp,
 #backlight,
 #network,
 #bluetooth,
@@ -128,6 +129,14 @@ window#waybar {
 }
 
 #temperature.critical {
+  color: @fg_urgent;
+}
+
+#custom-temp.zone2 {
+  color: @fg_medium;
+}
+
+#custom-temp.zone3 {
   color: @fg_urgent;
 }
 

@@ -13,7 +13,8 @@
     "cpu",
     "memory",
     "disk",
-    "temperature",
+    // "temperature",
+    "custom/temp",
     "idle_inhibitor",
     "network",
     "bluetooth",
@@ -76,14 +77,27 @@
     "tooltip":  false
   },
 
-  "temperature": {
-    "format":             "{icon} {temperatureC}°C",
-    "format-icons":       ["", "", ""],
-    "critical-threshold": 75,
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+  // "temperature": {
+  //   "format":             "{icon} {temperatureC}°C",
+  //   "format-icons":       ["", "", ""],
+  //   "critical-threshold": 75,
 
-    "interval": 3,
-    "tooltip":  false
+  //   "interval": 3,
+  //   "tooltip":  false
+  // },
+
+  "custom/temp": {
+      "exec":         "~/bin/temp.sh",
+      "return-type":  "json",
+      "format":       "{icon} {}°C",
+      "format-icons": {
+          "zone1":  "",
+          "zone2":  "",
+          "zone3":  "",
+      },
+
+      "interval": 3,
+      "tooltip":  false
   },
 
   "idle_inhibitor": {
