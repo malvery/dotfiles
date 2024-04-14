@@ -15,9 +15,9 @@
 }
 
 window#waybar {
-  font-family:    "Monospaced";
+  font-family:    "Ubuntu";
   font-weight:    600;
-  font-size:      14px;
+  font-size:      14.5px;
   color:          @fg_normal;
 }
 
