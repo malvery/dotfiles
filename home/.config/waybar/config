@@ -30,7 +30,7 @@
   ],
 
   "sway/workspaces": {
-    "all-outputs":    true,
+    "all-outputs":    false,
     "disable-scroll": true
   },
 
