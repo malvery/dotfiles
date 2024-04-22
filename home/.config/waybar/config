@@ -21,6 +21,7 @@
     "custom/bluez_profile",
     "backlight",
     "pulseaudio",
+    "power-profiles-daemon",
     "battery",
     "privacy",
     "custom/do_not_disturb",
@@ -195,6 +196,18 @@
 
     "interval": 3,
     "tooltip":  false
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": false,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
 
   "clock": {

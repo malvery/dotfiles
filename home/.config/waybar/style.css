@@ -52,6 +52,7 @@ window#waybar {
 
 #disk,
 #battery,
+#power-profiles-daemon,
 #cpu,
 #memory,
 #temperature,
@@ -120,6 +121,7 @@ window#waybar {
   color: @fg_medium;
 }
 
+#power-profiles-daemon.power-saver,
 #pulseaudio.bluetooth {
   color: @fg_good;
 }
@@ -167,6 +169,7 @@ window#waybar {
   color: @fg_normal;
 }
 
+#power-profiles-daemon.balanced,
 #backlight.medium,
 #pulseaudio.medium,
 #cpu.medium,
@@ -175,6 +178,7 @@ window#waybar {
   color: @fg_medium;
 }
 
+#power-profiles-daemon.performance,
 #backlight.high,
 #pulseaudio.high,
 #cpu.high,
