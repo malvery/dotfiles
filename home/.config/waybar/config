@@ -219,7 +219,7 @@
 
   "tray": {
     "icon-size":  15,
-    "spacing":    4
+    "spacing":    5
   },
 
   "disk": {
