@@ -15,19 +15,19 @@
     "disk",
     // "temperature",
     "custom/temp",
-    "idle_inhibitor",
     "network",
     "bluetooth",
     "custom/bluez_profile",
     "backlight",
     "pulseaudio",
+    "idle_inhibitor",
     "power-profiles-daemon",
     "battery",
     "privacy",
-    "custom/do_not_disturb",
     "clock",
     "tray",
     "sway/language",
+    "custom/do_not_disturb",
   ],
 
   "sway/workspaces": {
@@ -218,7 +218,7 @@
   },
 
   "tray": {
-    "icon-size":  16,
+    "icon-size":  15,
     "spacing":    4
   },
 
@@ -242,7 +242,7 @@
   },
 
   "privacy": {
-    "icon-size": 16,
+    "icon-size": 15,
     "modules": [
       {
         "type": "screenshare",
