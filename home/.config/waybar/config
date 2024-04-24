@@ -59,8 +59,8 @@
   "memory": {
     "states": {
       "low":    0,
-      "medium": 50,
-      "high":   90
+      "medium": 70,
+      "high":   95
     },
 
     "format": " {}%",
@@ -200,12 +200,12 @@
 
   "power-profiles-daemon": {
     "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": false,
+    "tooltip-format": "Profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": "",
+      "balanced": "",
       "power-saver": ""
     }
   },
