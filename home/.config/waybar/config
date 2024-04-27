@@ -211,7 +211,7 @@
   },
 
   "clock": {
-    "format": "{:%Y-%m-%d %H:%M:%OS}",
+    "format": "{:%a %d.%m %H:%M:%OS}",
 
     "interval": 1,
     "tooltip":  false
