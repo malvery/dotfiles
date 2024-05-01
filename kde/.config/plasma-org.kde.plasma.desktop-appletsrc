@@ -18,12 +18,19 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][3][Applets][20][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 popupHeight=525
 popupWidth=560
 
 [Containments][3][Applets][20][Configuration][Appearance]
+customDateFormat=ddd dd.MM
+dateDisplayFormat=BesideTime
+dateFormat=custom
 fontWeight=400
+
+[Containments][3][Applets][20][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][3][Applets][21]
 immutability=1
@@ -173,7 +180,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][3][Applets][8][Configuration]
-PreloadWeight=75
+PreloadWeight=80
 SystrayContainmentId=9
 
 [Containments][3][General]
@@ -277,7 +284,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][9][Applets][22][Configuration]
-PreloadWeight=100
+PreloadWeight=92
 
 [Containments][9][Applets][22][Configuration][General]
 showPercentage=true
@@ -287,14 +294,14 @@ immutability=1
 plugin=org.kde.plasma.brightness
 
 [Containments][9][Applets][23][Configuration]
-PreloadWeight=91
+PreloadWeight=83
 
 [Containments][9][Applets][24]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][9][Applets][24][Configuration]
-PreloadWeight=57
+PreloadWeight=67
 
 [Containments][9][Applets][25]
 immutability=1
