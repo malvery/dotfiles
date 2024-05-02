@@ -3,8 +3,15 @@ TerminalApplication=foot
 TerminalService=org.codeberg.dnkl.foot.desktop
 XftHintStyle=hintslight
 XftSubPixel=rgb
-smallestReadableFont=Noto Sans,9
+fixed=Hack,11
+font=Ubuntu,12
+menuFont=Ubuntu,12
+smallestReadableFont=Ubuntu,11
+toolBarFont=Ubuntu,12
 
 [KDE]
 AnimationDurationFactor=0.25
 LookAndFeelPackage=org.kde.breezedark.desktop
+
+[WM]
+activeFont=Ubuntu,11
