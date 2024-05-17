@@ -17,7 +17,7 @@
 window#waybar {
   font-family:    "Ubuntu";
   font-weight:    600;
-  font-size:      14.5px;
+  font-size:      15px;
   color:          @fg_normal;
 }
 
@@ -45,6 +45,7 @@ window#waybar {
 #language,
 #clock,
 #custom-do_not_disturb,
+#mpris,
 #privacy {
   padding:  0 2px;
   margin:   0 2px;
@@ -140,6 +141,14 @@ window#waybar {
 
 #custom-temp.zone3 {
   color: @fg_urgent;
+}
+
+#mpris.paused {
+  color: @fg_medium;
+}
+
+#mpris.playing {
+  color: @fg_good;
 }
 
 #idle_inhibitor.activated {
