@@ -17,7 +17,7 @@
 window#waybar {
   font-family:    "Ubuntu";
   font-weight:    600;
-  font-size:      15px;
+  font-size:      14px;
   color:          @fg_normal;
 }
 
@@ -198,5 +198,5 @@ window#waybar {
 
 #tray {
   font-family:  Ubuntu;
-  font-size:    15px;
+  font-size:    14px;
 }
