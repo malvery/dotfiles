@@ -8,6 +8,7 @@ switch-to-activity-738ab12c-6e51-48a7-bc7f-65aa54592d02=
 switch-to-activity-9678b215-1c1b-462d-8c9e-d242f94713bb=
 switch-to-activity-b5049bc3-06f7-47d4-8005-2e234dec2592=
 switch-to-activity-bb0ebbca-ec0e-449c-b88c-6787d6546f6d=
+switch-to-activity-c77374f1-cbd9-483c-b1c6-ba9636afae64=
 switch-to-activity-cf3b9809-8fa0-40c7-a16b-0665b7eda147=
 switch-to-activity-dffa8f64-1e51-4847-ada5-caebda1381a1=
 switch-to-activity-fc4b0104-ea20-4473-ae62-d450f97fc916=
@@ -18,6 +19,9 @@ Switch keyboard layout to Russian=
 Switch to Last-Used Keyboard Layout=
 Switch to Next Keyboard Layout=
 
+[bemenu-run.desktop][Global Shortcuts]
+_launch=Alt+F2
+
 [foot.desktop][Global Shortcuts]
 _launch=Meta+Shift+Return
 
@@ -27,7 +31,7 @@ Toggle Screen Reader On and Off=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku; Touchpad Toggle
+Toggle Touchpad=Touchpad Toggle; Meta+Ctrl+Zenkaku Hankaku
 
 [kded5][Global Shortcuts]
 Show System Activity=
@@ -93,10 +97,10 @@ Switch One Desktop Down=
 Switch One Desktop Up=
 Switch One Desktop to the Left=
 Switch One Desktop to the Right=
-Switch Window Down=Meta+J
+Switch Window Down=Meta+J; Meta+Tab
 Switch Window Left=Meta+H
 Switch Window Right=Meta+L
-Switch Window Up=
+Switch Window Up=Meta+K
 Switch to Desktop 1=Meta+1
 Switch to Desktop 10=
 Switch to Desktop 11=
@@ -140,10 +144,10 @@ Walk Through Desktop List=
 Walk Through Desktop List (Reverse)=
 Walk Through Desktops=
 Walk Through Desktops (Reverse)=
-Walk Through Windows=Meta+Tab
-Walk Through Windows (Reverse)=Meta+Shift+Tab
-Walk Through Windows Alternative=Alt+Tab
-Walk Through Windows Alternative (Reverse)=Alt+Shift+Tab
+Walk Through Windows=Alt+Tab
+Walk Through Windows (Reverse)=Alt+Shift+Tab
+Walk Through Windows Alternative=
+Walk Through Windows Alternative (Reverse)=
 Walk Through Windows of Current Application=Alt+`
 Walk Through Windows of Current Application (Reverse)=Alt+~
 Walk Through Windows of Current Application Alternative=
@@ -176,11 +180,11 @@ Window Pack Down=
 Window Pack Left=
 Window Pack Right=
 Window Pack Up=
-Window Quick Tile Bottom=Meta+Shift+Down; Meta+Shift+J
+Window Quick Tile Bottom=Meta+Shift+J; Meta+Shift+Down
 Window Quick Tile Bottom Left=
 Window Quick Tile Bottom Right=
 Window Quick Tile Left=Meta+Shift+Left; Meta+Shift+H
-Window Quick Tile Right=Meta+Shift+Right; Meta+Shift+L
+Window Quick Tile Right=Meta+Shift+L; Meta+Shift+Right
 Window Quick Tile Top=Meta+Shift+Up; Meta+Shift+K
 Window Quick Tile Top Left=
 Window Quick Tile Top Right=
@@ -223,7 +227,7 @@ Window to Screen 6=
 Window to Screen 7=
 \x5bScript\x5d Switch to Recent Desktop=Meta+Esc
 view_actual_size=Meta+0
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
 
 [mediacontrol][Global Shortcuts]
@@ -244,7 +248,7 @@ RunClipboard=
 _launch=Meta+R
 
 [org.kde.kscreen.desktop][Global Shortcuts]
-ShowOSD=Meta+P; Display
+ShowOSD=Display; Meta+P
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
 _launch=

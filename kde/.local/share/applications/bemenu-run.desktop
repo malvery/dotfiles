@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/bin/bemenu-run
+Name=/usr/bin/bemenu-run
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true
