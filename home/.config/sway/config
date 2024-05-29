@@ -8,7 +8,7 @@ titlebar_padding        1
 focus_follows_mouse     yes
 
 set $terminal     'foot'
-set $file-manager 'pcmanfm-qt'
+set $file-manager 'nautilus -w'
 set $lock-manager 'loginctl lock-session'
 set $config       '~/.config/sway'
 
