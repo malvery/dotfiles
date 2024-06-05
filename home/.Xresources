@@ -1,9 +1,0 @@
-!******************************************************
-Xft.dp:         96
-Xft.hinting:    true
-Xft.hintstyle:  hintslight
-Xft.rgba:       rgb
-Xft.antialias:  true
-Xft.lcdfilter:  lcddefault
-Xcursor.theme:  Vanilla-DMZ-AA
-Xcursor.size:   16
