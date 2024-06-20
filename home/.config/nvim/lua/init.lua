@@ -136,6 +136,25 @@ nvim_lsp['yamlls'].setup{
   capabilities  = capabilities
 }
 
+nvim_lsp['bashls'].setup{
+  filetypes     = { 'sh' },
+  on_attach     = on_attach,
+  flags         = { debounce_text_changes = 150 },
+  capabilities  = capabilities
+}
+
+nvim_lsp['dockerls'].setup {
+  on_attach     = on_attach,
+  flags         = { debounce_text_changes = 150 },
+  capabilities  = capabilities
+}
+
+nvim_lsp['helm_ls'].setup {
+  on_attach     = on_attach,
+  flags         = { debounce_text_changes = 150 },
+  capabilities  = capabilities
+}
+
 nvim_lsp['efm'].setup{
   filetypes     = { 'sh', 'python' },
   on_attach     = on_attach,
