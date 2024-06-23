@@ -29,5 +29,5 @@ padding=2
 BorderlessMaximizedWindows=true
 FocusPolicy=FocusFollowsMouse
 ElectricBorderCornerRatio=0.01
-FocusStealingPreventionLevel=2
+FocusStealingPreventionLevel=3
 DelayFocusInterval=200
