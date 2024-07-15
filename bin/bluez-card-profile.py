@@ -25,12 +25,12 @@ def error(msg):
 
 DESIRED_PROFILE = [
     "a2dp-sink",
-    "headset-head-unit-msbc"
+    "headset-head-unit"
 ]
 
 PROFILE_NAME_MAP = {
     "a2dp-sink": "A2DP",
-    "headset-head-unit-msbc": "mSBC"
+    "headset-head-unit": "mSBC"
 }
 
 COLOR = "#FE8600"
