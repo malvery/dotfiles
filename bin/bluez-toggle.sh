@@ -11,8 +11,20 @@ case "$1" in
         ;;
     --connect)
             if bluetoothctl show | grep 'Powered: yes' -q; then
-                notify-send "Bluetooth" "Connecting to the any available device"
-                bluetoothctl devices | awk '{print $2}' | xargs -n1 bluetoothctl connect
+                notify-send "Bluetooth" "Connecting to the any available devices"
+                # bluetoothctl devices | awk '{print $2}' | xargs -n1 bluetoothctl connect
+
+                CONNECTED=$(bluetoothctl devices Connected | awk '{print $2}')
+                PAIRED=$(bluetoothctl devices Paired | awk '{print $2}')
+
+                for DEVICE in ${PAIRED}; do
+                    if ! $(echo $CONNECTED | grep -w -q ${DEVICE})
+                    then
+                        DEVICE_NAME=$(bluetoothctl devices Paired | grep ${DEVICE})
+                        notify-send "Bluetooth" "Trying to connect to the ${DEVICE_NAME}"
+                        bluetoothctl connect ${DEVICE}
+                    fi
+                done
                 sleep 3
             fi
         ;;
