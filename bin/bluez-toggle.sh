@@ -46,8 +46,8 @@ case "$1" in
                 sleep 3
             fi
         ;;
-    --reconnect)
-            notify-send "Bluetooth" "Reconnect devices"
+    --reconnect-all)
+            notify-send "Bluetooth" "Reconnect all devices"
 
             DEVICES=$(bluetoothctl devices Connected | awk '{print $2}')
             echo $DEVICES | xargs -n1 bluetoothctl disconnect

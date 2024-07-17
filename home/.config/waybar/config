@@ -130,9 +130,10 @@
   "custom/bluez_profile": {
       "exec":     "~/bin/bluez-card-profile.py",
       "interval": 3,
+      "signal":   20,
 
-      "on-click-right":   "~/bin/bluez-card-profile.py --switch",
-      "on-click-middle":  "~/bin/bluez-toggle.sh --reconnect",
+      "on-click-right":   "~/bin/bluez-card-profile.py --waybar --switch",
+      "on-click-middle":  "~/bin/bluez-card-profile.py --waybar --reconnect",
 
       "tooltip":  false
   },
