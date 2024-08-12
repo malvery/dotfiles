@@ -3,8 +3,8 @@ profile default {
 }
 
 profile xiaomi {
-  # output eDP-1  disable
-  output eDP-1  mode 3072x1920@165Hz position 0,0
+  output eDP-1  disable
+  # output eDP-1  mode 3072x1920@165Hz position 0,0
   output DP-3   mode 3440x1440@144Hz
 }
 
