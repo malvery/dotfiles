@@ -22,6 +22,11 @@ OrderMinimizedMode=1
 HighlightWindows=false
 OrderMinimizedMode=1
 
+[TabBoxAlternative]
+HighlightWindows=false
+MinimizedMode=1
+OrderMinimizedMode=1
+
 [Tiling]
 padding=2
 
