@@ -267,11 +267,12 @@
   },
 
   "custom/do_not_disturb": {
-      "exec":     "~/bin/dunst-dnd.sh",
-      "on-click": "dunstctl set-paused toggle",
-      "return-type": "json",
+      "exec":     "~/bin/mako-dnd.sh",
+      "on-click": "makoctl mode -t dnd && pkill -SIGRTMIN+21 waybar",
+      "signal":   21,
 
-      "format": "{icon}{}",
+      "return-type":  "json",
+      "format":       "{icon}{}",
 
       "format-icons": {
           "on":   "",
