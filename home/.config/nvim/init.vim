@@ -26,8 +26,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-" colorscheme desert
-colorscheme blue
+colorscheme sorbet
 if has('termguicolors')
    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
    set termguicolors
@@ -89,7 +88,7 @@ nnoremap <leader>tc :tabclose<CR>
 
 nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
-nnoremap <leader>ev :Vexplore<CR>
+nnoremap <leader>ev :Vexplore!<CR>
 nnoremap <leader>et :Texplore<CR>
 
 vnoremap <silent> <leader>be :<c-u>lua require("b64").encode()<cr>
