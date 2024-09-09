@@ -25,7 +25,8 @@
     "battery",
     "mpris",
     "privacy",
-    "clock",
+    // "clock",
+    "custom/clock",
     "tray",
     "sway/language",
     "custom/do_not_disturb",
@@ -226,6 +227,11 @@
 
     "interval": 1,
     "tooltip":  false
+  },
+
+  "custom/clock": {
+    "exec": "date +\"%a %d.%m %H:%M:%OS\"",
+    "interval": 1
   },
 
   "tray": {
