@@ -92,7 +92,7 @@
   "custom/temp": {
       "exec":         "~/bin/temp.sh",
       "return-type":  "json",
-      "format":       "{icon} {}°C",
+      "format":       "{icon} {0}°C",
       "format-icons": {
           "zone1":  "",
           "zone2":  "",
@@ -278,7 +278,7 @@
       "signal":   21,
 
       "return-type":  "json",
-      "format":       "{icon}{}",
+      "format":       "{icon}{0}",
 
       "format-icons": {
           "on":   "",
