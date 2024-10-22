@@ -28,6 +28,23 @@ case "$1" in
                 sleep 3
             fi
         ;;
+    --connect-known-headset)
+            if bluetoothctl show | grep 'Powered: yes' -q; then
+                notify-send "Bluetooth" "Trying to connect the known headsets"
+                CONNECTED=$(bluetoothctl devices Connected | awk '{print $2}')
+                HEADSETS="F8:20:A9:78:9D:3B 64:23:15:63:AE:C3"
+
+                for DEVICE in ${HEADSETS}; do
+                    if ! $(echo $CONNECTED | grep -w -q ${DEVICE})
+                    then
+                        DEVICE_NAME=$(bluetoothctl devices Paired | grep ${DEVICE})
+                        notify-send "Bluetooth" "Trying to connect to the ${DEVICE_NAME}"
+                        bluetoothctl connect ${DEVICE}
+                    fi
+                done
+                sleep 3
+            fi
+        ;;
     --reset)
             STATE=$(bluetoothctl show | grep Powered | awk '{print $2}')
 
