@@ -6,9 +6,9 @@ x-scheme-handler/tg=userapp-Telegram Desktop-VR2IW2.desktop;
 x-scheme-handler/tonsite=userapp-Telegram Desktop-HRDJW2.desktop;
 
 [Default Applications]
-x-scheme-handler/http=firefox.desktop
-text/html=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+x-scheme-handler/http=chromium.desktop
+text/html=chromium.desktop
+x-scheme-handler/https=chromium.desktop
 x-scheme-handler/about=chromium.desktop
 x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/chrome=firefox.desktop
