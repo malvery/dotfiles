@@ -1,7 +1,0 @@
-[Desktop Entry]
-Exec=/usr/bin/foot
-Name=/usr/bin/foot
-NoDisplay=true
-StartupNotify=false
-Type=Application
-X-KDE-GlobalAccel-CommandShortcut=true
