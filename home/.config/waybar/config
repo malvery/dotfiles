@@ -116,8 +116,7 @@
 
   "bluetooth": {
     "on-click-middle":  "blueman-manager",
-    "on-click-right":   "~/bin/bluez-toggle.sh --power",
-    "on-click":         "~/bin/bluez-toggle.sh --connect-known-headset",
+    "on-click-right":         "~/bin/bluez-toggle.sh --connect-known-headset",
 
     "format":           " {status}",
     "format-on":        " ON",

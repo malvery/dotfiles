@@ -1,5 +1,6 @@
 profile default {
   output eDP-1 enable scale 1.75
+  exec killall -SIGUSR2 waybar
 }
 
 profile xiaomi {
@@ -7,6 +8,7 @@ profile xiaomi {
   # output DP-3   mode 3440x1440@144Hz
   output eDP-1 enable scale 1.75  mode 3072x1920@165Hz position 0,0
   output DP-3  enable             mode 3440x1440@144Hz position 1755,-300
+  exec killall -SIGUSR2 waybar
 }
 
 profile dell {
