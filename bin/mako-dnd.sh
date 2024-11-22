@@ -10,7 +10,7 @@ then
     DISABLED=$(printf '{"text": " %s", "alt": "off", "class":"off"}' ${COUNT})
 fi
 
-if [[ $(makoctl mode | grep dnd) != "dnd" ]]
+if [[ $(makoctl mode | grep do-not-disturb) != "do-not-disturb" ]]
 then
     echo $ENABLED
 else

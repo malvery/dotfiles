@@ -274,7 +274,7 @@
 
   "custom/do_not_disturb": {
       "exec":     "~/bin/mako-dnd.sh",
-      "on-click": "makoctl mode -t dnd && pkill -SIGRTMIN+21 waybar",
+      "on-click": "makoctl mode -t do-not-disturb && pkill -SIGRTMIN+21 waybar",
       "signal":   21,
 
       "return-type":  "json",

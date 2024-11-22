@@ -36,7 +36,7 @@ case "$1" in
         echo "#FE8600"
         ;;
       balanced)
-        echo "B"
+        echo B
         echo "#86AD85"
         ;;
       performance)
