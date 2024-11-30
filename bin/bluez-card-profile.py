@@ -24,22 +24,26 @@ def error(msg):
     exit(0)
 
 
-DESIRED_PROFILE = [
-    "a2dp-sink",
-    "headset-head-unit"
-]
-
-PROFILE_NAME_MAP = {
-    "a2dp-sink": "A2DP",
-    "headset-head-unit": "mSBC"
-}
-
 COLOR = "#FE8600"
+
+#####################################################################
+# Get audio server info
+
+info = json.loads(
+    run_cmd([
+        "pactl", "-f", "json", "info"
+    ])
+)
+
+IS_PULSE = True if info["server_name"] == "pulseaudio" else False
+
+#####################################################################
+# Get device info
 
 default_sink = run_cmd(["pactl", "get-default-sink"]).split(".")
 system = default_sink[0]
 
-if system != "bluez_output":
+if system not in ["bluez_output", "bluez_sink"]:
     error("Unable to find default bluez sink")
 
 _id = default_sink[1]
@@ -61,8 +65,40 @@ if card_info is None:
     error(f"Unable to find card {card_id}")
 
 active_profile = card_info.get("active_profile", str())
-bluez_id = card_info["properties"]["api.bluez5.address"]
-bluez_alias = card_info["properties"]["device.alias"]
+
+#####################################################################
+# Pulseaudio or PipeWire
+
+if IS_PULSE:
+    bluez_id = card_info["properties"]["device.string"]
+    bluez_alias = card_info["properties"]["bluez.alias"]
+
+    DESIRED_PROFILE = [
+        "a2dp_sink",
+        "handsfree_head_unit"
+    ]
+
+    PROFILE_NAME_MAP = {
+        "a2dp_sink": "A2DP",
+        "handsfree_head_unit": "mSBC"
+    }
+
+else:
+    bluez_id = card_info["properties"]["api.bluez5.address"]
+    bluez_alias = card_info["properties"]["device.alias"]
+
+    DESIRED_PROFILE = [
+        "a2dp-sink",
+        "headset-head-unit"
+    ]
+
+    PROFILE_NAME_MAP = {
+        "a2dp-sink": "A2DP",
+        "headset-head-unit": "mSBC"
+    }
+
+#####################################################################
+# Switch profile
 
 if args.switch:
     DESIRED_PROFILE.remove(active_profile)
@@ -88,11 +124,12 @@ elif args.reconnect:
     run_cmd(["bluetoothctl", "disconnect", bluez_id])
     run_cmd(["bluetoothctl", "connect", bluez_id])
 
+#####################################################################
+# Show current profile
 
 if active_profile:
     pretty_name = PROFILE_NAME_MAP.get(active_profile, active_profile)
     print(pretty_name)
-    # print(COLOR)
 
     if args.py3status:
         out = run_cmd(["pkill", "-USR1", "py3status"])

@@ -1,0 +1,6 @@
+set $config   '~/.config/sway'
+
+include /etc/sway/config.d/*
+include $config/conf.d/*.conf
+
+output * allow_tearing yes

@@ -9,6 +9,10 @@ profile xiaomi {
   output DP-3  enable             mode 3440x1440@144Hz position 1755,-300
 }
 
+profile nv-xiaomi {
+  output DP-4   mode 3440x1440@144Hz
+}
+
 profile dell {
   output eDP-1 disable
   output DP-1  mode 2560x1440@75Hz
