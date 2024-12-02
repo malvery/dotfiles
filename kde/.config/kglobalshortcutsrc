@@ -2,6 +2,7 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-5680913a-577c-4bad-9db8-14aa07507270=none,none,Switch to activity "Default"
 switch-to-activity-7ef4b26f-c330-4fe5-8103-6aec7ef9cfce=none,none,Switch to activity "Default"
+switch-to-activity-81e44061-b132-4acd-b132-95d65503bbb9=none,none,Switch to activity "Default"
 switch-to-activity-8be83f10-c029-4013-b9dc-4f3476933695=none,none,Switch to activity "Default"
 switch-to-activity-f0f219d5-25b5-4c15-9512-101f6928c1bc=none,none,Switch to activity "Default"
 
@@ -36,7 +37,7 @@ mute=Volume Mute,Volume Mute,Mute
 [ksmserver]
 Halt Without Confirmation=none,,Shut Down Without Confirmation
 Lock Session=Screensaver\tMeta+Shift+F12,Meta+L\tScreensaver,Lock Session
-Log Out=Meta+Shift+Del,Ctrl+Alt+Del,Show Logout Prompt
+Log Out=Meta+Shift+Del,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
 Reboot=none,,Reboot
@@ -149,16 +150,16 @@ Window Pack Down=none,,Move Window Down
 Window Pack Left=none,,Move Window Left
 Window Pack Right=none,,Move Window Right
 Window Pack Up=none,,Move Window Up
-Window Quick Tile Bottom=Meta+Shift+J\tMeta+Shift+Down,Meta+Down,Quick Tile Window to the Bottom
+Window Quick Tile Bottom=Meta+Down\tMeta+Shift+J,Meta+Down,Quick Tile Window to the Bottom
 Window Quick Tile Bottom Left=none,,Quick Tile Window to the Bottom Left
 Window Quick Tile Bottom Right=none,,Quick Tile Window to the Bottom Right
-Window Quick Tile Left=Meta+Shift+H\tMeta+Shift+Left,Meta+Left,Quick Tile Window to the Left
-Window Quick Tile Right=Meta+Shift+L\tMeta+Shift+Right,Meta+Right,Quick Tile Window to the Right
-Window Quick Tile Top=Meta+Shift+K\tMeta+Shift+Up,Meta+Up,Quick Tile Window to the Top
+Window Quick Tile Left=Meta+Left\tMeta+Shift+H,Meta+Left,Quick Tile Window to the Left
+Window Quick Tile Right=Meta+Shift+L\tMeta+Right,Meta+Right,Quick Tile Window to the Right
+Window Quick Tile Top=Meta+Shift+K\tMeta+Up,Meta+Up,Quick Tile Window to the Top
 Window Quick Tile Top Left=none,,Quick Tile Window to the Top Left
 Window Quick Tile Top Right=none,,Quick Tile Window to the Top Right
 Window Raise=none,,Raise Window
-Window Resize=none,,Resize Window
+Window Resize=Meta+Shift+R,,Resize Window
 Window Shade=none,,Shade Window
 Window Shrink Horizontal=none,,Shrink Window Horizontally
 Window Shrink Vertical=none,,Shrink Window Vertically
@@ -224,7 +225,7 @@ PowerOff=Power Off,Power Off,Power Off
 Sleep=Sleep,Sleep,Suspend
 Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,Toggle Keyboard Backlight
 Turn Off Screen=none,none,Turn Off Screen
-_k_friendly_name=KDE Power Management System
+_k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
