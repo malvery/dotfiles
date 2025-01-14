@@ -14,6 +14,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log
   sway
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
