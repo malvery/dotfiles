@@ -11,8 +11,18 @@ Rows=1
 Meta=
 
 [Plugins]
+contrastEnabled=false
+fadingpopupsEnabled=false
+frozenappEnabled=false
+fullscreenEnabled=false
 highlightwindowEnabled=false
+kwin-switch-to-recent-desktopEnabled=true
+loginEnabled=false
+logoutEnabled=false
+maximizeEnabled=false
+screenedgeEnabled=false
 slideEnabled=false
+slidingpopupsEnabled=false
 
 [TabBox]
 HighlightWindows=false
