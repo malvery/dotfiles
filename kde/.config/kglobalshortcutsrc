@@ -4,6 +4,7 @@ switch-to-activity-5680913a-577c-4bad-9db8-14aa07507270=none,none,Switch to acti
 switch-to-activity-7ef4b26f-c330-4fe5-8103-6aec7ef9cfce=none,none,Switch to activity "Default"
 switch-to-activity-81e44061-b132-4acd-b132-95d65503bbb9=none,none,Switch to activity "Default"
 switch-to-activity-8be83f10-c029-4013-b9dc-4f3476933695=none,none,Switch to activity "Default"
+switch-to-activity-bbf9c0f4-dbd3-45e2-8be8-4b0a969cec21=none,none,Switch to activity "Default"
 switch-to-activity-f0f219d5-25b5-4c15-9512-101f6928c1bc=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -249,7 +250,7 @@ cycleNextAction=none,,Next History Item
 cyclePrevAction=none,,Previous History Item
 manage activities=none,Meta+Q,Show Activity Switcher
 next activity=Meta+A,none,Walk through activities
-previous activity=,none,Walk through activities (Reverse)
+previous activity=none,none,Walk through activities (Reverse)
 repeat_action=none,Meta+Ctrl+R,Manually Invoke Action on Current Clipboard
 show dashboard=none,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
@@ -289,6 +290,9 @@ RecordRegion=none
 RecordScreen=none
 RecordWindow=none
 _launch=Print
+
+[services][pcmanfm-qt.desktop]
+_launch=Meta+E
 
 [services][systemsettings.desktop]
 _launch=none

@@ -10,7 +10,7 @@ smallestReadableFont=Ubuntu,10
 toolBarFont=Ubuntu,11
 
 [KDE]
-AnimationDurationFactor=0.25
+AnimationDurationFactor=0
 LookAndFeelPackage=org.kde.breezedark.desktop
 
 [WM]

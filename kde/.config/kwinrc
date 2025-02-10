@@ -33,6 +33,6 @@ padding=2
 [Windows]
 BorderlessMaximizedWindows=true
 FocusPolicy=FocusFollowsMouse
-ElectricBorderCornerRatio=0.25
+ElectricBorderCornerRatio=0.15
 FocusStealingPreventionLevel=3
 DelayFocusInterval=200
