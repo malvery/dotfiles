@@ -1,6 +1,0 @@
-[FileDialogSize]
-1920x1080 screen: Height=1000
-1920x1080 screen: Width=900
-
-[ImageView]
-AnimationMethod=DocumentView::NoAnimation
