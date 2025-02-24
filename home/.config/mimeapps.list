@@ -65,3 +65,4 @@ image/x-portable-pixmap=lximage-qt.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-VR2IW2.desktop
 x-scheme-handler/tonsite=userapp-Telegram Desktop-HRDJW2.desktop
 application/json=nvim.desktop
+x-scheme-handler/yandexmusic=yandex-music.desktop
