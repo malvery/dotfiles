@@ -71,7 +71,7 @@ set incsearch
 set ignorecase
 set nobackup
 set encoding=utf-8
-set termencoding=utf-8
+" set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2

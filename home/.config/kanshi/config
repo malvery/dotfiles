@@ -3,14 +3,14 @@ profile default {
 }
 
 profile xiaomi {
-  output eDP-1  disable
-  output DP-3   mode 3440x1440@144Hz
+  # output eDP-1  disable
+  # output DP-3   mode 3440x1440@144Hz
 
   # output eDP-1 enable scale 1.75  mode 3072x1920@165Hz position 0,300
   # output DP-3  enable             mode 3440x1440@144Hz position 1755,0
 
-  # output eDP-1 enable scale 1.75  mode 3072x1920@165Hz position 3440,343
-  # output DP-3  enable             mode 3440x1440@144Hz position 0,0
+  output eDP-1 enable scale 1.75  mode 3072x1920@165Hz position 3440,343
+  output DP-3  enable             mode 3440x1440@144Hz position 0,0
 }
 
 profile nv-xiaomi {
