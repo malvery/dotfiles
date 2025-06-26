@@ -25,13 +25,6 @@ desktopsrule=3
 wmclass=TiMe
 wmclassmatch=1
 
-[10]
-Description=Settings for vesktop
-desktops=00000000-0000-0000-0000-000000000003
-desktopsrule=3
-wmclass=vesktop
-wmclassmatch=1
-
 [2]
 Description=Settings for thunderbird
 desktops=00000000-0000-0000-0000-000000000003
@@ -46,13 +39,6 @@ desktopsrule=3
 position=10,50
 positionrule=3
 wmclass=org.telegram.desktop
-wmclassmatch=1
-
-[3ff83743-8fd6-4831-912e-cc75cba13700]
-Description=Settings for evolution-alarm-notify
-desktops=00000000-0000-0000-0000-000000000003
-desktopsrule=3
-wmclass=evolution-alarm-notify
 wmclassmatch=1
 
 [4]
@@ -117,18 +103,20 @@ maximizevertrule=3
 wmclass=foot-tmux
 wmclassmatch=1
 
-[8]
-Description=Settings for discord
+[7f5032c9-a049-4917-8af1-4566aa44c571]
+Description=Settings for com.rtosta.zapzap
 desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
-wmclass=discord
+minimize=true
+minimizerule=3
+wmclass=com.rtosta.zapzap
 wmclassmatch=1
 
 [9]
 Description=Settings for Slack
 desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
-wmclass=Slack
+wmclass=com.slack.Slack
 wmclassmatch=1
 
 [9f4e2d80-2e35-403f-9342-3a74a3b2aaac]
@@ -141,12 +129,20 @@ wmclass=firefox
 wmclassmatch=1
 
 [General]
-count=13
-rules=1,2,3,4,5,6,7,8,9,10,f2628efe-7955-46d7-879b-ba960d2c843d,3ff83743-8fd6-4831-912e-cc75cba13700,9f4e2d80-2e35-403f-9342-3a74a3b2aaac
+count=12
+rules=1,2,3,4,5,6,7,9,9f4e2d80-2e35-403f-9342-3a74a3b2aaac,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,7f5032c9-a049-4917-8af1-4566aa44c571
 
-[f2628efe-7955-46d7-879b-ba960d2c843d]
-Description=Settings for org.gnome.Evolution
-desktops=00000000-0000-0000-0000-000000000003
+[cb95376e-4b57-457b-bef5-acda92ce1fae]
+Description=Settings for chromium
+desktops=00000000-0000-0000-0000-000000000002
 desktopsrule=3
-wmclass=org.gnome.Evolution
+wmclass=chromium
 wmclassmatch=1
+
+[cba8f72a-deb0-4ad4-9839-f9eb1f734c0b]
+Description=Window settings for Outlook - T
+desktops=00000000-0000-0000-0000-000000000004
+desktopsrule=3
+title=Outlook - T
+wmclass=chrome-
+wmclassmatch=2
