@@ -10,7 +10,7 @@ export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=qt5ct
-# export WLR_RENDER_NO_EXPLICIT_SYNC=1
+export WLR_RENDER_NO_EXPLICIT_SYNC=1
 # export WLR_SCENE_DISABLE_DIRECT_SCANOUT=1
 
 # -----------------------------------------------------------------------------
