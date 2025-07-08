@@ -155,7 +155,7 @@ assign [class="thunderbird"]    3
 assign [class="alacritty-tmux"] 1
 
 for_window [class="Yad"]                    floating enable
-for_window [class="Pavucontrol"]            floating enable
+for_window [class="pavucontrol"]            floating enable
 for_window [class="Blueman-manager"]        floating enable
 for_window [class="Nm-connection-editor"]   floating enable
 
