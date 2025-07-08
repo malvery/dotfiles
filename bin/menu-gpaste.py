@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 from subprocess import run
+import os
+
+DMENU_ARGS = os.environ.get("DMENU_ARGS", str())
 
 
 def get_history():
@@ -11,14 +14,19 @@ def get_history():
 
 
 history = get_history()
+
 dmenu_msg = "\n".join([f"{i:02}: {x}" for i, x in enumerate(history)])
+dmenu_command = f"dmenu {DMENU_ARGS} -l 20 -p clipboard"
 
 p = run(
-    ['bemenu', '-l 20', '-p clipboard'],
+    dmenu_command.split(),
     capture_output=True,
-    input=dmenu_msg.encode()
+    text=True,
+    check=False,
+    encoding="UTF-8",
+    input=dmenu_msg
 )
-selected = p.stdout.decode().split(":", 1)
+selected = p.stdout.split(":", 1)
 
 print(selected)
 run(['gpaste-client', '--use-index', 'select', selected[0]])
