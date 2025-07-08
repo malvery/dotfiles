@@ -20,8 +20,9 @@ export XSECURELOCK_PASSWORD_PROMPT=asterisks
 export XSECURELOCK_FONT="Hack:style=Regular:size=11"
 export LIBINPUT_GESTURES_TTY=$(cat /sys/class/tty/tty0/active)
 
-[ -f ~/.xprofile ] && . ~/.xprofile
-
 T=1800; xset s $T $T dpms $T $T $T
 xset r rate 300 30
+
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 exec i3
