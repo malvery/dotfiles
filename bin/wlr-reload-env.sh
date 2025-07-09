@@ -6,5 +6,5 @@ __restart () {
 }
 
 makoctl reload
-__restart waybar
 __restart pcmanfm-qt --desktop
+# __restart waybar
