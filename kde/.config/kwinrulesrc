@@ -116,7 +116,7 @@ wmclassmatch=1
 Description=Settings for Slack
 desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
-wmclass=com.slack.Slack
+wmclass=Slack
 wmclassmatch=1
 
 [9f4e2d80-2e35-403f-9342-3a74a3b2aaac]
