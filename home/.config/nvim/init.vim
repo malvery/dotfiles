@@ -22,35 +22,38 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'mfussenegger/nvim-dap'
   Plug 'rcarriga/nvim-dap-ui'
+
+  Plug 'dracula/vim'
 call plug#end()
 
 " theme ====================================================================
 " colorscheme wildcharm
-colorscheme retrobox
+colorscheme dracula
 if has('termguicolors')
    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
    set termguicolors
 
-  autocmd vimenter * hi Normal guibg=000000
-  autocmd vimenter * hi EndOfBuffer guibg=000000
+   autocmd vimenter * hi Normal guibg=000000
+   autocmd vimenter * hi EndOfBuffer guibg=000000
 
-  " autocmd vimenter * hi MatchParen ctermfg=white ctermbg=white cterm=NONE gui=NONE guibg=white guifg=white
-  autocmd vimenter * hi MatchParen guibg=LightGreen guifg=black
-"   autocmd vimenter * hi clear NonText
-  autocmd vimenter * hi clear SignColumn
-  autocmd vimenter * hi TabLineSel    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
-  autocmd vimenter * hi TabLineFill                     guibg=black     gui=NONE  cterm=NONE
-  autocmd vimenter * hi TabLine       guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
-  autocmd vimenter * hi StatusLine    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
-  autocmd vimenter * hi StatusLineNC  guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
-"   autocmd vimenter * hi VertSplit                       guibg=NONE      gui=NONE  cterm=NONE
+   "autocmd vimenter * hi MatchParen ctermfg=white ctermbg=white cterm=NONE gui=NONE guibg=white guifg=white
+   "autocmd vimenter * hi MatchParen guibg=LightGreen guifg=black
+   "autocmd vimenter * hi clear NonText
 
-"   autocmd vimenter * hi Pmenu         guifg=fg          guibg=#303030   gui=NONE  cterm=NONE
-"   autocmd vimenter * hi PmenuSbar     guifg=NONE        guibg=NONE      gui=NONE  cterm=NONE
-"   autocmd vimenter * hi PmenuSel      guifg=#000000     guibg=#e5e5e5   gui=NONE  cterm=NONE
-"   autocmd vimenter * hi PmenuThumb    guifg=NONE        guibg=#ffffff   gui=NONE  cterm=NONE
-"   autocmd vimenter * hi Visual        guifg=#f0e68c     guibg=#6b8e24   gui=NONE  cterm=NONE
-"   autocmd vimenter * hi VisualNOS     guifg=#f0e68c     guibg=#6dceeb   gui=none  cterm=none
+   autocmd vimenter * hi clear SignColumn
+   autocmd vimenter * hi TabLineSel    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
+   autocmd vimenter * hi TabLineFill                     guibg=black     gui=NONE  cterm=NONE
+   autocmd vimenter * hi TabLine       guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
+   autocmd vimenter * hi StatusLine    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
+   autocmd vimenter * hi StatusLineNC  guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
+
+   "autocmd vimenter * hi VertSplit                       guibg=NONE      gui=NONE  cterm=NONE
+   "autocmd vimenter * hi Pmenu         guifg=fg          guibg=#303030   gui=NONE  cterm=NONE
+   "autocmd vimenter * hi PmenuSbar     guifg=NONE        guibg=NONE      gui=NONE  cterm=NONE
+   "autocmd vimenter * hi PmenuSel      guifg=#000000     guibg=#e5e5e5   gui=NONE  cterm=NONE
+   "autocmd vimenter * hi PmenuThumb    guifg=NONE        guibg=#ffffff   gui=NONE  cterm=NONE
+   "autocmd vimenter * hi Visual        guifg=#f0e68c     guibg=#6b8e24   gui=NONE  cterm=NONE
+   "autocmd vimenter * hi VisualNOS     guifg=#f0e68c     guibg=#6dceeb   gui=none  cterm=none
 endif
 
 " built-in options =========================================================
@@ -71,7 +74,6 @@ set incsearch
 set ignorecase
 set nobackup
 set encoding=utf-8
-" set termencoding=utf-8
 set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
