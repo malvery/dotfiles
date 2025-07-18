@@ -6,12 +6,11 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'towolf/vim-helm'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
 
   Plug 'rmagatti/auto-session'
-  Plug 'b3nj5m1n/kommentary'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kazhala/close-buffers.nvim'
   Plug 'taybart/b64.nvim'
@@ -26,7 +25,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 " theme ====================================================================
-colorscheme wildcharm
+" colorscheme wildcharm
+colorscheme retrobox
 if has('termguicolors')
    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
    set termguicolors
@@ -37,11 +37,11 @@ if has('termguicolors')
   " autocmd vimenter * hi MatchParen ctermfg=white ctermbg=white cterm=NONE gui=NONE guibg=white guifg=white
   autocmd vimenter * hi MatchParen guibg=LightGreen guifg=black
 "   autocmd vimenter * hi clear NonText
-"   autocmd vimenter * hi clear SignColumn
-  autocmd vimenter * hi TabLineSel    guifg=white       guibg=darkcyan  gui=NONE  cterm=NONE
+  autocmd vimenter * hi clear SignColumn
+  autocmd vimenter * hi TabLineSel    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
   autocmd vimenter * hi TabLineFill                     guibg=black     gui=NONE  cterm=NONE
   autocmd vimenter * hi TabLine       guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
-  autocmd vimenter * hi StatusLine    guifg=white       guibg=darkcyan  gui=NONE  cterm=NONE
+  autocmd vimenter * hi StatusLine    guifg=white       guibg=darkgreen gui=NONE  cterm=NONE
   autocmd vimenter * hi StatusLineNC  guifg=lightgray   guibg=black     gui=NONE  cterm=NONE
 "   autocmd vimenter * hi VertSplit                       guibg=NONE      gui=NONE  cterm=NONE
 

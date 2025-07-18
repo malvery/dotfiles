@@ -1,7 +1,18 @@
 -- treesitter =================================================================
---[[ require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "bash", "lua", "python", "hcl", "yaml", "vim", "terraform"
+    "bash",
+    "lua",
+    "python",
+    "hcl",
+    "yaml",
+    "vim",
+    "gotmpl", "helm",
+    "json",
+    "regex",
+    "rego",
+    "toml",
+    "markdown", "markdown_inline"
   },
   highlight = {
     enable = true,
@@ -12,31 +23,22 @@
   }
 }
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = {"*.yaml", "*.yml"},
-  callback = function ()
-    if vim.fn.search("{{.\\+}}", "nw") ~= 0 then
-      vim.diagnostic.disable(0)
-    end
-  end
-}) ]]
+vim.filetype.add({
+  extension = {
+    gotmpl = 'gotmpl',
+  },
+  pattern = {
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.ya?ml"] = "helm",
+    ["helmfile.*%.ya?ml"] = "helm",
+  },
+})
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 -- gitsigns ===================================================================
-require('gitsigns').setup {
-}
-
--- commenter ==================================================================
-require('kommentary.config').use_extended_mappings()
-
-require('kommentary.config').configure_language("terraform", {
-    single_line_comment_string = "#",
-    prefer_single_line_comments = true,
-})
-
-require('kommentary.config').configure_language("helm", {
-    single_line_comment_string = "#",
-    prefer_single_line_comments = true,
-})
+require('gitsigns').setup {}
 
 -- auto-sessions ==============================================================
 local opts = {
@@ -113,6 +115,7 @@ local on_attach = function(client, bufnr)
 end
 
 local nvim_lsp = require('lspconfig')
+
 local servers = { "pyright", "terraformls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -121,6 +124,11 @@ for _, lsp in ipairs(servers) do
     capabilities  = capabilities
   }
 end
+
+-- local servers = { "pyright", "terraformls" }
+-- for _, lsp in ipairs(servers) do
+--   vim.lsp.enable(lsp)
+-- end
 
 nvim_lsp['yamlls'].setup{
   filetypes     = { 'yaml' },
