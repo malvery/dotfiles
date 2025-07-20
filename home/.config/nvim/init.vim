@@ -10,15 +10,16 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Plug 'towolf/vim-helm'
   " Plug 'sheerun/vim-polyglot'
 
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
   Plug 'rmagatti/auto-session'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kazhala/close-buffers.nvim'
-  Plug 'taybart/b64.nvim'
 
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/nvim-cmp'
+  Plug 'rafamadriz/friendly-snippets'
+  Plug 'saghen/blink.cmp', { 'tag': '*' }
 
   Plug 'mfussenegger/nvim-dap'
   Plug 'rcarriga/nvim-dap-ui'
@@ -92,9 +93,6 @@ nnoremap <leader>ee :Explore<CR>
 nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore!<CR>
 nnoremap <leader>et :Texplore<CR>
-
-vnoremap <silent> <leader>be :<c-u>lua require("b64").encode()<cr>
-vnoremap <silent> <leader>bd :<c-u>lua require("b64").decode()<cr>
 
 " disable primary-paste
 map   <MiddleMouse> <Nop>
