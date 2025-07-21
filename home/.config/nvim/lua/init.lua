@@ -1,5 +1,5 @@
 -- treesitter =================================================================
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
     "dockerfile",
@@ -64,8 +64,8 @@ require('auto-session').setup({
 
 -- blink.cmp ==================================================================
 require('blink.cmp').setup({
-  keymap    = { preset  = 'enter' },
-  signature = { enabled = true },
+  keymap     = { preset = 'enter' },
+  signature  = { enabled = true },
 
   completion = {
     list = {
@@ -77,16 +77,9 @@ require('blink.cmp').setup({
 })
 
 -- LSP config =================================================================
-vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format, { remap = false })
+vim.lsp.set_log_level("off")
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text      = false,
-    signs             = true,
-    underline         = true,
-    update_in_insert  = false,
-  }
-)
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { remap = false })
 
 local servers = {
   "dockerls",
@@ -96,6 +89,7 @@ local servers = {
   "terraformls",
   "yamlls",
   "ruff",
+  "lua_ls",
 }
 
 for _, lsp in ipairs(servers) do
