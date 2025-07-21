@@ -8,6 +8,7 @@ export SSH_AUTH_SOCK
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/geoclue-2.0/demos/agent &
 /usr/lib/gsd-xsettings &
+picom &
 
 sleep 0.5
 
