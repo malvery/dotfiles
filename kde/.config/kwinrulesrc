@@ -144,5 +144,6 @@ Description=Window settings for Outlook - T
 desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
 title=Outlook - T
+titlematch=2
 wmclass=chrome-
 wmclassmatch=2
