@@ -2,8 +2,9 @@ Net/ThemeName "adw-gtk3-dark"
 Net/IconThemeName "mate"
 Gtk/FontName "Ubuntu 11"
 Gtk/CursorThemeName "Adwaita"
+Gtk/CursorThemeSize 34
 Xft/Hinting 1
 Xft/HintStyle "hintslight"
 Xft/Antialias 1
 Xft/RGBA "rgb"
-Xft/DPI 163840
+Xft/DPI 165888

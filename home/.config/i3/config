@@ -292,9 +292,8 @@ exec --no-startup-id i3gopher
 ###############################################################################
 
 set $gnome-interface org.gnome.desktop.interface
-exec gsettings set $gnome-interface monospace-font-name 'Hack 11'
-exec gsettings set $gnome-interface font-name           'Ubuntu 11'
-exec gsettings set $gnome-interface color-scheme        'prefer-dark'
-exec gsettings set $gnome-interface gtk-theme           'adw-gtk3-dark'
-exec gsettings set $gnome-interface icon-theme          'menta'
-exec gsettings set $gnome-interface cursor-theme        'Adwaita'
+exec --no-startup-id gsettings set $gnome-interface monospace-font-name 'Hack 11'
+exec --no-startup-id gsettings set $gnome-interface font-name           'Ubuntu 11'
+exec --no-startup-id gsettings set $gnome-interface color-scheme        'prefer-dark'
+exec --no-startup-id gsettings set $gnome-interface gtk-theme           'adw-gtk3-dark'
+exec --no-startup-id gsettings set $gnome-interface icon-theme          'menta'
