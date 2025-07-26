@@ -1,9 +1,2 @@
 #!/bin/bash
-
-gsettings set org.gnome.desktop.interface text-scaling-factor 1
-gsettings set org.gnome.desktop.interface cursor-size 24
-
-export I3SOCK=$(i3 --get-socketpath)
-
-i3-msg restart
-dunstctl reload
+~/.config/autorandr/dpi.sh 96

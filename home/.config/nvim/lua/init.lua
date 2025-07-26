@@ -1,3 +1,9 @@
+-- tty ========================================================================
+
+if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil) then
+  vim.cmd.colorscheme('retrobox')
+end
+
 -- treesitter =================================================================
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
@@ -7,6 +13,7 @@ require 'nvim-treesitter.configs'.setup {
     "hcl",
     "helm",
     "html",
+    "javascript",
     "json",
     "lua",
     "markdown",

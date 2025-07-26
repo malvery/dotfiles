@@ -110,7 +110,7 @@ bindsym $mod+minus scratchpad show
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
 bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
-bindsym $mod+Shift+Return exec --no-startup-id "alacritty msg create-window"
+bindsym $mod+Shift+Return exec --no-startup-id "lxterminal"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "brightnessctl set +2% && pkill -USR1 py3status"
@@ -275,7 +275,7 @@ exec --no-startup-id pcmanfm-qt -d
 exec --no-startup-id nm-applet
 exec --no-startup-id firewall-applet
 exec --no-startup-id touchegg
-exec --no-startup-id alacritty --class alacritty-tmux -e tmux-workspace.sh
+exec --no-startup-id lxterminal -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#050505"
 exec --no-startup-id dunst
 exec --no-startup-id xss-lock -- xsecurelock
@@ -288,8 +288,9 @@ exec --no-startup-id i3gopher
 ###############################################################################
 
 set $gnome-interface org.gnome.desktop.interface
-exec gsettings set $gnome-interface monospace-font-name  'Hack 11'
-exec gsettings set $gnome-interface font-name            'Ubuntu 11'
-exec gsettings set $gnome-interface color-scheme         'prefer-dark'
-exec gsettings set $gnome-interface gtk-theme            'adw-gtk3-dark'
-exec gsettings set $gnome-interface icon-theme           'menta'
+exec gsettings set $gnome-interface monospace-font-name 'Hack 11'
+exec gsettings set $gnome-interface font-name           'Ubuntu 11'
+exec gsettings set $gnome-interface color-scheme        'prefer-dark'
+exec gsettings set $gnome-interface gtk-theme           'adw-gtk3-dark'
+exec gsettings set $gnome-interface icon-theme          'menta'
+exec gsettings set $gnome-interface cursor-theme        'Adwaita'

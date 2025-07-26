@@ -5,14 +5,16 @@
 [[ -d ${HOME}/.local/bin ]] &&  PATH="${HOME}/.local/bin:${PATH}"
 
 # ENV -------------------------------------------------------------------------
-export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
-# export MOZ_ENABLE_WAYLAND=1
-# export ELECTRON_OZONE_PLATFORM_HINT=auto
+# export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# export MOZ_ENABLE_WAYLAND=1
+# export ELECTRON_OZONE_PLATFORM_HINT=auto
+
 # export WLR_RENDER_NO_EXPLICIT_SYNC=1
 # export WLR_SCENE_DISABLE_DIRECT_SCANOUT=1
+# export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
 
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
