@@ -146,13 +146,17 @@ focus_follows_mouse yes
 for_window [class="thunderbird" window_role="EventSummaryDialog"] floating enable
 for_window [class="thunderbird" window_role="Msgcompose"] floating enable
 
+for_window [class="Org.gnome.Evolution" window_role="ECompEditorEvent-*"] floating enable
+for_window [class="Org.gnome.Evolution" window_role="EMsgComposer-*"]     floating enable
+
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
-for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
+# for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
 assign [class="(.*join\?action\=join.*|.*zoom.*)"]  5
-assign [class="firefox"]        2
-assign [class="thunderbird"]    3
-assign [class="alacritty-tmux"] 1
+assign [class="firefox"]              2
+assign [class="thunderbird"]          3
+assign [class="Org.gnome.Evolution"]  3
+assign [class="alacritty-tmux"]       1
 
 for_window [class="Yad"]                    floating enable
 for_window [class="pavucontrol"]            floating enable
@@ -270,7 +274,7 @@ exec_always --no-startup-id i3-switch-workspace.py
 
 ###############################################################################
 
-exec --no-startup-id autorandr -c
+exec --no-startup-id autorandr -c -f
 exec --no-startup-id pcmanfm-qt -d
 exec --no-startup-id nm-applet
 exec --no-startup-id firewall-applet
