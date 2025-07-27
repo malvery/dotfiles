@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=
+Exec=/home/malvery/bin/kde-logout.sh
+Icon=system-log-out
+Name=System Logout
+NoDisplay=false
+OnlyShowIn=KDE;
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
