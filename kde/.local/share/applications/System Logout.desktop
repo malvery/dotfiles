@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=
-Exec=/home/malvery/bin/kde-logout.sh
+Exec=~/bin/kde-logout.sh
 Icon=system-log-out
 Name=System Logout
 NoDisplay=false
