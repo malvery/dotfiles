@@ -85,6 +85,9 @@ set nofoldenable
 filetype plugin on
 filetype indent off
 
+set spell
+set spelllang=en_us,ru_ru
+
 " hotkeys ==================================================================
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
