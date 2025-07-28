@@ -85,7 +85,7 @@ set nofoldenable
 filetype plugin on
 filetype indent off
 
-set spell
+"set spell
 set spelllang=en_us,ru_ru
 
 " hotkeys ==================================================================

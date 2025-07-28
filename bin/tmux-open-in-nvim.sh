@@ -1,15 +1,15 @@
 #!/bin/bash
-# cat -
+SH=/bin/bash
+TERMINAL=/usr/bin/foot
+EDITOR=/usr/bin/nvim
+
 INPUT=$(cat -)
 
-
 case "$1" in
-  base64)
-    INPUT=$(echo ${INPUT} | base64 -d)
-    ;;
-  *)
-    exit 1
-    ;;
+base64)
+  ${TERMINAL} ${SH} -c "echo $INPUT | base64 -d | ${EDITOR}"
+  ;;
+*)
+  exit 1
+  ;;
 esac
-
-foot /bin/bash -c "/usr/bin/echo ${INPUT} | /usr/bin/nvim"
