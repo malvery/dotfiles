@@ -97,6 +97,10 @@ nnoremap <leader>es :Hexplore<CR>
 nnoremap <leader>ev :Vexplore!<CR>
 nnoremap <leader>et :Texplore<CR>
 
+
+nnoremap <leader>ss :SessionSave<CR>
+nnoremap <leader>sr :SessionRestore<CR>
+
 " disable primary-paste
 map   <MiddleMouse> <Nop>
 imap  <MiddleMouse> <Nop>
