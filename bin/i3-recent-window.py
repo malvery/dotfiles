@@ -46,7 +46,7 @@ class Watcher(object):
     _recent = dict(tuple((x, Recent()) for x in range(11)))
 
     @classmethod
-    def workspace_focus(cls, _, e):
+    def workspace_focus(cls, w, e):
         cls._workspace = e.current.num
 
     @classmethod
@@ -54,21 +54,29 @@ class Watcher(object):
         logger.debug(f"{e.container.window_title} {e.container.id}")
         workspace = cls._workspace
 
-        if e.container.floating != "user_on":
-            if cls._recent[workspace].curr != e.container.id:
-                cls._recent[workspace].last = cls._recent[workspace].curr
-                cls._recent[workspace].curr = e.container.id
+        if cls._recent[workspace].curr != e.container.id:
+            cls._recent[workspace].last = cls._recent[workspace].curr
+            cls._recent[workspace].curr = e.container.id
 
     @classmethod
     def focus_to_recent(cls, i3):
-        command = '[con_id="%s"] focus' % cls._recent[cls._workspace].last
-        result = i3.command(command)
-        if isinstance(result, list) and result:
-            if (
-                isinstance(result[0], i3ipc.CommandReply)
-                and getattr(result[0], "success") is True
-            ):
-                return True
+        last = cls._recent[cls._workspace].last
+
+        if last is not None:
+            w = i3.get_tree().find_by_id(last)
+            wnum = w.workspace().num if w else None
+
+            if wnum != cls._workspace:
+                last = None
+
+        if last:
+            result = i3.command(f'[con_id="{last}"] focus')
+            if isinstance(result, list) and result:
+                if (
+                    isinstance(result[0], i3ipc.CommandReply)
+                    and getattr(result[0], "success") is True
+                ):
+                    return True
 
         i3.command("focus right")
 
