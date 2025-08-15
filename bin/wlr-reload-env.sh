@@ -7,5 +7,5 @@ __restart () {
 
 makoctl reload
 __restart pcmanfm-qt --desktop
-__restart waybar
 __restart gammastep-indicator
+# __restart waybar
