@@ -1,13 +1,13 @@
 profile default {
   output eDP-1 enable scale 1.65
-  exec wlr-reload-env.sh
+  # exec wlr-reload-env.sh
 }
 
 profile xiaomi {
   output eDP-1  disable
   output DP-3   mode 3440x1440@144Hz
 
-  exec wlr-reload-env.sh
+  # exec wlr-reload-env.sh
 
   # output eDP-1 enable scale 1.75  mode 3072x1920@165Hz position 0,300
   # output DP-3  enable             mode 3440x1440@144Hz position 1755,0
@@ -24,7 +24,7 @@ profile dell {
   output eDP-1 disable
   output DP-1  mode 2560x1440@75Hz
 
-  exec wlr-reload-env.sh
+  # exec wlr-reload-env.sh
 }
 
 # profile {
