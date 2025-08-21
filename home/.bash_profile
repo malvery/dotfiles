@@ -7,12 +7,12 @@
 # ENV -------------------------------------------------------------------------
 export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
 export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+# export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 
-export WLR_RENDER_NO_EXPLICIT_SYNC=1
+# export WLR_RENDER_NO_EXPLICIT_SYNC=1
 # export WLR_SCENE_DISABLE_DIRECT_SCANOUT=1
 # export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
 # export WLR_RENDERER=vulkan
@@ -20,6 +20,6 @@ export WLR_RENDER_NO_EXPLICIT_SYNC=1
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log
-  sway
+  startplasma-wayland
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
