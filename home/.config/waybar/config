@@ -13,8 +13,8 @@
     "cpu",
     "memory",
     "disk",
-    // "temperature",
-    "custom/temp",
+    "temperature",
+    // "custom/temp",
     "network",
     "bluetooth",
     "custom/bluez_profile",
@@ -26,7 +26,6 @@
     "mpris",
     "privacy",
     "clock",
-    // "custom/clock",
     "tray",
     "sway/language",
     "custom/do_not_disturb",
@@ -101,6 +100,14 @@
 
       "interval": 3,
       "tooltip":  false
+  },
+
+  "temperature": {
+      // "thermal-zone": 2,
+      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      // "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C ",
+      "format": "{temperatureC}°C "
   },
 
   "idle_inhibitor": {
