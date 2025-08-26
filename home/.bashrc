@@ -9,6 +9,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
+alias mc='mc -X'
 
 # -----------------------------------------------
 # Env and options
