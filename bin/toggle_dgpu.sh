@@ -14,9 +14,8 @@ function turn_off_gpu {
   echo 'Enabling powersave for the PCIe controller'
   sudo tee /sys/bus/pci/devices/${CONTROLLER_BUS_ID}/power/control <<<auto
 
-  for module in "${MODULES_UNLOAD[@]}"
-  do
-      echo "Unloading module ${module}"
+  for module in "${MODULES_UNLOAD[@]}"; do
+    echo "Unloading module ${module}"
     sudo modprobe -r ${module}
   done
 }
@@ -38,23 +37,22 @@ function turn_on_gpu {
   echo 'Turning the card on'
   sudo tee /sys/bus/pci/devices/${DEVICE_BUS_ID}/power/control <<<on
 
-  for module in "${MODULES_LOAD[@]}"
-  do
-      echo "Loading module ${module}"
+  for module in "${MODULES_LOAD[@]}"; do
+    echo "Loading module ${module}"
     sudo modprobe ${module}
   done
 }
 
 if [ $# -ne 1 ]; then
-    echo -e $usage
+  echo -e $usage
 else
-    if [ $1 = 'on' ]; then
-      turn_on_gpu
+  if [ $1 = 'on' ]; then
+    turn_on_gpu
 
-    elif [ $1 = 'off' ]; then
-      turn_off_gpu
+  elif [ $1 = 'off' ]; then
+    turn_off_gpu
 
-    else
-      echo -e $usage
-    fi
+  else
+    echo -e $usage
+  fi
 fi

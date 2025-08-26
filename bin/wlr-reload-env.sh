@@ -1,7 +1,7 @@
 #!/bin/bash
 
-__restart () {
-    pkill -u ${USER} -f $1 && eval $@ &
+__restart() {
+  pkill -u ${USER} -f $1 && eval $@ &
 }
 
 makoctl reload

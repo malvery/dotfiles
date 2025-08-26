@@ -123,9 +123,7 @@ COMMON_TERMINALS = [
 
 def detect_installed_launchers():
     """Detect which supported launchers are installed on the system"""
-    return [
-        launcher for launcher in SUPPORTED_LAUNCHERS if is_installed(launcher)
-    ]
+    return [launcher for launcher in SUPPORTED_LAUNCHERS if is_installed(launcher)]
 
 
 def detect_installed_terminals():
@@ -319,9 +317,7 @@ def dmenu_pass(command, color):
         # Check for dmenu password patch
         dm_patch = (
             b"P"
-            in subprocess.run(
-                ["dmenu", "-h"], capture_output=True, check=False
-            ).stderr
+            in subprocess.run(["dmenu", "-h"], capture_output=True, check=False).stderr
         )
     except FileNotFoundError:
         dm_patch = False
@@ -618,8 +614,7 @@ def process_ap(nm_ap, is_active, adapter):
         conns_cur = [
             i
             for i in CONNS
-            if i.get_setting_wireless() is not None
-            and conn_matches_adapter(i, adapter)
+            if i.get_setting_wireless() is not None and conn_matches_adapter(i, adapter)
         ]
         con = nm_ap.filter_connections(conns_cur)
         if len(con) > 1:
@@ -663,9 +658,7 @@ def deactivate_cb(dev, res, data):
 def process_vpngsm(con, activate):
     """Activate/deactive VPN or GSM connections"""
     if activate:
-        CLIENT.activate_connection_async(
-            con, None, None, None, activate_cb, con
-        )
+        CLIENT.activate_connection_async(con, None, None, None, activate_cb, con)
     else:
         CLIENT.deactivate_connection_async(con, None, deactivate_cb, con)
     LOOP.run()
@@ -733,9 +726,7 @@ def create_ap_actions(aps, active_ap, active_connection, adapter):  # noqa pylin
                 )
             )
         else:
-            ap_actions.append(
-                Action(action_name, process_ap, [nm_ap, False, adapter])
-            )
+            ap_actions.append(Action(action_name, process_ap, [nm_ap, False, adapter]))
     return ap_actions
 
 
@@ -836,13 +827,9 @@ def _create_vpngsm_actions(cons, active_cons, label):
             hotspot = ""
         action_name = f"{con.get_id()}{hotspot}:{label}"
         if is_active:
-            active_connection = [
-                a for a in active_cons if a.get_id() == con.get_id()
-            ]
+            active_connection = [a for a in active_cons if a.get_id() == con.get_id()]
             if len(active_connection) != 1:
-                raise ValueError(
-                    f"Multiple active connections match {con.get_id()}"
-                )
+                raise ValueError(f"Multiple active connections match {con.get_id()}")
             active_connection = active_connection[0]
 
             actions.append(
@@ -925,9 +912,7 @@ def get_selection(all_actions):
         inp = [str(action) for action in all_actions]
     elif highlight is True and cmd_base == "wofi":
         inp = [
-            get_wofi_highlight_markup(action)
-            if action.is_active
-            else str(action)
+            get_wofi_highlight_markup(action) if action.is_active else str(action)
             for action in all_actions
         ]
     else:
@@ -971,8 +956,7 @@ def get_selection(all_actions):
             if (
                 (str(i).strip() == str(sel.strip()) and not i.is_active)
                 or (
-                    active_chars + " " + str(i) == str(sel.rstrip("\n"))
-                    and i.is_active
+                    active_chars + " " + str(i) == str(sel.rstrip("\n")) and i.is_active
                 )
             )
         ]
@@ -1107,9 +1091,7 @@ def toggle_bluetooth(enable):
 def launch_connection_editor():
     """Launch nmtui or the gui nm-connection-editor"""
     terminal = shlex.split(CONF.get("editor", "terminal", fallback="xterm"))
-    gui_if_available = CONF.getboolean(
-        "editor", "gui_if_available", fallback=True
-    )
+    gui_if_available = CONF.getboolean("editor", "gui_if_available", fallback=True)
     gui = CONF.get("editor", "gui", fallback="nm-connection-editor")
     if gui_if_available is True:
         if is_installed(gui):
@@ -1176,8 +1158,7 @@ def get_passphrase():
 def delete_connection():
     """Display list of NM connections and delete the selected one"""
     conn_acts = [
-        Action(i.get_id(), i.delete_async, args=[None, delete_cb, None])
-        for i in CONNS
+        Action(i.get_id(), i.delete_async, args=[None, delete_cb, None]) for i in CONNS
     ]
     conn_names = "\n".join([str(i) for i in conn_acts])
     sel = subprocess.run(
@@ -1254,21 +1235,15 @@ def create_wifi_profile(nm_ap, password, adapter):
         s_wifi_sec = NM.SettingWirelessSecurity.new()
         if "WPA" in ap_sec:
             if "WPA3" in ap_sec:
-                s_wifi_sec.set_property(
-                    NM.SETTING_WIRELESS_SECURITY_KEY_MGMT, "sae"
-                )
+                s_wifi_sec.set_property(NM.SETTING_WIRELESS_SECURITY_KEY_MGMT, "sae")
             else:
                 s_wifi_sec.set_property(
                     NM.SETTING_WIRELESS_SECURITY_KEY_MGMT, "wpa-psk"
                 )
-            s_wifi_sec.set_property(
-                NM.SETTING_WIRELESS_SECURITY_AUTH_ALG, "open"
-            )
+            s_wifi_sec.set_property(NM.SETTING_WIRELESS_SECURITY_AUTH_ALG, "open")
             s_wifi_sec.set_property(NM.SETTING_WIRELESS_SECURITY_PSK, password)
         elif "WEP" in ap_sec:
-            s_wifi_sec.set_property(
-                NM.SETTING_WIRELESS_SECURITY_KEY_MGMT, "None"
-            )
+            s_wifi_sec.set_property(NM.SETTING_WIRELESS_SECURITY_KEY_MGMT, "None")
             s_wifi_sec.set_property(
                 NM.SETTING_WIRELESS_SECURITY_WEP_KEY_TYPE,
                 NM.WepKeyType.PASSPHRASE,
@@ -1352,9 +1327,7 @@ def create_ap_list(adapter, active_connections):
         active_ap_name = None
         active_ap_con = []
     if len(active_ap_con) > 1:
-        raise ValueError(
-            "Multiple connection profiles match" " the wireless AP"
-        )
+        raise ValueError("Multiple connection profiles match the wireless AP")
     active_ap_con = active_ap_con[0] if active_ap_con else None
     for nm_ap in aps_all:
         ap_name = ssid_to_utf8(nm_ap)
@@ -1408,8 +1381,7 @@ def run():  # pylint: disable=too-many-locals
     hotspots = [
         i
         for i in CONNS
-        if i.get_setting_wireless()
-        and i.get_setting_wireless().get_mode() == "ap"
+        if i.get_setting_wireless() and i.get_setting_wireless().get_mode() == "ap"
     ]
     eths = [i for i in CONNS if i.is_type(NM.SETTING_WIRED_SETTING_NAME)]
     vlans = [i for i in CONNS if i.is_type(NM.SETTING_VLAN_SETTING_NAME)]
@@ -1436,9 +1408,7 @@ def run():  # pylint: disable=too-many-locals
     if list_saved:
         saved_actions = create_saved_actions(saved_cons)
     else:
-        saved_actions = [
-            Action("Saved connections", prompt_saved, [saved_cons])
-        ]
+        saved_actions = [Action("Saved connections", prompt_saved, [saved_cons])]
 
     actions = combine_actions(
         eth_actions,

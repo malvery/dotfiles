@@ -6,21 +6,21 @@ import os
 
 PROCESS_NAME = "i3ipc-switch-workspace"
 PID_CURR = os.getpid()
-PID_PATH = '%s/%s.pid' % (os.getenv("XDG_RUNTIME_DIR", '/tmp'), PROCESS_NAME)
+PID_PATH = "%s/%s.pid" % (os.getenv("XDG_RUNTIME_DIR", "/tmp"), PROCESS_NAME)
 
 ###############################################################################
 
 # send SIGNTERM for another processes
-pid_list = subprocess.check_output([
-    '/bin/bash', '-c', 'pidof %s || true' % PROCESS_NAME
-]).decode('utf-8')
-pid_list = pid_list.replace('\n', '').split(' ')
+pid_list = subprocess.check_output(
+    ["/bin/bash", "-c", "pidof %s || true" % PROCESS_NAME]
+).decode("utf-8")
+pid_list = pid_list.replace("\n", "").split(" ")
 
 for pid in pid_list:
     if pid:
-        subprocess.call(['kill', pid])
+        subprocess.call(["kill", pid])
 
-with open(PID_PATH, 'w') as pid_file:
+with open(PID_PATH, "w") as pid_file:
     pid_file.write(str(PID_CURR))
 
 

@@ -11,8 +11,7 @@ CARD_DEVICE=/dev/dri/${CARD_ID}
 sudo udevadm trigger --verbose --type=devices --action=remove --subsystem-match=drm --property-match="DEVNAME=${CARD_ID}"
 
 sleep 3
-for module in "${MODULES_UNLOAD[@]}"
-do
+for module in "${MODULES_UNLOAD[@]}"; do
   echo "Unloading module ${module}"
-sudo modprobe -r ${module}
+  sudo modprobe -r ${module}
 done

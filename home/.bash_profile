@@ -15,7 +15,7 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 # export WLR_RENDER_NO_EXPLICIT_SYNC=1
 # export WLR_SCENE_DISABLE_DIRECT_SCANOUT=1
 # export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
-# export WLR_RENDERER=vulkan
+export WLR_RENDERER=vulkan
 
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then

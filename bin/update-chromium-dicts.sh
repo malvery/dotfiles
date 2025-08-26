@@ -5,13 +5,12 @@ bdic=(en-US-10-1.bdic ru-RU-3-0.bdic)
 # dict=${HOME}/.var/app/io.github.ungoogled_software.ungoogled_chromium/config/chromium/Dictionaries/
 dict=${HOME}/.config/chromium/Dictionaries/
 
-for i in "${bdic[@]}"
-do
-    curl -L https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main/${i}?format=TEXT -o /tmp/${i}
-    base64 -d /tmp/${i} > ${dict}/${i}
-    rm /tmp/${i}
+for i in "${bdic[@]}"; do
+  curl -L https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries/+/refs/heads/main/${i}?format=TEXT -o /tmp/${i}
+  base64 -d /tmp/${i} >${dict}/${i}
+  rm /tmp/${i}
 
-    echo "Downloaded: ${i}"
+  echo "Downloaded: ${i}"
 done
 
 echo "Well done!"

@@ -4,6 +4,7 @@ import signal
 import time
 import os
 import gi
+
 gi.require_version("Wnck", "3.0")  # noqa: E261
 from gi.repository import GLib, Wnck
 
@@ -64,6 +65,7 @@ def recent_window():
     recent_list = windows[-2:-1]
     if recent_list:
         recent_list[0].activate(int(time.time()))
+
 
 ###############################################################################
 

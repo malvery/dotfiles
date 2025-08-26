@@ -12,9 +12,8 @@ if [ -z "$1" ]; then
   tmux -2 attach-session -d
 
 else
-  ls $1 &> /dev/null || exit 2
+  ls $1 &>/dev/null || exit 2
   TARGET=${1%/}
   tmux attach -t $TARGET || systemd-run --user --scope tmux new -t $TARGET -c $TARGET
   # tmux attach -t $TARGET || tmux new -t $TARGET -c $TARGET
 fi
-

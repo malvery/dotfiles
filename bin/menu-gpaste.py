@@ -6,7 +6,7 @@ DMENU_ARGS = os.environ.get("DMENU_ARGS", str())
 
 
 def get_history():
-    p = run(['gpaste-client', '--oneline'], capture_output=True)
+    p = run(["gpaste-client", "--oneline"], capture_output=True)
     out = p.stdout.decode().split("\n")
 
     history = [x.split(":", 1)[1] for x in out if x]
@@ -24,9 +24,9 @@ p = run(
     text=True,
     check=False,
     encoding="UTF-8",
-    input=dmenu_msg
+    input=dmenu_msg,
 )
 selected = p.stdout.split(":", 1)
 
 print(selected)
-run(['gpaste-client', '--use-index', 'select', selected[0]])
+run(["gpaste-client", "--use-index", "select", selected[0]])
