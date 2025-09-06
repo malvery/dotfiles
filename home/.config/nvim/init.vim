@@ -98,8 +98,8 @@ nnoremap <leader>ev :Vexplore!<CR>
 nnoremap <leader>et :Texplore<CR>
 
 
-nnoremap <leader>ss :SessionSave<CR>
-nnoremap <leader>sr :SessionRestore<CR>
+nnoremap <leader>ss :AutoSession save<CR>
+nnoremap <leader>sr :AutoSession restore<CR>
 
 " disable primary-paste
 map   <MiddleMouse> <Nop>
