@@ -1,8 +1,8 @@
 {
-  "layer":  "top",
   "height": 20,
   "position": "bottom",
   "fixed-center": false,
+  "ipc": true,
 
   "modules-left":   [
     "sway/workspaces",
@@ -184,7 +184,7 @@
     },
 
     "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle":            "pavucontrol -t 3",
+    "on-click-middle":            "pavucontrol-qt -t 3",
 
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
