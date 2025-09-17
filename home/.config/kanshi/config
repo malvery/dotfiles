@@ -4,7 +4,7 @@ profile default {
 
 profile xiaomi {
   output eDP-1  disable
-  output DP-4   mode 3440x1440@144Hz
+  output DP-4   mode 3440x1440@144Hz position 0,0
 }
 
 profile nv-xiaomi {
