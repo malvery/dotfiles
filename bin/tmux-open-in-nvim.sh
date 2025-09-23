@@ -9,6 +9,9 @@ case "$1" in
 base64)
   ${TERMINAL} ${SH} -c "echo $INPUT | base64 -d | ${EDITOR}"
   ;;
+json)
+  ${TERMINAL} ${SH} -c "echo $INPUT | jq | ${EDITOR}"
+  ;;
 *)
   exit 1
   ;;
