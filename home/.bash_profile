@@ -21,5 +21,8 @@ export WLR_RENDERER=vulkan
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   sway
+
+  echo "Stop flatpak apps..."
+  flatpak ps | awk '{print $3}' | uniq | xargs -n 1 flatpak kill
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
