@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=pcmanfm-qt -d %U
+Icon=pcmanfm-qt
+Name=PCManFM-Qt File Manager
+Path=
+Terminal=False
+Type=Application

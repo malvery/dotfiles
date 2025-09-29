@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=foot -a foot-tmux -e tmux-workspace.sh
+Icon=
+Name=foot
+Path=
+Terminal=False
+Type=Application
