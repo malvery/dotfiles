@@ -157,6 +157,9 @@
     "on-scroll-up":   "brightnessctl set +1%",
     "on-scroll-down": "brightnessctl set 1%-",
 
+    "on-click-right":   "brightnessctl -d 'tpacpi::kbd_backlight' s +50%",
+    "on-click-middle":  "brightnessctl -d 'tpacpi::kbd_backlight' s 50-%",
+
     "smooth-scrolling-threshold": 3.0,
     "tooltip":                    false
   },
