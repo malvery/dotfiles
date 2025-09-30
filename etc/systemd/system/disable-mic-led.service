@@ -1,0 +1,9 @@
+[Unit]
+Description=Disable mic LED
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/tee "/sys/class/leds/platform::micmute/brightness" <<< 0'
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

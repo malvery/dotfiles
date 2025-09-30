@@ -64,6 +64,7 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio,
+#wireplumber,
 #mode,
 #window,
 #idle_inhibitor,
@@ -175,6 +176,7 @@ window#waybar {
 }
 
 #power-profiles-daemon.balanced,
+#wireplumber.muted,
 #cpu.low,
 #memory.low,
 #disk.low {
@@ -183,6 +185,7 @@ window#waybar {
 
 #backlight.medium,
 #pulseaudio.medium,
+#wireplumber,
 #cpu.medium,
 #memory.medium,
 #disk.medium {
