@@ -13,10 +13,12 @@ case "$1" in
 
   wlr-randr --json | jq ".[] | select(.enabled==true) | .name" >${LOCK}
   cat ${LOCK} | xargs -I OUTPUT wlopm --off OUTPUT
+  brightnessctl -s
   ;;
 
 --on)
   cat ${LOCK} | xargs -I OUTPUT wlopm --on OUTPUT
+  sleep 0.5 && brightnessctl -r
   ;;
 
 *)
