@@ -22,5 +22,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 
   echo "Stop flatpak apps..."
   flatpak ps | awk '{print $3}' | uniq | xargs -n 1 flatpak kill
+  pkill hypridle
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
