@@ -19,7 +19,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   sway
 
   echo "Stop background apps..."
-
   flatpak ps | awk '{print $3}' | uniq | xargs -n 1 flatpak kill || true
   pkill hypridle
 
