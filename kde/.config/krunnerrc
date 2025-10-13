@@ -1,6 +1,3 @@
-[PlasmaRunnerManager]
-migrated=true
-
 [Plugins]
 CharacterRunnerEnabled=false
 DictionaryEnabled=false

@@ -10,25 +10,7 @@ Rows=1
 [ModifierOnlyShortcuts]
 Meta=
 
-[Plugins]
-contrastEnabled=false
-fadingpopupsEnabled=false
-frozenappEnabled=false
-fullscreenEnabled=false
-highlightwindowEnabled=false
-kwin-switch-to-recent-desktopEnabled=true
-loginEnabled=false
-logoutEnabled=false
-maximizeEnabled=false
-screenedgeEnabled=false
-slideEnabled=false
-slidingpopupsEnabled=false
-
 [TabBox]
-HighlightWindows=false
-OrderMinimizedMode=1
-
-[TabBoxAlternative]
 HighlightWindows=false
 OrderMinimizedMode=1
 
@@ -36,9 +18,6 @@ OrderMinimizedMode=1
 HighlightWindows=false
 MinimizedMode=1
 OrderMinimizedMode=1
-
-[Tiling]
-padding=2
 
 [Windows]
 BorderlessMaximizedWindows=true
