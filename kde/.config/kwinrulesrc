@@ -119,15 +119,6 @@ desktopsrule=3
 wmclass=Slack
 wmclassmatch=1
 
-[9f4e2d80-2e35-403f-9342-3a74a3b2aaac]
-Description=Window settings for Bitwarden Password Manager
-size=600,800
-sizerule=2
-title=Bitwarden Password Manager
-titlematch=2
-wmclass=firefox
-wmclassmatch=1
-
 [General]
 count=12
 rules=1,2,3,4,5,6,7,9,9f4e2d80-2e35-403f-9342-3a74a3b2aaac,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,7f5032c9-a049-4917-8af1-4566aa44c571

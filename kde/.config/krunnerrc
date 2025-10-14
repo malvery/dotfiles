@@ -1,3 +1,6 @@
+[General]
+ActivateWhenTypingOnDesktop=false
+
 [Plugins]
 CharacterRunnerEnabled=false
 DictionaryEnabled=false

@@ -10,6 +10,12 @@ Rows=1
 [ModifierOnlyShortcuts]
 Meta=
 
+[Plugins]
+kwin-switch-to-recent-desktopEnabled=true
+overviewEnabled=false
+slideEnabled=false
+zoomEnabled=false
+
 [TabBox]
 HighlightWindows=false
 OrderMinimizedMode=1

@@ -1,2 +1,5 @@
 [OSD]
 kbdLayoutChangedEnabled=false
+
+[PlasmaToolTips]
+Delay=-1
