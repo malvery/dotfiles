@@ -29,5 +29,5 @@ OrderMinimizedMode=1
 BorderlessMaximizedWindows=true
 FocusPolicy=FocusFollowsMouse
 ElectricBorderCornerRatio=0.15
-FocusStealingPreventionLevel=3
+FocusStealingPreventionLevel=1
 DelayFocusInterval=200
