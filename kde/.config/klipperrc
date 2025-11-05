@@ -1,3 +1,4 @@
 [General]
-MaxClipItems=50
 SelectionTextOnly=false
+MaxClipItems=1
+KeepClipboardContents=false

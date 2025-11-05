@@ -5,6 +5,7 @@ switch-to-activity-7ef4b26f-c330-4fe5-8103-6aec7ef9cfce=none,none,Switch to acti
 switch-to-activity-81e44061-b132-4acd-b132-95d65503bbb9=none,none,Switch to activity "Default"
 switch-to-activity-8be83f10-c029-4013-b9dc-4f3476933695=none,none,Switch to activity "Default"
 switch-to-activity-8eb32b86-ebd9-4ad4-97d0-181806dc14d8=none,none,Switch to activity "Default"
+switch-to-activity-a2653220-84b0-4044-b427-4986076e1212=none,none,Switch to activity "Default"
 switch-to-activity-bbf9c0f4-dbd3-45e2-8be8-4b0a969cec21=none,none,Switch to activity "Default"
 switch-to-activity-f0f219d5-25b5-4c15-9512-101f6928c1bc=none,none,Switch to activity "Default"
 
@@ -163,7 +164,7 @@ Window One Screen Down=none,,Move Window One Screen Down
 Window One Screen Up=none,,Move Window One Screen Up
 Window One Screen to the Left=none,,Move Window One Screen to the Left
 Window One Screen to the Right=none,,Move Window One Screen to the Right
-Window Operations Menu=Meta+F3,Alt+F3,Window Operations Menu
+Window Operations Menu=Meta+F3,Alt+F3,Window Menu
 Window Pack Down=none,,Move Window Down
 Window Pack Left=none,,Move Window Left
 Window Pack Right=none,,Move Window Right
@@ -178,7 +179,7 @@ Window Quick Tile Top Left=none,,Quick Tile Window to the Top Left
 Window Quick Tile Top Right=none,,Quick Tile Window to the Top Right
 Window Raise=none,,Raise Window
 Window Resize=Meta+Shift+R,,Resize Window
-Window Shade=none,,Shade Window
+Window Shade=none,none,Shade Window
 Window Shrink Horizontal=none,,Shrink Window Horizontally
 Window Shrink Vertical=none,,Shrink Window Vertically
 Window to Desktop 1=Meta+!,,Window to Desktop 1
@@ -231,6 +232,27 @@ playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
 
+[org.chromium.Chromium]
+76834F25D291D39C9066C821F537D5A4-enter-picker-mode=none,none,Create a custom filter
+76834F25D291D39C9066C821F537D5A4-enter-zapper-mode=none,none,Remove an element
+A2C9E5600564F724F8335484121C463C-addSite=none,none,Toggle current site
+A2C9E5600564F724F8335484121C463C-switchEngine=none,none,Theme generation mode
+A2C9E5600564F724F8335484121C463C-toggle=none,none,Toggle extension
+D19A2A88D238F0D3806D9D55EF4AEDBF-autofill_card=none,none,Autofill the last used card for the current website
+D19A2A88D238F0D3806D9D55EF4AEDBF-autofill_identity=none,none,Autofill the last used identity for the current website
+D19A2A88D238F0D3806D9D55EF4AEDBF-autofill_login=none,none,Autofill the last used login for the current website
+D19A2A88D238F0D3806D9D55EF4AEDBF-generate_password=none,none,Generate and copy a new random password to the clipboard
+D19A2A88D238F0D3806D9D55EF4AEDBF-lock_vault=none,none,Lock the vault
+E2045BB1B68A37C3EDD836BCD4B569D5-createTab=none,none,Create new tab
+E2045BB1B68A37C3EDD836BCD4B569D5-goBack=none,none,Go back in history
+E2045BB1B68A37C3EDD836BCD4B569D5-goForward=none,none,Go forward in history
+E2045BB1B68A37C3EDD836BCD4B569D5-previousTab=none,none,Go one tab left
+E2045BB1B68A37C3EDD836BCD4B569D5-quickNext=none,none,Go one tab right
+E2045BB1B68A37C3EDD836BCD4B569D5-reloadTab=none,none,Reload tab
+E2045BB1B68A37C3EDD836BCD4B569D5-userCustomized1=none,none,Custom shortcut 1
+E2045BB1B68A37C3EDD836BCD4B569D5-userCustomized2=none,none,Custom shortcut 2
+_k_friendly_name=org.chromium.Chromium
+
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
 Decrease Screen Brightness=Monitor Brightness Down,Monitor Brightness Down,Decrease Screen Brightness
@@ -248,6 +270,7 @@ _k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
+Slideshow Wallpaper Next Image=none,none,Next Wallpaper Image
 _k_friendly_name=plasmashell
 activate application launcher=Alt+F1,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1
@@ -261,19 +284,19 @@ activate task manager entry 7=none,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=none,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=none,Meta+9,Activate Task Manager Entry 9
 activate widget 27=none,none,Activate Application Menu Widget
-clear-history=none,,Clear Clipboard History
+clear-history=none,none,Clear Clipboard History
 clipboard_action=none,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=none,Meta+Alt+P,Move keyboard focus between panels
-cycleNextAction=none,,Next History Item
-cyclePrevAction=none,,Previous History Item
-edit_clipboard=none,,Edit Contents…
+cycleNextAction=none,none,Next History Item
+cyclePrevAction=none,none,Previous History Item
+edit_clipboard=none,none,Edit Contents…
 manage activities=none,Meta+Q,Show Activity Switcher
 next activity=Meta+A,none,Walk through activities
 previous activity=none,none,Walk through activities (Reverse)
-repeat_action=none,,Manually Invoke Action on Current Clipboard
+repeat_action=none,none,Manually Invoke Action on Current Clipboard
 show dashboard=none,Ctrl+F12,Show Desktop
-show-barcode=none,,Show Barcode…
-show-on-mouse-pos=Meta+`,Meta+V,Show Clipboard Items at Mouse Position
+show-barcode=none,none,Show Barcode…
+show-on-mouse-pos=none,Meta+V,Show Clipboard Items at Mouse Position
 stop current activity=none,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
@@ -281,6 +304,9 @@ toggle do not disturb=none,,Toggle do not disturb
 
 [services][bemenu-run.desktop]
 _launch=Meta+F2
+
+[services][clipcat-menu.desktop]
+_launch=Meta+`
 
 [services][foot-nb.desktop]
 _launch=Meta+Shift+T

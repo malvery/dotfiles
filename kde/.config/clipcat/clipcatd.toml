@@ -1,0 +1,27 @@
+daemonize = true
+max_history = 50
+synchronize_selection_with_clipboard = false
+snippets = []
+
+[log]
+emit_journald = true
+emit_stdout = false
+emit_stderr = false
+level = "INFO"
+
+[grpc]
+enable_local_socket = true
+
+[watcher]
+enable_clipboard = true
+enable_primary = true
+enable_secondary = false
+
+[dbus]
+enable = true
+
+[metrics]
+enable = false
+
+[desktop_notification]
+enable = false
