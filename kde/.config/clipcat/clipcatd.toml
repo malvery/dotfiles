@@ -10,6 +10,7 @@ emit_stderr = false
 level = "INFO"
 
 [grpc]
+enable_http = false
 enable_local_socket = true
 
 [watcher]
