@@ -1,6 +1,10 @@
 profile default {
-  output eDP-1 enable scale 2
+  output "Tianma Microelectronics Ltd. TL160MDMP03-0 Unknown" enable scale 1.65
+  exec sway-fix-lost-windows.py
+}
 
+profile default {
+  output eDP-1 enable scale 2
   exec sway-fix-lost-windows.py
 }
 
