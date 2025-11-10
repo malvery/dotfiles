@@ -4,6 +4,11 @@ profile default {
 }
 
 profile default {
+  output "Samsung Display Corp. 0x4165 Unknown" enable scale 2
+  exec sway-fix-lost-windows.py
+}
+
+profile default {
   output eDP-1 enable scale 2
   exec sway-fix-lost-windows.py
 }
