@@ -32,6 +32,22 @@ desktopsrule=3
 wmclass=thunderbird
 wmclassmatch=1
 
+[278e6583-e360-40fd-ab02-ded29ba6b1cb]
+Description=Window settings for Zoom PWA
+desktops=00000000-0000-0000-0000-000000000004
+desktopsrule=3
+title=Zoom PWA
+titlematch=2
+wmclass=chrome-
+wmclassmatch=2
+
+[2c748155-46eb-447b-87ae-0094162cf30c]
+Description=Settings for org.gnome.Evolution
+desktops=00000000-0000-0000-0000-000000000003
+desktopsrule=3
+wmclass=org.gnome.Evolution
+wmclassmatch=1
+
 [3]
 Description=Settings for org.telegram.desktop
 desktops=00000000-0000-0000-0000-000000000003
@@ -112,6 +128,15 @@ minimizerule=3
 wmclass=com.rtosta.zapzap
 wmclassmatch=1
 
+[8ac41091-2124-4916-b0e4-7395cb6c73fb]
+Description=Settings for evolution-alarm-notify
+desktops=00000000-0000-0000-0000-000000000003
+desktopsrule=3
+fsplevel=3
+fsplevelrule=2
+wmclass=evolution-alarm-notify
+wmclassmatch=1
+
 [9]
 Description=Settings for Slack
 desktops=00000000-0000-0000-0000-000000000003
@@ -120,8 +145,8 @@ wmclass=Slack
 wmclassmatch=1
 
 [General]
-count=12
-rules=1,2,3,4,5,6,7,9,9f4e2d80-2e35-403f-9342-3a74a3b2aaac,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,7f5032c9-a049-4917-8af1-4566aa44c571
+count=14
+rules=1,2,3,4,5,6,7,9,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,278e6583-e360-40fd-ab02-ded29ba6b1cb,7f5032c9-a049-4917-8af1-4566aa44c571,2c748155-46eb-447b-87ae-0094162cf30c,8ac41091-2124-4916-b0e4-7395cb6c73fb
 
 [cb95376e-4b57-457b-bef5-acda92ce1fae]
 Description=Settings for chromium
