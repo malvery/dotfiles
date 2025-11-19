@@ -18,11 +18,11 @@ zoomEnabled=false
 
 [TabBox]
 HighlightWindows=false
+MinimizedMode=1
 OrderMinimizedMode=1
 
 [TabBoxAlternative]
 HighlightWindows=false
-MinimizedMode=1
 OrderMinimizedMode=1
 
 [Windows]
