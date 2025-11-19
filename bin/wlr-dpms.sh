@@ -7,7 +7,9 @@ case "$1" in
   COUNT=$(pgrep sway -xc)
 
   if [[ $COUNT != 1 ]]; then
-    echo >${LOCK}
+    rm ${LOCK} &>/dev/null || true
+    touch ${LOCK}
+
     exit
   fi
 
@@ -17,8 +19,10 @@ case "$1" in
   ;;
 
 --on)
-  cat ${LOCK} | xargs -I OUTPUT wlopm --on OUTPUT
-  sleep 0.5 && brightnessctl -r
+  if [[ -s "$LOCK" ]]; then
+    cat ${LOCK} | xargs -I OUTPUT wlopm --on OUTPUT
+    sleep 0.5 && brightnessctl -r
+  fi
   ;;
 
 *)

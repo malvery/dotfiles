@@ -4,18 +4,18 @@ profile default {
 }
 
 profile default {
-  output "Samsung Display Corp. 0x4165 Unknown" enable scale 2
+  output "Samsung Display Corp. 0x4165 Unknown" enable scale 2 position 0,0
   exec sway-fix-lost-windows.py
 }
 
 profile default {
-  output eDP-1 enable scale 2
+  output "Lenovo Group Limited 0x4146 Unknown" enable scale 2 position 0,0
   exec sway-fix-lost-windows.py
 }
 
 profile xiaomi {
-  output eDP-1  disable
-  output "Xiaomi Corporation Mi Monitor Unknown"   mode 3440x1440@144Hz position 0,0
+  output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 1920,0
+  output eDP-1 enable scale 2 position 0,0
 
   exec sway-fix-lost-windows.py
 }

@@ -29,7 +29,7 @@ wmclassmatch=1
 Description=Settings for thunderbird
 desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
-wmclass=thunderbird
+wmclass=org.mozilla.Thunderbird
 wmclassmatch=1
 
 [278e6583-e360-40fd-ab02-ded29ba6b1cb]

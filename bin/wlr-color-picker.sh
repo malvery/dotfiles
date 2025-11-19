@@ -1,5 +1,5 @@
 #!/bin/bash
-RESULT=$(grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1)
+RESULT=$(grim -g "$(slurp -b 00000000 -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1)
 
 case "$1" in
 -rgb)
