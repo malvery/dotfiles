@@ -1,5 +1,4 @@
-Xcursor.theme:  Adwaita
-Xcursor.size:   34
+Xft.dpi: 192
 
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight

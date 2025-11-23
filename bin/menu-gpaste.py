@@ -16,7 +16,7 @@ def get_history():
 history = get_history()
 
 dmenu_msg = "\n".join([f"{i:02}: {x}" for i, x in enumerate(history)])
-dmenu_command = f"dmenu {DMENU_ARGS} -l 20 -p clipboard"
+dmenu_command = f"rofi -dmenu {DMENU_ARGS} -l 20 -p clipboard"
 
 p = run(
     dmenu_command.split(),

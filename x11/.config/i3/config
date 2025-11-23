@@ -14,8 +14,8 @@ floating_modifier $mod
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r    exec --no-startup-id dmenu_run ${DMENU_ARGS}
-bindsym $mod+F2   exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu ${DMENU_ARGS}"
+bindsym $mod+r    exec --no-startup-id rofi -show run
+bindsym $mod+F2   exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+h  focus left
@@ -110,7 +110,7 @@ bindsym $mod+minus scratchpad show
 # run apps
 bindsym $mod+Shift+Delete exec --no-startup-id "loginctl lock-session"
 bindsym $mod+Shift+p      exec --no-startup-id "pcmanfm-qt"
-bindsym $mod+Shift+Return exec --no-startup-id "lxterminal"
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty msg create-window || alacritty"
 
 # brightnessctl
 bindsym XF86MonBrightnessUp   exec --no-startup-id "brightnessctl set +2% && pkill -USR1 py3status"
@@ -143,8 +143,8 @@ focus_follows_mouse yes
 
 ###############################################################################
 # set floating apps
-for_window [class="thunderbird" window_role="EventSummaryDialog"] floating enable
-for_window [class="thunderbird" window_role="Msgcompose"] floating enable
+for_window [class="org.mozilla.Thunderbird" window_role="EventSummaryDialog"] floating enable
+for_window [class="org.mozilla.Thunderbird" window_role="Msgcompose"] floating enable
 
 for_window [class="Org.gnome.Evolution" window_role="ECompEditorEvent-*"] floating enable
 for_window [class="Org.gnome.Evolution" window_role="EMsgComposer-*"]     floating enable
@@ -153,8 +153,8 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 # for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] resize set 10 ppt 30 ppt
 
 assign [class="(.*join\?action\=join.*|.*zoom.*)"]  5
-assign [class="firefox"]              2
-assign [class="thunderbird"]          3
+assign [class="firefox"]                  2
+assign [class="org.mozilla.Thunderbird"]  3
 assign [class="Org.gnome.Evolution"]  3
 assign [class="alacritty-tmux"]       1
 
@@ -193,8 +193,8 @@ bindsym $mod+Shift+i mode "$config_i3"
 # audio dialog
 set $config_audio Audio: <O> Output, <I> Input
 mode "$config_audio" {
-  bindsym o exec --no-startup-id  select-audio.py,          mode "default"
-  bindsym i exec --no-startup-id  select-audio.py --input,  mode "default"
+  bindsym o exec --no-startup-id  menu-select-audio.py,          mode "default"
+  bindsym i exec --no-startup-id  menu-select-audio.py --input,  mode "default"
 
   bindsym Return  mode "default"
   bindsym Escape  mode "default"
@@ -277,9 +277,8 @@ exec_always --no-startup-id i3-switch-workspace.py
 exec --no-startup-id autorandr -c -f
 exec --no-startup-id pcmanfm-qt -d
 exec --no-startup-id nm-applet
-exec --no-startup-id firewall-applet
 exec --no-startup-id touchegg
-exec --no-startup-id lxterminal -e tmux-workspace.sh
+exec --no-startup-id alacritty --class alacritty-tmux -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#050505"
 exec --no-startup-id dunst
 exec --no-startup-id xss-lock -- xsecurelock
@@ -296,4 +295,4 @@ exec --no-startup-id gsettings set $gnome-interface monospace-font-name 'Hack 11
 exec --no-startup-id gsettings set $gnome-interface font-name           'Ubuntu 11'
 exec --no-startup-id gsettings set $gnome-interface color-scheme        'prefer-dark'
 exec --no-startup-id gsettings set $gnome-interface gtk-theme           'adw-gtk3-dark'
-exec --no-startup-id gsettings set $gnome-interface icon-theme          'menta'
+exec --no-startup-id gsettings set $gnome-interface icon-theme          'Papirus-Dark'
