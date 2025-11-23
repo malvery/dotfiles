@@ -1,7 +1,6 @@
 #!/bin/bash
 index=${DISPLAY#*:}
-dest=/tmp/.X11-unix/Xc
-# dest=${XDG_RUNTIME_DIR}/Xc
+dest=/tmp/.X11-unix/X-lxd
 
 if test -e ${dest}; then
   rm ${dest}
