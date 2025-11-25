@@ -1,7 +1,7 @@
 configuration {
  dpi:   0;
- modi:  "run,window,drun";
- font:  "hack 11";
+ modi:  "run,drun,window";
+ font:  "hack 10";
 }
 
 @theme "/usr/share/rofi/themes/android_notification.rasi"

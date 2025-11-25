@@ -20,7 +20,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_ENABLE_HIGHDPI_SCALING=1
 export QT_QPA_PLATFORMTHEME=qt6ct
 
-T=1800; xset s $T $T dpms $T $T $T
+T=600; xset s $T $T dpms $T $T $T
 xset r rate 300 30
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
