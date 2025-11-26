@@ -1,4 +1,4 @@
-daemonize = true
+daemonize = false
 max_history = 50
 synchronize_selection_with_clipboard = false
 snippets = []

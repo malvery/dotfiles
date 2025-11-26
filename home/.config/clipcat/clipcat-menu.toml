@@ -1,5 +1,10 @@
-finder = "custom"
+finder = "rofi"
 preview_length = 80
+
+[rofi]
+line_length = 200
+menu_length = 15
+menu_prompt = "clipboard"
 
 [custom_finder]
 program = "bemenu"
