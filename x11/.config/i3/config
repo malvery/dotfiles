@@ -203,10 +203,11 @@ mode "$config_audio" {
 }
 
 # tools dialog
-set $tools Tools: <A> Audio <R> Autorandr
+set $tools Tools: <A> Audio <R> Autorandr <D> Autorandr (Force default)
 mode "$tools" {
   bindsym a       mode "$config_audio"
-  bindsym r       exec "autorandr -c",  mode "default"
+  bindsym r       exec "autorandr -c",                  mode "default"
+  bindsym d       exec "autorandr -l default --force",  mode "default"
   bindsym Return  mode "default"
   bindsym Escape  mode "default"
 }
