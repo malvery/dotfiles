@@ -125,9 +125,10 @@ bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioRaiseVolume  exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +2% && pkill -USR1 py3status"
 bindsym XF86AudioLowerVolume  exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -2% && pkill -USR1 py3status"
 bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -USR1 py3status"
+bindsym XF86AudioMicMute      exec --no-startup-id "pactl get-default-source | xargs -I S pactl set-source-mute S toggle && pkill -USR1 py3status"
 
 # clpiboard
-bindsym $mod+grave exec --no-startup-id "menu-gpaste.py"
+bindsym $mod+grave exec --no-startup-id "clipcat-menu"
 
 # notifications
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
@@ -282,7 +283,7 @@ exec --no-startup-id alacritty --class alacritty-tmux -e tmux-workspace.sh
 exec --no-startup-id hsetroot -solid "#050505"
 exec --no-startup-id dunst
 exec --no-startup-id xss-lock -- i3lock -c 050505 -k
-exec --no-startup-id /usr/lib/gpaste/gpaste-daemon
+exec --no-startup-id clipcatd
 exec --no-startup-id blueman-applet
 exec --no-startup-id gxkb
 exec --no-startup-id i3gopher
