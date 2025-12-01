@@ -12,7 +12,7 @@ picom &
 sleep 0.5
 
 export MOZ_USE_XINPUT2=1
-export MOZ_X11_EGL=1
+# export MOZ_X11_EGL=1
 export LIBINPUT_GESTURES_TTY=$(cat /sys/class/tty/tty0/active)
 export QT_QPA_PLATFORMTHEME=qt6ct
 # export QT_AUTO_SCREEN_SCALE_FACTOR=1
