@@ -128,7 +128,8 @@ bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute @DEFAULT
 bindsym XF86AudioMicMute      exec --no-startup-id "pactl get-default-source | xargs -I S pactl set-source-mute S toggle && pkill -USR1 py3status"
 
 # clpiboard
-bindsym $mod+grave exec --no-startup-id "clipcat-menu"
+bindsym $mod+grave        exec --no-startup-id "clipcat-menu"
+bindsym $mod+Shift+grave  exec --no-startup-id "clipcat-menu remove"
 
 # notifications
 bindsym Control+space exec --no-startup-id "dunstctl close-all"
