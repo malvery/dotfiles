@@ -8,18 +8,17 @@
 export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# export MOZ_ENABLE_WAYLAND=1
-# export ELECTRON_OZONE_PLATFORM_HINT=auto
+export MOZ_ENABLE_WAYLAND=1
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 
-# export KWIN_DRM_NO_AMS=1
-# export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
-# export QT_IMAGEIO_MAXALLOC=1024
+export KWIN_DRM_NO_AMS=1
+export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
+export QT_IMAGEIO_MAXALLOC=1024
 
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   # ~/bin/run-sway.sh
-  # startplasma-wayland
-  startx
+  startplasma-wayland
 
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
