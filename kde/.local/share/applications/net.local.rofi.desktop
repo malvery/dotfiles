@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=menu-klipper.sh
-Name=menu-klipper.sh
+Exec=rofi -show run
+Name=rofi -show run
 NoDisplay=true
 StartupNotify=false
 Type=Application

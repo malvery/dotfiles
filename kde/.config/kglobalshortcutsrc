@@ -7,6 +7,7 @@ switch-to-activity-81e44061-b132-4acd-b132-95d65503bbb9=none,none,Switch to acti
 switch-to-activity-8be83f10-c029-4013-b9dc-4f3476933695=none,none,Switch to activity "Default"
 switch-to-activity-8eb32b86-ebd9-4ad4-97d0-181806dc14d8=none,none,Switch to activity "Default"
 switch-to-activity-a2653220-84b0-4044-b427-4986076e1212=none,none,Switch to activity "Default"
+switch-to-activity-ba472617-24ee-47e7-8e17-09b0b88b544a=none,none,Switch to activity "Default"
 switch-to-activity-bbf9c0f4-dbd3-45e2-8be8-4b0a969cec21=none,none,Switch to activity "Default"
 switch-to-activity-f0f219d5-25b5-4c15-9512-101f6928c1bc=none,none,Switch to activity "Default"
 
@@ -131,10 +132,10 @@ Switch to Screen to the Left=none,,Switch to Screen to the Left
 Switch to Screen to the Right=none,,Switch to Screen to the Right
 Toggle Night Color=none,none,Suspend/Resume Night Light
 Toggle Window Raise/Lower=none,,Toggle Window Raise/Lower
-Walk Through Windows=\t,Meta+Tab\tAlt+Tab,Walk Through Windows
-Walk Through Windows (Reverse)=\t,Meta+Shift+Tab\tAlt+Shift+Tab,Walk Through Windows (Reverse)
-Walk Through Windows Alternative=Alt+Tab\t,none,Walk Through Windows Alternative
-Walk Through Windows Alternative (Reverse)=Alt+Shift+Tab\t,none,Walk Through Windows Alternative (Reverse)
+Walk Through Windows=none,Meta+Tab\tAlt+Tab,Walk Through Windows
+Walk Through Windows (Reverse)=none,Meta+Shift+Tab\tAlt+Shift+Tab,Walk Through Windows (Reverse)
+Walk Through Windows Alternative=Alt+Tab,none,Walk Through Windows Alternative
+Walk Through Windows Alternative (Reverse)=Alt+Shift+Tab,none,Walk Through Windows Alternative (Reverse)
 Walk Through Windows of Current Application=Alt+`,Meta+`\tAlt+`,Walk Through Windows of Current Application
 Walk Through Windows of Current Application (Reverse)=Alt+~,Meta+~\tAlt+~,Walk Through Windows of Current Application (Reverse)
 Walk Through Windows of Current Application Alternative=none,none,Walk Through Windows of Current Application Alternative
@@ -218,7 +219,7 @@ Window to Screen 6=none,,Move Window to Screen 6
 Window to Screen 7=none,,Move Window to Screen 7
 \x5bScript\x5d Switch to Recent Desktop=Meta+Esc,none,
 \x5bScript\x5d Switch to Recent Window=Meta+Tab,none,
-_k_friendly_name=System Settings
+_k_friendly_name=KWin
 disableInputCapture=none,Meta+Shift+Esc,Disable Active Input Capture
 view_actual_size=Meta+0,Meta+0,Zoom to Actual Size
 view_zoom_in=Meta++\tMeta+=,Meta++\tMeta+=,Zoom In
@@ -273,7 +274,7 @@ _k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
-Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
+Slideshow Wallpaper Next Image=none,none,Next Wallpaper Image
 _k_friendly_name=plasmashell
 activate application launcher=Alt+F1,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1
@@ -304,9 +305,6 @@ switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
-[services][bemenu-run.desktop]
-_launch=Meta+F2
-
 [services][foot-nb.desktop]
 _launch=Meta+Shift+T
 
@@ -316,8 +314,11 @@ _launch=Meta+Shift+Return
 [services][nb-run.sh-2.desktop]
 _launch=Meta+Shift+T
 
-[services][nb-run.sh.desktop]
+[services][net.local.nb-run.sh.desktop]
 _launch=Meta+Shift+F2
+
+[services][net.local.rofi.desktop]
+_launch=Meta+F2
 
 [services][org.kde.krunner.desktop]
 RunClipboard=none

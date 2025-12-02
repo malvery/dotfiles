@@ -48,7 +48,7 @@ DialogWidth=720
 highlightWindows=false
 indicateAudioStreams=false
 launchers=preferred://filemanager
-middleClickAction=None
+middleClickAction=Close
 showToolTips=false
 wheelEnabled=false
 
