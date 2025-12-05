@@ -14,11 +14,11 @@ profile default {
 }
 
 profile xiaomi {
-  output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 0,0
-  output eDP-1 disable
+  #output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 0,0
+  #output eDP-1 disable
 
-  # output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 1920,0
-  # output eDP-1 enable scale 2 position 0,0
+  output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 1920,0
+  output eDP-1 enable scale 2 position 0,0
 
   exec sway-fix-lost-windows.py
 }
