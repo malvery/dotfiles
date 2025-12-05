@@ -8,6 +8,7 @@ export WLR_RENDERER=vulkan
 sway
 
 echo "Stop background apps..."
-flatpak ps | awk '{print $3}' | uniq | xargs -n 1 flatpak kill || true
 pkill -u ${USER} hypridle
+
 # pkill -u ${USER} clipcatd
+# flatpak ps | awk '{print $3}' | uniq | xargs -n 1 flatpak kill || true
