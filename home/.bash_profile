@@ -15,8 +15,8 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   export QT_QPA_PLATFORMTHEME=qt6ct
   export WLR_RENDERER=vulkan
+  export WLR_RENDER_NO_EXPLICIT_SYNC=1
   # export WLR_DRM_NO_ATOMIC=1
-  # export WLR_RENDER_NO_EXPLICIT_SYNC=1
   sway
 
   # export KWIN_DRM_NO_AMS=1
