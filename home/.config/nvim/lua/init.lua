@@ -5,7 +5,7 @@ if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil) then
 end
 
 -- treesitter =================================================================
-require 'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter'.setup {
   ensure_installed = {
     "bash",
     "dockerfile",
