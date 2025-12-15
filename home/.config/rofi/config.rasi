@@ -2,6 +2,7 @@ configuration {
  // dpi:   0;
  modi:  "run,drun,window";
  font:  "hack 11";
+ case-smart: true;
 }
 
 @theme "/usr/share/rofi/themes/android_notification.rasi"
