@@ -311,13 +311,10 @@ _launch=Meta+Shift+T
 [services][foot.desktop]
 _launch=Meta+Shift+Return
 
-[services][nb-run.sh-2.desktop]
-_launch=Meta+Shift+T
-
 [services][net.local.nb-run.sh.desktop]
 _launch=Meta+Shift+F2
 
-[services][net.local.rofi.desktop]
+[services][rofi-run.desktop]
 _launch=Meta+F2
 
 [services][org.kde.krunner.desktop]
