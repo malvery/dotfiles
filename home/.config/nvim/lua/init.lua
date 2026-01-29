@@ -1,55 +1,49 @@
 -- tty ========================================================================
-
 if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil) then
   vim.cmd.colorscheme('retrobox')
 end
 
 -- treesitter =================================================================
-require 'nvim-treesitter'.setup {
-  ensure_installed = {
-    "bash",
-    "dockerfile",
-    "gotmpl",
-    "hcl",
-    "helm",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "python",
-    "regex",
-    "rego",
-    "sql",
-    "toml",
-    "vim",
-    "yaml",
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true
-  }
-}
-
-vim.filetype.add({
-  extension = {
-    gotmpl = 'gotmpl',
-  },
-  pattern = {
-    [".*/templates/.*%.tpl"] = "helm",
-    [".*/templates/.*%.ya?ml"] = "helm",
-    ["helmfile.*%.ya?ml"] = "helm",
-  },
-})
-
-vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+-- require 'nvim-treesitter'.setup {
+--   ensure_installed = {
+--     "bash",
+--     "dockerfile",
+--     "gotmpl",
+--     "hcl",
+--     "helm",
+--     "html",
+--     "javascript",
+--     "json",
+--     "lua",
+--     "markdown",
+--     "markdown_inline",
+--     "python",
+--     "regex",
+--     "rego",
+--     "sql",
+--     "toml",
+--     "vim",
+--     "yaml",
+--   },
+--   highlight = {
+--     enable = true,
+--     additional_vim_regex_highlighting = false,
+--   },
+--   indent = {
+--     enable = true
+--   }
+-- }
+--
+-- vim.filetype.add({
+--   extension = {
+--     gotmpl = 'gotmpl',
+--   },
+--   pattern = {
+--     [".*/templates/.*%.tpl"] = "helm",
+--     [".*/templates/.*%.ya?ml"] = "helm",
+--     ["helmfile.*%.ya?ml"] = "helm",
+--   },
+-- })
 
 -- gitsigns ===================================================================
 require('gitsigns').setup {}
@@ -57,7 +51,6 @@ require('gitsigns').setup {}
 -- telescope ==================================================================
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files)
-vim.keymap.set('n', '<leader>fg', builtin.live_grep)
 vim.keymap.set('n', '<leader>fb', builtin.buffers)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags)
 vim.keymap.set('n', '<leader>fm', builtin.marks)

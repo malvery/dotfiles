@@ -6,9 +6,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  "Plug 'towolf/vim-helm'
-  "Plug 'sheerun/vim-polyglot'
+  "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'towolf/vim-helm'
+  Plug 'sheerun/vim-polyglot'
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
@@ -79,8 +79,12 @@ set fileencodings=utf8,cp1251,cp866,koi8-r
 set statusline=%<%F%m%r\ %=\ %h%w%q\ %l,%c%V\ %{&encoding}\ %P\ %y
 set laststatus=2
 set mousemodel=extend
-set foldmethod=syntax
-set nofoldenable
+
+set foldmethod=indent
+set foldcolumn=1
+set foldlevel=99
+set foldlevelstart=99
+set foldenable
 
 filetype plugin on
 filetype indent off
