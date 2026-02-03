@@ -1,7 +1,7 @@
 # Firejail profile for mattermost-desktop
 # This file is overwritten after every install/update
 # Persistent local customizations
-include time-desktop.local
+include max.local
 # Persistent global definitions
 include globals.local
 
@@ -14,9 +14,10 @@ noblacklist ${HOME}/.config/TiMe
 
 include disable-shell.inc
 
-mkdir ${HOME}/.config/MAX
+# mkdir ${home}/.config/max
 whitelist ${HOME}/.config/MAX
-whitelist /opt/MAX
+whitelist ${HOME}/.local/share/ONEME
+whitelist /usr/share/max
 # whitelist ${HOME}/Pictures
 whitelist ${HOME}/Downloads
 
