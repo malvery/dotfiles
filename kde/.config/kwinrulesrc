@@ -59,11 +59,9 @@ wmclassmatch=1
 
 [4]
 Description=Settings for gpclient
-above=true
-aboverule=3
 desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
-wmclass=gpclient
+wmclass=foot-lxd
 wmclassmatch=1
 
 [5]

@@ -6,6 +6,7 @@ switch-to-activity-7ef4b26f-c330-4fe5-8103-6aec7ef9cfce=none,none,Switch to acti
 switch-to-activity-81e44061-b132-4acd-b132-95d65503bbb9=none,none,Switch to activity "Default"
 switch-to-activity-8be83f10-c029-4013-b9dc-4f3476933695=none,none,Switch to activity "Default"
 switch-to-activity-8eb32b86-ebd9-4ad4-97d0-181806dc14d8=none,none,Switch to activity "Default"
+switch-to-activity-906e4151-1a6c-4d2f-bec3-b8512e2837e6=none,none,Switch to activity "Default"
 switch-to-activity-a2653220-84b0-4044-b427-4986076e1212=none,none,Switch to activity "Default"
 switch-to-activity-ba472617-24ee-47e7-8e17-09b0b88b544a=none,none,Switch to activity "Default"
 switch-to-activity-bbf9c0f4-dbd3-45e2-8be8-4b0a969cec21=none,none,Switch to activity "Default"
@@ -274,7 +275,7 @@ _k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
-Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
+Slideshow Wallpaper Next Image=none,none,Next Wallpaper Image
 _k_friendly_name=plasmashell
 activate application launcher=Alt+F1,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1
@@ -311,11 +312,11 @@ _launch=Meta+Shift+T
 [services][foot.desktop]
 _launch=Meta+Shift+Return
 
-[services][net.local.nb-run.sh.desktop]
-_launch=Meta+Shift+F2
+[services][net.local.nb-run.foot.desktop]
+_launch=Meta+Shift+T
 
-[services][rofi-run.desktop]
-_launch=Meta+F2
+[services][net.local.nb-run.wofi.desktop]
+_launch=Meta+Shift+F2
 
 [services][org.kde.krunner.desktop]
 RunClipboard=none
@@ -335,6 +336,9 @@ _launch=Print
 
 [services][pcmanfm-qt.desktop]
 _launch=Meta+E
+
+[services][rofi-run.desktop]
+_launch=Meta+F2
 
 [services][systemsettings.desktop]
 _launch=none
