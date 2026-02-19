@@ -27,7 +27,8 @@ def select_device(query):
 
     msg = "\n".join(devices.keys())
     p = run(
-        ["rofi", "-dmenu", "-l 10", "-p", f"{query.upper()} [{curr_desc}]:"],
+        # ["rofi", "-dmenu", "-l 10", "-p", f"{query.upper()} [{curr_desc}]:"],
+        ["bemenu", "-l 10", "-p", f"{query.upper()} [{curr_desc}]:"],
         capture_output=True,
         input=msg.encode(),
     )
