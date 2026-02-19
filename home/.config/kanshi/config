@@ -6,6 +6,7 @@ profile default {
 
 profile default {
   output "Samsung Display Corp. 0x4165 Unknown" enable scale 2 position 0,0
+  exec swaymsg output eDP-1 color_profile icc /data/src/icc/z16/TPLCD_4146_SDR.ICM
   exec sway-fix-lost-windows.py
 }
 
