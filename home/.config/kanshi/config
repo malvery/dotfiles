@@ -1,5 +1,6 @@
 profile default {
   output "Tianma Microelectronics Ltd. TL160MDMP03-0 Unknown" enable scale 1.65
+  exec swaymsg output eDP-1 color_profile icc /data/src/icc/redmi16.icm
   exec sway-fix-lost-windows.py
 }
 
