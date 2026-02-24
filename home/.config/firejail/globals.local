@@ -1,0 +1,2 @@
+private-bin xdg-open,gdbus
+# private-bin bash,sh,cat,which,ls,find,grep

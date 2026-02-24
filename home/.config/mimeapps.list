@@ -138,8 +138,11 @@ video/x-smv=mpv.desktop;
 x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
-x-scheme-handler/mailto=org.mozilla.Thunderbird.desktop;
+x-scheme-handler/mailto=userapp-Evolution-TWJ3K3.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-W4D7G3.desktop;
 x-scheme-handler/tonsite=userapp-Telegram Desktop-8XF5G3.desktop;
 x-scheme-handler/yandexmusic=yandex-music.desktop;
 x-scheme-handler/max=MAX.desktop
+
+[Added Associations]
+x-scheme-handler/mailto=userapp-Evolution-TWJ3K3.desktop;
