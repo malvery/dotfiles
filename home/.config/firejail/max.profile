@@ -10,15 +10,19 @@ ignore apparmor
 ignore dbus-user none
 ignore dbus-system none
 
-noblacklist ${HOME}/.config/TiMe
+env XDG_CURRENT_DESKTOP=GNOME
+env NO_AT_BRIDGE=1
 
 include disable-shell.inc
 
-# mkdir ${home}/.config/max
+mkdir ${HOME}/.config/MAX
+mkdir ${HOME}/.local/share/ONEME
+
 whitelist ${HOME}/.config/MAX
+whitelist ${HOME}/.cache/MAX
 whitelist ${HOME}/.local/share/ONEME
 whitelist /usr/share/max
-# whitelist ${HOME}/Pictures
+whitelist ${HOME}/Camera
 whitelist ${HOME}/Downloads
 
 private-etc alternatives,ca-certificates,crypto-policies,fonts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,machine-id,nsswitch.conf,pki,resolv.conf,ssl
@@ -30,6 +34,8 @@ dbus-user filter
 dbus-user.talk org.freedesktop.Notifications
 dbus-user.talk org.kde.StatusNotifierWatcher
 dbus-user.talk org.freedesktop.portal.Desktop
+dbus-user.talk org.freedesktop.secrets
+dbus-user.talk org.a11y.Bus
 dbus-system none
 
 # Redirect
