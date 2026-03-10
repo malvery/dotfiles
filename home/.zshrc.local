@@ -6,7 +6,6 @@
 
 _proxy_enable-tor () {
   _proxy="socks5://127.0.0.1:9050"
+  _proxy_name="tor"
   _proxy_enable
-
-  export _proxy_name="tor"
 }
