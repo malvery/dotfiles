@@ -6,11 +6,12 @@ if type brew &>/dev/null; then
   FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 fi
 
-zstyle ':completion:*' list-prompt   ''
-zstyle ':completion:*' menu select
+zstyle ':completion:*' list-prompt  ''
+zstyle ':completion:*' menu         select
+zstyle ':completion:*' use-cache    yes
 
 autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X bashcompinit && bashcompinit
 
 autoload -Uz select-word-style
 select-word-style bash
