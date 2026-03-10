@@ -2,16 +2,16 @@
 # C_DIR="\[$(tput setaf 2)\]\[$(tput bold)\]"
 
 # env -------------------------------------------
-export AWS_PROFILE="<AWS_PROFILE>"
+# export AWS_PROFILE="<AWS_PROFILE>"
 
 # proxy -----------------------------------------
 # _proxy="<PROXY>"
 # _proxy_aliased=("kubectl" "terraform" "curl" "aws")
 
-_proxy_enable-2 () {
-  _proxy_enable
-  {http,https}_proxy="<PROXY>"
-  }
+# _proxy_enable-2 () {
+#   _proxy_enable
+#   {http,https}_proxy="<PROXY>"
+# }
 
 _proxy_enable-tor () {
   _proxy_enable

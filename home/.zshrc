@@ -41,23 +41,27 @@ alias venv-activate='source ./.venv/bin/activate || source ./venv/bin/activate'
 #-----------------------------------------------------------------------------
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
+export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
 #-----------------------------------------------------------------------------
 # prompt
 #-----------------------------------------------------------------------------
-PROMPT=' %F{167}%(?..[%?] )%f%F{142}%B%~%b%f '
-
-precmd () {
-  echo -n -e "\a"
-}
+PROMPT=' %F{142}%B%~%b%f '
+# precmd () { echo -n -e "\a" }
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '[%F{175}%b%f]'
+zstyle ':vcs_info:git:*' formats ' %F{175}[%b]%f'
+
+_proxy_info() {
+  if [ -n "$http_proxy" ] || [ -n "$https_proxy" ]; then
+    echo " %F{yellow}[${_proxy_name:-P}]%f"
+  fi
+}
 
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
+RPROMPT=" %F{167}%(?..[%?])%f%(1j.%F{104} [%j]%f.)\$(_proxy_info)\$vcs_info_msg_0_"
 
 #-----------------------------------------------------------------------------
 # mappings
@@ -99,12 +103,15 @@ zle -N history-beginning-search-forward-end history-search-end
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
+bindkey '^P' history-beginning-search-backward-end
+bindkey '^N' history-beginning-search-forward-end
+
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 #-----------------------------------------------------------------------------
@@ -114,6 +121,42 @@ LS_COLORS="di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:
 export LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+#-----------------------------------------------------------------------------
+# func
+#-----------------------------------------------------------------------------
+_proxy_enable () {
+  if [[ -v _proxy ]]; then
+    export no_proxy=localhost,127.0.0.1
+    export {http,https}_proxy=${_proxy}
+
+    if [[ -n ${_proxy_bypass} ]]; then
+      export no_proxy=${no_proxy},${_proxy_bypass}
+    fi
+  fi
+}
+
+_proxy_disable () {
+  unset {http,https,no}_proxy
+  unset proxy_name
+}
+
+_proxy_set_aliases() {
+  if [[ -v _proxy ]]; then
+    for i in "${_proxy_aliased[@]}"; do
+      alias $i="env {http,https}_proxy=${_proxy} $i"
+    done
+  fi
+}
+
+_proxy_unset_aliases () {
+  for i in "${_proxy_aliased[@]}"; do
+    unalias $i
+  done
+}
 
 #-----------------------------------------------------------------------------
+if [[ -f ${HOME}/.zshrc.local ]]; then
+  source ${HOME}/.zshrc.local
+fi
+
 # zprof

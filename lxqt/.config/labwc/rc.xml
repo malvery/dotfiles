@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+
+<labwc_config>
+  <core>
+    <default />
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <reuseOutputMode>yes</reuseOutputMode>
+
+  </core>
+
+  <regions>
+    <region name="top-left"     x="0%"  y="0%"  height="50%"  width="50%"  />
+    <region name="top"          x="0%"  y="0%"  height="50%"  width="100%" />
+    <region name="top-right"    x="50%" y="0%"  height="50%"  width="50%"  />
+    <region name="left"         x="0%"  y="0%"  height="100%" width="50%"  />
+    <region name="center"       x="10%" y="10%" height="80%"  width="80%"  />
+    <region name="right"        x="50%" y="0%"  height="100%" width="50%"  />
+    <region name="bottom-left"  x="0%"  y="50%" height="50%"  width="50%"  />
+    <region name="bottom"       x="0%"  y="50%" height="50%"  width="100%" />
+    <region name="bottom-right" x="50%" y="50%" height="50%"  width="50%"  />
+  </regions>
+
+  <desktops>
+    <default />
+    <popupTime>0</popupTime>
+    <names>
+      <name>Workspace 1</name>
+      <name>Workspace 2</name>
+      <name>Workspace 3</name>
+      <name>Workspace 4</name>
+      <name>Workspace 5</name>
+    </names>
+  </desktops>
+
+  <theme>
+    <default />
+    <name>Adwaita-Labwc-dark</name>
+    <maximizedDecoration>none</maximizedDecoration>
+
+  </theme>
+
+  <keyboard>
+    <default />
+    <repeatDelay>300</repeatDelay>
+    <layoutScope>window</layoutScope>
+
+    <keybind key="W-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="W-S-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+    <keybind key="W-S-Return">
+      <action name="Execute" command="foot" />
+    </keybind>
+    <keybind key="W-S-c">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-S-m">
+      <action name="ToggleMaximize" />
+    </keybind>
+
+    <keybind key="W-S-|">
+      <action name="SnapToRegion" region="center" />
+    </keybind>
+    <keybind key="W-S-h">
+      <action name="SnapToRegion" region="left" />
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="SnapToRegion" region="right" />
+    </keybind>
+    <keybind key="W-S-j">
+      <action name="SnapToRegion" region="bottom" />
+    </keybind>
+    <keybind key="W-S-k">
+      <action name="SnapToRegion" region="top" />
+    </keybind>
+
+    <keybind key="W-r">
+      <action name="Execute" command="bemenu-run" />
+    </keybind>
+    <keybind key="W-F2">
+      <action name="Execute" command="j4-dmenu-desktop -d bemenu" />
+    </keybind>
+
+    <keybind key="W-S-Delete">
+      <action name="Execute" command="lxqt-leave --lockscreen" />
+    </keybind>
+    <keybind key="W-S-p">
+      <action name="Execute" command="pcmanfm-qt" />
+    </keybind>
+
+    <keybind key="W-grave">
+      <action name="Execute" command="bash -c 'cliphist list | bemenu -l 20 -p clipboard | cliphist decode | wl-copy'" />
+    </keybind>
+    <keybind key="W-S-grave">
+      <action name="Execute" command="bash -c 'cliphist list | bemenu -l 20 -p clipboard_DELETION | cliphist delete'" />
+    </keybind>
+
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute" command="brightnessctl set +2%" />
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute" command="brightnessctl set 2%-" />
+    </keybind>
+
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ +2%" />
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute" command="pactl set-sink-volume @DEFAULT_SINK@ -2%" />
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute" command="pactl set-sink-mute @DEFAULT_SINK@ toggle" />
+    </keybind>
+    <keybind key="XF86AudioMicMute">
+      <action name="Execute" command="bash -c 'pactl get-default-source | xargs -I S pactl set-source-mute S toggle'" />
+    </keybind>
+
+    <keybind key="XF86AudioPlay">
+      <action name="Execute" command="playerctl play-pause" />
+    </keybind>
+    <keybind key="XF86AudioPrev">
+      <action name="Execute" command="playerctl previous" />
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute" command="playerctl next" />
+    </keybind>
+    <keybind key="XF86AudioStop">
+      <action name="Execute" command="playerctl stop" />
+    </keybind>
+
+    <keybind key="XF86Favorites">
+      <action name="Execute" command="play-pause" />
+    </keybind>
+    <keybind key="XF86PickupPhone">
+      <action name="Execute" command="playerctl previous" />
+    </keybind>
+    <keybind key="XF86HangupPhone">
+      <action name="Execute" command="playerctl next" />
+    </keybind>
+
+
+    <keybind key="W-C-left">
+      <action name="GoToDesktop" to="left" wrap="no" />
+    </keybind>
+    <keybind key="W-C-right">
+      <action name="GoToDesktop" to="right" wrap="no" />
+    </keybind>
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1" wrap="no" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2" wrap="no" />
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3" wrap="no" />
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4" wrap="no" />
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5" wrap="no" />
+    </keybind>
+    <keybind key="W-Escape">
+      <action name="GoToDesktop" to="last" wrap="yes" />
+    </keybind>
+
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1" follow="no" wrap="no" />
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2" follow="no" wrap="no" />
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3" follow="no" wrap="no" />
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4" follow="no" wrap="no" />
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop" to="5" follow="no" wrap="no" />
+    </keybind>
+
+  </keyboard>
+
+  <mouse>
+    <default />
+    <!-- Show a custom menu on desktop right click -->
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="some-custom-menu" />
+      </mousebind>
+    </context>
+
+    <context name="Frame">
+      <mousebind button="W-S-Left" action="Drag">
+        <action name="Resize" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <libinput>
+    <default />
+    <device category="default">
+      <naturalScroll>true</naturalScroll>
+      <scrollFactor>0.5</scrollFactor>
+    </device>
+  </libinput>
+
+  <windowRules>
+    <default />
+    <windowRule identifier="foot-tmux">
+      <action name="SendToDesktop" to="1" follow="no" />
+    </windowRule>
+    <windowRule identifier="firefox">
+      <action name="SendToDesktop" to="2" follow="no" />
+    </windowRule>
+    <windowRule identifier="org.mozilla.Thunderbird" matchOnce="true">
+      <action name="SendToDesktop" to="3" follow="no" />
+      <action name="SnapToRegion" region="right" />
+    </windowRule>
+    <windowRule identifier="org.telegram.desktop" matchOnce="true">
+      <action name="SendToDesktop" to="3" follow="no" />
+      <action name="SnapToRegion" region="left" />
+    </windowRule>
+    <windowRule identifier="max" matchOnce="true">
+      <action name="SendToDesktop" to="3" follow="no" />
+      <action name="SnapToRegion" region="left" />
+    </windowRule>
+
+    <windowRule identifier="imv" serverDecoration="yes"/>
+  </windowRules>
+
+</labwc_config>

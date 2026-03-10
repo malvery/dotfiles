@@ -1,0 +1,9 @@
+/usr/lib/gsd-xsettings &
+
+wl-paste --watch cliphist store &
+kanshi >/dev/null 2>&1 &
+mako >/dev/null 2>&1 &
+#touchegg >/dev/null 2>&1 &
+
+aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log &
+#foot -a foot-tmux -e tmux-workspace.sh &
