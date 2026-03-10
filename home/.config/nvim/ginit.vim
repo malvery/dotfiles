@@ -1,2 +1,1 @@
-Guifont Hack:h11
-GuiTabline 0
+set guifont=Hack:h13

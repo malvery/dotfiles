@@ -1,5 +1,5 @@
 -- tty ========================================================================
-if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil) then
+if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil or vim.env.COLORTERM ~= nill) then
   vim.cmd.colorscheme('retrobox')
 end
 

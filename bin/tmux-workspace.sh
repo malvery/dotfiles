@@ -1,6 +1,10 @@
 #!/bin/bash
 
-PREFIX="systemd-run --user --scope"
+if [ "$(uname -s)" = "Darwin" ]; then
+  PREFIX=""
+else
+  PREFIX="systemd-run --user --scope"
+fi
 
 case "$1" in
 -w)

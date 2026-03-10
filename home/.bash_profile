@@ -7,6 +7,7 @@
 # ENV -------------------------------------------------------------------------
 export BEMENU_OPTS="--fn 'hack 11' -B 1 -i"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export TERMINAL='foot'
 
 export MOZ_ENABLE_WAYLAND=1
 export ELECTRON_OZONE_PLATFORM_HINT=auto

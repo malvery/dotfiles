@@ -1,23 +1,24 @@
+# PS1 -------------------------------------------
 # C_DIR="\[$(tput setaf 2)\]\[$(tput bold)\]"
 
-# proxy ----------------------------------------------------------------------
+# env -------------------------------------------
+export AWS_PROFILE="<AWS_PROFILE>"
+
+# proxy -----------------------------------------
 # _proxy="<PROXY>"
 # _proxy_aliased=("kubectl" "terraform" "curl" "aws")
 
 _proxy_enable-2 () {
   _proxy_enable
   {http,https}_proxy="<PROXY>"
-}
+  }
 
 _proxy_enable-tor () {
   _proxy_enable
   export {http,https}_proxy="socks5://127.0.0.1:9050"
 }
 
-# ----------------------------------------------------------------------------
-
-# AWS
-export AWS_PROFILE="<AWS_PROFILE>"
+# -----------------------------------------------
 
 # terraform completion
 complete -o nospace -C terraform terraform

@@ -10,11 +10,12 @@ alias la='ls -lAh'
 alias grep='grep --color=auto'
 alias bc='bc -ql'
 alias mc='mc -X'
+alias vim='nvim'
 
 # -----------------------------------------------
 # Env and options
 # -----------------------------------------------
-export EDITOR='vi'
+export EDITOR='nvim'
 export SYSTEMD_EDITOR=${EDITOR}
 export SUDO_PROMPT=$'\a[sudo] password for %p: '
 
