@@ -22,7 +22,7 @@ wmclassmatch=1
 Description=Settings for time-desktop
 desktops=00000000-0000-0000-0000-000000000004
 desktopsrule=3
-wmclass=TiMe
+wmclass=Time
 wmclassmatch=1
 
 [2]
@@ -30,6 +30,12 @@ Description=Settings for thunderbird
 desktops=00000000-0000-0000-0000-000000000003
 desktopsrule=3
 wmclass=org.mozilla.Thunderbird
+wmclassmatch=1
+
+[263d2c67-5059-4349-8a38-685fca78723b]
+Description=Settings for imv
+noborderrule=2
+wmclass=imv
 wmclassmatch=1
 
 [278e6583-e360-40fd-ab02-ded29ba6b1cb]
@@ -59,7 +65,7 @@ wmclassmatch=1
 
 [4]
 Description=Settings for gpclient
-desktops=00000000-0000-0000-0000-000000000004
+desktops=00000000-0000-0000-0000-000000000005
 desktopsrule=3
 wmclass=foot-lxd
 wmclassmatch=1
@@ -143,8 +149,8 @@ wmclass=Slack
 wmclassmatch=1
 
 [General]
-count=14
-rules=1,2,3,4,5,6,7,9,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,278e6583-e360-40fd-ab02-ded29ba6b1cb,7f5032c9-a049-4917-8af1-4566aa44c571,2c748155-46eb-447b-87ae-0094162cf30c,8ac41091-2124-4916-b0e4-7395cb6c73fb
+count=15
+rules=1,2,3,4,5,6,7,9,cb95376e-4b57-457b-bef5-acda92ce1fae,cba8f72a-deb0-4ad4-9839-f9eb1f734c0b,278e6583-e360-40fd-ab02-ded29ba6b1cb,7f5032c9-a049-4917-8af1-4566aa44c571,2c748155-46eb-447b-87ae-0094162cf30c,8ac41091-2124-4916-b0e4-7395cb6c73fb,263d2c67-5059-4349-8a38-685fca78723b
 
 [cb95376e-4b57-457b-bef5-acda92ce1fae]
 Description=Settings for chromium

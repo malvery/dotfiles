@@ -12,6 +12,7 @@ ignore dbus-system none
 
 env XDG_CURRENT_DESKTOP=GNOME
 env NO_AT_BRIDGE=1
+env QT_USE_PHYSICAL_DPI=1
 
 include disable-shell.inc
 
