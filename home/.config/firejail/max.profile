@@ -12,7 +12,9 @@ ignore dbus-system none
 
 env XDG_CURRENT_DESKTOP=GNOME
 env NO_AT_BRIDGE=1
-env QT_USE_PHYSICAL_DPI=1
+# env QT_USE_PHYSICAL_DPI=1
+env QT_AUTO_SCREEN_SCALE_FACTOR=1
+env QT_ENABLE_HIGHDPI_SCALING=1
 
 include disable-shell.inc
 
@@ -25,6 +27,7 @@ whitelist ${HOME}/.local/share/ONEME
 whitelist /usr/share/max
 whitelist ${HOME}/Camera
 whitelist ${HOME}/Downloads
+whitelist ${HOME}/Pictures/Screenshots
 
 private-etc alternatives,ca-certificates,crypto-policies,fonts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,machine-id,nsswitch.conf,pki,resolv.conf,ssl
 

@@ -21,5 +21,10 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   pkill -u ${USER} hypridle
 
   #----------------------------------------------------------------------------
+  # export KWIN_DRM_NO_AMS=1
+  # export QT_IMAGEIO_MAXALLOC=1024
+  # startplasma-wayland
+
+  #----------------------------------------------------------------------------
   echo "Logout after 3 sec." && sleep 3 && exit
 fi

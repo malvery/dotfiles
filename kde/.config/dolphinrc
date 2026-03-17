@@ -1,2 +1,8 @@
 [General]
 RememberOpenedTabs=false
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=imagethumbnail,glycin-image-rs,jpegthumbnail,glycin-jxl,rawthumbnail,glycin-svg,svgthumbnail
