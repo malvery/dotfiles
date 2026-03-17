@@ -1,43 +1,31 @@
 # PS1 -------------------------------------------
 # C_DIR="\[$(tput setaf 2)\]\[$(tput bold)\]"
 
-# env -------------------------------------------
-# export AWS_PROFILE="<AWS_PROFILE>"
-
-# proxy -----------------------------------------
-# _proxy="<PROXY>"
-# _proxy_aliased=("kubectl" "terraform" "curl" "aws")
-
-# _proxy_enable-2 () {
-#   _proxy_enable
-#   {http,https}_proxy="<PROXY>"
-# }
+# proxy ----------------------------------------------------------------------
+# _proxy_bypass="10.96.0.0/12,192.168.59.0/24,192.168.49.0/24" # minikube
+# _proxy="127.0.0.1:8002"
+# _proxy_aliased=("kubectl" "terraform" "aws" "aichat")
+# _proxy_name="<NAME>"
 
 _proxy_enable-tor () {
+  _proxy="socks5://127.0.0.1:9050"
+  _proxy_name="tor"
   _proxy_enable
-  export {http,https}_proxy="socks5://127.0.0.1:9050"
 }
 
-# -----------------------------------------------
+# ----------------------------------------------------------------------------
+comp-werf-enable () {
+  export WERF_BUILDAH_MODE=auto
+  source <(werf completion)
+}
 
-# terraform completion
-complete -o nospace -C terraform terraform
+comp-terragrunt-enable () {
+  complete -o nospace -C /usr/bin/terragrunt terragrunt
+}
 
-# NIX pkgs
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
+comp-terraform-enable () {
+  complete -o nospace -C terraform terraform
+}
 
-# LXD
-# _COMP_LXD=/usr/share/bash-completion/completions/lxd
-# [[ -f ${_COMP_LXD} ]] && source ${_COMP_LXD}
-
-# tools
-# werf-enable () {
-#   source "$(trdl use werf 1.2 stable)"
-#   source <(werf completion)
-# }
+# ----------------------------------------------------------------------------
+_proxy_set_aliases

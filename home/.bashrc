@@ -12,6 +12,8 @@ alias bc='bc -ql'
 alias mc='mc -X'
 alias vim='nvim'
 
+alias venv-activate='source ./.venv/bin/activate || source ./venv/bin/activate'
+
 # -----------------------------------------------
 # Env and options
 # -----------------------------------------------
@@ -52,6 +54,8 @@ __promt() {
 
   if [[ -v http_proxy ]]; then
     PROXY=" %"
+
+    PROXY=" [${_proxy_name:-P}]"
   else
     PROXY=""
   fi
@@ -72,13 +76,17 @@ PROMPT_COMMAND=__promt
 _proxy_enable () {
   if [[ -v _proxy ]]; then
     export no_proxy=localhost,127.0.0.1
-    export no_proxy=${no_proxy},10.96.0.0/12,192.168.59.0/24,192.168.49.0/24 # minikube
     export {http,https}_proxy=${_proxy}
+
+    if [[ -n ${_proxy_bypass} ]]; then
+      export no_proxy=${no_proxy},${_proxy_bypass}
+    fi
   fi
 }
 
 _proxy_disable () {
   unset {http,https,no}_proxy
+  unset proxy_name
 }
 
 _proxy_set_aliases() {
