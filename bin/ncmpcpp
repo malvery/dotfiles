@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+mpd-mpris -no-instance > /dev/null 2>&1 &
+/usr/bin/ncmpcpp
+
+pkill -u ${USER} -f mpd-mpris
