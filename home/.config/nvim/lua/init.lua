@@ -1,6 +1,29 @@
+-- pack =======================================================================
+vim.pack.add({
+  'https://github.com/towolf/vim-helm',
+  'https://github.com/sheerun/vim-polyglot',
+
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+
+  'https://github.com/rmagatti/auto-session',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/kazhala/close-buffers.nvim',
+
+  'https://github.com/neovim/nvim-lspconfig',
+
+  'https://github.com/mfussenegger/nvim-dap',
+  'https://github.com/rcarriga/nvim-dap-ui',
+
+  'https://github.com/dracula/vim',
+})
+
 -- tty ========================================================================
-if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil or vim.env.COLORTERM ~= nill) then
+
+if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil or vim.env.COLORTERM ~= nil) then
   vim.cmd.colorscheme('retrobox')
+else
+  vim.cmd.colorscheme('dracula')
 end
 
 -- treesitter =================================================================
@@ -64,23 +87,10 @@ require('auto-session').setup({
   auto_restore_enabled = false,
 })
 
--- blink.cmp ==================================================================
-require('blink.cmp').setup({
-  keymap     = { preset = 'enter' },
-  signature  = { enabled = true },
-
-  completion = {
-    list = {
-      selection = {
-        preselect = false,
-      },
-    }
-  }
-})
+-- complete ===================================================================
+vim.o.autocomplete = true
 
 -- LSP config =================================================================
-vim.lsp.set_log_level("off")
-
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { remap = false })
 
 local servers = {

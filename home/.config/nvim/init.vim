@@ -1,35 +1,4 @@
-" vim-plug =================================================================
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.local/share/nvim/plugged')
-  "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'towolf/vim-helm'
-  Plug 'sheerun/vim-polyglot'
-
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-
-  Plug 'rmagatti/auto-session'
-  Plug 'lewis6991/gitsigns.nvim'
-  Plug 'kazhala/close-buffers.nvim'
-
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'rafamadriz/friendly-snippets'
-  Plug 'saghen/blink.cmp', { 'tag': '*' }
-
-  Plug 'mfussenegger/nvim-dap'
-  Plug 'rcarriga/nvim-dap-ui'
-
-  Plug 'dracula/vim'
-call plug#end()
-
 " theme ====================================================================
-colorscheme dracula
-
 if has('termguicolors')
    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
    set termguicolors
