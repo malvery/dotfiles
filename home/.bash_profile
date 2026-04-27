@@ -25,5 +25,8 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   pkill -u ${USER} hypridle
 
   # ---------------------------------------------------------------------------
+  # startplasma-wayland
+
+  # ---------------------------------------------------------------------------
   echo "Logout after 3 sec." && sleep 3 && exit
 fi
