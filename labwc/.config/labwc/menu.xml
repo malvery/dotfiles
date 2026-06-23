@@ -50,36 +50,40 @@
 </menu>
 
 <menu id="root-menu">
-  <!-- Make client-list-combined-menu a submenu of root-menu
-       You must supply a label or it will not appear in root-menu -->
-  <!--
-  <menu id="client-list-combined-menu" label="Running..." />
-  -->
-  <item label="Terminal">
-    <action name="Execute" command="lab-sensible-terminal" />
+  <item label="Files">
+    <action name="Execute" command="pcmanfm-qt" />
   </item>
+
+  <menu id="xdg-applications" label="Applications" execute="xdg_menu --format openbox3-pipe" />
+
   <separator />
+
   <item label="Reconfigure">
     <action name="Reconfigure" />
   </item>
+
+  <item label="Suspend">
+    <action name="Execute">
+      <command>systemctl suspend</command>
+    </action>
+  </item>
+
   <item label="Exit">
-    <action name="Exit" />
+    <action name="Execute">
+      <command>labnag -m "Exit:" \
+        -Z "Cancel" \
+        -Z "Logout" "labwc -e" \
+        -k exclusive \
+        --background-color "#282828" \
+        --text-color "#ffffff" \
+        --button-background-color "#282828" \
+        --button-text-color "#ffffff" \
+        --button-border-color "#4c7899" \
+        --border-bottom-color "#4c7899" \
+        --border-bottom-size 2</command>
+    </action>
   </item>
 </menu>
 
-<menu id="some-custom-menu">
-  <!--
-    Creates menu title.
-    To create an empty header with no text,
-    set label=" ", not label=""
-  -->
-  <separator label="custom menu" />
-  <item label="Reconfigure">
-    <action name="Reconfigure" />
-  </item>
-  <item label="Exit">
-    <action name="Exit" />
-  </item>
-</menu>
 
 </openbox_menu>

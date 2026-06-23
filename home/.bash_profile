@@ -4,7 +4,6 @@
 [[ -d ${HOME}/bin ]]        &&  PATH="${HOME}/bin:${PATH}"
 [[ -d ${HOME}/.local/bin ]] &&  PATH="${HOME}/.local/bin:${PATH}"
 
-
 # -----------------------------------------------------------------------------
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   # ---------------------------------------------------------------------------
@@ -18,14 +17,14 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   # ---------------------------------------------------------------------------
   export QT_QPA_PLATFORMTHEME=qt6ct
   export WLR_RENDERER=vulkan
-  export WLR_RENDER_NO_EXPLICIT_SYNC=1
+  # export WLR_DRM_NO_ATOMIC=1
+  # export WLR_RENDER_NO_EXPLICIT_SYNC=1
+
+  XDG_CURRENT_DESKTOP=sway
   sway
 
-  echo "Stop background apps..."
-  pkill -u ${USER} hypridle
-
-  # ---------------------------------------------------------------------------
-  # startplasma-wayland
+  echo "Stop session..."
+  systemctl --user stop graphical-session.target
 
   # ---------------------------------------------------------------------------
   echo "Logout after 3 sec." && sleep 3 && exit

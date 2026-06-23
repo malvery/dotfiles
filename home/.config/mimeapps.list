@@ -146,3 +146,4 @@ x-scheme-handler/max=MAX.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Evolution-TWJ3K3.desktop;
+application/octet-stream=nvim.desktop;

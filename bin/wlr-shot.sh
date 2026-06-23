@@ -34,5 +34,5 @@ else
   echo ${SHOT_PATH} | wl-copy -n
   notify-send "screenshot" "${SHOT_PATH}"
 
-  swappy -f ${SHOT_PATH}
+  satty -f ${SHOT_PATH}
 fi

@@ -33,13 +33,22 @@ window#waybar {
   font-weight:  400;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
   background: #285577;
   border:     1px solid #4c7899;
 }
 
 #workspaces button.urgent {
   background: #900000;
+  border:     1px solid #2f343a;
+}
+
+#taskbar button.active {
+  background: #285577;
+  border:     1px solid #4c7899;
+}
+
+#taskbar button.minimized {
   border:     1px solid #2f343a;
 }
 

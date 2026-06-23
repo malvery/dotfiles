@@ -21,7 +21,7 @@ vim.pack.add({
 -- tty ========================================================================
 
 if not (vim.env.DISPLAY ~= nil or vim.env.WAYLAND_DISPLAY ~= nil or vim.env.COLORTERM ~= nil) then
-  vim.cmd.colorscheme('retrobox')
+  vim.cmd.colorscheme('desert')
 else
   vim.cmd.colorscheme('dracula')
 end

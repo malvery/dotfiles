@@ -1,19 +1,17 @@
 {
   "height": 20,
-  "position": "bottom",
+  "position": "top",
   "fixed-center": false,
   "ipc": true,
 
   "modules-left":   [
-    "sway/workspaces",
-    "sway/mode"
+    "ext/workspaces",
+    "wlr/taskbar"
   ],
   "modules-right":  [
-    "sway/window",
     "cpu",
     "memory",
     "disk",
-    // "temperature",
     "custom/temp",
     "network",
     "bluetooth",
@@ -29,22 +27,26 @@
     "privacy",
     "clock",
     "tray",
-    "sway/language",
     "custom/do_not_disturb",
 
   ],
 
-  "sway/workspaces": {
-    "all-outputs":    false,
-    "disable-scroll": true
+  "ext/workspaces": {
+    "sort-by-number": true,
+    "on-click":       "activate",
+    "format":         "{icon}",
+    "format-icons": {
+      "Workspace 1": "1",
+      "Workspace 2": "2",
+      "Workspace 3": "3",
+      "Workspace 4": "4",
+      "Workspace 5": "5",
+    }
   },
 
-  "sway/mode": {
-    "tooltip":  false
-  },
-
-  "sway/window": {
-    "tooltip":  false
+  "wlr/taskbar": {
+    "tooltip":  false,
+    "on-click": "activate",
   },
 
   "cpu": {
@@ -311,7 +313,7 @@
   },
 
   "custom/sunset": {
-      "interval": 10,
+      "interval": "once",
       "tooltip":  false,
       "exec":     "~/bin/wlsunset.sh",
       "signal":   6,

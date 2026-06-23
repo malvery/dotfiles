@@ -44,6 +44,12 @@
     <repeatDelay>300</repeatDelay>
     <layoutScope>window</layoutScope>
 
+    <!-- <keybind key="W-Tab"> -->
+    <!--   <action name="NextWindowImmediate" /> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-S-Tab"> -->
+    <!--   <action name="PreviousWindowImmediate" /> -->
+    <!-- </keybind> -->
     <keybind key="W-Tab">
       <action name="NextWindow" />
     </keybind>
@@ -56,8 +62,14 @@
     <keybind key="W-S-c">
       <action name="Close" />
     </keybind>
+    <keybind key="W-S-n">
+      <action name="Iconify" />
+    </keybind>
     <keybind key="W-S-m">
       <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="W-S-w">
+      <action name="ShowMenu" menu="root-menu" />
     </keybind>
 
     <keybind key="W-S-|">
@@ -84,7 +96,7 @@
     </keybind>
 
     <keybind key="W-S-Delete">
-      <action name="Execute" command="lxqt-leave --lockscreen" />
+      <action name="Execute" command="loginctl lock-session" />
     </keybind>
     <keybind key="W-S-p">
       <action name="Execute" command="pcmanfm-qt" />
@@ -189,7 +201,7 @@
     <!-- Show a custom menu on desktop right click -->
     <context name="Root">
       <mousebind button="Right" action="Press">
-        <action name="ShowMenu" menu="some-custom-menu" />
+        <action name="ShowMenu" menu="test-menu" />
       </mousebind>
     </context>
 
@@ -215,6 +227,9 @@
     </windowRule>
     <windowRule identifier="firefox">
       <action name="SendToDesktop" to="2" follow="no" />
+    </windowRule>
+    <windowRule identifier="org.mozilla.firefox.webapp-*">
+      <action name="SendToDesktop" to="3" follow="no" />
     </windowRule>
     <windowRule identifier="org.mozilla.Thunderbird" matchOnce="true">
       <action name="SendToDesktop" to="3" follow="no" />

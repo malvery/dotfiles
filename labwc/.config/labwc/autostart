@@ -1,9 +1,36 @@
+GNOME_INTERFACE=org.gnome.desktop.interface
+gsettings set $GNOME_INTERFACE monospace-font-name  'Hack 11'
+gsettings set $GNOME_INTERFACE font-name            'Ubuntu 11'
+gsettings set $GNOME_INTERFACE color-scheme         'prefer-dark'
+gsettings set $GNOME_INTERFACE gtk-theme            'adw-gtk3-dark'
+gsettings set $GNOME_INTERFACE icon-theme           'Papirus-Dark'
+
+
 /usr/lib/gsd-xsettings &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/geoclue-2.0/demos/agent &
+
+aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log &
 
 wl-paste --watch cliphist store &
 kanshi >/dev/null 2>&1 &
 mako >/dev/null 2>&1 &
-#touchegg >/dev/null 2>&1 &
+hypridle >/dev/null 2>&1 &
+touchegg >/dev/null 2>&1 &
+waybar >/dev/null 2>&1 &
+~/bin/wlsunset.sh start &
 
-aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log &
-#foot -a foot-tmux -e tmux-workspace.sh &
+blueman-applet &
+nm-applet &
+pcmanfm-qt -d &
+
+firefox &
+org.telegram.desktop &
+thunderbird &
+dex ~/.local/share/applications/MAX.desktop &
+foot -a foot-tmux -e tmux-workspace.sh &
+
+sleep 2
+
+keepassxc &
+easyeffects --service-mode --hide-window &
