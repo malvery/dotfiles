@@ -1,7 +1,14 @@
 #!/usr/bin/env sh
 
-UPDATE="pkill -u ${USER} -USR1 py3status"
-# UPDATE="waybar-signal sunset"
+if pgrep -u ${USER} waybar > /dev/null; then
+  UPDATE="pkill -RTMIN+6 waybar"
+  MSG_NIGHT=""
+  MSG_DAY=""
+else
+  UPDATE="pkill -u ${USER} -USR1 py3status"
+  MSG_NIGHT="N"
+  MSG_DAY="D"
+fi
 
 start() {
 
@@ -9,7 +16,7 @@ start() {
   LAT=$(echo $LOCATION | jq -r '.lat')
   LON=$(echo $LOCATION | jq -r '.lon')
 
-  wlsunset -l $LAT -L $LON -t 5000 &
+  wlsunset -l $LAT -L $LON -t 5500 &
 }
 
 case $1'' in
@@ -40,16 +47,8 @@ case $1'' in
 esac
 
 if pkill -u ${USER} -x -0 wlsunset; then
-  echo "N"
+  echo $MSG_NIGHT
 else
-  echo "D"
+  echo $MSG_DAY
 fi
 
-# if pkill -u ${USER} -x -0 wlsunset; then
-#   class="on"
-#   text="location-based gamma correction"
-# else
-#   class="off"
-#   text="no gamma correction"
-# fi
-# printf '{"alt":"%s","tooltip":"%s"}\n' "$class" "$text"

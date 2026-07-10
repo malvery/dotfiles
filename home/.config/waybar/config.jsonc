@@ -1,5 +1,5 @@
 {
-  "height": 20,
+  "height": 22,
   "position": "bottom",
   "fixed-center": false,
   "ipc": true,
@@ -18,12 +18,12 @@
     "network",
     "bluetooth",
     "custom/bluez_profile",
-    "backlight",
-    "custom/sunset",
-    "pulseaudio",
     "wireplumber#source",
-    "power-profiles-daemon",
+    "custom/sunset",
+    "backlight",
+    "wireplumber#sink",
     "battery",
+    "power-profiles-daemon",
     "idle_inhibitor",
     "mpris",
     "privacy",
@@ -76,7 +76,7 @@
     "format-wifi":          " {essid} {signalStrength}%",
     "format-ethernet":      " {ifname}: {ipaddr}/{cidr}",
     "format-linked":        " {ifname} (No IP) ",
-    "format-disconnected":  "⚠ Disconnected",
+    "format-disconnected":  " Disconnected",
     "format-alt":           "{bandwidthDownBits} {frequency}Hz",
 
     "tooltip":  false
@@ -96,21 +96,13 @@
       "return-type":  "json",
       "format":       "{icon} {0}°C",
       "format-icons": {
-          "zone1":  "",
+          "zone1":  "",
           "zone2":  "",
-          "zone3":  "",
+          "zone3":  "",
       },
 
       "interval": 3,
       "tooltip":  false
-  },
-
-  "temperature": {
-      // "thermal-zone": 2,
-      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      // "critical-threshold": 80,
-      // "format-critical": "{temperatureC}°C ",
-      "format": " {temperatureC}°C"
   },
 
   "idle_inhibitor": {
@@ -126,12 +118,12 @@
 
   "bluetooth": {
     "on-click-middle":  "blueman-manager",
-    "on-click-right":         "~/bin/bluez-toggle.sh --connect-known-headset",
+    "on-click-right":   "~/bin/bluez-toggle.sh --connect-known-headset",
 
     "format":           " {status}",
-    "format-on":        " ON",
-    "format-off":       " OFF",
-    "format-disabled":  " DIS",
+    "format-on":        "",
+    "format-off":       "",
+    "format-disabled":  "",
 
     "format-connected":         " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%"
@@ -172,36 +164,32 @@
       "format":         " {volume}%",
       "format-muted":   "",
       "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-      "scroll-step":    5,
+
+      "scroll-step":  5,
+      "tooltip":      false,
+      "smooth-scrolling-threshold": 3.0,
   },
 
-  "pulseaudio": {
-    "states": {
-      "low":    50,
-      "medium": 70,
-      "high":   90
-    },
+  "wireplumber#sink": {
+      "format":       "{icon} {volume}%",
+      "format-muted": " M",
+      "format-icons": ["", "", ""],
 
-    "format":                 "{icon} {volume}%",
-    "format-bluetooth":       "{icon}  {volume}% ",
-    "format-bluetooth-muted": "{icon}   MUTE ",
-    "format-muted":           " M",
+      "format-bluetooth":       "{icon} {volume}% ",
+      "format-bluetooth-muted": "{icon}  M ",
 
-    "format-icons": {
-      "headphones": "",
-      "handsfree":  "",
-      "headset":    "",
-      "phone":      "",
-      "portable":   "",
-      "car":        "",
-      "default":    ["", "", ""]
-    },
+      "states": {
+        "low":    0,
+        "medium": 50,
+        "high":   85
+      },
 
-    "on-click-right":             "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle":            "pavucontrol-qt -t 3",
+      "on-click-right":   "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+      "on-click-middle":  "pavucontrol-qt -t 3",
 
-    "smooth-scrolling-threshold": 3.0,
-    "tooltip":                    false
+      "scroll-step":  5,
+      "tooltip":      false,
+      "smooth-scrolling-threshold": 3.0,
   },
 
   "mpris": {
@@ -222,7 +210,7 @@
     },
 
     "format":           "{icon} {capacity}% {power:>4.1f}W",
-    "format-charging":  " {capacity}% {power:>4.1f}W",
+    "format-charging":  " {capacity}% {power:>4.1f}W",
     "format-plugged":   " {capacity}% {power:>4.1f}W",
     "format-alt":       "{icon} {time}",
     "format-icons":     ["", "", "", "", ""],
@@ -256,7 +244,7 @@
   },
 
   "tray": {
-    "icon-size":  15,
+    "icon-size":  18,
     "spacing":    5
   },
 

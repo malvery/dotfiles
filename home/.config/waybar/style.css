@@ -1,10 +1,10 @@
-@define-color bg_normal   #1a1a1a;
-@define-color bg_border   #363636;
-@define-color bg_widget   #1a1a1a;
+@define-color bg_normal   #000000;
+@define-color bg_border   #1a1a1a;
+@define-color bg_widget   #000000;
 
-@define-color fg_normal   #c0c0c0;
+@define-color fg_normal   #b0b0b0;
 @define-color fg_good     #86AD85;
-@define-color fg_medium   #FFAE00;
+@define-color fg_medium   #FE8600;
 @define-color fg_urgent   #FF5500;
 @define-color fg_inactive #888888;
 
@@ -27,7 +27,7 @@ window#waybar {
 }
 
 #workspaces button {
-  padding:      1px 1px;
+  padding:      0 4px;
   color:        @fg_normal;
   border:       1px solid @bg_border;
   font-weight:  400;
@@ -43,166 +43,111 @@ window#waybar {
   border:     1px solid #2f343a;
 }
 
-#language,
+#tray {
+  font-family:  Ubuntu;
+  font-size:    14px;
+}
+
 #clock,
 #custom-clock,
 #custom-do_not_disturb,
+#language,
 #mpris,
-#privacy {
+#privacy
+{
   padding:  0 2px;
   margin:   0 2px;
 }
 
-#disk,
-#battery,
-#power-profiles-daemon,
-#cpu,
-#memory,
-#temperature,
-#custom-temp,
 #backlight,
-#network,
+#battery,
 #bluetooth,
-#pulseaudio,
-#wireplumber,
-#mode,
-#window,
-#idle_inhibitor,
-#tray,
+#cpu,
 #custom-bluez_profile,
-#custom-sunset {
+#custom-sunset,
+#custom-temp,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#power-profiles-daemon,
+#temperature,
+#tray,
+#window,
+#wireplumber
+{
   padding:    0 2px;
   margin:     0 2px;
   background: @bg_widget;
-  border:     1px solid @bg_border;
+  border:     none;
 }
 
-#mode {
-  color: @fg_urgent;
-}
 
 #window {
   background: transparent;
   border:     none;
 }
 
-#battery.charging{
-  color: @fg_medium;
-}
-
-#battery.high {
-  color: @fg_good;
-}
-
-#battery.medium {
-  color: @fg_medium;
-}
-
-#battery.low:not(.charging) {
-  color: @fg_urgent;
-}
-
-#network.disconnected {
-  color: @fg_urgent;
-}
-
-#custom-bluez_profile {
-  color: @fg_medium;
-}
-
-#custom-do_not_disturb.off {
-  color: @fg_urgent;
-}
-
-#bluetooth.on {
-  color: @fg_good;
-}
-
-#bluetooth.off {
-  color: @fg_medium;
-}
-
-#bluetooth.disabled {
-  color: @fg_medium;
-}
-
-#power-profiles-daemon.power-saver,
-#pulseaudio.bluetooth {
-  color: @fg_good;
-}
-
-#pulseaudio.muted {
-  color: @fg_urgent;
-}
-
-#temperature.critical {
-  color: @fg_urgent;
-}
-
-#custom-temp.zone2 {
-  color: @fg_medium;
-}
-
-#custom-temp.zone3 {
-  color: @fg_urgent;
-}
-
-#mpris.paused {
-  color: @fg_medium;
-}
-
-#mpris.playing {
-  color: @fg_good;
-}
-
-#idle_inhibitor.activated {
-  color: @fg_medium;
-}
-
-#idle_inhibitor.deactivated {
+#idle_inhibitor.deactivated
+{
   color: @fg_inactive;
 }
 
-#privacy {
-  color: @fg_urgent;
-}
-
-#privacy-item.audio-out {
-  color: @fg_medium;
-}
-
 #backlight.low,
-#pulseaudio.low {
+#bluetooth.on,
+#cpu.low,
+#disk.low,
+#memory.low,
+#power-profiles-daemon.balanced,
+#wireplumber.sink.low,
+#wireplumber.source.muted
+{
   color: @fg_normal;
 }
 
-#power-profiles-daemon.balanced,
-#wireplumber.muted,
-#cpu.low,
-#memory.low,
-#disk.low {
-  color: @fg_normal;
+#battery.high,
+#bluetooth.connected,
+#mpris.playing,
+#power-profiles-daemon.power-saver,
+#wireplumber.sink.bluetooth
+{
+  color: @fg_good;
 }
 
 #backlight.medium,
-#pulseaudio.medium,
-#wireplumber,
+#battery.charging,
+#battery.medium,
+#bluetooth.disabled,
+#bluetooth.off,
 #cpu.medium,
+#custom-bluez_profile,
+#custom-temp.zone2,
+#disk.medium,
+#idle_inhibitor.activated,
 #memory.medium,
-#disk.medium {
+#mpris.paused,
+#privacy-item.audio-out,
+#wireplumber.sink.medium,
+#wireplumber.source
+{
   color: @fg_medium;
 }
 
-#power-profiles-daemon.performance,
 #backlight.high,
-#pulseaudio.high,
+#battery.low:not(.charging),
 #cpu.high,
+#custom-do_not_disturb.off,
+#custom-temp.zone3,
+#disk.high,
 #memory.high,
-#disk.high {
+#mode,
+#network.disconnected,
+#power-profiles-daemon.performance,
+#privacy,
+#temperature.critical,
+#wireplumber.sink.high,
+#wireplumber.sink.muted
+{
   color: @fg_urgent;
-}
-
-#tray {
-  font-family:  Ubuntu;
-  font-size:    14px;
 }

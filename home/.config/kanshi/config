@@ -1,28 +1,30 @@
 profile default {
   output "Tianma Microelectronics Ltd. TL160MDMP03-0 Unknown" enable scale 1.65
   exec swaymsg output eDP-1 color_profile icc /data/src/icc/redmi16.icm
-  exec sway-fix-lost-windows.py
 }
 
 profile default {
   output "Samsung Display Corp. 0x4165 Unknown" enable scale 2 position 0,0
-  exec sway-fix-lost-windows.py
 }
 
 profile default {
   output "Lenovo Group Limited 0x4146 Unknown" enable scale 2 position 0,0
-  exec sway-fix-lost-windows.py
 }
 
-profile xiaomi {
-  # output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 0,0
-  # output eDP-1 disable
+profile default {
+  output "Samsung Display Corp. ATNA53JB01-0  Unknown" enable mode 2880x1800@120Hz scale 1.65 adaptive_sync on
+}
 
+###############################################################################
+
+profile xiaomi {
   output "Xiaomi Corporation Mi Monitor Unknown" mode 3440x1440@144Hz position 1920,0
   output eDP-1 enable scale 2 position 0,0
 
   exec sway-fix-lost-windows.py
 }
+
+###############################################################################
 
 profile nv-xiaomi {
   output "Xiaomi Corporation Mi Monitor Unknown"   mode 3440x1440@144Hz

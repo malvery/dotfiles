@@ -82,7 +82,7 @@ image/x-portable-bitmap=imv-dir.desktop;
 image/x-portable-pixmap=imv-dir.desktop;
 image/x-tga=imv-dir.desktop;
 text/html=firefox.desktop;
-text/plain=nvim.desktop;
+text/plain=nvim.desktop
 text/tcl=nvim.desktop;
 text/x-c++hdr=nvim.desktop;
 text/x-c++src=nvim.desktop;
@@ -143,7 +143,10 @@ x-scheme-handler/tg=userapp-Telegram Desktop-W4D7G3.desktop;
 x-scheme-handler/tonsite=userapp-Telegram Desktop-8XF5G3.desktop;
 x-scheme-handler/yandexmusic=yandex-music.desktop;
 x-scheme-handler/max=MAX.desktop
+x-scheme-handler/terminal=foot.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Evolution-TWJ3K3.desktop;
 application/octet-stream=nvim.desktop;
+text/plain=nvim.desktop;userapp-foot nvim %F-83O2Q3.desktop;
+application/x-shellscript=userapp-foot nvim %F-83O2Q3.desktop;

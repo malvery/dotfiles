@@ -13,6 +13,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 
   export MOZ_ENABLE_WAYLAND=1
   export ELECTRON_OZONE_PLATFORM_HINT=auto
+  export GTK_THEME=Breeze-Dark
 
   # ---------------------------------------------------------------------------
   export QT_QPA_PLATFORMTHEME=qt6ct
