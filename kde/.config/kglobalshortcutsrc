@@ -337,7 +337,7 @@ _launch=Print
 [services][pcmanfm-qt.desktop]
 _launch=Meta+E
 
-[services][rofi-run.desktop]
+[services][bemenu-run.desktop]
 _launch=Meta+F2
 
 [services][systemsettings.desktop]

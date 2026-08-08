@@ -101,6 +101,7 @@ window#waybar {
 #memory.low,
 #power-profiles-daemon.balanced,
 #wireplumber.sink.low,
+#wireplumber.source,
 #wireplumber.source.muted
 {
   color: @fg_normal;
@@ -128,8 +129,7 @@ window#waybar {
 #memory.medium,
 #mpris.paused,
 #privacy-item.audio-out,
-#wireplumber.sink.medium,
-#wireplumber.source
+#wireplumber.sink.medium
 {
   color: @fg_medium;
 }

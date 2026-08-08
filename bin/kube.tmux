@@ -55,8 +55,8 @@ _kube_tmux_file_newer_than() {
 _kube_tmux_update_cache() {
   if ! _kube_tmux_binary_check "${KUBE_TMUX_BINARY}"; then
     # No ability to fetch context/namespace; display N/A.
-    KUBE_TMUX_CONTEXT="BINARY-N/A"
-    KUBE_TMUX_NAMESPACE="N/A"
+    KUBE_TMUX_CONTEXT=""
+    KUBE_TMUX_NAMESPACE=""
     return
   fi
 

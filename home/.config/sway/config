@@ -1,5 +1,6 @@
 set $config   '~/.config/sway'
 
+exec systemctl --user start sway-session.target
 include /etc/sway/config.d/*
 include $config/conf.d/*.conf
 include $config/hosts/autostart.conf

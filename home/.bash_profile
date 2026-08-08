@@ -21,11 +21,15 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   # export WLR_DRM_NO_ATOMIC=1
   # export WLR_RENDER_NO_EXPLICIT_SYNC=1
 
-  XDG_CURRENT_DESKTOP=sway
+  export XDG_CURRENT_DESKTOP=sway
   sway
 
   echo "Stop session..."
   systemctl --user stop graphical-session.target
+
+  # ---------------------------------------------------------------------------
+  # export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
+  # /usr/libexec/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 
   # ---------------------------------------------------------------------------
   echo "Logout after 3 sec." && sleep 3 && exit

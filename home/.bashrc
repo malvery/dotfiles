@@ -45,7 +45,7 @@ __promt() {
     STATUS_CODE=""
   fi
 
-  JOBS=$(jobs |wc -l)
+  JOBS=$(jobs | wc -l)
   if [ ${JOBS} -gt 0 ]; then
     JOBS=" [${JOBS}]"
   else
@@ -66,14 +66,14 @@ __promt() {
     TBX=""
   fi
 
-  GIT_BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
+  GIT_BRANCH=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/')
 }
 PROMPT_COMMAND=__promt
 
 # -----------------------------------------------
 # Proxy
 # -----------------------------------------------
-_proxy_enable () {
+_proxy_enable() {
   if [[ -v _proxy ]]; then
     export no_proxy=localhost,127.0.0.1
     export {http,https}_proxy=${_proxy}
@@ -84,7 +84,7 @@ _proxy_enable () {
   fi
 }
 
-_proxy_disable () {
+_proxy_disable() {
   unset {http,https,no}_proxy
   unset proxy_name
 }
@@ -97,7 +97,7 @@ _proxy_set_aliases() {
   fi
 }
 
-_proxy_unset_aliases () {
+_proxy_unset_aliases() {
   for i in "${_proxy_aliased[@]}"; do
     unalias $i
   done
@@ -106,8 +106,8 @@ _proxy_unset_aliases () {
 # -----------------------------------------------
 # Sources
 # -----------------------------------------------
-[[ -f ${HOME}/.bashrc.local ]]              &&  source ${HOME}/.bashrc.local
-[[ -f /etc/profile.d/bash_completion.sh ]]  &&  source /etc/profile.d/bash_completion.sh
+[[ -f ${HOME}/.bashrc.local ]] && source ${HOME}/.bashrc.local
+[[ -f /etc/profile.d/bash_completion.sh ]] && source /etc/profile.d/bash_completion.sh
 
 # -----------------------------------------------
 # PS1
