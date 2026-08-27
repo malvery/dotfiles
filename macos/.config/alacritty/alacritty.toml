@@ -40,3 +40,6 @@ decorations = "Buttonless"
 option_as_alt = "Both"
 dimensions = { columns = 150, lines = 50 }
 padding = { x = 5, y = 5}
+
+# [terminal]
+# shell = "/opt/homebrew/bin/bash"

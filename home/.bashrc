@@ -45,7 +45,11 @@ __promt() {
     STATUS_CODE=""
   fi
 
+<<<<<<< Updated upstream
   JOBS=$(jobs | wc -l)
+=======
+  JOBS=$(jobs | wc -l | tr -d "[:blank:]")
+>>>>>>> Stashed changes
   if [ ${JOBS} -gt 0 ]; then
     JOBS=" [${JOBS}]"
   else

@@ -5,15 +5,27 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "test",
-                        "enabled": false,
+                        "description": "Disable fn-d dictation",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["fn"] }
+                                },
+                                "to": [{ "key_code": "vk_none" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Run terminal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "return_or_enter",
                                     "modifiers": { "mandatory": ["left_option", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open -na Alacritty" }],
+                                "to": [{ "shell_command": "/opt/homebrew/bin/kitten @ --to=unix:$(ls /tmp/kitty-* | head) launch --type=os-window" }],
                                 "type": "basic"
                             }
                         ]
@@ -28,6 +40,8 @@
                         "is_pointing_device": true
                     },
                     "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "pointing_motion_xy_multiplier": 1.5,
                     "simple_modifications": [
                         {
                             "from": { "key_code": "left_command" },
@@ -36,6 +50,31 @@
                         {
                             "from": { "key_code": "left_option" },
                             "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 41040,
+                        "vendor_id": 2522
+                    },
+                    "ignore_vendor_events": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 1031,
+                        "vendor_id": 1241
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
                         }
                     ]
                 }
