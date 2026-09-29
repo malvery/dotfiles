@@ -13,7 +13,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 
   export MOZ_ENABLE_WAYLAND=1
   export ELECTRON_OZONE_PLATFORM_HINT=auto
-  export GTK_THEME=Breeze-Dark
 
   # ---------------------------------------------------------------------------
   export QT_QPA_PLATFORMTHEME=qt6ct
@@ -29,7 +28,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 
   # ---------------------------------------------------------------------------
   # export KWIN_DRM_DISABLE_TRIPLE_BUFFERING=1
-  # /usr/libexec/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+  # /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 
   # ---------------------------------------------------------------------------
   echo "Logout after 3 sec." && sleep 3 && exit

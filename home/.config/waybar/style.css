@@ -15,10 +15,10 @@
 }
 
 window#waybar {
-  font-family:    "Ubuntu";
-  font-weight:    400;
-  font-size:      14px;
-  color:          @fg_normal;
+  font-family:  "Noto Sans", "Font Awesome 7 Free", "Font Awesome 7 Brands";
+  font-weight:  400;
+  font-size:    14px;
+  color:        @fg_normal;
 }
 
 #waybar {
@@ -31,6 +31,7 @@ window#waybar {
   color:        @fg_normal;
   border:       1px solid @bg_border;
   font-weight:  400;
+  padding:      0 0px;
 }
 
 #workspaces button.focused {
@@ -44,8 +45,7 @@ window#waybar {
 }
 
 #tray {
-  font-family:  Ubuntu;
-  font-size:    14px;
+  font-size:    15px;
 }
 
 #clock,
@@ -82,7 +82,6 @@ window#waybar {
   background: @bg_widget;
   border:     none;
 }
-
 
 #window {
   background: transparent;

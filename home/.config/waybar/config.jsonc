@@ -27,15 +27,13 @@
     "idle_inhibitor",
     "mpris",
     "privacy",
-    // "clock",
-    // "tray",
-    "group/tray",
+    "group/hide",
     "sway/language",
     "custom/do_not_disturb",
 
   ],
 
-  "group/tray": {
+  "group/hide": {
     "orientation": "inherit",
     "modules": [
       "clock",
@@ -91,7 +89,7 @@
     "format-linked":        " {ifname} (No IP) ",
     "format-disconnected":  " Disconnected",
     "format-alt":           "{bandwidthDownBits} {frequency}Hz",
-    "on-click-middle":      "foot -a foot-impala -e impala",
+    "on-click-middle":      "foot -a foot-float -e impala",
 
     "tooltip":  false
   },
@@ -131,7 +129,7 @@
   },
 
   "bluetooth": {
-    "on-click-middle":  "blueman-manager",
+    "on-click-middle":  "foot -a foot-float -e bluetui",
     "on-click-right":   "~/bin/bluez-toggle.sh --connect-known-headset",
 
     "format":           " {status}",
@@ -205,7 +203,7 @@
       },
 
       "on-click-right":   "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-      "on-click-middle":  "pavucontrol-qt -t 3",
+      "on-click-middle":  "swaymsg exec 'pavucontrol-qt -t 3'",
 
       "scroll-step":  1,
       "tooltip":      false,

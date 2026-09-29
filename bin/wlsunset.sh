@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if pgrep -u ${USER} waybar > /dev/null; then
+if pgrep -u ${USER} -x waybar > /dev/null; then
   UPDATE="pkill -RTMIN+6 waybar"
   MSG_NIGHT=""
   MSG_DAY=""
