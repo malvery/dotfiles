@@ -15,6 +15,24 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+on-window-detected = [
+    {
+        if = 'test %{app-bundle-id} = org.keepassxc.keepassxc',
+        check-further-callbacks = true,
+        run = ['layout floating']
+    },
+    {
+        if = 'test %{app-bundle-id} = com.anthropic.claudefordesktop',
+        check-further-callbacks = true,
+        run = ['layout floating']
+    },
+    {
+        if = 'test %{app-bundle-id} = com.google.Chrome.app.mlolabomacbaddcagfjijnbnggoaimhc',
+        check-further-callbacks = true,
+        run = ['layout floating']
+    },
+]
+
 gaps.inner.horizontal = 0
 gaps.inner.vertical =   0
 gaps.outer.left =       0
@@ -97,5 +115,3 @@ accordion-padding = 0
 
     enter   = 'mode main'
     esc     = 'mode main'
-
-
