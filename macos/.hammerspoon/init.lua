@@ -61,6 +61,12 @@ hs.hotkey.bind({ "alt", "shift" }, "k", function()
   hs.eventtap.keyStroke({ "ctrl", "alt", "shift" }, "up", 0)
 end)
 
+-- hs.hotkey.bind({ "alt"}, "q", function()
+--   hs.eventtap.keyStroke({ "alt" }, "r", 0)
+--   hs.timer.usleep(60000)   -- 60ms delay
+--   hs.eventtap.keyStroke({ "cmd" }, "4", 0)
+-- end)
+
 ----------------------------------------------------
 -- spaces
 ----------------------------------------------------
@@ -90,7 +96,7 @@ hs.hotkey.bind({ "alt" }, "escape", function()
   local i = index[lastSpace]
   if not i then
     reindex(); i = index[lastSpace]
-  end                                               -- spaces added/removed
+  end -- spaces added/removed
   if i and i <= 9 then
     hs.eventtap.keyStroke({ "alt" }, tostring(i), 0)
   end
@@ -177,4 +183,3 @@ fileDestroyer     = hs.pathwatcher.new(watchFolder, function(paths, flagSet)
     end
   end
 end):start()
-
